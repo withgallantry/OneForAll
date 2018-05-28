@@ -151,7 +151,7 @@ def getVoltagepercent(volt):
 
 def readAudioLevel():
     res = os.popen('awk -F"[][]" \'/dB/ { print $2 }\' <(amixer sget Master)').readline()
-    vol = int(res.replace("%", ""))
+    vol = float(res.replace("%", ""))
     audio = 0;
     if (vol == 0):
         audio = audio_zero;

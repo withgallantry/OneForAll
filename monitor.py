@@ -77,7 +77,11 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
-audio_1bar = 0;
+audio_zero = 0;
+audio_25 = 1;
+audio_50 = 2;
+audio_75 = 3;
+audio_100 = 4;
 
 # Set up a port
 # try:
@@ -146,7 +150,20 @@ def getVoltagepercent(volt):
 
 
 def readAudioLevel():
-    return audio_1bar;
+    res = os.popen('awk -F"[][]" \'/dB/ { print $2 }\' <(amixer sget Master)').readline()
+    vol = int(res.replace("%", ""))
+    audio = 0;
+    if (vol == 0):
+        audio = audio_zero;
+    if (vol > 25):
+        audio = audio_25;
+    if (vol > 50):
+        audio = audio_50;
+    if (vol > 75):
+        audio = audio_75;
+    if (vol == 100):
+        audio = audio_100;
+    return audio;
 
 
 # Read wifi (Credits: kite's SAIO project)

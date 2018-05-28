@@ -46,6 +46,7 @@
 #define BATTERY_IMAGE "/home/pi/Retropie-open-OSD/resources/battery.png"
 #define CHARGE_IMAGE "/home/pi/Retropie-open-OSD/resources/plug.png"
 #define BATTERY_TH 20
+#define AUDIO_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/wifi_warning.png", "/home/pi/raspidmx/osd/resources/wifi_error.png", "/home/pi/Retropie-open-OSD/resources/wifi_1.png", "/home/pi/raspidmx/osd/resources/wifi_2.png", "/home/pi/Retropie-open-OSD/resources/wifi_3.png"}
 #define WIFI_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/wifi_warning.png", "/home/pi/raspidmx/osd/resources/wifi_error.png", "/home/pi/Retropie-open-OSD/resources/wifi_1.png", "/home/pi/raspidmx/osd/resources/wifi_2.png", "/home/pi/Retropie-open-OSD/resources/wifi_3.png"}
 #define BRIGHTNESS_MAX 7
 
@@ -58,7 +59,7 @@ static RGBA8_T backgroundColour = { 0, 0, 0, 100 };
 static RGBA8_T textColour = { 255, 255, 255, 255 };
 static RGBA8_T greenColour = { 0, 255, 0, 200 };
 static RGBA8_T redColour = { 255, 0, 0, 200 };
-static int battery = 0, infos = 0, brightness = 0, charge = 0, wifi = 0, voltage = 0;
+static int battery = 0, infos = 0, brightness = 0, charge = 0, audio = 0, wifi = 0, voltage = 0;
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*);
@@ -290,6 +291,13 @@ int main(int argc, char *argv[])
                    bimageLayer.image.height,
                    type);
     createResourceImageLayer(&wimageLayer, layer+2);
+
+     IMAGE_LAYER_T aimageLayer;
+        initImageLayer(&aimageLayer,
+                       bimageLayer.image.height,
+                       bimageLayer.image.height,
+                       type);
+        createResourceImageLayer(&aimageLayer, layer+2);
     
     int xOffset = info.width-bimageLayer.image.width-1;
     int yOffset = 1;
@@ -300,8 +308,15 @@ int main(int argc, char *argv[])
                                0,
                                display,
                                update);
+
     addElementImageLayerOffset(&wimageLayer,
                                xOffset-wimageLayer.image.width-2,
+                               yOffset,
+                               display,
+                               update);
+
+    addElementImageLayerOffset(&aimageLayer,
+                               xOffset-aimageLayer.image.width-2,
                                yOffset,
                                display,
                                update);
@@ -361,6 +376,20 @@ int main(int argc, char *argv[])
         {
             clearLayer(&wimageLayer);
         }
+         if(audio > 0)
+                {
+                    //TODO preload for efficienty
+                    if (loadPng(&(aimageLayer.image), AUDIO_IMAGES[audio-1]) == false)
+                    {
+                        fprintf(stderr, "unable to load %s\n", argv[optind]);
+                    }
+                    changeSourceAndUpdateImageLayer(&aimageLayer);
+                    audio = -1;
+                }
+                else if (!audio)
+                {
+                    clearLayer(&aimageLayer);
+                }
         if(infos > 0)
         {
             updateInfo(&infoLayer);
@@ -381,6 +410,7 @@ int main(int argc, char *argv[])
     destroyImageLayer(&infoLayer);
     destroyImageLayer(&batteryLayer);
     destroyImageLayer(&wimageLayer);
+    destroyImageLayer(&aimageLayer);
     destroyImageLayer(&bimageLayer);
     destroyImageLayer(&cimageLayer);
     result = vc_dispmanx_display_close(display);

@@ -166,7 +166,7 @@ def readAudioLevel():
         audio = audio_100;
 
     print "Out"
-    print out
+    print res
     print "Vol:"
     print str(vol)
     print "Audio:"

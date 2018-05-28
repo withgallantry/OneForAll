@@ -80,17 +80,17 @@ wifi_3bar = 5
 audio_1bar = 0;
 
 # Set up a port
-try:
-    ser = serial.Serial(
-        port=serport,
-        baudrate=9600,
-        parity=serial.PARITY_NONE,
-        stopbits=serial.STOPBITS_ONE,
-        bytesize=serial.EIGHTBITS,
-        timeout=1)
-except Exception as e:
-    logging.exception("ERROR: Failed to open serial port");
-    sys.exit(1);
+# try:
+#     # ser = serial.Serial(
+#     #     port=serport,
+#     #     baudrate=9600,
+#     #     parity=serial.PARITY_NONE,
+#     #     stopbits=serial.STOPBITS_ONE,
+#     #     bytesize=serial.EIGHTBITS,
+#     #     timeout=1)
+# except Exception as e:
+#     logging.exception("ERROR: Failed to open serial port");
+#     sys.exit(1);
 
 # Set up OSD service
 try:
@@ -120,15 +120,15 @@ def checkShdn():
 
 
 # Read brightness
-def getBrightness():
-    ser.write('l')
-    ser.flush()
-
-
-# Read brightness
-def getVoltage():
-    ser.write('b')
-    ser.flush()
+# def getBrightness():
+#     ser.write('l')
+#     ser.flush()
+#
+#
+# # Read brightness
+# def getVoltage():
+#     ser.write('b')
+#     ser.flush()
 
 
 # Read voltage
@@ -326,12 +326,12 @@ try:
         # checkShdn()
         charge = checkCharge()
         condition.acquire()
-        getVoltage()
+        # getVoltage()
         temp = getCPUtemperature()
         wifi = readModeWifi()
         audio = readAudioLevel()
-        if brightness < 0:
-            getBrightness()
+        # if brightness < 0:
+        #     getBrightness()
         condition.wait(4.5)
         condition.release()
         time.sleep(0.5)

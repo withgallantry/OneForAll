@@ -23,7 +23,7 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
+            <state relative-caret-position="-1055">
               <caret line="159" column="16" lean-forward="false" selection-start-line="159" selection-start-column="8" selection-end-line="159" selection-end-column="16" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
@@ -36,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="236">
-              <caret line="386" column="71" lean-forward="false" selection-start-line="386" selection-start-column="71" selection-end-line="386" selection-end-column="71" />
+              <caret line="386" column="55" lean-forward="false" selection-start-line="386" selection-start-column="55" selection-end-line="386" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -116,8 +116,8 @@
       <find>wifi</find>
       <find>wif</find>
       <find>audio = 1</find>
-      <find>audio =</find>
       <find>audio</find>
+      <find>audio =</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -792,12 +792,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527531434109</updated>
       <workItem from="1527531435687" duration="19000" />
-      <workItem from="1527531478496" duration="9381000" />
+      <workItem from="1527531478496" duration="9502000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9400000" />
+    <option name="totallyTimeSpent" value="9521000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -950,7 +950,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
+        <state relative-caret-position="-1055">
           <caret line="159" column="16" lean-forward="false" selection-start-line="159" selection-start-column="8" selection-end-line="159" selection-end-column="16" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
@@ -961,7 +961,7 @@
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
-          <caret line="386" column="71" lean-forward="false" selection-start-line="386" selection-start-column="71" selection-end-line="386" selection-end-column="71" />
+          <caret line="386" column="55" lean-forward="false" selection-start-line="386" selection-start-column="55" selection-end-line="386" selection-end-column="55" />
           <folding />
         </state>
       </provider>

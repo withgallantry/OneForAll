@@ -384,7 +384,7 @@ int main(int argc, char *argv[])
          if(audio > 0)
                 {
                     //TODO preload for efficienty
-                    fprintf(stderr, "unable to number load %s\n", audio);
+                    fprintf(stderr, "unable to number load %i\n", audio);
                     if (loadPng(&(aimageLayer.image), AUDIO_IMAGES[audio-1]) == false)
                     {
                         fprintf(stderr, "unable to load %s\n", argv[optind]);

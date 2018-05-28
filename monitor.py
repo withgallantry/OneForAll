@@ -150,7 +150,7 @@ def getVoltagepercent(volt):
 
 
 def readAudioLevel():
-    out = check_output(['awk', '-F"[][]"', '\'/dB/ { print $2 }\'', '<(amixer)'])
+    out = check_output(['awk', '-F"[][]"', "'/dB/ { print $2 }'", '<(amixer)'])
     print str(out)
     vol = float(str(out).replace("%", ""))
     audio = 0;

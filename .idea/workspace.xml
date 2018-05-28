@@ -35,8 +35,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="323" column="64" lean-forward="false" selection-start-line="323" selection-start-column="64" selection-end-line="323" selection-end-column="64" />
+            <state relative-caret-position="481">
+              <caret line="302" column="25" lean-forward="false" selection-start-line="302" selection-start-column="25" selection-end-line="302" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -88,7 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>initImageLayer</find>
       <find>wImageLayer</find>
       <find>updateBattery</find>
       <find>'w'</find>
@@ -118,6 +117,7 @@
       <find>audio</find>
       <find>WIFI_IMAGES</find>
       <find>audio =</find>
+      <find>bimageLayer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -806,12 +806,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527531434109</updated>
       <workItem from="1527531435687" duration="19000" />
-      <workItem from="1527531478496" duration="10808000" />
+      <workItem from="1527531478496" duration="11138000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10827000" />
+    <option name="totallyTimeSpent" value="11157000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -992,8 +992,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="323" column="64" lean-forward="false" selection-start-line="323" selection-start-column="64" selection-end-line="323" selection-end-column="64" />
+        <state relative-caret-position="481">
+          <caret line="302" column="25" lean-forward="false" selection-start-line="302" selection-start-column="25" selection-end-line="302" selection-end-column="25" />
           <folding />
         </state>
       </provider>

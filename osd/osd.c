@@ -299,8 +299,8 @@ int main(int argc, char *argv[])
 
      IMAGE_LAYER_T aimageLayer;
         initImageLayer(&aimageLayer,
-                       bimageLayer.image.height,
-                       bimageLayer.image.height,
+                       20,
+                       11,
                        type);
      createResourceImageLayer(&aimageLayer, layer+2);
     

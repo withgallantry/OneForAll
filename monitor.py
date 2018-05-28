@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#sudo apt-get install python-serial
+# sudo apt-get install python-serial
 
 #
 # This file originates from Vascofazza's Retropie open OSD project.
@@ -23,7 +23,7 @@
 
 import RPi.GPIO as GPIO
 import time
-import os,signal,sys
+import os, signal, sys
 import serial
 from subprocess import Popen, PIPE, check_output, check_call
 import re
@@ -34,9 +34,9 @@ import threading
 import signal
 
 # Config variables
-bin_dir         = '/home/pi/Retropie-open-OSD/'
-osd_path        = bin_dir + 'osd/osd'
-rfkill_path     = bin_dir + 'rfkill/rfkill'
+bin_dir = '/home/pi/Retropie-open-OSD/'
+osd_path = bin_dir + 'osd/osd'
+rfkill_path = bin_dir + 'rfkill/rfkill'
 
 # Hardware variables
 pi_charging = 26
@@ -52,7 +52,7 @@ GPIO.setup(pi_charged, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(pi_shdn, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # Batt variables
-voltscale = 118.0 #ADJUST THIS
+voltscale = 118.0  # ADJUST THIS
 currscale = 640.0
 resdivmul = 4.0
 resdivval = 1000.0
@@ -77,19 +77,20 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
+audio_1bar = 0;
+
 # Set up a port
 try:
     ser = serial.Serial(
-    port=serport,
-    baudrate = 9600,
-    parity=serial.PARITY_NONE,
-    stopbits=serial.STOPBITS_ONE,
-    bytesize=serial.EIGHTBITS,
-    timeout=1)
+        port=serport,
+        baudrate=9600,
+        parity=serial.PARITY_NONE,
+        stopbits=serial.STOPBITS_ONE,
+        bytesize=serial.EIGHTBITS,
+        timeout=1)
 except Exception as e:
     logging.exception("ERROR: Failed to open serial port");
     sys.exit(1);
-
 
 # Set up OSD service
 try:
@@ -104,9 +105,11 @@ except Exception as e:
     logging.exception("ERROR: Failed start OSD binary");
     sys.exit(1);
 
+
 # Check for charge state
 def checkCharge():
     return not GPIO.input(pi_charging) and GPIO.input(pi_charged)
+
 
 # Check for shutdown state
 def checkShdn():
@@ -115,69 +118,78 @@ def checkShdn():
         logging.info("SHUTDOWN")
         doShutdown()
 
+
 # Read brightness
 def getBrightness():
     ser.write('l')
     ser.flush()
+
 
 # Read brightness
 def getVoltage():
     ser.write('b')
     ser.flush()
 
+
 # Read voltage
 def readVoltage(voltVal):
-    #volt = int(500.0/1023.0*voltVal)
-    volt = int((( voltVal * voltscale * dacres + ( dacmax * 5 ) ) / (( dacres * resdivval ) / resdivmul)))
+    # volt = int(500.0/1023.0*voltVal)
+    volt = int(((voltVal * voltscale * dacres + (dacmax * 5)) / ((dacres * resdivval) / resdivmul)))
     logging.info("VoltVal [" + str(voltVal) + "]")
     logging.info("Volt    [" + str(volt) + "]V")
     return volt
 
+
 # Get voltage percent
 def getVoltagepercent(volt):
-    return clamp(int( float(volt - batt_shdn)/float(batt_full - batt_shdn)*100 ), 0, 100)
+    return clamp(int(float(volt - batt_shdn) / float(batt_full - batt_shdn) * 100), 0, 100)
+
+
+def readAudioLevel():
+    return audio_1bar;
+
 
 # Read wifi (Credits: kite's SAIO project)
-def readModeWifi(toggle = False):
+def readModeWifi(toggle=False):
     global wif
     ret = wif
-    wifiVal = not os.path.exists(osd_path+'wifi')# int(ser.readline().rstrip('\r\n'))
+    wifiVal = not os.path.exists(osd_path + 'wifi')  # int(ser.readline().rstrip('\r\n'))
     if toggle:
         wifiVal = not wifiVal
     global wifi_state
     if (wifiVal):
-        if os.path.exists(osd_path+'wifi'):
-            os.remove(osd_path+'wifi')
+        if os.path.exists(osd_path + 'wifi'):
+            os.remove(osd_path + 'wifi')
         if (wifi_state != 'ON'):
             wifi_state = 'ON'
             logging.info("Wifi    [ENABLING]")
             try:
-                out = check_output([ 'sudo', rfkill_path, 'unblock', 'wifi' ])
+                out = check_output(['sudo', rfkill_path, 'unblock', 'wifi'])
                 logging.info("Wifi    [" + str(out) + "]")
-                out = check_output([ 'sudo', rfkill_path, 'unblock', 'bluetooth' ])
+                out = check_output(['sudo', rfkill_path, 'unblock', 'bluetooth'])
                 logging.info("BT      [" + str(out) + "]")
             except Exception, e:
                 logging.info("Wifi    : " + str(e))
-                ret = wifi_warning    # Get signal strength
+                ret = wifi_warning  # Get signal strength
 
     else:
-        with open(osd_path+'wifi', 'a'):
+        with open(osd_path + 'wifi', 'a'):
             n = 1
         if (wifi_state != 'OFF'):
             wifi_state = 'OFF'
             logging.info("Wifi    [DISABLING]")
             try:
-                out = check_output([ 'sudo', rfkill_path, 'block', 'wifi' ])
+                out = check_output(['sudo', rfkill_path, 'block', 'wifi'])
                 logging.info("Wifi    [" + str(out) + "]")
-                out = check_output([ 'sudo', rfkill_path, 'block', 'bluetooth' ])
+                out = check_output(['sudo', rfkill_path, 'block', 'bluetooth'])
                 logging.info("BT      [" + str(out) + "]")
             except Exception, e:
                 logging.info("Wifi    : " + str(e))
                 ret = wifi_error
         return ret
-#check signal
-    raw = check_output([ 'cat', '/proc/net/wireless'] )
-    strengthObj = re.search( r'.wlan0: \d*\s*(\d*)\.\s*[-]?(\d*)\.', raw, re.I )
+    # check signal
+    raw = check_output(['cat', '/proc/net/wireless'])
+    strengthObj = re.search(r'.wlan0: \d*\s*(\d*)\.\s*[-]?(\d*)\.', raw, re.I)
     if strengthObj:
         strength = 0
         if (int(strengthObj.group(1)) > 0):
@@ -197,14 +209,17 @@ def readModeWifi(toggle = False):
         logging.info("Wifi    [---]strength")
         ret = wifi_error
     return ret
+
+
 # Read CPU temp
 def getCPUtemperature():
     res = os.popen('vcgencmd measure_temp').readline()
-    return float(res.replace("temp=","").replace("'C\n",""))
+    return float(res.replace("temp=", "").replace("'C\n", ""))
+
 
 # Do a shutdown
-def doShutdown(channel = None):
-    ser.write('s0')#shuts the screen off
+def doShutdown(channel=None):
+    ser.write('s0')  # shuts the screen off
     ser.flush()
     time.sleep(1)
     check_call("sudo killall emulationstation", shell=True)
@@ -213,24 +228,28 @@ def doShutdown(channel = None):
     try:
         sys.stdout.close()
     except:
-            pass
+        pass
     try:
         sys.stderr.close()
     except:
         pass
     sys.exit(0)
 
+
 # Signals the OSD binary
-def updateOSD(volt = 0,bat = 0, temp = 0, wifi = 0, brightness = 0, info = False, charge = False):
-    commands = "v"+str(volt)+" b"+str(bat)+" t"+str(temp)+" w"+str(wifi)+" l"+str(brightness)+" "+("on " if info else "off ")+("charge" if charge else "ncharge")+"\n"
-    #print commands
+def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, brightness=0, info=False, charge=False):
+    commands = "v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(audio) + " l" + str(
+        brightness) + " " + ("on " if info else "off ") + ("charge" if charge else "ncharge") + "\n"
+    # print commands
     osd_proc.send_signal(signal.SIGUSR1)
     osd_in.write(commands)
     osd_in.flush()
 
+
 # Misc functions
 def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
+
 
 brightness = -1
 info = False
@@ -241,21 +260,23 @@ bat = 100
 
 condition = threading.Condition()
 
+
 def reading():
     global brightness
     global volt
     global info
     global wifi
+    global audio
     global charge
     global bat
     time.sleep(1)
-    while(1):
+    while (1):
         readval = ser.readline().strip('\n')
         condition.acquire()
         if len(readval) < 2:
             condition.release()
             continue
-    #print readval
+            # print readval
         if readval == 'c0':
             wifi = readModeWifi(True)
         elif readval[0] == 'l':
@@ -267,26 +288,30 @@ def reading():
         elif readval[0] == 'b':
             volt = readVoltage(int(readval[1:]))
             if charge:
-                volt-=20
+                volt -= 20
         if info:
             condition.notify()
         bat = getVoltagepercent(volt)
-	updateOSD(volt, bat, temp, wifi, brightness, info, charge)
+        updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)
         condition.release()
 
+
 reading_thread = thread.start_new_thread(reading, ())
+
 
 def lambdaCharge(channel):
     condition.acquire()
     condition.notify();
     condition.release();
 
-def exit_gracefully(signum=None,frame=None):
+
+def exit_gracefully(signum=None, frame=None):
     GPIO.cleanup
     osd_proc.terminate()
     sys.exit(0)
 
-#interrupts
+
+# interrupts
 GPIO.add_event_detect(pi_shdn, GPIO.FALLING, callback=doShutdown, bouncetime=500)
 GPIO.add_event_detect(pi_charging, GPIO.BOTH, callback=lambdaCharge, bouncetime=100)
 GPIO.add_event_detect(pi_charged, GPIO.FALLING, callback=lambdaCharge, bouncetime=100)
@@ -298,18 +323,19 @@ signal.signal(signal.SIGTERM, exit_gracefully)
 try:
     print "STARTED!"
     while 1:
-        #checkShdn()
+        # checkShdn()
         charge = checkCharge()
         condition.acquire()
         getVoltage()
         temp = getCPUtemperature()
         wifi = readModeWifi()
+        audio = readAudioLevel()
         if brightness < 0:
             getBrightness()
         condition.wait(4.5)
         condition.release()
         time.sleep(0.5)
-#print 'WAKE'
+# print 'WAKE'
 
 except KeyboardInterrupt:
     exit_gracefully()

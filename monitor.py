@@ -271,7 +271,7 @@ def reading():
     global bat
     time.sleep(1)
     while (1):
-        #readval = ser.readline().strip('\n')
+        # readval = ser.readline().strip('\n')
         condition.acquire()
         # if len(readval) < 2:
         #     condition.release()
@@ -296,7 +296,7 @@ def reading():
         condition.release()
 
 
- reading_thread = thread.start_new_thread(reading, ())
+reading_thread = thread.start_new_thread(reading, ())
 
 
 def lambdaCharge(channel):
@@ -312,9 +312,9 @@ def exit_gracefully(signum=None, frame=None):
 
 
 # interrupts
-#GPIO.add_event_detect(pi_shdn, GPIO.FALLING, callback=doShutdown, bouncetime=500)
-#GPIO.add_event_detect(pi_charging, GPIO.BOTH, callback=lambdaCharge, bouncetime=100)
-#GPIO.add_event_detect(pi_charged, GPIO.FALLING, callback=lambdaCharge, bouncetime=100)
+# GPIO.add_event_detect(pi_shdn, GPIO.FALLING, callback=doShutdown, bouncetime=500)
+# GPIO.add_event_detect(pi_charging, GPIO.BOTH, callback=lambdaCharge, bouncetime=100)
+# GPIO.add_event_detect(pi_charged, GPIO.FALLING, callback=lambdaCharge, bouncetime=100)
 
 signal.signal(signal.SIGINT, exit_gracefully)
 signal.signal(signal.SIGTERM, exit_gracefully)

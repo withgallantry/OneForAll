@@ -296,7 +296,7 @@ def reading():
         condition.release()
 
 
-reading_thread = thread.start_new_thread(reading, ())
+# reading_thread = thread.start_new_thread(reading, ())
 
 
 def lambdaCharge(channel):

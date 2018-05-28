@@ -153,7 +153,7 @@ def readAudioLevel():
 
     res = os.popen("amixer | awk -F\"[][]\" '/dB/ { print $2 }'").readline()
     vol = int(res.replace("%", ""))
-    audio = 0
+    audio = 1
     if (vol == 0):
         audio = audio_zero;
     if (vol > 25):

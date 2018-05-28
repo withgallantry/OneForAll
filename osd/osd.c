@@ -59,7 +59,7 @@ static RGBA8_T backgroundColour = { 0, 0, 0, 100 };
 static RGBA8_T textColour = { 255, 255, 255, 255 };
 static RGBA8_T greenColour = { 0, 255, 0, 200 };
 static RGBA8_T redColour = { 255, 0, 0, 200 };
-static int battery = 0, infos = 0, brightness = 0, charge = 0, audio = 0, wifi = 0, voltage = 0;
+static int battery = 0, infos = 0, brightness = 0, charge = 0, audio = 1, wifi = 0, voltage = 0;
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*);

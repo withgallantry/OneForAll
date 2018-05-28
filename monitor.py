@@ -77,11 +77,11 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
-audio_zero = 0;
-audio_25 = 1;
-audio_50 = 2;
-audio_75 = 3;
-audio_100 = 4;
+audio_zero = 1;
+audio_25 = 2;
+audio_50 = 3;
+audio_75 = 4;
+audio_100 = 5;
 
 # Set up a port
 # try:
@@ -165,13 +165,6 @@ def readAudioLevel():
     if (vol == 100):
         audio = audio_100;
 
-    print "Out"
-    print res
-    print "Vol:"
-    print str(vol)
-    print "Audio:"
-    print str(audio)
-    print "----"
     return audio;
 
 

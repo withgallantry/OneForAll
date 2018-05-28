@@ -302,7 +302,7 @@ int main(int argc, char *argv[])
                        bimageLayer.image.height,
                        bimageLayer.image.height,
                        type);
-        createResourceImageLayer(&aimageLayer, layer+2);
+     createResourceImageLayer(&aimageLayer, layer+2);
     
     int xOffset = info.width-bimageLayer.image.width-1;
     int yOffset = 1;

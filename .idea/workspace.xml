@@ -23,8 +23,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="168" column="13" lean-forward="false" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="13" />
+            <state relative-caret-position="363">
+              <caret line="83" column="13" lean-forward="false" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -32,54 +32,55 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wifi_1.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/wifi_1.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wifi_2.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/wifi_2.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wifi_3.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/wifi_3.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wifi_error.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/wifi_error.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="191">
-              <caret line="386" column="66" lean-forward="false" selection-start-line="386" selection-start-column="54" selection-end-line="386" selection-end-column="66" />
+              <caret line="369" column="15" lean-forward="false" selection-start-line="369" selection-start-column="11" selection-end-line="369" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="195">
-                <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
+      <file leaf-file-name="AUD0.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/AUD0.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AUD25.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/AUD25.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AUD50.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/AUD50.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AUD100.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/AUD100.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="audio_2.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/audio_2.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wifi_1.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/wifi_1.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -96,7 +97,6 @@
       <find>'w'</find>
       <find>wifi_3bar</find>
       <find>readModeWifi</find>
-      <find>wifi</find>
       <find>updateOSD</find>
       <find>serial</find>
       <find>getVoltage</find>
@@ -109,10 +109,15 @@
       <find>getBrightness</find>
       <find>readAudioLevel</find>
       <find>font.h</find>
-      <find>os.</find>
       <find>check_output</find>
-      <find>AUDIO_IMAGES</find>
       <find>audio</find>
+      <find>os.</find>
+      <find>AUDIO_IMAGES</find>
+      <find>CHARGE_IMAGE</find>
+      <find>cimageLayer</find>
+      <find>createResourceImageLayer</find>
+      <find>wifi</find>
+      <find>wif</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -787,12 +792,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527531434109</updated>
       <workItem from="1527531435687" duration="19000" />
-      <workItem from="1527531478496" duration="8756000" />
+      <workItem from="1527531478496" duration="9123000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8775000" />
+    <option name="totallyTimeSpent" value="9142000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -848,11 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/plug.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Makefile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -883,21 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/wifi_1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/wifi_2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/wifi_3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/battery.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -908,23 +893,73 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/osd.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="386" column="66" lean-forward="false" selection-start-line="386" selection-start-column="54" selection-end-line="386" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/wifi_error.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/AUD0.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/AUD25.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/AUD100.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/wifi_3.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/wifi_2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/plug.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/wifi_1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/audio_2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/AUD75.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/AUD50.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/osd/osd.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="369" column="15" lean-forward="false" selection-start-line="369" selection-start-column="11" selection-end-line="369" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="168" column="13" lean-forward="false" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="13" />
+        <state relative-caret-position="363">
+          <caret line="83" column="13" lean-forward="false" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>

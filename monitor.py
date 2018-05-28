@@ -312,9 +312,9 @@ def exit_gracefully(signum=None, frame=None):
 
 
 # interrupts
-GPIO.add_event_detect(pi_shdn, GPIO.FALLING, callback=doShutdown, bouncetime=500)
-GPIO.add_event_detect(pi_charging, GPIO.BOTH, callback=lambdaCharge, bouncetime=100)
-GPIO.add_event_detect(pi_charged, GPIO.FALLING, callback=lambdaCharge, bouncetime=100)
+#GPIO.add_event_detect(pi_shdn, GPIO.FALLING, callback=doShutdown, bouncetime=500)
+#GPIO.add_event_detect(pi_charging, GPIO.BOTH, callback=lambdaCharge, bouncetime=100)
+#GPIO.add_event_detect(pi_charged, GPIO.FALLING, callback=lambdaCharge, bouncetime=100)
 
 signal.signal(signal.SIGINT, exit_gracefully)
 signal.signal(signal.SIGTERM, exit_gracefully)

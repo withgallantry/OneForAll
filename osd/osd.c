@@ -357,7 +357,7 @@ int main(int argc, char *argv[])
             //TODO preload for efficiency
             if (loadPng(&(cimageLayer.image), CHARGE_IMAGE) == false)
             {
-                fprintf(stderr, "unable to load %s\n", argv[optind]);
+                fprintf(stderr, "unable to charge load %s\n", argv[optind]);
             }
             changeSourceAndUpdateImageLayer(&cimageLayer);
             charge = -1;
@@ -372,7 +372,7 @@ int main(int argc, char *argv[])
             //TODO preload for efficienty
             if (loadPng(&(wimageLayer.image), WIFI_IMAGES[wifi-1]) == false)
             {
-                fprintf(stderr, "unable to load %s\n", argv[optind]);
+                fprintf(stderr, "unable to wifi load %s\n", argv[optind]);
             }
             changeSourceAndUpdateImageLayer(&wimageLayer);
             wifi = -1;
@@ -384,10 +384,9 @@ int main(int argc, char *argv[])
          if(audio > 0)
                 {
                     //TODO preload for efficienty
-                    fprintf(stderr, "unable to number load %i\n", audio);
                     if (loadPng(&(aimageLayer.image), AUDIO_IMAGES[audio-1]) == false)
                     {
-                        fprintf(stderr, "unable to load %s\n", argv[optind]);
+                        fprintf(stderr, "unable to audio load %s\n", argv[optind]);
                     }
                     changeSourceAndUpdateImageLayer(&aimageLayer);
                     audio = -1;

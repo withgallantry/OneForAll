@@ -271,7 +271,7 @@ def reading():
     global bat
     time.sleep(1)
     while (1):
-        //readval = ser.readline().strip('\n')
+        #readval = ser.readline().strip('\n')
         condition.acquire()
         # if len(readval) < 2:
         #     condition.release()

@@ -321,7 +321,7 @@ int main(int argc, char *argv[])
                                update);
 
     addElementImageLayerOffset(&aimageLayer,
-                               xOffset-aimageLayer.image.width-2,
+                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width-2,
                                yOffset,
                                display,
                                update);

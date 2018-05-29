@@ -271,7 +271,7 @@ def reading():
         if info:
             condition.notify()
         # bat = getVoltagepercent(volt)
-        updateOSD(volt, bat, temp, wifi, brightness, info, charge)
+        updateOSD(volt, bat, temp, wifi, brightness, True, charge)
         condition.release()
 
 reading_thread = thread.start_new_thread(reading, ())

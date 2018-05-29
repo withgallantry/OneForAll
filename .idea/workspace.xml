@@ -36,8 +36,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="273" column="31" lean-forward="false" selection-start-line="273" selection-start-column="31" selection-end-line="273" selection-end-column="31" />
+            <state relative-caret-position="188">
+              <caret line="273" column="57" lean-forward="false" selection-start-line="273" selection-start-column="57" selection-end-line="273" selection-end-column="57" />
               <folding>
                 <element signature="e#852#875#0" expanded="true" />
               </folding>
@@ -820,12 +820,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527531434109</updated>
       <workItem from="1527531435687" duration="19000" />
-      <workItem from="1527531478496" duration="14137000" />
+      <workItem from="1527531478496" duration="14199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14156000" />
+    <option name="totallyTimeSpent" value="14218000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1014,8 +1014,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="273" column="31" lean-forward="false" selection-start-line="273" selection-start-column="31" selection-end-line="273" selection-end-column="31" />
+        <state relative-caret-position="188">
+          <caret line="273" column="57" lean-forward="false" selection-start-line="273" selection-start-column="57" selection-end-line="273" selection-end-column="57" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
           </folding>

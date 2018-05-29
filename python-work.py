@@ -154,16 +154,16 @@ def readAudioLevel():
     res = os.popen("amixer | awk -F\"[][]\" '/dB/ { print $2 }'").readline()
     vol = int(res.replace("%", "").replace("'C\n", ""))
     audio = 1
-    if (vol == 0):
-        audio = audio_zero;
-    if (vol > 25):
-        audio = audio_25;
-    if (vol > 50):
+    if (vol < 50):
         audio = audio_50;
+    if (vol < 25):
+        audio = audio_25;
     if (vol > 75):
         audio = audio_75;
     if (vol == 100):
         audio = audio_100;
+    if (vol == 0):
+        audio = audio_zero;
     print res
     print vol
     return audio;
@@ -352,7 +352,6 @@ try:
         # getVoltage()
         temp = getCPUtemperature()
         wifi = readModeWifi()
-        # audio = readAudioLevel()
         # if brightness < 0:
         #     getBrightness()
         condition.wait(4.5)

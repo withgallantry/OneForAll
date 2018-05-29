@@ -238,7 +238,6 @@ def readModeWifi(toggle=False):
 # Read CPU temp
 def getCPUtemperature():
     res = os.popen('vcgencmd measure_temp').readline()
-    print res
     return float(res.replace("temp=", "").replace("'C\n", ""))
 
 

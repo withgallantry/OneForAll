@@ -323,7 +323,6 @@ def reading():
 
         if (audiocounter == 300):
             audio = readAudioLevel()
-            print "Reading Audio"
             audiocounter = 0
 
         audiocounter += 1

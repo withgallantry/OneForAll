@@ -155,18 +155,16 @@ def readAudioLevel():
     res = os.popen("amixer | awk -F\"[][]\" '/dB/ { print $2 }'").readline()
     vol = int(res.replace("%", "").replace("'C\n", ""))
     audio = 1
+    if (vol < 50):
+        audio = audio_50;
     if (vol < 25):
         audio = audio_25;
-    if (vol > 50):
-        audio = audio_50;
     if (vol > 75):
         audio = audio_75;
     if (vol == 100):
         audio = audio_100;
     if (vol == 0):
         audio = audio_zero;
-    print res
-    print vol
     return audio;
 
 
@@ -280,6 +278,7 @@ charge = 0
 bat = 100
 
 condition = threading.Condition()
+audiocounter = 30
 
 
 def reading():
@@ -287,6 +286,7 @@ def reading():
     global volt
     global info
     global wifi
+    global audio
     global charge
     global bat
     time.sleep(1)
@@ -312,9 +312,15 @@ def reading():
         if info:
             condition.notify()
         # bat = getVoltagepercent(volt)
-        # audio = readAudioLevel();
-        updateOSD(volt, bat, temp, wifi, audio, brightness, True, charge)
-        condition.release()
+
+        if (audiocounter == 30):
+            audio = readAudioLevel();
+            print "Reading Audio";
+        audiocounter = 0
+
+    audiocounter += 1
+    updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)
+    condition.release()
 
 
 reading_thread = thread.start_new_thread(reading, ())
@@ -344,14 +350,12 @@ signal.signal(signal.SIGTERM, exit_gracefully)
 try:
     print "STARTED!"
     while 1:
-        global audio
         # checkShdn()
         charge = checkCharge()
         condition.acquire()
         # getVoltage()
-        #temp = getCPUtemperature()
+        temp = getCPUtemperature()
         wifi = readModeWifi()
-        # audio = readAudioLevel()
         # if brightness < 0:
         #     getBrightness()
         condition.wait(4.5)

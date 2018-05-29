@@ -23,8 +23,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="358" column="9" lean-forward="false" selection-start-line="358" selection-start-column="9" selection-end-line="358" selection-end-column="9" />
+            <state relative-caret-position="273">
+              <caret line="166" column="27" lean-forward="false" selection-start-line="166" selection-start-column="27" selection-end-line="166" selection-end-column="27" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -35,24 +35,10 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2118">
+            <state relative-caret-position="-1725">
               <caret line="188" column="1" lean-forward="true" selection-start-line="188" selection-start-column="1" selection-end-line="188" selection-end-column="1" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AUD0.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/AUD0.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AUD25.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/AUD25.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -88,7 +74,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ser</find>
       <find>reading</find>
       <find>readAud</find>
       <find>getBrightness</find>
@@ -113,11 +98,12 @@
       <find>checkShdn</find>
       <find>info</find>
       <find>temperate</find>
-      <find>bimageLayer</find>
       <find>exit_gracefully</find>
       <find>updateOSD</find>
       <find>temp</find>
       <find>doShutdown</find>
+      <find>volt</find>
+      <find>bimageLayer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -807,12 +793,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527531434109</updated>
       <workItem from="1527531435687" duration="19000" />
-      <workItem from="1527531478496" duration="15097000" />
+      <workItem from="1527531478496" duration="15517000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15116000" />
+    <option name="totallyTimeSpent" value="15536000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -902,16 +888,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/AUD0.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/AUD25.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/AUD100.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -981,14 +957,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/osd.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2118">
-          <caret line="188" column="1" lean-forward="true" selection-start-line="188" selection-start-column="1" selection-end-line="188" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -997,10 +965,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/AUD0.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/AUD25.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/osd/osd.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1725">
+          <caret line="188" column="1" lean-forward="true" selection-start-line="188" selection-start-column="1" selection-end-line="188" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="358" column="9" lean-forward="false" selection-start-line="358" selection-start-column="9" selection-end-line="358" selection-end-column="9" />
+        <state relative-caret-position="273">
+          <caret line="166" column="27" lean-forward="false" selection-start-line="166" selection-start-column="27" selection-end-line="166" selection-end-column="27" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>

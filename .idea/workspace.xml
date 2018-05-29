@@ -23,12 +23,10 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="352" column="8" lean-forward="false" selection-start-line="352" selection-start-column="8" selection-end-line="352" selection-end-column="8" />
+            <state relative-caret-position="-1391">
+              <caret line="236" column="0" lean-forward="false" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="13" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
-                <marker date="1527583024000" expanded="true" signature="9235:9610" ph="..." />
-                <marker date="1527583024000" expanded="true" signature="9269:9471" ph="..." />
               </folding>
             </state>
           </provider>
@@ -90,7 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>'w'</find>
       <find>wifi_3bar</find>
       <find>readModeWifi</find>
       <find>updateOSD</find>
@@ -120,6 +117,7 @@
       <find>getVoltage</find>
       <find>readVoltage</find>
       <find>getCPUtemperature</find>
+      <find>temp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -808,12 +806,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527531434109</updated>
       <workItem from="1527531435687" duration="19000" />
-      <workItem from="1527531478496" duration="12582000" />
+      <workItem from="1527531478496" duration="12810000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12601000" />
+    <option name="totallyTimeSpent" value="12829000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -992,12 +990,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="352" column="8" lean-forward="false" selection-start-line="352" selection-start-column="8" selection-end-line="352" selection-end-column="8" />
+        <state relative-caret-position="-1391">
+          <caret line="236" column="0" lean-forward="false" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="13" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
-            <marker date="1527583024000" expanded="true" signature="9235:9610" ph="..." />
-            <marker date="1527583024000" expanded="true" signature="9269:9471" ph="..." />
           </folding>
         </state>
       </provider>

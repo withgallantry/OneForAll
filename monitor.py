@@ -350,7 +350,7 @@ try:
         # getVoltage()
         temp = getCPUtemperature()
         wifi = readModeWifi()
-        audio = readAudioLevel()
+        #audio = readAudioLevel()
         # if brightness < 0:
         #     getBrightness()
         condition.wait(4.5)

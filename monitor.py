@@ -234,6 +234,7 @@ def readModeWifi(toggle=False):
 # Read CPU temp
 def getCPUtemperature():
     res = os.popen('vcgencmd measure_temp').readline()
+    print res
     return float(res.replace("temp=", "").replace("'C\n", ""))
 
 
@@ -312,7 +313,7 @@ def reading():
         if info:
             condition.notify()
         # bat = getVoltagepercent(volt)
-        audio = readAudioLevel();
+        # audio = readAudioLevel();
         updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)
         condition.release()
 
@@ -350,7 +351,7 @@ try:
         # getVoltage()
         temp = getCPUtemperature()
         wifi = readModeWifi()
-        audio = readAudioLevel()
+        # audio = readAudioLevel()
         # if brightness < 0:
         #     getBrightness()
         condition.wait(4.5)

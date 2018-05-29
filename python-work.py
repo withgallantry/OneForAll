@@ -159,14 +159,14 @@ def readAudioLevel():
         logging.info("Audio Err    : " + str(e))
 
     audio = 1
-    if (vol < 75):
-        audio = audio_50;
-    if (vol < 25):
-        audio = audio_25;
-    if (vol > 75):
-        audio = audio_75;
-    if (vol == 100):
+    if (vol <= 100):
         audio = audio_100;
+    if (vol <= 75):
+        audio = audio_75;
+    if (vol <= 50):
+        audio = audio_50;
+    if (vol <= 25):
+        audio = audio_25;
     if (vol == 0):
         audio = audio_zero;
 

@@ -150,9 +150,12 @@ def getVoltagepercent(volt):
 
 
 def readAudioLevel():
-
     res = os.popen("amixer | awk -F\"[][]\" '/dB/ { print $2 }'").readline()
-    vol = int(res.replace("%", "").replace("'C\n", ""))
+    try:
+        vol = int(res.replace("%", "").replace("'C\n", ""))
+    except Exception, e:
+        logging.info("Audio Err    : " + str(e))
+
     audio = 1
     if (vol < 50):
         audio = audio_50;

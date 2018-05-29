@@ -24,8 +24,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="165" column="27" lean-forward="true" selection-start-line="156" selection-start-column="3" selection-end-line="165" selection-end-column="27" />
+            <state relative-caret-position="-2021">
+              <caret line="161" column="17" lean-forward="true" selection-start-line="161" selection-start-column="17" selection-end-line="161" selection-end-column="17" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -36,8 +36,8 @@
       <file leaf-file-name="python-work.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python-work.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="353" column="29" lean-forward="false" selection-start-line="353" selection-start-column="29" selection-end-line="353" selection-end-column="29" />
+            <state relative-caret-position="193">
+              <caret line="157" column="0" lean-forward="true" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -87,7 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>reading</find>
       <find>readAud</find>
       <find>getBrightness</find>
       <find>font.h</find>
@@ -117,6 +116,7 @@
       <find>bimageLayer</find>
       <find>audio</find>
       <find>readAudioLevel</find>
+      <find>try</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -807,12 +807,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527531434109</updated>
       <workItem from="1527531435687" duration="19000" />
-      <workItem from="1527531478496" duration="16619000" />
+      <workItem from="1527531478496" duration="16760000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16638000" />
+    <option name="totallyTimeSpent" value="16779000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -999,8 +999,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="165" column="27" lean-forward="true" selection-start-line="156" selection-start-column="3" selection-end-line="165" selection-end-column="27" />
+        <state relative-caret-position="-2021">
+          <caret line="161" column="17" lean-forward="true" selection-start-line="161" selection-start-column="17" selection-end-line="161" selection-end-column="17" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>
@@ -1009,8 +1009,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/python-work.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="353" column="29" lean-forward="false" selection-start-line="353" selection-start-column="29" selection-end-line="353" selection-end-column="29" />
+        <state relative-caret-position="193">
+          <caret line="157" column="0" lean-forward="true" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>

@@ -259,7 +259,7 @@ def doShutdown(channel=None):
 
 
 # Signals the OSD binary
-def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, brightness=0, info=False, charge=False):
+def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, brightness=0, info=True, charge=False):
     commands = "v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(audio) + " l" + str(
         brightness) + " " + ("on " if info else "off ") + ("charge" if charge else "ncharge") + "\n"
     # print commands

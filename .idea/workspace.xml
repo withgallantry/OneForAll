@@ -23,13 +23,10 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="154" column="54" lean-forward="false" selection-start-line="154" selection-start-column="54" selection-end-line="154" selection-end-column="54" />
+            <state relative-caret-position="314">
+              <caret line="166" column="13" lean-forward="false" selection-start-line="166" selection-start-column="13" selection-end-line="166" selection-end-column="13" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
-                <marker date="1527582230000" expanded="true" signature="3836:3871" ph="..." />
-                <marker date="1527582230000" expanded="true" signature="3928:3961" ph="..." />
-                <marker date="1527582230000" expanded="true" signature="4020:4047" ph="..." />
               </folding>
             </state>
           </provider>
@@ -809,12 +806,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527531434109</updated>
       <workItem from="1527531435687" duration="19000" />
-      <workItem from="1527531478496" duration="11790000" />
+      <workItem from="1527531478496" duration="11808000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11809000" />
+    <option name="totallyTimeSpent" value="11827000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -993,13 +990,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="154" column="54" lean-forward="false" selection-start-line="154" selection-start-column="54" selection-end-line="154" selection-end-column="54" />
+        <state relative-caret-position="314">
+          <caret line="166" column="13" lean-forward="false" selection-start-line="166" selection-start-column="13" selection-end-line="166" selection-end-column="13" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
-            <marker date="1527582230000" expanded="true" signature="3836:3871" ph="..." />
-            <marker date="1527582230000" expanded="true" signature="3928:3961" ph="..." />
-            <marker date="1527582230000" expanded="true" signature="4020:4047" ph="..." />
           </folding>
         </state>
       </provider>

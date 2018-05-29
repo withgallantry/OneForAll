@@ -21,11 +21,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="monitor.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="320" column="23" lean-forward="true" selection-start-line="315" selection-start-column="7" selection-end-line="320" selection-end-column="23" />
+            <state relative-caret-position="429">
+              <caret line="370" column="0" lean-forward="true" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -36,8 +36,8 @@
       <file leaf-file-name="python-work.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python-work.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="162" column="26" lean-forward="true" selection-start-line="162" selection-start-column="26" selection-end-line="162" selection-end-column="26" />
+            <state relative-caret-position="194">
+              <caret line="311" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -45,10 +45,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
+            <state relative-caret-position="556">
               <caret line="323" column="90" lean-forward="false" selection-start-line="323" selection-start-column="90" selection-end-line="323" selection-end-column="90" />
               <folding />
             </state>
@@ -87,7 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>readAud</find>
       <find>getBrightness</find>
       <find>font.h</find>
       <find>check_output</find>
@@ -113,10 +112,11 @@
       <find>doShutdown</find>
       <find>volt</find>
       <find>audio</find>
-      <find>bimageLayer</find>
       <find>readAudioLevel</find>
       <find>temp</find>
       <find>try</find>
+      <find>bimageLayer</find>
+      <find>logging</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,9 +131,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/monitor-test.py" />
-        <option value="$PROJECT_DIR$/monitor.py" />
-        <option value="$PROJECT_DIR$/python-work.py" />
         <option value="$PROJECT_DIR$/osd/osd.c" />
+        <option value="$PROJECT_DIR$/python-work.py" />
+        <option value="$PROJECT_DIR$/monitor.py" />
       </list>
     </option>
   </component>
@@ -807,12 +807,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527531434109</updated>
       <workItem from="1527531435687" duration="19000" />
-      <workItem from="1527531478496" duration="18790000" />
+      <workItem from="1527531478496" duration="19004000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18809000" />
+    <option name="totallyTimeSpent" value="19023000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -989,31 +989,31 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monitor.py">
+    <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="320" column="23" lean-forward="true" selection-start-line="315" selection-start-column="7" selection-end-line="320" selection-end-column="23" />
-          <folding>
-            <element signature="e#853#876#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="556">
+          <caret line="323" column="90" lean-forward="false" selection-start-line="323" selection-start-column="90" selection-end-line="323" selection-end-column="90" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/python-work.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="162" column="26" lean-forward="true" selection-start-line="162" selection-start-column="26" selection-end-line="162" selection-end-column="26" />
+        <state relative-caret-position="194">
+          <caret line="311" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/osd.c">
+    <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="323" column="90" lean-forward="false" selection-start-line="323" selection-start-column="90" selection-end-line="323" selection-end-column="90" />
-          <folding />
+        <state relative-caret-position="429">
+          <caret line="370" column="0" lean-forward="true" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
+          <folding>
+            <element signature="e#853#876#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -77,7 +77,6 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
-audio = 0;
 audio_zero = 1;
 audio_25 = 2;
 audio_50 = 3;
@@ -85,17 +84,17 @@ audio_75 = 4;
 audio_100 = 5;
 
 # Set up a port
-# try:
-#     # ser = serial.Serial(
-#     #     port=serport,
-#     #     baudrate=9600,
-#     #     parity=serial.PARITY_NONE,
-#     #     stopbits=serial.STOPBITS_ONE,
-#     #     bytesize=serial.EIGHTBITS,
-#     #     timeout=1)
-# except Exception as e:
-#     logging.exception("ERROR: Failed to open serial port");
-#     sys.exit(1);
+try:
+    ser = serial.Serial(
+        port=serport,
+        baudrate=9600,
+        parity=serial.PARITY_NONE,
+        stopbits=serial.STOPBITS_ONE,
+        bytesize=serial.EIGHTBITS,
+        timeout=1)
+except Exception as e:
+    logging.exception("ERROR: Failed to open serial port");
+    sys.exit(1);
 
 # Set up OSD service
 try:
@@ -125,15 +124,15 @@ def checkShdn():
 
 
 # Read brightness
-# def getBrightness():
-#     ser.write('l')
-#     ser.flush()
-#
-#
-# # Read brightness
-# def getVoltage():
-#     ser.write('b')
-#     ser.flush()
+def getBrightness():
+    ser.write('l')
+    ser.flush()
+
+
+# Read brightness
+def getVoltage():
+    ser.write('b')
+    ser.flush()
 
 
 # Read voltage
@@ -152,18 +151,25 @@ def getVoltagepercent(volt):
 
 def readAudioLevel():
     res = os.popen("amixer | awk -F\"[][]\" '/dB/ { print $2 }'").readline()
-    vol = int(res.replace("%", ""))
+
+    vol = 0;
+    try:
+        vol = int(res.replace("%", "").replace("'C\n", ""))
+    except Exception, e:
+        logging.info("Audio Err    : " + str(e))
+
     audio = 1
-    if (vol < 50):
-        audio = audio_50;
-    if (vol < 25):
-        audio = audio_25;
-    if (vol > 75):
-        audio = audio_75;
-    if (vol == 100):
+    if (vol <= 100):
         audio = audio_100;
+    if (vol <= 75):
+        audio = audio_75;
+    if (vol <= 50):
+        audio = audio_50;
+    if (vol <= 25):
+        audio = audio_25;
     if (vol == 0):
         audio = audio_zero;
+
     return audio;
 
 
@@ -256,8 +262,7 @@ def doShutdown(channel=None):
 
 # Signals the OSD binary
 def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, brightness=0, info=False, charge=False):
-    commands = "v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(audio) + " l" + str(
-        brightness) + " " + ("on " if info else "off ") + ("charge" if charge else "ncharge") + "\n"
+    commands = "v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(audio) + " l" + str(brightness) + " " + ("on " if info else "off ") + ("charge" if charge else "ncharge") + "\n"
     # print commands
     osd_proc.send_signal(signal.SIGUSR1)
     osd_in.write(commands)
@@ -272,12 +277,13 @@ def clamp(n, minn, maxn):
 brightness = -1
 info = False
 volt = -1
+audio = 1
+audiocounter = 30
 wifi = 2
 charge = 0
 bat = 100
 
 condition = threading.Condition()
-audiocounter = 30
 
 
 def reading():
@@ -286,42 +292,38 @@ def reading():
     global info
     global wifi
     global audio
+    global audiocounter
     global charge
     global bat
-    global audiocounter
     time.sleep(1)
     while (1):
-        # readval = ser.readline().strip('\n')
+        readval = ser.readline().strip('\n')
         condition.acquire()
-        # if len(readval) < 2:
-        #     condition.release()
-        #     continue
-        #     # print readval
-        # if readval == 'c0':
-        #     wifi = readModeWifi(True)
-        # elif readval[0] == 'l':
-        #     brightness = int(readval[1:])
-        # elif readval == 'mod_on':
-        #     info = True
-        # elif readval == 'mod_off':
-        #     info = False
-        # elif readval[0] == 'b':
-        #     volt = readVoltage(int(readval[1:]))
-        #     if charge:
-        #         volt -= 20
+        if len(readval) < 2:
+            condition.release()
+            continue
+            # print readval
+        if readval == 'c0':
+            wifi = readModeWifi(True)
+        elif readval[0] == 'l':
+            brightness = int(readval[1:])
+        elif readval == 'mod_on':
+            info = True
+        elif readval == 'mod_off':
+            info = False
+        elif readval[0] == 'b':
+            volt = readVoltage(int(readval[1:]))
+            if charge:
+                volt -= 20
         if info:
             condition.notify()
-        # bat = getVoltagepercent(volt)
+        bat = getVoltagepercent(volt)
 
-        # if (audiocounter == 30):
         audio = readAudioLevel()
-            # print "Reading Audio"
-            # audiocounter = 0
 
-    # audiocounter += 1
-    print audio
-    updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)
-    condition.release()
+        audiocounter += 1;
+        updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)
+        condition.release()
 
 
 reading_thread = thread.start_new_thread(reading, ())
@@ -334,15 +336,15 @@ def lambdaCharge(channel):
 
 
 def exit_gracefully(signum=None, frame=None):
-    # GPIO.cleanup
+    GPIO.cleanup
     osd_proc.terminate()
     sys.exit(0)
 
 
 # interrupts
-# GPIO.add_event_detect(pi_shdn, GPIO.FALLING, callback=doShutdown, bouncetime=500)
-# GPIO.add_event_detect(pi_charging, GPIO.BOTH, callback=lambdaCharge, bouncetime=100)
-# GPIO.add_event_detect(pi_charged, GPIO.FALLING, callback=lambdaCharge, bouncetime=100)
+GPIO.add_event_detect(pi_shdn, GPIO.FALLING, callback=doShutdown, bouncetime=500)
+GPIO.add_event_detect(pi_charging, GPIO.BOTH, callback=lambdaCharge, bouncetime=100)
+GPIO.add_event_detect(pi_charged, GPIO.FALLING, callback=lambdaCharge, bouncetime=100)
 
 signal.signal(signal.SIGINT, exit_gracefully)
 signal.signal(signal.SIGTERM, exit_gracefully)
@@ -354,11 +356,11 @@ try:
         # checkShdn()
         charge = checkCharge()
         condition.acquire()
-        # getVoltage()
+        getVoltage()
         temp = getCPUtemperature()
         wifi = readModeWifi()
-        # if brightness < 0:
-        #     getBrightness()
+        if brightness < 0:
+            getBrightness()
         condition.wait(4.5)
         condition.release()
         time.sleep(0.5)

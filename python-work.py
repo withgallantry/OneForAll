@@ -84,17 +84,17 @@ audio_75 = 4;
 audio_100 = 5;
 
 # Set up a port
-# try:
-#     # ser = serial.Serial(
-#     #     port=serport,
-#     #     baudrate=9600,
-#     #     parity=serial.PARITY_NONE,
-#     #     stopbits=serial.STOPBITS_ONE,
-#     #     bytesize=serial.EIGHTBITS,
-#     #     timeout=1)
-# except Exception as e:
-#     logging.exception("ERROR: Failed to open serial port");
-#     sys.exit(1);
+try:
+    ser = serial.Serial(
+        port=serport,
+        baudrate=9600,
+        parity=serial.PARITY_NONE,
+        stopbits=serial.STOPBITS_ONE,
+        bytesize=serial.EIGHTBITS,
+        timeout=1)
+except Exception as e:
+    logging.exception("ERROR: Failed to open serial port");
+    sys.exit(1);
 
 # Set up OSD service
 try:
@@ -124,15 +124,15 @@ def checkShdn():
 
 
 # Read brightness
-# def getBrightness():
-#     ser.write('l')
-#     ser.flush()
-#
-#
-# # Read brightness
-# def getVoltage():
-#     ser.write('b')
-#     ser.flush()
+def getBrightness():
+    ser.write('l')
+    ser.flush()
+
+
+# Read brightness
+def getVoltage():
+    ser.write('b')
+    ser.flush()
 
 
 # Read voltage
@@ -297,27 +297,27 @@ def reading():
     global bat
     time.sleep(1)
     while (1):
-        # readval = ser.readline().strip('\n')
+        readval = ser.readline().strip('\n')
         condition.acquire()
-        # if len(readval) < 2:
-        #     condition.release()
-        #     continue
-        #     # print readval
-        # if readval == 'c0':
-        #     wifi = readModeWifi(True)
-        # elif readval[0] == 'l':
-        #     brightness = int(readval[1:])
-        # elif readval == 'mod_on':
-        #     info = True
-        # elif readval == 'mod_off':
-        #     info = False
-        # elif readval[0] == 'b':
-        #     volt = readVoltage(int(readval[1:]))
-        #     if charge:
-        #         volt -= 20
+        if len(readval) < 2:
+            condition.release()
+            continue
+            # print readval
+        if readval == 'c0':
+            wifi = readModeWifi(True)
+        elif readval[0] == 'l':
+            brightness = int(readval[1:])
+        elif readval == 'mod_on':
+            info = True
+        elif readval == 'mod_off':
+            info = False
+        elif readval[0] == 'b':
+            volt = readVoltage(int(readval[1:]))
+            if charge:
+                volt -= 20
         if info:
             condition.notify()
-        # bat = getVoltagepercent(volt)
+        bat = getVoltagepercent(volt)
 
         audio = readAudioLevel()
 
@@ -342,9 +342,9 @@ def exit_gracefully(signum=None, frame=None):
 
 
 # interrupts
-# GPIO.add_event_detect(pi_shdn, GPIO.FALLING, callback=doShutdown, bouncetime=500)
-# GPIO.add_event_detect(pi_charging, GPIO.BOTH, callback=lambdaCharge, bouncetime=100)
-# GPIO.add_event_detect(pi_charged, GPIO.FALLING, callback=lambdaCharge, bouncetime=100)
+GPIO.add_event_detect(pi_shdn, GPIO.FALLING, callback=doShutdown, bouncetime=500)
+GPIO.add_event_detect(pi_charging, GPIO.BOTH, callback=lambdaCharge, bouncetime=100)
+GPIO.add_event_detect(pi_charged, GPIO.FALLING, callback=lambdaCharge, bouncetime=100)
 
 signal.signal(signal.SIGINT, exit_gracefully)
 signal.signal(signal.SIGTERM, exit_gracefully)
@@ -356,11 +356,11 @@ try:
         # checkShdn()
         charge = checkCharge()
         condition.acquire()
-        # getVoltage()
+        getVoltage()
         temp = getCPUtemperature()
         wifi = readModeWifi()
-        # if brightness < 0:
-        #     getBrightness()
+        if brightness < 0:
+            getBrightness()
         condition.wait(4.5)
         condition.release()
         time.sleep(0.5)

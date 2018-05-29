@@ -250,27 +250,27 @@ def reading():
     global bat
     time.sleep(1)
     while(1):
-        readval = ser.readline().strip('\n')
+        # readval = ser.readline().strip('\n')
         condition.acquire()
-        if len(readval) < 2:
-            condition.release()
-            continue
-            #print readval
-        if readval == 'c0':
-            wifi = readModeWifi(True)
-        elif readval[0] == 'l':
-            brightness = int(readval[1:])
-        elif readval == 'mod_on':
-            info = True
-        elif readval == 'mod_off':
-            info = False
-        elif readval[0] == 'b':
-            volt = readVoltage(int(readval[1:]))
-            if charge:
-                volt-=20
+        # if len(readval) < 2:
+        #     condition.release()
+        #     continue
+        #     #print readval
+        # if readval == 'c0':
+        #     wifi = readModeWifi(True)
+        # elif readval[0] == 'l':
+        #     brightness = int(readval[1:])
+        # elif readval == 'mod_on':
+        #     info = True
+        # elif readval == 'mod_off':
+        #     info = False
+        # elif readval[0] == 'b':
+        #     volt = readVoltage(int(readval[1:]))
+        #     if charge:
+        #         volt-=20
         if info:
             condition.notify()
-        bat = getVoltagepercent(volt)
+        # bat = getVoltagepercent(volt)
         updateOSD(volt, bat, temp, wifi, brightness, info, charge)
         condition.release()
 

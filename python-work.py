@@ -151,7 +151,12 @@ def getVoltagepercent(volt):
 
 def readAudioLevel():
     res = os.popen("amixer | awk -F\"[][]\" '/dB/ { print $2 }'").readline()
-    vol = int(res.replace("%", "").replace("'C\n", ""))
+
+    vol = 0;
+    try:
+        vol = int(res.replace("%", "").replace("'C\n", ""))
+    except Exception, e:
+        logging.info("Audio Err    : " + str(e))
 
     audio = 1
     if (vol < 75):
@@ -314,9 +319,7 @@ def reading():
             condition.notify()
         # bat = getVoltagepercent(volt)
 
-        if audiocounter > 30:
-            audio = readAudioLevel()
-            audiocounter = 0;
+        audio = readAudioLevel()
 
         audiocounter += 1;
         updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)

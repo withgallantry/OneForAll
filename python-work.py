@@ -77,7 +77,6 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
-audio = 0;
 audio_zero = 1;
 audio_25 = 2;
 audio_50 = 3;
@@ -151,19 +150,22 @@ def getVoltagepercent(volt):
 
 
 def readAudioLevel():
+
     res = os.popen("amixer | awk -F\"[][]\" '/dB/ { print $2 }'").readline()
-    vol = int(res.replace("%", ""))
+    vol = int(res.replace("%", "").replace("'C\n", ""))
     audio = 1
-    if (vol < 50):
-        audio = audio_50;
-    if (vol < 25):
+    if (vol == 0):
+        audio = audio_zero;
+    if (vol > 25):
         audio = audio_25;
+    if (vol > 50):
+        audio = audio_50;
     if (vol > 75):
         audio = audio_75;
     if (vol == 100):
         audio = audio_100;
-    if (vol == 0):
-        audio = audio_zero;
+    print res
+    print vol
     return audio;
 
 
@@ -232,6 +234,7 @@ def readModeWifi(toggle=False):
 # Read CPU temp
 def getCPUtemperature():
     res = os.popen('vcgencmd measure_temp').readline()
+    print res
     return float(res.replace("temp=", "").replace("'C\n", ""))
 
 
@@ -277,7 +280,6 @@ charge = 0
 bat = 100
 
 condition = threading.Condition()
-audiocounter = 30
 
 
 def reading():
@@ -288,7 +290,6 @@ def reading():
     global audio
     global charge
     global bat
-    global audiocounter
     time.sleep(1)
     while (1):
         # readval = ser.readline().strip('\n')
@@ -312,16 +313,9 @@ def reading():
         if info:
             condition.notify()
         # bat = getVoltagepercent(volt)
-
-        # if (audiocounter == 30):
-        audio = readAudioLevel()
-            # print "Reading Audio"
-            # audiocounter = 0
-
-    # audiocounter += 1
-    print audio
-    updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)
-    condition.release()
+        audio = readAudioLevel();
+        updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)
+        condition.release()
 
 
 reading_thread = thread.start_new_thread(reading, ())
@@ -334,7 +328,7 @@ def lambdaCharge(channel):
 
 
 def exit_gracefully(signum=None, frame=None):
-    # GPIO.cleanup
+    GPIO.cleanup
     osd_proc.terminate()
     sys.exit(0)
 
@@ -357,6 +351,7 @@ try:
         # getVoltage()
         temp = getCPUtemperature()
         wifi = readModeWifi()
+        audio = readAudioLevel()
         # if brightness < 0:
         #     getBrightness()
         condition.wait(4.5)

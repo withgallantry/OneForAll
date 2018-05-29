@@ -23,8 +23,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="236" column="54" lean-forward="false" selection-start-line="236" selection-start-column="54" selection-end-line="236" selection-end-column="54" />
+            <state relative-caret-position="188">
+              <caret line="315" column="64" lean-forward="false" selection-start-line="315" selection-start-column="64" selection-end-line="315" selection-end-column="64" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -35,7 +35,7 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-903">
+            <state relative-caret-position="1967">
               <caret line="302" column="25" lean-forward="false" selection-start-line="302" selection-start-column="25" selection-end-line="302" selection-end-column="25" />
               <folding />
             </state>
@@ -88,8 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>updateOSD</find>
-      <find>serial</find>
       <find>getVol</find>
       <find>pi_charged</find>
       <find>ser</find>
@@ -116,8 +114,10 @@
       <find>temp</find>
       <find>wifi</find>
       <find>checkShdn</find>
-      <find>bimageLayer</find>
       <find>info</find>
+      <find>temperate</find>
+      <find>bimageLayer</find>
+      <find>updateOSD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -806,12 +806,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527531434109</updated>
       <workItem from="1527531435687" duration="19000" />
-      <workItem from="1527531478496" duration="13365000" />
+      <workItem from="1527531478496" duration="13560000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13384000" />
+    <option name="totallyTimeSpent" value="13579000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -982,7 +982,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-903">
+        <state relative-caret-position="1967">
           <caret line="302" column="25" lean-forward="false" selection-start-line="302" selection-start-column="25" selection-end-line="302" selection-end-column="25" />
           <folding />
         </state>
@@ -990,8 +990,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="236" column="54" lean-forward="false" selection-start-line="236" selection-start-column="54" selection-end-line="236" selection-end-column="54" />
+        <state relative-caret-position="188">
+          <caret line="315" column="64" lean-forward="false" selection-start-line="315" selection-start-column="64" selection-end-line="315" selection-end-column="64" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>

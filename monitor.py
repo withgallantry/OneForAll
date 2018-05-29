@@ -344,13 +344,14 @@ signal.signal(signal.SIGTERM, exit_gracefully)
 try:
     print "STARTED!"
     while 1:
+        global audio
         # checkShdn()
         charge = checkCharge()
         condition.acquire()
         # getVoltage()
         temp = getCPUtemperature()
         wifi = readModeWifi()
-        #audio = readAudioLevel()
+        audio = readAudioLevel()
         # if brightness < 0:
         #     getBrightness()
         condition.wait(4.5)

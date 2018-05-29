@@ -312,6 +312,7 @@ def reading():
         if info:
             condition.notify()
         # bat = getVoltagepercent(volt)
+        audio = readAudioLevel();
         updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)
         condition.release()
 

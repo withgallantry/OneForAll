@@ -151,7 +151,6 @@ def getVoltagepercent(volt):
 
 
 def readAudioLevel():
-    global audio
     res = os.popen("amixer | awk -F\"[][]\" '/dB/ { print $2 }'").readline()
     vol = int(res.replace("%", "").replace("'C\n", ""))
     audio = 1
@@ -317,7 +316,7 @@ def reading():
         if (audiocounter == 30):
             audio = readAudioLevel();
             print "Reading Audio";
-        audiocounter = 0
+            audiocounter = 0
 
     audiocounter += 1
     updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)

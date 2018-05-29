@@ -349,14 +349,14 @@ try:
         charge = checkCharge()
         condition.acquire()
         # getVoltage()
-        temp = getCPUtemperature()
+        #temp = getCPUtemperature()
         wifi = readModeWifi()
         # audio = readAudioLevel()
         # if brightness < 0:
         #     getBrightness()
         condition.wait(4.5)
         condition.release()
-        # time.sleep(0.5)
+        time.sleep(0.5)
 # print 'WAKE'
 
 except KeyboardInterrupt:

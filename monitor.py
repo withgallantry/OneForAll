@@ -150,7 +150,7 @@ def getVoltagepercent(volt):
 
 
 def readAudioLevel():
-
+    global audio
     res = os.popen("amixer | awk -F\"[][]\" '/dB/ { print $2 }'").readline()
     vol = int(res.replace("%", "").replace("'C\n", ""))
     audio = 1
@@ -287,7 +287,6 @@ def reading():
     global volt
     global info
     global wifi
-    global audio
     global charge
     global bat
     time.sleep(1)

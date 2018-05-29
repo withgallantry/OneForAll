@@ -154,7 +154,7 @@ def readAudioLevel():
     vol = int(res.replace("%", "").replace("'C\n", ""))
 
     audio = 1
-    if (vol < 50):
+    if (vol < 75):
         audio = audio_50;
     if (vol < 25):
         audio = audio_25;
@@ -314,7 +314,11 @@ def reading():
             condition.notify()
         # bat = getVoltagepercent(volt)
 
-        audio = readAudioLevel()
+        if audiocounter == 30:
+            audio = readAudioLevel()
+            audiocounter = 0;
+
+        audiocounter += 1;
         updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)
         condition.release()
 

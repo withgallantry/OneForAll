@@ -23,8 +23,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1391">
-              <caret line="236" column="0" lean-forward="false" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="13" />
+            <state relative-caret-position="234">
+              <caret line="79" column="10" lean-forward="false" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -105,7 +105,6 @@
       <find>CHARGE_IMAGE</find>
       <find>cimageLayer</find>
       <find>createResourceImageLayer</find>
-      <find>wifi</find>
       <find>wif</find>
       <find>audio = 1</find>
       <find>audio</find>
@@ -118,6 +117,7 @@
       <find>readVoltage</find>
       <find>getCPUtemperature</find>
       <find>temp</find>
+      <find>wifi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -806,12 +806,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527531434109</updated>
       <workItem from="1527531435687" duration="19000" />
-      <workItem from="1527531478496" duration="12810000" />
+      <workItem from="1527531478496" duration="13056000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12829000" />
+    <option name="totallyTimeSpent" value="13075000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -990,8 +990,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1391">
-          <caret line="236" column="0" lean-forward="false" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="13" />
+        <state relative-caret-position="234">
+          <caret line="79" column="10" lean-forward="false" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>

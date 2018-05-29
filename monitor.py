@@ -77,6 +77,7 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
+audio = 0;
 audio_zero = 1;
 audio_25 = 2;
 audio_50 = 3;

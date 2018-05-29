@@ -313,10 +313,10 @@ def reading():
             condition.notify()
         # bat = getVoltagepercent(volt)
 
-        if (audiocounter == 30):
-            audio = readAudioLevel();
-            print "Reading Audio";
-            audiocounter = 0
+        # if (audiocounter == 30):
+        audio = readAudioLevel()
+            # print "Reading Audio"
+            # audiocounter = 0
 
     audiocounter += 1
     updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)

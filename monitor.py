@@ -289,6 +289,7 @@ def reading():
     global audio
     global charge
     global bat
+    global audiocounter
     time.sleep(1)
     while (1):
         # readval = ser.readline().strip('\n')

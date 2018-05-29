@@ -318,7 +318,7 @@ def reading():
             # print "Reading Audio"
             # audiocounter = 0
 
-    audiocounter += 1
+    # audiocounter += 1
     updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)
     condition.release()
 

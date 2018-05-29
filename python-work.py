@@ -151,6 +151,7 @@ def getVoltagepercent(volt):
 
 def readAudioLevel():
     res = os.popen("amixer | awk -F\"[][]\" '/dB/ { print $2 }'").readline()
+    vol = 0;
     try:
         vol = int(res.replace("%", "").replace("'C\n", ""))
     except Exception, e:
@@ -278,7 +279,8 @@ def clamp(n, minn, maxn):
 brightness = -1
 info = False
 volt = -1
-audio = 1;
+audio = 1
+audiocounter = 30
 wifi = 2
 charge = 0
 bat = 100
@@ -292,6 +294,7 @@ def reading():
     global info
     global wifi
     global audio
+    global audiocounter
     global charge
     global bat
     time.sleep(1)
@@ -317,7 +320,13 @@ def reading():
         if info:
             condition.notify()
         # bat = getVoltagepercent(volt)
-        audio = readAudioLevel();
+
+        if (audiocounter == 30):
+            audio = readAudioLevel()
+            print "Reading Audio"
+            audiocounter = 0
+
+        audiocounter += 1
         updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)
         condition.release()
 

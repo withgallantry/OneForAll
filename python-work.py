@@ -321,7 +321,7 @@ def reading():
             condition.notify()
         # bat = getVoltagepercent(volt)
 
-        if (audiocounter == 30):
+        if (audiocounter == 300):
             audio = readAudioLevel()
             print "Reading Audio"
             audiocounter = 0

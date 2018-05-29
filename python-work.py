@@ -275,6 +275,7 @@ def clamp(n, minn, maxn):
 brightness = -1
 info = False
 volt = -1
+audio = 1;
 wifi = 2
 charge = 0
 bat = 100
@@ -351,7 +352,7 @@ try:
         # getVoltage()
         temp = getCPUtemperature()
         wifi = readModeWifi()
-        audio = readAudioLevel()
+        # audio = readAudioLevel()
         # if brightness < 0:
         #     getBrightness()
         condition.wait(4.5)

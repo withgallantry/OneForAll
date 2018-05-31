@@ -59,7 +59,7 @@ static RGBA8_T backgroundColour = { 0, 0, 0, 100 };
 static RGBA8_T textColour = { 255, 255, 255, 255 };
 static RGBA8_T greenColour = { 0, 255, 0, 200 };
 static RGBA8_T redColour = { 255, 0, 0, 200 };
-static int battery = 0, infos = 0, brightness = 0, charge = 0, audio = 0, wifi = 0, voltage = 0;
+static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, voltage = 0;
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*);
@@ -150,6 +150,14 @@ void getInput()
         else if(!strcmp(word, "off"))
         {
             infos = 0;
+        }
+        else if(!strcmp(word, "allon"))
+        {
+            hud = 1;
+        }
+        else if(!strcmp(word, "alloff"))
+        {
+            hud = 0;
         }
         else if(!strcmp(word, "charge"))
         {
@@ -352,7 +360,7 @@ int main(int argc, char *argv[])
         {
             updateBattery(batval, &batteryLayer);
         }
-        if(charge > 0)
+        if(charge > 0 && hud)
         {
             //TODO preload for efficiency
             if (loadPng(&(cimageLayer.image), CHARGE_IMAGE) == false)
@@ -362,12 +370,12 @@ int main(int argc, char *argv[])
             changeSourceAndUpdateImageLayer(&cimageLayer);
             charge = -1;
         }
-        else if(!charge)
+        else if(!charge && hud)
         {
             clearLayer(&cimageLayer);
             charge = -1;
         }
-        if(wifi > 0)
+        if(wifi > 0 && hud)
         {
             //TODO preload for efficienty
             if (loadPng(&(wimageLayer.image), WIFI_IMAGES[wifi-1]) == false)
@@ -395,6 +403,13 @@ int main(int argc, char *argv[])
                 {
                     clearLayer(&aimageLayer);
                 }
+        if (!hud) {
+            clearLayer(&batteryLayer);
+            clearLayer(&wimageLayer);
+            clearLayer(&aimageLayer);
+            clearLayer(&bimageLayer);
+            clearLayer(&cimageLayer);
+        }
         if(infos > 0)
         {
             updateInfo(&infoLayer);

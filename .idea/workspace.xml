@@ -18,8 +18,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="128" column="28" lean-forward="false" selection-start-line="128" selection-start-column="28" selection-end-line="128" selection-end-column="28" />
+            <state relative-caret-position="301">
+              <caret line="276" column="0" lean-forward="false" selection-start-line="276" selection-start-column="0" selection-end-line="277" selection-end-column="31" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -30,7 +30,7 @@
       <file leaf-file-name="python-work.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python-work.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-502">
+            <state relative-caret-position="-39">
               <caret line="299" column="22" lean-forward="false" selection-start-line="299" selection-start-column="18" selection-end-line="299" selection-end-column="22" />
               <folding />
             </state>
@@ -107,8 +107,8 @@
       <find>audio</find>
       <find>readModeWifi</find>
       <find>ser</find>
-      <find>ser.</find>
       <find>os.popen</find>
+      <find>ser.</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -809,12 +809,12 @@
       <workItem from="1527531478496" duration="21895000" />
       <workItem from="1527765658164" duration="1506000" />
       <workItem from="1527959035176" duration="609000" />
-      <workItem from="1535387323843" duration="5111000" />
+      <workItem from="1535387323843" duration="5419000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29140000" />
+    <option name="totallyTimeSpent" value="29448000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="6" />
@@ -1113,7 +1113,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/python-work.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-502">
+        <state relative-caret-position="-39">
           <caret line="299" column="22" lean-forward="false" selection-start-line="299" selection-start-column="18" selection-end-line="299" selection-end-column="22" />
           <folding />
         </state>
@@ -1121,8 +1121,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="128" column="28" lean-forward="false" selection-start-line="128" selection-start-column="28" selection-end-line="128" selection-end-column="28" />
+        <state relative-caret-position="301">
+          <caret line="276" column="0" lean-forward="false" selection-start-line="276" selection-start-column="0" selection-end-line="277" selection-end-column="31" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>

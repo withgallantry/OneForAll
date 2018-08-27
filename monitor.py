@@ -83,19 +83,6 @@ audio_50 = 3;
 audio_75 = 4;
 audio_100 = 5;
 
-# Set up a port
-try:
-    ser = serial.Serial(
-        port=serport,
-        baudrate=9600,
-        parity=serial.PARITY_NONE,
-        stopbits=serial.STOPBITS_ONE,
-        bytesize=serial.EIGHTBITS,
-        timeout=1)
-except Exception as e:
-    logging.exception("ERROR: Failed to open serial port");
-    sys.exit(1);
-
 # Set up OSD service
 try:
     osd_proc = Popen(osd_path, shell=False, stdin=PIPE, stdout=None, stderr=None)
@@ -121,18 +108,6 @@ def checkShdn():
     if (state):
         logging.info("SHUTDOWN")
         doShutdown()
-
-
-# Read brightness
-def getBrightness():
-    ser.write('l')
-    ser.flush()
-
-
-# Read brightness
-def getVoltage():
-    ser.write('b')
-    ser.flush()
 
 
 # Read voltage
@@ -243,9 +218,6 @@ def getCPUtemperature():
 
 # Do a shutdown
 def doShutdown(channel=None):
-    ser.write('s0')  # shuts the screen off
-    ser.flush()
-    time.sleep(1)
     check_call("sudo killall emulationstation", shell=True)
     time.sleep(1)
     check_call("sudo shutdown -h now", shell=True)
@@ -297,32 +269,13 @@ def reading():
     global bat
     time.sleep(1)
     while (1):
-        readval = ser.readline().strip('\n')
         condition.acquire()
-        if len(readval) < 2:
-            condition.release()
-            continue
-            # print readval
-        if readval == 'c0':
-            wifi = readModeWifi(True)
-        elif readval[0] == 'l':
-            brightness = int(readval[1:])
-        elif readval == 'mod_on':
-            info = True
-        elif readval == 'mod_off':
-            info = False
-        elif readval[0] == 'b':
-            volt = readVoltage(int(readval[1:]))
-            if charge:
-                volt -= 20
-        if info:
-            condition.notify()
         bat = getVoltagepercent(volt)
-
+        wifi = readModeWifi(True)
         audio = readAudioLevel()
 
         audiocounter += 1;
-        updateOSD(volt, bat, temp, wifi, audio, brightness, info, charge)
+        updateOSD(volt, bat, temp, wifi, audio, 1, 0, charge)
         condition.release()
 
 
@@ -356,11 +309,8 @@ try:
         # checkShdn()
         charge = checkCharge()
         condition.acquire()
-        getVoltage()
         temp = getCPUtemperature()
         wifi = readModeWifi()
-        if brightness < 0:
-            getBrightness()
         condition.wait(4.5)
         condition.release()
         time.sleep(0.5)

@@ -250,7 +250,6 @@ brightness = -1
 info = False
 volt = -1
 audio = 1
-audiocounter = 30
 wifi = 2
 charge = 0
 bat = 100
@@ -270,11 +269,8 @@ def reading():
     time.sleep(1)
     while (1):
         condition.acquire()
-        bat = getVoltagepercent(volt)
-        wifi = readModeWifi(True)
-        audio = readAudioLevel()
-
-        audiocounter += 1;
+        # bat = getVoltagepercent(volt)
+        # wifi = readModeWifi()
         updateOSD(volt, bat, temp, wifi, audio, 1, 0, charge)
         condition.release()
 
@@ -311,6 +307,7 @@ try:
         condition.acquire()
         temp = getCPUtemperature()
         wifi = readModeWifi()
+        audio = readAudioLevel()
         condition.wait(4.5)
         condition.release()
         time.sleep(0.5)

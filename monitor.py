@@ -255,6 +255,7 @@ def lambdaCharge(channel):
 
 def exit_gracefully(signum=None, frame=None):
     GPIO.cleanup
+    reading_thread.exit()
     osd_proc.terminate()
     sys.exit(0)
 

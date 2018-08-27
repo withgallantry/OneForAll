@@ -18,8 +18,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="127" column="39" lean-forward="false" selection-start-line="127" selection-start-column="39" selection-end-line="127" selection-end-column="39" />
+            <state relative-caret-position="190">
+              <caret line="128" column="28" lean-forward="false" selection-start-line="128" selection-start-column="28" selection-end-line="128" selection-end-column="28" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -79,7 +79,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getVoltage</find>
       <find>readVoltage</find>
       <find>getCPUtemperature</find>
       <find>wifi</find>
@@ -109,6 +108,7 @@
       <find>readModeWifi</find>
       <find>ser</find>
       <find>ser.</find>
+      <find>os.popen</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -809,12 +809,12 @@
       <workItem from="1527531478496" duration="21895000" />
       <workItem from="1527765658164" duration="1506000" />
       <workItem from="1527959035176" duration="609000" />
-      <workItem from="1535387323843" duration="4670000" />
+      <workItem from="1535387323843" duration="5111000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28699000" />
+    <option name="totallyTimeSpent" value="29140000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="6" />
@@ -1121,8 +1121,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="127" column="39" lean-forward="false" selection-start-line="127" selection-start-column="39" selection-end-line="127" selection-end-column="39" />
+        <state relative-caret-position="190">
+          <caret line="128" column="28" lean-forward="false" selection-start-line="128" selection-start-column="28" selection-end-line="128" selection-end-column="28" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>

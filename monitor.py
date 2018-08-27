@@ -152,40 +152,6 @@ def readAudioLevel():
 def readModeWifi(toggle=False):
     global wif
     ret = wif
-    wifiVal = not os.path.exists(osd_path + 'wifi')  # int(ser.readline().rstrip('\r\n'))
-    if toggle:
-        wifiVal = not wifiVal
-    global wifi_state
-    if (wifiVal):
-        if os.path.exists(osd_path + 'wifi'):
-            os.remove(osd_path + 'wifi')
-        if (wifi_state != 'ON'):
-            wifi_state = 'ON'
-            logging.info("Wifi    [ENABLING]")
-            try:
-                out = check_output(['sudo', rfkill_path, 'unblock', 'wifi'])
-                logging.info("Wifi    [" + str(out) + "]")
-                out = check_output(['sudo', rfkill_path, 'unblock', 'bluetooth'])
-                logging.info("BT      [" + str(out) + "]")
-            except Exception, e:
-                logging.info("Wifi    : " + str(e))
-                ret = wifi_warning  # Get signal strength
-
-    else:
-        with open(osd_path + 'wifi', 'a'):
-            n = 1
-        if (wifi_state != 'OFF'):
-            wifi_state = 'OFF'
-            logging.info("Wifi    [DISABLING]")
-            try:
-                out = check_output(['sudo', rfkill_path, 'block', 'wifi'])
-                logging.info("Wifi    [" + str(out) + "]")
-                out = check_output(['sudo', rfkill_path, 'block', 'bluetooth'])
-                logging.info("BT      [" + str(out) + "]")
-            except Exception, e:
-                logging.info("Wifi    : " + str(e))
-                ret = wifi_error
-        return ret
     # check signal
     raw = check_output(['cat', '/proc/net/wireless'])
     strengthObj = re.search(r'.wlan0: \d*\s*(\d*)\.\s*[-]?(\d*)\.', raw, re.I)

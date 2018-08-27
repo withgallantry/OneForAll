@@ -274,7 +274,7 @@ try:
         # checkShdn()
         charge = checkCharge()
         condition.acquire()
-        # temp = getCPUtemperature()
+        temp = getCPUtemperature()
         # wifi = readModeWifi()
         condition.wait(4.5)
         condition.release()

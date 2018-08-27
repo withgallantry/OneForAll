@@ -18,10 +18,11 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="276" column="0" lean-forward="false" selection-start-line="276" selection-start-column="0" selection-end-line="277" selection-end-column="31" />
+            <state relative-caret-position="316">
+              <caret line="277" column="31" lean-forward="true" selection-start-line="277" selection-start-column="31" selection-end-line="277" selection-end-column="31" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
+                <marker date="1535393854000" expanded="true" signature="6870:6928" ph="..." />
               </folding>
             </state>
           </provider>
@@ -809,12 +810,12 @@
       <workItem from="1527531478496" duration="21895000" />
       <workItem from="1527765658164" duration="1506000" />
       <workItem from="1527959035176" duration="609000" />
-      <workItem from="1535387323843" duration="5419000" />
+      <workItem from="1535387323843" duration="5513000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29448000" />
+    <option name="totallyTimeSpent" value="29542000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="6" />
@@ -868,6 +869,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
+            <marker date="1535393854000" expanded="true" signature="6870:6928" ph="..." />
           </folding>
         </state>
       </provider>
@@ -906,6 +908,7 @@
           <caret line="370" column="0" lean-forward="false" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
+            <marker date="1535393854000" expanded="true" signature="6870:6928" ph="..." />
           </folding>
         </state>
       </provider>
@@ -944,6 +947,7 @@
           <caret line="370" column="0" lean-forward="true" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
+            <marker date="1535393854000" expanded="true" signature="6870:6928" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1078,6 +1082,7 @@
           <caret line="201" column="41" lean-forward="false" selection-start-line="201" selection-start-column="20" selection-end-line="201" selection-end-column="41" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
+            <marker date="1535393854000" expanded="true" signature="6870:6928" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1121,10 +1126,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="276" column="0" lean-forward="false" selection-start-line="276" selection-start-column="0" selection-end-line="277" selection-end-column="31" />
+        <state relative-caret-position="316">
+          <caret line="277" column="31" lean-forward="true" selection-start-line="277" selection-start-column="31" selection-end-line="277" selection-end-column="31" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
+            <marker date="1535393854000" expanded="true" signature="6870:6928" ph="..." />
           </folding>
         </state>
       </provider>

@@ -206,7 +206,8 @@ def doShutdown(channel=None):
 
 # Signals the OSD binary
 def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, brightness=0, info=False, charge=False):
-    commands = "v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(audio) + " l" + str(brightness) + " " + ("on " if info else "off ") + ("charge" if charge else "ncharge") + "\n"
+    commands = "v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(audio) + " l" + str(
+        brightness) + " " + ("on " if info else "off ") + ("charge" if charge else "ncharge") + "\n"
     # print commands
     osd_proc.send_signal(signal.SIGUSR1)
     osd_in.write(commands)
@@ -229,27 +230,27 @@ bat = 100
 condition = threading.Condition()
 
 
-def reading():
-    global brightness
-    global volt
-    global info
-    global wifi
-    global audio
-    global audiocounter
-    global charge
-    global bat
-    time.sleep(1)
-    while (1):
-        condition.acquire()
-        volt = readVoltage()
-        bat = getVoltagepercent(volt)
-        wifi = readModeWifi()
-        audio = readAudioLevel()
-        updateOSD(volt, bat, temp, wifi, audio, 1, 1, charge)
-        condition.release()
-
-
-reading_thread = thread.start_new_thread(reading, ())
+# def reading():
+#     global brightness
+#     global volt
+#     global info
+#     global wifi
+#     global audio
+#     global audiocounter
+#     global charge
+#     global bat
+#     time.sleep(1)
+#     while (1):
+#         condition.acquire()
+#         volt = readVoltage()
+#         bat = getVoltagepercent(volt)
+#         wifi = readModeWifi()
+#         audio = readAudioLevel()
+#         updateOSD(volt, bat, 20, wifi, audio, 1, 1, charge)
+#         condition.release()
+#
+#
+# reading_thread = thread.start_new_thread(reading, ())
 
 
 def lambdaCharge(channel):
@@ -260,7 +261,6 @@ def lambdaCharge(channel):
 
 def exit_gracefully(signum=None, frame=None):
     GPIO.cleanup
-    thread.exit(reading_thread)
     osd_proc.terminate()
     sys.exit(0)
 
@@ -276,12 +276,24 @@ signal.signal(signal.SIGTERM, exit_gracefully)
 # Main loop
 try:
     print "STARTED!"
+    global brightness
+    global volt
+    global info
+    global wifi
+    global audio
+    global audiocounter
+    global charge
+    global bat
     while 1:
         # checkShdn()
         charge = checkCharge()
+        audio = readAudioLevel()
+
+        updateOSD(volt, bat, 20, wifi, audio, 1, 1, charge)
         condition.acquire()
-        temp = getCPUtemperature()
-        # wifi = readModeWifi()
+        volt = readVoltage()
+        bat = getVoltagepercent(volt)
+        wifi = readModeWifi()
         condition.wait(4.5)
         condition.release()
         time.sleep(0.5)

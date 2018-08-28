@@ -240,7 +240,7 @@ def reading():
         # bat = getVoltagepercent(volt)
         wifi = readModeWifi()
         audio = readAudioLevel()
-        updateOSD(volt, bat, temp, wifi, audio, 1, 0, charge)
+        updateOSD(volt, bat, temp, wifi, audio, 1, 1, charge)
         condition.release()
 
 

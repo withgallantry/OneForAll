@@ -17,11 +17,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="monitor.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="282" column="14" lean-forward="true" selection-start-line="282" selection-start-column="14" selection-end-line="282" selection-end-column="14" />
+            <state relative-caret-position="175">
+              <caret line="242" column="52" lean-forward="false" selection-start-line="242" selection-start-column="52" selection-end-line="242" selection-end-column="52" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -39,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="443" column="1" lean-forward="false" selection-start-line="443" selection-start-column="1" selection-end-line="443" selection-end-column="1" />
+            <state relative-caret-position="1047">
+              <caret line="104" column="14" lean-forward="false" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -91,13 +91,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>volt</find>
-      <find>try</find>
-      <find>bimageLayer</find>
-      <find>logging</find>
-      <find>readAudioLevel</find>
-      <find>infoLayer</find>
-      <find>clearLayer</find>
       <find>infos</find>
       <find>temp</find>
       <find>serial</find>
@@ -121,6 +114,13 @@
       <find>optind</find>
       <find>argv</find>
       <find>load</find>
+      <find>battery</find>
+      <find>updateBattery</find>
+      <find>atoi</find>
+      <find>wifi</find>
+      <find>NDEBUG</find>
+      <find>osd</find>
+      <find>updateOSD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -136,9 +136,9 @@
       <list>
         <option value="$PROJECT_DIR$/monitor-test.py" />
         <option value="$PROJECT_DIR$/python-work.py" />
-        <option value="$PROJECT_DIR$/monitor.py" />
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/osd/osd.c" />
+        <option value="$PROJECT_DIR$/monitor.py" />
       </list>
     </option>
   </component>
@@ -822,12 +822,12 @@
       <workItem from="1527531478496" duration="21895000" />
       <workItem from="1527765658164" duration="1506000" />
       <workItem from="1527959035176" duration="609000" />
-      <workItem from="1535387323843" duration="11216000" />
+      <workItem from="1535387323843" duration="12191000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35245000" />
+    <option name="totallyTimeSpent" value="36220000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="6" />
@@ -1124,16 +1124,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="282" column="14" lean-forward="true" selection-start-line="282" selection-start-column="14" selection-end-line="282" selection-end-column="14" />
-          <folding>
-            <element signature="e#853#876#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1144,9 +1134,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="443" column="1" lean-forward="false" selection-start-line="443" selection-start-column="1" selection-end-line="443" selection-end-column="1" />
+        <state relative-caret-position="1047">
+          <caret line="104" column="14" lean-forward="false" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="242" column="52" lean-forward="false" selection-start-line="242" selection-start-column="52" selection-end-line="242" selection-end-column="52" />
+          <folding>
+            <element signature="e#853#876#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

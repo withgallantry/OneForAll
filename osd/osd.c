@@ -192,11 +192,7 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
 
     IMAGE_T *image = &(infoLayer->image);
     clearImageRGB(image, &backgroundColour);
-    if (loadPng(&(infoLayer.image), INFO_IMAGE) == false)
-            {
-                fprintf(stderr, "unable to charge load %s\n", argv[optind]);
-            }
-
+    loadPng(&(infoLayer.image), INFO_IMAGE)
     int x = 1, y = 1;
     drawStringRGB(x, y, buffer, &textColour, image);
     changeSourceAndUpdateImageLayer(infoLayer);

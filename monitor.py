@@ -33,6 +33,8 @@ import thread
 import threading
 import signal
 
+adc = Adafruit_ADS1x15.ADS1015()
+
 # Config variables
 bin_dir = '/home/pi/Retropie-open-OSD/'
 osd_path = bin_dir + 'osd/osd'
@@ -111,7 +113,8 @@ def checkShdn():
 
 
 # Read voltage
-def readVoltage(voltVal):
+def readVoltage():
+    voltVal = adc.read_adc(0, gain=1);
     # volt = int(500.0/1023.0*voltVal)
     volt = int(((voltVal * voltscale * dacres + (dacmax * 5)) / ((dacres * resdivval) / resdivmul)))
     logging.info("VoltVal [" + str(voltVal) + "]")
@@ -237,7 +240,8 @@ def reading():
     time.sleep(1)
     while (1):
         condition.acquire()
-        # bat = getVoltagepercent(volt)
+        volt = readVoltage()
+        bat = getVoltagepercent(volt)
         wifi = readModeWifi()
         audio = readAudioLevel()
         updateOSD(volt, bat, temp, wifi, audio, 1, 1, charge)

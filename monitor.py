@@ -219,6 +219,14 @@ def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
 
 
+global brightness
+global volt
+global info
+global wifi
+global audio
+global charge
+global bat
+
 brightness = -1
 info = False
 volt = -1
@@ -276,14 +284,6 @@ signal.signal(signal.SIGTERM, exit_gracefully)
 # Main loop
 try:
     print "STARTED!"
-    global brightness
-    global volt
-    global info
-    global wifi
-    global audio
-    global audiocounter
-    global charge
-    global bat
     while 1:
         # checkShdn()
         charge = checkCharge()

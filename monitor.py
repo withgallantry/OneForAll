@@ -32,6 +32,7 @@ import logging.handlers
 import thread
 import threading
 import signal
+import Adafruit_ADS1x15
 
 adc = Adafruit_ADS1x15.ADS1015()
 

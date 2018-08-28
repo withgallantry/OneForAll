@@ -238,7 +238,7 @@ def reading():
     while (1):
         condition.acquire()
         # bat = getVoltagepercent(volt)
-        # wifi = readModeWifi()
+        wifi = readModeWifi()
         audio = readAudioLevel()
         updateOSD(volt, bat, temp, wifi, audio, 1, 0, charge)
         condition.release()
@@ -255,7 +255,7 @@ def lambdaCharge(channel):
 
 def exit_gracefully(signum=None, frame=None):
     GPIO.cleanup
-    reading_thread.exit()
+    thread.exit(reading_thread)
     osd_proc.terminate()
     sys.exit(0)
 

@@ -291,8 +291,8 @@ try:
 
         updateOSD(volt, bat, 20, wifi, audio, 1, 1, charge)
         condition.acquire()
-        volt = readVoltage()
-        bat = getVoltagepercent(volt)
+        # volt = readVoltage()
+        # bat = getVoltagepercent(volt)
         wifi = readModeWifi()
         condition.wait(4.5)
         condition.release()

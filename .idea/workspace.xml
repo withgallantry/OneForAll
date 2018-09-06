@@ -18,8 +18,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2747">
-              <caret line="294" column="12" lean-forward="false" selection-start-line="294" selection-start-column="12" selection-end-line="294" selection-end-column="12" />
+            <state relative-caret-position="2765">
+              <caret line="252" column="28" lean-forward="false" selection-start-line="252" selection-start-column="17" selection-end-line="252" selection-end-column="28" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -40,8 +40,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="399" column="15" lean-forward="false" selection-start-line="399" selection-start-column="11" selection-end-line="399" selection-end-column="15" />
+            <state relative-caret-position="137">
+              <caret line="48" column="68" lean-forward="false" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -89,8 +89,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>os.popen</find>
-      <find>exit_gracefully</find>
       <find>run</find>
       <find>condition</find>
       <find>backgroundColour</find>
@@ -115,10 +113,12 @@
       <find>volt</find>
       <find>infoLayer</find>
       <find>loadPng</find>
-      <find>readVoltage</find>
       <find>-&gt;image</find>
       <find>clearColor</find>
       <find>info</find>
+      <find>infogit</find>
+      <find>adc</find>
+      <find>readVoltage</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -821,12 +821,12 @@
       <workItem from="1527765658164" duration="1506000" />
       <workItem from="1527959035176" duration="609000" />
       <workItem from="1535387323843" duration="17378000" />
-      <workItem from="1536257653884" duration="1869000" />
+      <workItem from="1536257653884" duration="2124000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43276000" />
+    <option name="totallyTimeSpent" value="43531000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="6" />
@@ -1186,8 +1186,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2747">
-          <caret line="294" column="12" lean-forward="false" selection-start-line="294" selection-start-column="12" selection-end-line="294" selection-end-column="12" />
+        <state relative-caret-position="2765">
+          <caret line="252" column="28" lean-forward="false" selection-start-line="252" selection-start-column="17" selection-end-line="252" selection-end-column="28" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>
@@ -1196,8 +1196,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="399" column="15" lean-forward="false" selection-start-line="399" selection-start-column="11" selection-end-line="399" selection-end-column="15" />
+        <state relative-caret-position="137">
+          <caret line="48" column="68" lean-forward="false" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="68" />
           <folding />
         </state>
       </provider>

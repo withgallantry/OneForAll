@@ -259,8 +259,8 @@ int main(int argc, char *argv[])
     
     IMAGE_LAYER_T infoLayer;
     initImageLayer(&infoLayer,
-                   info.width,
-                   info.height,
+                   320,
+                   240,
                    VC_IMAGE_RGBA16);
     createResourceImageLayer(&infoLayer, layer);
     
@@ -430,11 +430,6 @@ int main(int argc, char *argv[])
 
 void updateInfo(IMAGE_LAYER_T *infoLayer)
 {
-    char buffer[128];
-    time_t t = time(NULL);
-    struct tm tm = *localtime(&t);
-    snprintf(buffer, sizeof(buffer),"%04d-%02d-%02d %02d:%02d:%02d\nTemperature: %.1f\x5\x43\nBrigthness:  %d/%d\nBattery:     %d%%\nVoltage:     %.2fV\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, temp, brightness, BRIGHTNESS_MAX, battery, voltage/100.f);
-
     IMAGE_T *image = &(infoLayer->image);
 //    clearImageRGB(image, &backgroundColour);
     loadPng(image, INFO_IMAGE);

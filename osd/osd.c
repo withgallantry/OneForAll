@@ -45,7 +45,7 @@
 
 #define BATTERY_IMAGE "/home/pi/Retropie-open-OSD/resources/battery.png"
 #define CHARGE_IMAGE "/home/pi/Retropie-open-OSD/resources/plug.png"
-#define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/main.png"
+#define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/main2.png"
 #define BATTERY_TH 20
 #define AUDIO_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/AUD0.png","/home/pi/Retropie-open-OSD/resources/AUD25.png","/home/pi/Retropie-open-OSD/resources/AUD50.png","/home/pi/Retropie-open-OSD/resources/AUD75.png","/home/pi/Retropie-open-OSD/resources/AUD100.png"}
 #define WIFI_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/wifi_warning.png", "/home/pi/Retropie-open-OSD/resources/wifi_error.png", "/home/pi/Retropie-open-OSD/resources/wifi_1.png", "/home/pi/Retropie-open-OSD/resources/wifi_2.png", "/home/pi/Retropie-open-OSD/resources/wifi_3.png"}
@@ -436,7 +436,7 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
     snprintf(buffer, sizeof(buffer),"%04d-%02d-%02d %02d:%02d:%02d\nTemperature: %.1f\x5\x43\nBrigthness:  %d/%d\nBattery:     %d%%\nVoltage:     %.2fV\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, temp, brightness, BRIGHTNESS_MAX, battery, voltage/100.f);
 
     IMAGE_T *image = &(infoLayer->image);
-    clearImageRGB(image, &backgroundColour);
+//    clearImageRGB(image, &backgroundColour);
     loadPng(image, INFO_IMAGE);
 //    int x = 1, y = 1;
 //    drawStringRGB(x, y, buffer, &textColour, image);

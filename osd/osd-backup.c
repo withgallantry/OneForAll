@@ -259,11 +259,16 @@ int main(int argc, char *argv[])
     static int layer = 30000;
     
     IMAGE_LAYER_T infoLayer;
-    initImageLayer(&infoLayer,
-                   320,
-                   240,
-                   type);
+
+    if (loadPng(&(infoLayer.image), INFO_IMAGE) == false)
+        {
+            fprintf(stderr, "unable to load %s\n", INFO_IMAGE);
+            exit(EXIT_FAILURE);
+        }
+
+
     createResourceImageLayer(&infoLayer, layer + 3);
+
     
     IMAGE_LAYER_T bimageLayer;
     if (loadPng(&(bimageLayer.image), BATTERY_IMAGE) == false)
@@ -304,6 +309,7 @@ int main(int argc, char *argv[])
     int yOffset = 1;
     DISPMANX_UPDATE_HANDLE_T update = vc_dispmanx_update_start(0);
     assert(update != 0);
+
     addElementImageLayerOffset(&infoLayer,
                                (info.width - infoLayer.image.width) / 2,
                                (info.height - infoLayer.image.height) / 2,

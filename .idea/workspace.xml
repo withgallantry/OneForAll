@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1e91772-da59-4698-b607-55f4207566b3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/osd/osd-backup.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/osd/osd.c" afterPath="$PROJECT_DIR$/osd/osd.c" />
     </list>
@@ -40,8 +41,18 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="314" column="55" lean-forward="false" selection-start-line="314" selection-start-column="55" selection-end-line="314" selection-end-column="55" />
+            <state relative-caret-position="236">
+              <caret line="308" column="31" lean-forward="false" selection-start-line="308" selection-start-column="31" selection-end-line="308" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="osd-backup.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/osd/osd-backup.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="314" column="74" lean-forward="true" selection-start-line="313" selection-start-column="30" selection-end-line="314" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -89,7 +100,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cimageLayer</find>
       <find>optind</find>
       <find>argv</find>
       <find>load</find>
@@ -119,6 +129,7 @@
       <find>loadPng</find>
       <find>vc_dispmanx_display_get_info</find>
       <find>info</find>
+      <find>bimageLayer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -248,6 +259,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/osd" />
       <recent name="$PROJECT_DIR$/resources" />
     </key>
   </component>
@@ -821,12 +833,12 @@
       <workItem from="1527765658164" duration="1506000" />
       <workItem from="1527959035176" duration="609000" />
       <workItem from="1535387323843" duration="17378000" />
-      <workItem from="1536257653884" duration="4500000" />
+      <workItem from="1536257653884" duration="4757000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45907000" />
+    <option name="totallyTimeSpent" value="46164000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="6" />
@@ -874,16 +886,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/monitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#853#876#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python-work.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4335">
@@ -1194,10 +1196,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/osd/osd-backup.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="314" column="74" lean-forward="true" selection-start-line="313" selection-start-column="30" selection-end-line="314" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="314" column="55" lean-forward="false" selection-start-line="314" selection-start-column="55" selection-end-line="314" selection-end-column="55" />
+        <state relative-caret-position="236">
+          <caret line="308" column="31" lean-forward="false" selection-start-line="308" selection-start-column="31" selection-end-line="308" selection-end-column="31" />
           <folding />
         </state>
       </provider>

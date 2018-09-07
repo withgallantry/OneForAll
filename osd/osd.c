@@ -262,7 +262,7 @@ int main(int argc, char *argv[])
 
     if (loadPng(&(infoLayer.image), INFO_IMAGE) == false)
         {
-            fprintf(stderr, "unable to load %s\n", imagePath);
+            fprintf(stderr, "unable to load %s\n", INFO_IMAGE);
             exit(EXIT_FAILURE);
         }
 

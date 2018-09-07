@@ -40,8 +40,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="316" column="31" lean-forward="false" selection-start-line="316" selection-start-column="31" selection-end-line="316" selection-end-column="31" />
+            <state relative-caret-position="237">
+              <caret line="264" column="61" lean-forward="false" selection-start-line="264" selection-start-column="61" selection-end-line="264" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -821,12 +821,12 @@
       <workItem from="1527765658164" duration="1506000" />
       <workItem from="1527959035176" duration="609000" />
       <workItem from="1535387323843" duration="17378000" />
-      <workItem from="1536257653884" duration="4430000" />
+      <workItem from="1536257653884" duration="4465000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45837000" />
+    <option name="totallyTimeSpent" value="45872000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="6" />
@@ -1196,8 +1196,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="316" column="31" lean-forward="false" selection-start-line="316" selection-start-column="31" selection-end-line="316" selection-end-column="31" />
+        <state relative-caret-position="237">
+          <caret line="264" column="61" lean-forward="false" selection-start-line="264" selection-start-column="61" selection-end-line="264" selection-end-column="61" />
           <folding />
         </state>
       </provider>

@@ -259,11 +259,20 @@ int main(int argc, char *argv[])
     static int layer = 30000;
     
     IMAGE_LAYER_T infoLayer;
-    initImageLayer(&infoLayer,
-                   320,
-                   240,
-                   VC_IMAGE_RGBA16);
+
+    if (loadPng(&(infoLayer.image), INFO_IMAGE) == false)
+        {
+            fprintf(stderr, "unable to load %s\n", imagePath);
+            exit(EXIT_FAILURE);
+        }
+
+
     createResourceImageLayer(&infoLayer, layer + 3);
+    addElementImageLayerOffset(&infoLayer,
+                                   (info.width - infoLayer.image.width) / 2,
+                                   (info.height - info.image.height) / 2,
+                                   display,
+                                   update);
     
     IMAGE_LAYER_T bimageLayer;
     if (loadPng(&(bimageLayer.image), BATTERY_IMAGE) == false)

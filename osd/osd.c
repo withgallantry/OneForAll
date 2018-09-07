@@ -312,7 +312,7 @@ int main(int argc, char *argv[])
 
     addElementImageLayerOffset(&infoLayer,
                                (info.width - infoLayer.image.width) / 2,
-                               (info.height - info.image.height) / 2,
+                               (info.height - infoLayer.image.height) / 2,
                                display,
                                update);
 

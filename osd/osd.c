@@ -45,7 +45,7 @@
 
 #define BATTERY_IMAGE "/home/pi/Retropie-open-OSD/resources/battery.png"
 #define CHARGE_IMAGE "/home/pi/Retropie-open-OSD/resources/plug.png"
-#define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/main2.png"
+#define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/main16.png"
 //#define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/battery.png"
 #define BATTERY_TH 20
 #define AUDIO_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/AUD0.png","/home/pi/Retropie-open-OSD/resources/AUD25.png","/home/pi/Retropie-open-OSD/resources/AUD50.png","/home/pi/Retropie-open-OSD/resources/AUD75.png","/home/pi/Retropie-open-OSD/resources/AUD100.png"}
@@ -263,7 +263,7 @@ int main(int argc, char *argv[])
                    320,
                    240,
                    VC_IMAGE_RGBA16);
-    createResourceImageLayer(&infoLayer, layer + 2);
+    createResourceImageLayer(&infoLayer, layer + 3);
     
     IMAGE_LAYER_T bimageLayer;
     if (loadPng(&(bimageLayer.image), BATTERY_IMAGE) == false)
@@ -432,7 +432,7 @@ int main(int argc, char *argv[])
 void updateInfo(IMAGE_LAYER_T *infoLayer)
 {
     IMAGE_T *image = &(infoLayer->image);
-    clearImageRGB(image, &backgroundColour);
+//    clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);
 //    int x = 1, y = 1;
 //    drawStringRGB(x, y, buffer, &textColour, image);

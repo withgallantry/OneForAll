@@ -263,7 +263,7 @@ int main(int argc, char *argv[])
                    320,
                    240,
                    VC_IMAGE_RGBA16);
-    createResourceImageLayer(&infoLayer, layer);
+    createResourceImageLayer(&infoLayer, layer + 2);
     
     IMAGE_LAYER_T bimageLayer;
     if (loadPng(&(bimageLayer.image), BATTERY_IMAGE) == false)
@@ -432,8 +432,8 @@ int main(int argc, char *argv[])
 void updateInfo(IMAGE_LAYER_T *infoLayer)
 {
     IMAGE_T *image = &(infoLayer->image);
-//    clearImageRGB(image, &backgroundColour);
-    loadPng(image, INFO_IMAGE);
+    clearImageRGB(image, &backgroundColour);
+    loadPng(&(infoLayer->image), INFO_IMAGE);
 //    int x = 1, y = 1;
 //    drawStringRGB(x, y, buffer, &textColour, image);
     changeSourceAndUpdateImageLayer(infoLayer);

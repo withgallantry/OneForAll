@@ -40,8 +40,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="48" column="68" lean-forward="false" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="68" />
+            <state relative-caret-position="174">
+              <caret line="87" column="18" lean-forward="false" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -89,17 +89,14 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>run</find>
       <find>condition</find>
       <find>backgroundColour</find>
       <find>CHARGE_IMAGE</find>
       <find>cimageLayer</find>
-      <find>updateInfo</find>
       <find>optind</find>
       <find>argv</find>
       <find>load</find>
       <find>battery</find>
-      <find>updateBattery</find>
       <find>atoi</find>
       <find>wifi</find>
       <find>NDEBUG</find>
@@ -119,6 +116,9 @@
       <find>infogit</find>
       <find>adc</find>
       <find>readVoltage</find>
+      <find>updateInfo(&amp;infoLayer)</find>
+      <find>updateInfo</find>
+      <find>updateBattery</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -821,12 +821,12 @@
       <workItem from="1527765658164" duration="1506000" />
       <workItem from="1527959035176" duration="609000" />
       <workItem from="1535387323843" duration="17378000" />
-      <workItem from="1536257653884" duration="2124000" />
+      <workItem from="1536257653884" duration="2508000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43531000" />
+    <option name="totallyTimeSpent" value="43915000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="6" />
@@ -1196,8 +1196,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="48" column="68" lean-forward="false" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="68" />
+        <state relative-caret-position="174">
+          <caret line="87" column="18" lean-forward="false" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="18" />
           <folding />
         </state>
       </provider>

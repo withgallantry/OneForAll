@@ -45,8 +45,8 @@
 
 #define BATTERY_IMAGE "/home/pi/Retropie-open-OSD/resources/battery.png"
 #define CHARGE_IMAGE "/home/pi/Retropie-open-OSD/resources/plug.png"
-//#define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/main2.png"
-#define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/battery.png"
+#define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/main2.png"
+//#define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/battery.png"
 #define BATTERY_TH 20
 #define AUDIO_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/AUD0.png","/home/pi/Retropie-open-OSD/resources/AUD25.png","/home/pi/Retropie-open-OSD/resources/AUD50.png","/home/pi/Retropie-open-OSD/resources/AUD75.png","/home/pi/Retropie-open-OSD/resources/AUD100.png"}
 #define WIFI_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/wifi_warning.png", "/home/pi/Retropie-open-OSD/resources/wifi_error.png", "/home/pi/Retropie-open-OSD/resources/wifi_1.png", "/home/pi/Retropie-open-OSD/resources/wifi_2.png", "/home/pi/Retropie-open-OSD/resources/wifi_3.png"}

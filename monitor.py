@@ -86,6 +86,8 @@ audio_50 = 3;
 audio_75 = 4;
 audio_100 = 5;
 
+logging.basicConfig(filename='osd.log', level=logging.INFO)
+
 # Set up OSD service
 try:
     osd_proc = Popen(osd_path, shell=False, stdin=PIPE, stdout=None, stderr=None)

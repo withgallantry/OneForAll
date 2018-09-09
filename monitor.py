@@ -119,7 +119,8 @@ def checkShdn():
 def readVoltage():
     voltVal = adc.read_adc(0, gain=1);
     # volt = int(500.0/1023.0*voltVal)
-    volt = int(((voltVal * voltscale * dacres + (dacmax * 5)) / ((dacres * resdivval) / resdivmul)))
+    # volt = int(((voltVal * voltscale * dacres + (dacmax * 5)) / ((dacres * resdivval) / resdivmul)))
+    volt = float(voltVal) * (4.09 / 2047.0)
     logging.info("VoltVal [" + str(voltVal) + "]")
     logging.info("Volt    [" + str(volt) + "]V")
     return volt

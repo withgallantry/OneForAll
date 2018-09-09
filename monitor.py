@@ -293,7 +293,7 @@ try:
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)
-        print bat
+        print volt
         wifi = readModeWifi()
         condition.wait(4.5)
         condition.release()

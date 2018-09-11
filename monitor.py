@@ -289,7 +289,7 @@ try:
     print "STARTED!"
     while 1:
         # checkShdn()
-        charge = checkCharge()
+        # charge = checkCharge()
         audio = readAudioLevel()
 
         updateOSD(volt, bat, 20, wifi, audio, 1, 0, charge)

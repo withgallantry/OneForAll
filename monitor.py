@@ -47,12 +47,6 @@ pi_charged = 25
 pi_shdn = 27
 serport = '/dev/ttyACM0'
 
-# Init GPIO pins
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(pi_charging, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(pi_charged, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(pi_shdn, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # Batt variables
 voltscale = 118.0  # ADJUST THIS

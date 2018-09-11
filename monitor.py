@@ -284,17 +284,18 @@ try:
     while 1:
         # checkShdn()
         # charge = checkCharge()
-        audio = readAudioLevel()
+        # audio = readAudioLevel()
 
-        updateOSD(volt, bat, 20, wifi, audio, 1, 0, charge)
+
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)
         print volt
-        wifi = readModeWifi()
-        condition.wait(4.5)
+        # wifi = readModeWifi()
+        updateOSD(volt, bat, 20, wifi, audio, 1, 0, charge)
+        condition.wait(10)
         condition.release()
-        time.sleep(0.5)
+        # time.sleep(0.5)
 # print 'WAKE'
 
 except KeyboardInterrupt:

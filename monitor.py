@@ -292,7 +292,7 @@ try:
         charge = checkCharge()
         audio = readAudioLevel()
 
-        updateOSD(volt, bat, 20, wifi, audio, 1, 1, charge)
+        updateOSD(volt, bat, 20, wifi, audio, 1, 0, charge)
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)

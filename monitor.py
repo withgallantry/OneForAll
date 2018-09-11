@@ -292,7 +292,7 @@ try:
         bat = getVoltagepercent(volt)
         print volt
         # wifi = readModeWifi()
-        updateOSD(volt, bat, 20, wifi, audio, 1, 0, charge)
+        updateOSD(volt, bat, 20, wifi, -1, 1, 0, charge)
         condition.wait(10)
         condition.release()
         # time.sleep(0.5)

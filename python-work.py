@@ -24,7 +24,6 @@
 import RPi.GPIO as GPIO
 import time
 import os, signal, sys
-import serial
 from subprocess import Popen, PIPE, check_output, check_call
 import re
 import logging

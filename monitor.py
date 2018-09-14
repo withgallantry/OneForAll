@@ -268,7 +268,6 @@ def reading():
         condition.acquire()
         info = False
         if functionBtn.is_pressed:
-            condition.notify()
             checkFunction()
             print "Pushed"
             info = True

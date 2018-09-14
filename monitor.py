@@ -249,7 +249,7 @@ def checkFunction():
         condition.notify()
         condition.release()
         info = True
-        # updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
+        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
         if volumeUpBtn.is_pressed:
             volumeUp()
         elif volumeDownBtn.is_pressed:

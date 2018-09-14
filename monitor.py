@@ -269,7 +269,7 @@ def reading():
         condition.acquire()
         print "checking"
         if functionBtn.is_pressed:
-            condition.notify();
+            # condition.notify();
             checkFunction()
             print "Pushed"
             info = True

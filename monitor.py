@@ -267,7 +267,7 @@ def reading():
     while (1):
         info = False
         condition.acquire()
-        if functionBtn.is_pressed:
+        while functionBtn.is_pressed:
             condition.notify();
             checkFunction()
             print "Pushed"

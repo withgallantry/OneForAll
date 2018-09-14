@@ -226,15 +226,6 @@ def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, brightness=0, info=False, 
 def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
 
-
-def checkFunction():
-    while functionBtn.is_pressed:
-        if volumeUpBtn.is_pressed:
-            volumeUp()
-        elif volumeDownBtn.is_pressed:
-            volumeDown()
-
-
 global brightness
 global volt
 global info
@@ -243,6 +234,7 @@ global audio
 global charge
 global bat
 
+
 brightness = -1
 info = False
 volt = -1
@@ -250,6 +242,18 @@ audio = 1
 wifi = 2
 charge = 0
 bat = 100
+
+def checkFunction():
+    while functionBtn.is_pressed:
+        condition.acquire()
+        condition.notify()
+        condition.release()
+        info = True
+        # updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
+        if volumeUpBtn.is_pressed:
+            volumeUp()
+        elif volumeDownBtn.is_pressed:
+            volumeDown()
 
 condition = threading.Condition()
 
@@ -266,17 +270,9 @@ def reading():
     time.sleep(1)
     while (1):
 
-        condition.acquire()
         print "checking"
-        if functionBtn.is_pressed:
-            # condition.notify();
-            checkFunction()
-            print "Pushed"
-            info = True
-            updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
-        else:
-            info = False
-        condition.release()
+        checkFunction()
+        info = False
 
 
 reading_thread = thread.start_new_thread(reading, ())
@@ -303,13 +299,6 @@ try:
         bat = getVoltagepercent(volt)
         print volt
         updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
-
-        while functionBtn.is_pressed:
-            condition.notify();
-            checkFunction()
-            print "Pushed"
-            info = True
-            updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
 
         condition.wait(10)
         condition.release()

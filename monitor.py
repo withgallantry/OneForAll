@@ -266,14 +266,13 @@ def reading():
     time.sleep(1)
     while (1):
         info = False
-
+        condition.acquire()
         if functionBtn.is_pressed:
             condition.notify();
             checkFunction()
             print "Pushed"
             info = True
             updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
-        condition.acquire()
         condition.release()
 
 

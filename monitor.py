@@ -32,8 +32,12 @@ import thread
 import threading
 import signal
 import Adafruit_ADS1x15
+from gpiozero import Button
 
-adc = Adafruit_ADS1x15.ADS1015()
+# Button Variables
+functionBtn = Button(22)
+volumeUpBtn = Button(12)
+volumeDownBtn = Button(6)
 
 # Config variables
 bin_dir = '/home/pi/Retropie-open-OSD/'
@@ -46,7 +50,6 @@ pi_charged = 25
 pi_shdn = 27
 serport = '/dev/ttyACM0'
 
-
 # Batt variables
 voltscale = 118.0  # ADJUST THIS
 currscale = 640.0
@@ -57,7 +60,7 @@ dacmax = 1023.0
 
 batt_threshold = 4
 batt_full = 420
-batt_low = 330
+batt_low = 340
 batt_shdn = 320
 
 temperature_max = 70.0
@@ -73,13 +76,19 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
+# Audio Variables
 audio_zero = 1;
 audio_25 = 2;
 audio_50 = 3;
 audio_75 = 4;
 audio_100 = 5;
+volume = 0;
 
 logging.basicConfig(filename='osd.log', level=logging.INFO)
+
+# TO DOOOO REPLACE A LOT WITH THE CHECK_OUTPUT
+
+adc = Adafruit_ADS1x15.ADS1015()
 
 # Set up OSD service
 try:
@@ -95,9 +104,14 @@ except Exception as e:
     sys.exit(1);
 
 
-# Check for charge state
-def checkCharge():
-    return not GPIO.input(pi_charging) and GPIO.input(pi_charged)
+def volumeUp():
+    audio = min(100, audio + 10)
+    os.system("amixer sset -q 'PCM' " + str(audio) + "%")
+
+
+def volumeDown():
+    audio = max(0, audio - 10)
+    os.system("amixer sset -q 'PCM' " + str(audio) + "%")
 
 
 # Check for shutdown state
@@ -111,8 +125,6 @@ def checkShdn():
 # Read voltage
 def readVoltage():
     voltVal = adc.read_adc(0, gain=1);
-    # volt = int(500.0/1023.0*voltVal)
-    # volt = int(((voltVal * voltscale * dacres + (dacmax * 5)) / ((dacres * resdivval) / resdivmul)))
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
     logging.info("VoltVal [" + str(voltVal) + "]")
     logging.info("Volt    [" + str(volt) + "]V")
@@ -215,6 +227,14 @@ def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
 
 
+def checkFunction():
+    while functionBtn.is_pressed:
+        if volumeUpBtn.is_pressed:
+            volumeUp()
+        elif volumeDownBtn.is_pressed:
+            volumeDown()
+
+
 global brightness
 global volt
 global info
@@ -234,33 +254,28 @@ bat = 100
 condition = threading.Condition()
 
 
-# def reading():
-#     global brightness
-#     global volt
-#     global info
-#     global wifi
-#     global audio
-#     global audiocounter
-#     global charge
-#     global bat
-#     time.sleep(1)
-#     while (1):
-#         condition.acquire()
-#         volt = readVoltage()
-#         bat = getVoltagepercent(volt)
-#         wifi = readModeWifi()
-#         audio = readAudioLevel()
-#         updateOSD(volt, bat, 20, wifi, audio, 1, 1, charge)
-#         condition.release()
-#
-#
-# reading_thread = thread.start_new_thread(reading, ())
+def reading():
+    global brightness
+    global volt
+    global info
+    global wifi
+    global audio
+    global audiocounter
+    global charge
+    global bat
+    time.sleep(1)
+    while (1):
+        condition.acquire()
+        info = False
+        if functionBtn.is_pressed:
+            condition.notify()
+            checkFunction()
+            info = True
+        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
+        condition.release()
 
 
-def lambdaCharge(channel):
-    condition.acquire()
-    condition.notify();
-    condition.release();
+reading_thread = thread.start_new_thread(reading, ())
 
 
 def exit_gracefully(signum=None, frame=None):
@@ -269,29 +284,21 @@ def exit_gracefully(signum=None, frame=None):
     sys.exit(0)
 
 
-# interrupts
-# GPIO.add_event_detect(pi_shdn, GPIO.FALLING, callback=doShutdown, bouncetime=500)
-# GPIO.add_event_detect(pi_charging, GPIO.BOTH, callback=lambdaCharge, bouncetime=100)
-# GPIO.add_event_detect(pi_charged, GPIO.FALLING, callback=lambdaCharge, bouncetime=100)
-
 signal.signal(signal.SIGINT, exit_gracefully)
 signal.signal(signal.SIGTERM, exit_gracefully)
+
+# Read Initial States
+audio = readAudioLevel()
 
 # Main loop
 try:
     print "STARTED!"
     while 1:
-        # checkShdn()
-        # charge = checkCharge()
-        # audio = readAudioLevel()
-
-
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)
         print volt
-        # wifi = readModeWifi()
-        updateOSD(volt, bat, 20, wifi, -1, 1, 0, charge)
+        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
         condition.wait(10)
         condition.release()
         # time.sleep(0.5)

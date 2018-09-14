@@ -271,7 +271,7 @@ def reading():
             condition.notify()
             checkFunction()
             info = True
-        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
+            updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
         condition.release()
 
 
@@ -281,6 +281,7 @@ reading_thread = thread.start_new_thread(reading, ())
 def exit_gracefully(signum=None, frame=None):
     GPIO.cleanup
     osd_proc.terminate()
+    thread.stop(reading_thread);
     sys.exit(0)
 
 

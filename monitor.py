@@ -265,8 +265,9 @@ def reading():
     global bat
     time.sleep(1)
     while (1):
-        print "checking"
+
         condition.acquire()
+        print "checking"
         if functionBtn.is_pressed:
             condition.notify();
             checkFunction()

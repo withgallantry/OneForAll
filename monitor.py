@@ -270,6 +270,7 @@ def reading():
         if functionBtn.is_pressed:
             condition.notify()
             checkFunction()
+            print "Pushed"
             info = True
             updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
         condition.release()

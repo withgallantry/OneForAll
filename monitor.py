@@ -254,29 +254,31 @@ bat = 100
 condition = threading.Condition()
 
 
-# def reading():
-#     global brightness
-#     global volt
-#     global info
-#     global wifi
-#     global audio
-#     global audiocounter
-#     global charge
-#     global bat
-#     time.sleep(1)
-#     while (1):
-#         info = False
-#         condition.acquire()
-#         while functionBtn.is_pressed:
-#             condition.notify();
-#             checkFunction()
-#             print "Pushed"
-#             info = True
-#             updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
-#         condition.release()
+def reading():
+    global brightness
+    global volt
+    global info
+    global wifi
+    global audio
+    global audiocounter
+    global charge
+    global bat
+    time.sleep(1)
+    while (1):
+        print "checking"
+        condition.acquire()
+        if functionBtn.is_pressed:
+            condition.notify();
+            checkFunction()
+            print "Pushed"
+            info = True
+            updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
+        else:
+            info = False
+        condition.release()
 
 
-# reading_thread = thread.start_new_thread(reading, ())
+reading_thread = thread.start_new_thread(reading, ())
 
 
 def exit_gracefully(signum=None, frame=None):
@@ -301,14 +303,12 @@ try:
         print volt
         updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
 
-        if functionBtn.is_pressed:
-            condition.notify()
+        while functionBtn.is_pressed:
+            condition.notify();
             checkFunction()
             print "Pushed"
             info = True
             updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
-        else:
-            info = False
 
         condition.wait(10)
         condition.release()

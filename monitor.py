@@ -254,35 +254,34 @@ bat = 100
 condition = threading.Condition()
 
 
-def reading():
-    global brightness
-    global volt
-    global info
-    global wifi
-    global audio
-    global audiocounter
-    global charge
-    global bat
-    time.sleep(1)
-    while (1):
-        info = False
-        condition.acquire()
-        while functionBtn.is_pressed:
-            condition.notify();
-            checkFunction()
-            print "Pushed"
-            info = True
-            updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
-        condition.release()
+# def reading():
+#     global brightness
+#     global volt
+#     global info
+#     global wifi
+#     global audio
+#     global audiocounter
+#     global charge
+#     global bat
+#     time.sleep(1)
+#     while (1):
+#         info = False
+#         condition.acquire()
+#         while functionBtn.is_pressed:
+#             condition.notify();
+#             checkFunction()
+#             print "Pushed"
+#             info = True
+#             updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
+#         condition.release()
 
 
-reading_thread = thread.start_new_thread(reading, ())
+# reading_thread = thread.start_new_thread(reading, ())
 
 
 def exit_gracefully(signum=None, frame=None):
     GPIO.cleanup
     osd_proc.terminate()
-    thread.stop(reading_thread);
     sys.exit(0)
 
 
@@ -301,6 +300,16 @@ try:
         bat = getVoltagepercent(volt)
         print volt
         updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
+
+        if functionBtn.is_pressed:
+            condition.notify()
+            checkFunction()
+            print "Pushed"
+            info = True
+            updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
+        else:
+            info = False
+
         condition.wait(10)
         condition.release()
         # time.sleep(0.5)

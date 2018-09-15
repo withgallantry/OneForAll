@@ -259,7 +259,7 @@ signal.signal(signal.SIGINT, exit_gracefully)
 signal.signal(signal.SIGTERM, exit_gracefully)
 
 # Read Initial States
-current_volume = readVolumeLevel()
+volume = readVolumeLevel()
 
 # Main loop
 try:

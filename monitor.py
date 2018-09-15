@@ -258,7 +258,6 @@ def reading():
     time.sleep(1)
     while (1):
         checkFunction()
-        print "turning off"
 
 
 reading_thread = thread.start_new_thread(reading, ())
@@ -278,6 +277,7 @@ def checkFunction():
 
     if functionBtn.is_pressed == False and info == True:
         info = False
+        print "turning off"
         updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
 
 

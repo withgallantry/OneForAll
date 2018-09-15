@@ -422,7 +422,7 @@ int main(int argc, char *argv[])
         {
             updateInfo(&infoLayer);
         }
-        else if(infos = 0)
+        else if(infos == 0)
         {
             infos = 0;
             clearLayer(&infoLayer);

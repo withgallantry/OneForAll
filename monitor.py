@@ -262,6 +262,7 @@ def reading():
 
 reading_thread = thread.start_new_thread(reading, ())
 
+
 def checkFunction():
     global info
     while functionBtn.is_pressed:
@@ -275,10 +276,8 @@ def checkFunction():
         elif volumeDownBtn.is_pressed:
             volumeDown()
 
-    if functionBtn.is_pressed == False:
+    if functionBtn.is_pressed == False and info == True:
         info = False
-        print "turning off"
-        print info
         updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
 
 
@@ -301,9 +300,6 @@ try:
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)
-        print volt
-        print "INFO"
-        print info
         updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
 
         condition.wait(10)

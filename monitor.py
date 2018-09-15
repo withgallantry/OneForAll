@@ -243,24 +243,6 @@ wifi = 2
 charge = 0
 bat = 100
 
-
-def checkFunction():
-    while functionBtn.is_pressed:
-        condition.acquire()
-        condition.notify()
-        condition.release()
-        info = True
-        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
-        if volumeUpBtn.is_pressed:
-            volumeUp()
-        elif volumeDownBtn.is_pressed:
-            volumeDown()
-
-    if functionBtn.is_pressed == False and info == True:
-        info = False
-        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
-
-
 condition = threading.Condition()
 
 
@@ -280,6 +262,22 @@ def reading():
 
 
 reading_thread = thread.start_new_thread(reading, ())
+
+def checkFunction():
+    while functionBtn.is_pressed:
+        condition.acquire()
+        condition.notify()
+        condition.release()
+        info = True
+        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
+        if volumeUpBtn.is_pressed:
+            volumeUp()
+        elif volumeDownBtn.is_pressed:
+            volumeDown()
+
+    if functionBtn.is_pressed == False and info == True:
+        info = False
+        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
 
 
 def exit_gracefully(signum=None, frame=None):

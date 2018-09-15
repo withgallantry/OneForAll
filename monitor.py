@@ -235,13 +235,13 @@ bat = 100
 condition = threading.Condition()
 
 def volumeUp():
-    global auido
+    global audio
     audio = min(100, audio + 10)
     os.system("amixer sset -q 'PCM' " + str(audio) + "%")
 
 
 def volumeDown():
-    global auido
+    global audio
     audio = max(0, audio - 10)
     os.system("amixer sset -q 'PCM' " + str(audio) + "%")
 

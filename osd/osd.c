@@ -432,8 +432,8 @@ int main(int argc, char *argv[])
 
 void updateInfo(IMAGE_LAYER_T *infoLayer)
 {
-    if (!infosLoaded) {
-    infosLoaded = true;
+    if (infosLoaded == 0) {
+    infosLoaded = 1;
     IMAGE_T *image = &(infoLayer->image);
 //    clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);

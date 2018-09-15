@@ -278,7 +278,7 @@ def checkFunction():
     if functionBtn.is_pressed == False and info == True:
         info = False
         print "turning off"
-        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
+        updateOSD(volt, bat, 20, wifi, audio, 1, -1, charge)
 
 
 def exit_gracefully(signum=None, frame=None):

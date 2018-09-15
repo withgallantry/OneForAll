@@ -103,19 +103,6 @@ except Exception as e:
     logging.exception("ERROR: Failed start OSD binary");
     sys.exit(1);
 
-
-def volumeUp():
-    global auido
-    audio = min(100, audio + 10)
-    os.system("amixer sset -q 'PCM' " + str(audio) + "%")
-
-
-def volumeDown():
-    global auido
-    audio = max(0, audio - 10)
-    os.system("amixer sset -q 'PCM' " + str(audio) + "%")
-
-
 # Check for shutdown state
 def checkShdn():
     state = GPIO.input(pi_shdn)
@@ -246,6 +233,17 @@ charge = 0
 bat = 100
 
 condition = threading.Condition()
+
+def volumeUp():
+    global auido
+    audio = min(100, audio + 10)
+    os.system("amixer sset -q 'PCM' " + str(audio) + "%")
+
+
+def volumeDown():
+    global auido
+    audio = max(0, audio - 10)
+    os.system("amixer sset -q 'PCM' " + str(audio) + "%")
 
 
 def reading():

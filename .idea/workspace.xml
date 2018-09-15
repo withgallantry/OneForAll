@@ -18,8 +18,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="271" column="0" lean-forward="true" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
+            <state relative-caret-position="333">
+              <caret line="259" column="20" lean-forward="true" selection-start-line="259" selection-start-column="20" selection-end-line="259" selection-end-column="20" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -42,8 +42,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="384" column="56" lean-forward="false" selection-start-line="384" selection-start-column="51" selection-end-line="384" selection-end-column="56" />
+            <state relative-caret-position="-1215">
+              <caret line="179" column="15" lean-forward="false" selection-start-line="179" selection-start-column="5" selection-end-line="179" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -101,7 +101,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>infolayer</find>
       <find>BATTERY_IMAGE</find>
       <find>loadPng</find>
       <find>vc_dispmanx_display_get_info</find>
@@ -131,6 +130,7 @@
       <find>serial</find>
       <find>functionBtn</find>
       <find>checkFunction</find>
+      <find>clearLayer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -836,12 +836,12 @@
       <workItem from="1535387323843" duration="17378000" />
       <workItem from="1536257653884" duration="4955000" />
       <workItem from="1536448951788" duration="6248000" />
-      <workItem from="1536686176995" duration="8053000" />
+      <workItem from="1536686176995" duration="8411000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60663000" />
+    <option name="totallyTimeSpent" value="61021000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="6" />
@@ -1191,14 +1191,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/osd.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="384" column="56" lean-forward="false" selection-start-line="384" selection-start-column="51" selection-end-line="384" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python-work.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -1209,10 +1201,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/osd/osd.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1215">
+          <caret line="179" column="15" lean-forward="false" selection-start-line="179" selection-start-column="5" selection-end-line="179" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="271" column="0" lean-forward="true" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
+        <state relative-caret-position="333">
+          <caret line="259" column="20" lean-forward="true" selection-start-line="259" selection-start-column="20" selection-end-line="259" selection-end-column="20" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>

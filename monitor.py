@@ -226,6 +226,7 @@ def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, brightness=0, info=False, 
 def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
 
+
 global brightness
 global volt
 global info
@@ -234,7 +235,6 @@ global audio
 global charge
 global bat
 
-
 brightness = -1
 info = False
 volt = -1
@@ -242,6 +242,7 @@ audio = 1
 wifi = 2
 charge = 0
 bat = 100
+
 
 def checkFunction():
     while functionBtn.is_pressed:
@@ -254,6 +255,11 @@ def checkFunction():
             volumeUp()
         elif volumeDownBtn.is_pressed:
             volumeDown()
+
+    if functionBtn.is_pressed == False and info == True:
+        info = False
+        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
+
 
 condition = threading.Condition()
 
@@ -269,10 +275,8 @@ def reading():
     global bat
     time.sleep(1)
     while (1):
-
         checkFunction()
         print "turning off"
-        info = False
 
 
 reading_thread = thread.start_new_thread(reading, ())

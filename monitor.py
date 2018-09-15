@@ -260,6 +260,7 @@ signal.signal(signal.SIGTERM, exit_gracefully)
 
 # Read Initial States
 volume = readVolumeLevel()
+print volume
 
 # Main loop
 try:

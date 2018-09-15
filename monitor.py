@@ -270,8 +270,8 @@ def reading():
     time.sleep(1)
     while (1):
 
-        print "checking"
         checkFunction()
+        print "turning off"
         info = False
 
 

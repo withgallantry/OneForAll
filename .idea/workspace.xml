@@ -16,10 +16,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="monitor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="251">
               <caret line="280" column="38" lean-forward="false" selection-start-line="280" selection-start-column="38" selection-end-line="280" selection-end-column="38" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
@@ -40,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
+      <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="434" column="15" lean-forward="false" selection-start-line="434" selection-start-column="8" selection-end-line="434" selection-end-column="15" />
+            <state relative-caret-position="481">
+              <caret line="463" column="1" lean-forward="false" selection-start-line="463" selection-start-column="1" selection-end-line="463" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -148,8 +148,8 @@
         <option value="$PROJECT_DIR$/monitor-test.py" />
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/python-work.py" />
-        <option value="$PROJECT_DIR$/osd/osd.c" />
         <option value="$PROJECT_DIR$/monitor.py" />
+        <option value="$PROJECT_DIR$/osd/osd.c" />
       </list>
     </option>
   </component>
@@ -837,12 +837,12 @@
       <workItem from="1535387323843" duration="17378000" />
       <workItem from="1536257653884" duration="4955000" />
       <workItem from="1536448951788" duration="6248000" />
-      <workItem from="1536686176995" duration="11302000" />
+      <workItem from="1536686176995" duration="11569000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63912000" />
+    <option name="totallyTimeSpent" value="64179000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="6" />
@@ -1202,21 +1202,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/osd.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="434" column="15" lean-forward="false" selection-start-line="434" selection-start-column="8" selection-end-line="434" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
+        <state relative-caret-position="251">
           <caret line="280" column="38" lean-forward="false" selection-start-line="280" selection-start-column="38" selection-end-line="280" selection-end-column="38" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/osd/osd.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="463" column="1" lean-forward="false" selection-start-line="463" selection-start-column="1" selection-end-line="463" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

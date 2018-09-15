@@ -430,18 +430,36 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+//void updateInfo(IMAGE_LAYER_T *infoLayer)
+//{
+//    if (infosLoaded == 0) {
+//    infosLoaded = 1;
+//    IMAGE_T *image = &(infoLayer->image);
+////    clearImageRGB(image, &backgroundColour);
+//    loadPng(&(infoLayer->image), INFO_IMAGE);
+//
+//    char buffer[128];
+////    int x = 1, y = 1;
+////    drawStringRGB(x, y, buffer, &textColour, image);
+//    changeSourceAndUpdateImageLayer(infoLayer);
+//    }
+//}
+
 void updateInfo(IMAGE_LAYER_T *infoLayer)
 {
-    if (infosLoaded == 0) {
-    infosLoaded = 1;
-    IMAGE_T *image = &(infoLayer->image);
-//    clearImageRGB(image, &backgroundColour);
-    loadPng(&(infoLayer->image), INFO_IMAGE);
-
     char buffer[128];
-//    int x = 1, y = 1;
-//    drawStringRGB(x, y, buffer, &textColour, image);
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    snprintf(buffer, sizeof(buffer),"%04d/%02d/%02d %02d:%02d:%02d\nTemperature: %.1f\x5\x43\nBrigthness:  %d/%d\nBattery:     %d%%\nVoltage:     %.2fV\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, temp, brightness, BRIGHTNESS_MAX, battery, voltage/100.f);
+
+    IMAGE_T *image = &(infoLayer->image);
+    clearImageRGB(image, &clearColor);
+    int x = 1, y = 1;
+    drawStringRGB(x+1, y, buffer, &backgroundColour, image);
+    drawStringRGB(x-1, y, buffer, &backgroundColour, image);
+    drawStringRGB(x, y+1, buffer, &backgroundColour, image);
+    drawStringRGB(x, y-1, buffer, &backgroundColour, image);
+    drawStringRGB(x, y, buffer, &textColour, image);
     changeSourceAndUpdateImageLayer(infoLayer);
-    }
 }
 

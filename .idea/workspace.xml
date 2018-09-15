@@ -18,8 +18,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="280" column="51" lean-forward="false" selection-start-line="280" selection-start-column="51" selection-end-line="280" selection-end-column="51" />
+            <state relative-caret-position="248">
+              <caret line="280" column="18" lean-forward="false" selection-start-line="280" selection-start-column="18" selection-end-line="280" selection-end-column="18" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -30,7 +30,7 @@
       <file leaf-file-name="python-work.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python-work.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="-277">
               <caret line="284" column="0" lean-forward="false" selection-start-line="284" selection-start-column="0" selection-end-line="284" selection-end-column="33" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
@@ -42,7 +42,7 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1215">
+            <state relative-caret-position="814">
               <caret line="179" column="15" lean-forward="false" selection-start-line="179" selection-start-column="5" selection-end-line="179" selection-end-column="15" />
               <folding />
             </state>
@@ -116,7 +116,6 @@
       <find>logging</find>
       <find>batt_shdn</find>
       <find>updateBattery</find>
-      <find>updateOSD</find>
       <find>gpio</find>
       <find>audio</find>
       <find>checkCharge</find>
@@ -127,10 +126,11 @@
       <find>lambdaCharge</find>
       <find>check_call</find>
       <find>info</find>
-      <find>serial</find>
       <find>functionBtn</find>
       <find>checkFunction</find>
+      <find>serial</find>
       <find>clearLayer</find>
+      <find>updateOSD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -836,12 +836,12 @@
       <workItem from="1535387323843" duration="17378000" />
       <workItem from="1536257653884" duration="4955000" />
       <workItem from="1536448951788" duration="6248000" />
-      <workItem from="1536686176995" duration="9027000" />
+      <workItem from="1536686176995" duration="9217000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61637000" />
+    <option name="totallyTimeSpent" value="61827000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="6" />
@@ -1193,7 +1193,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/python-work.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
+        <state relative-caret-position="-277">
           <caret line="284" column="0" lean-forward="false" selection-start-line="284" selection-start-column="0" selection-end-line="284" selection-end-column="33" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
@@ -1203,7 +1203,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1215">
+        <state relative-caret-position="814">
           <caret line="179" column="15" lean-forward="false" selection-start-line="179" selection-start-column="5" selection-end-line="179" selection-end-column="15" />
           <folding />
         </state>
@@ -1211,8 +1211,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="280" column="51" lean-forward="false" selection-start-line="280" selection-start-column="51" selection-end-line="280" selection-end-column="51" />
+        <state relative-caret-position="248">
+          <caret line="280" column="18" lean-forward="false" selection-start-line="280" selection-start-column="18" selection-end-line="280" selection-end-column="18" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>

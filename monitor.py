@@ -76,8 +76,23 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
-# Audio Variables
-volume = 0;
+# Global Variables
+
+global brightness
+global volt
+global info
+global wifi
+global volume
+global charge
+global bat
+
+brightness = -1
+info = False
+volt = -1
+volume = 1
+wifi = 2
+charge = 0
+bat = 100
 
 logging.basicConfig(filename='osd.log', level=logging.INFO)
 
@@ -196,23 +211,6 @@ def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, brightness=0, info=False, 
 # Misc functions
 def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
-
-
-global brightness
-global volt
-global info
-global wifi
-global volume
-global charge
-global bat
-
-brightness = -1
-info = False
-volt = -1
-volume = 1
-wifi = 2
-charge = 0
-bat = 100
 
 condition = threading.Condition()
 

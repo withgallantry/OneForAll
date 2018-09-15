@@ -16,7 +16,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="monitor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="217">
@@ -40,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
+      <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3479">
-              <caret line="183" column="35" lean-forward="false" selection-start-line="183" selection-start-column="4" selection-end-line="183" selection-end-column="35" />
+            <state relative-caret-position="276">
+              <caret line="406" column="21" lean-forward="false" selection-start-line="406" selection-start-column="21" selection-end-line="406" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -125,13 +125,13 @@
       <find>infoLayer</find>
       <find>clearLayer</find>
       <find>clearColor</find>
-      <find>updateOSD</find>
       <find>infos</find>
       <find>charge</find>
       <find>hud</find>
       <find>loadPng</find>
       <find>updateInfo</find>
       <find>changeSourceAndUpdateImageLayer</find>
+      <find>updateOSD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -148,8 +148,8 @@
         <option value="$PROJECT_DIR$/monitor-test.py" />
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/python-work.py" />
-        <option value="$PROJECT_DIR$/osd/osd.c" />
         <option value="$PROJECT_DIR$/monitor.py" />
+        <option value="$PROJECT_DIR$/osd/osd.c" />
       </list>
     </option>
   </component>
@@ -837,12 +837,12 @@
       <workItem from="1535387323843" duration="17378000" />
       <workItem from="1536257653884" duration="4955000" />
       <workItem from="1536448951788" duration="6248000" />
-      <workItem from="1536686176995" duration="10416000" />
+      <workItem from="1536686176995" duration="10638000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63026000" />
+    <option name="totallyTimeSpent" value="63248000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="6" />
@@ -1202,14 +1202,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/osd.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3479">
-          <caret line="183" column="35" lean-forward="false" selection-start-line="183" selection-start-column="4" selection-end-line="183" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
@@ -1217,6 +1209,14 @@
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/osd/osd.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="406" column="21" lean-forward="false" selection-start-line="406" selection-start-column="21" selection-end-line="406" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>

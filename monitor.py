@@ -240,6 +240,7 @@ reading_thread = thread.start_new_thread(reading, ())
 def checkFunction():
     global info
     while functionBtn.is_pressed:
+        info = True
         condition.acquire()
         condition.notify()
         condition.release()
@@ -247,7 +248,7 @@ def checkFunction():
             volumeUp()
         elif volumeDownBtn.is_pressed:
             volumeDown()
-
+    info = False
 
 def exit_gracefully(signum=None, frame=None):
     GPIO.cleanup

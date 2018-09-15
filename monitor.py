@@ -22,6 +22,7 @@
 #
 
 import RPi.GPIO as GPIO
+import uinput
 import time
 import os, signal, sys
 from subprocess import Popen, PIPE, check_output, check_call
@@ -76,6 +77,11 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
+# Joystick Hardware settings
+DZONE = 500  # dead zone applied to joystick (mV)
+VREF = 3300  # joystick Vcc (mV)
+events = [uinput.ABS_X + (0, VREF, 0, 0), uinput.ABS_Y + (0, VREF, 0, 0)]
+
 # Global Variables
 
 global brightness
@@ -100,6 +106,14 @@ logging.basicConfig(filename='osd.log', level=logging.INFO)
 
 adc = Adafruit_ADS1x15.ADS1015()
 
+# Create virtual HID for Joystick
+device = uinput.Device(events)
+time.sleep(1)
+
+# Send centering commands
+device.emit(uinput.ABS_X, VREF / 2, syn=False);
+device.emit(uinput.ABS_Y, VREF / 2);
+
 # Set up OSD service
 try:
     osd_proc = Popen(osd_path, shell=False, stdin=PIPE, stdout=None, stderr=None)
@@ -112,6 +126,7 @@ try:
 except Exception as e:
     logging.exception("ERROR: Failed start OSD binary");
     sys.exit(1);
+
 
 # Check for shutdown state
 def checkShdn():
@@ -133,6 +148,7 @@ def readVoltage():
 # Get voltage percent
 def getVoltagepercent(volt):
     return clamp(int(float(volt - batt_shdn) / float(batt_full - batt_shdn) * 100), 0, 100)
+
 
 def readVolumeLevel():
     process = os.popen("amixer | grep 'Left:' | awk -F'[][]' '{ print $2 }'")
@@ -176,12 +192,6 @@ def readModeWifi(toggle=False):
     return ret
 
 
-# Read CPU temp
-def getCPUtemperature():
-    res = os.popen('vcgencmd measure_temp').readline()
-    return float(res.replace("temp=", "").replace("'C\n", ""))
-
-
 # Do a shutdown
 def doShutdown(channel=None):
     check_call("sudo killall emulationstation", shell=True)
@@ -212,32 +222,32 @@ def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, brightness=0, info=False, 
 def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
 
+
 condition = threading.Condition()
+
 
 def volumeUp():
     global volume
     volume = min(100, volume + 10)
-    print volume
     os.system("amixer sset -q 'PCM' " + str(volume) + "%")
 
 
 def volumeDown():
     global volume
     volume = max(0, volume - 10)
-    print volume
     os.system("amixer sset -q 'PCM' " + str(volume) + "%")
 
 
-def reading():
+def inputReading():
     time.sleep(1)
     while (1):
-        checkFunction()
+        checkKeyInput()
 
 
 reading_thread = thread.start_new_thread(reading, ())
 
 
-def checkFunction():
+def checkKeyInput():
     global info
     while functionBtn.is_pressed:
         info = True
@@ -249,6 +259,24 @@ def checkFunction():
         elif volumeDownBtn.is_pressed:
             volumeDown()
     info = False
+
+
+def checkJoystickInput():
+    an0 = adc.read_adc(1, gain=1);
+    an1 = adc.read_adc(2, gain=1);
+    # Check and apply joystick states
+    if (an0 > (VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE)):
+        device.emit(uinput.ABS_X, an0 - 100 - 200 * (an0 < VREF / 2 - DZONE) + 200 * (an0 > VREF / 2 + DZONE))
+    else:
+        # Center the sticks if within deadzone
+        device.emit(uinput.ABS_X, VREF / 2)
+    if (an1 > (VREF / 2 + DZONE)) or (an1 < (VREF / 2 - DZONE)):
+        device.emit(uinput.ABS_Y, an1 + 100 - 200 * (an1 < VREF / 2 - DZONE) + 200 * (an1 > VREF / 2 + DZONE))
+    else:
+        # Center the sticks if within deadzone
+        device.emit(uinput.ABS_Y, VREF / 2)
+    time.sleep(.05)
+
 
 def exit_gracefully(signum=None, frame=None):
     GPIO.cleanup

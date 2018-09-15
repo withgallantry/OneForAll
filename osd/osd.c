@@ -404,7 +404,7 @@ int main(int argc, char *argv[])
         }
         else if(!infos)
         {
-            infos = 0;
+            infos = -1;
             infosLoaded = 0;
             clearLayer(&infoLayer);
         }

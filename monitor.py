@@ -258,6 +258,7 @@ def reading():
     time.sleep(1)
     while (1):
         checkFunction()
+        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
 
 
 reading_thread = thread.start_new_thread(reading, ())
@@ -278,7 +279,6 @@ def checkFunction():
 
     if functionBtn.is_pressed == False and info == True:
         info = False
-        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
 
 
 def exit_gracefully(signum=None, frame=None):
@@ -300,8 +300,6 @@ try:
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)
-        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
-
         condition.wait(10)
         condition.release()
         # time.sleep(0.5)

@@ -96,20 +96,22 @@ void updateBattery(float batval, IMAGE_LAYER_T* batteryLayer)
 }
 
 int getImageIconFromVolume(int vol) {
-    if (vol <= 100) {
-        return 5;
-        }
-    if (vol <= 75) {
-        return 4;
-        }
-    if (vol <= 50) {
-        return 3;
+
+
+    if (vol == 0) {
+        return 1;
         }
     if (vol <= 25) {
         return 2;
         }
-    if (vol == 0) {
-        return 1;
+    if (vol <= 50) {
+        return 3;
+        }
+    if (vol <= 75) {
+        return 4;
+        }
+    if (vol <= 100) {
+        return 5;
         }
     return 1;
 }

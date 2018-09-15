@@ -20,8 +20,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="262" column="12" lean-forward="false" selection-start-line="262" selection-start-column="12" selection-end-line="262" selection-end-column="12" />
+            <state relative-caret-position="162">
+              <caret line="218" column="28" lean-forward="false" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="28" />
               <folding>
                 <element signature="e#853#876#0" expanded="true" />
               </folding>
@@ -44,8 +44,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="114" column="1" lean-forward="false" selection-start-line="114" selection-start-column="1" selection-end-line="114" selection-end-column="1" />
+            <state relative-caret-position="380">
+              <caret line="111" column="8" lean-forward="false" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -118,11 +118,11 @@
       <find>readAudioLevel</find>
       <find>audio_image</find>
       <find>audio_images</find>
-      <find>vol_image</find>
       <find>audio_100</find>
-      <find>audio</find>
-      <find>getImageIconFromVolume</find>
       <find>volume</find>
+      <find>audio</find>
+      <find>vol_image</find>
+      <find>getImageIconFromVolume</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -828,12 +828,12 @@
       <workItem from="1535387323843" duration="17378000" />
       <workItem from="1536257653884" duration="4955000" />
       <workItem from="1536448951788" duration="6248000" />
-      <workItem from="1536686176995" duration="15025000" />
+      <workItem from="1536686176995" duration="15640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67635000" />
+    <option name="totallyTimeSpent" value="68250000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="6" />
@@ -1195,8 +1195,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="262" column="12" lean-forward="false" selection-start-line="262" selection-start-column="12" selection-end-line="262" selection-end-column="12" />
+        <state relative-caret-position="162">
+          <caret line="218" column="28" lean-forward="false" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="28" />
           <folding>
             <element signature="e#853#876#0" expanded="true" />
           </folding>
@@ -1205,8 +1205,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="114" column="1" lean-forward="false" selection-start-line="114" selection-start-column="1" selection-end-line="114" selection-end-column="1" />
+        <state relative-caret-position="380">
+          <caret line="111" column="8" lean-forward="false" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
           <folding />
         </state>
       </provider>

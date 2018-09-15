@@ -105,11 +105,13 @@ except Exception as e:
 
 
 def volumeUp():
+    global auido
     audio = min(100, audio + 10)
     os.system("amixer sset -q 'PCM' " + str(audio) + "%")
 
 
 def volumeDown():
+    global auido
     audio = max(0, audio - 10)
     os.system("amixer sset -q 'PCM' " + str(audio) + "%")
 
@@ -258,7 +260,6 @@ def reading():
     time.sleep(1)
     while (1):
         checkFunction()
-        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
 
 
 reading_thread = thread.start_new_thread(reading, ())
@@ -266,19 +267,14 @@ reading_thread = thread.start_new_thread(reading, ())
 
 def checkFunction():
     global info
-    if functionBtn.is_pressed:
+    while functionBtn.is_pressed:
         condition.acquire()
         condition.notify()
         condition.release()
-        info = True
-        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
         if volumeUpBtn.is_pressed:
             volumeUp()
         elif volumeDownBtn.is_pressed:
             volumeDown()
-
-    if functionBtn.is_pressed == False and info == True:
-        info = False
 
 
 def exit_gracefully(signum=None, frame=None):
@@ -300,6 +296,7 @@ try:
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)
+        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
         condition.wait(10)
         condition.release()
         # time.sleep(0.5)

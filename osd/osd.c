@@ -159,7 +159,7 @@ void getInput()
         }
         else if(!strcmp(word, "alloff"))
         {
-            hud = 0;
+            hud = 1;
         }
         else if(!strcmp(word, "charge"))
         {
@@ -432,7 +432,7 @@ int main(int argc, char *argv[])
 void updateInfo(IMAGE_LAYER_T *infoLayer)
 {
     IMAGE_T *image = &(infoLayer->image);
-    clearImageRGB(image, &backgroundColour);
+//    clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);
 
     char buffer[128];

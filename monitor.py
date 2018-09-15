@@ -275,7 +275,7 @@ def checkFunction():
         elif volumeDownBtn.is_pressed:
             volumeDown()
 
-    if functionBtn.is_pressed == False and info == True:
+    if functionBtn.is_pressed == False:
         info = False
         print "turning off"
         print info

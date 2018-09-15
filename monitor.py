@@ -264,6 +264,7 @@ def reading():
 reading_thread = thread.start_new_thread(reading, ())
 
 def checkFunction():
+    global info
     while functionBtn.is_pressed:
         condition.acquire()
         condition.notify()

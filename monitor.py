@@ -77,11 +77,6 @@ wifi_2bar = 4
 wifi_3bar = 5
 
 # Audio Variables
-audio_zero = 1;
-audio_25 = 2;
-audio_50 = 3;
-audio_75 = 4;
-audio_100 = 5;
 volume = 0;
 
 logging.basicConfig(filename='osd.log', level=logging.INFO)
@@ -124,8 +119,7 @@ def readVoltage():
 def getVoltagepercent(volt):
     return clamp(int(float(volt - batt_shdn) / float(batt_full - batt_shdn) * 100), 0, 100)
 
-
-def readAudioLevel():
+def readVolumeLevel():
     process = os.popen("amixer | grep 'Left:' | awk -F'[][]' '{ print $2 }'")
     res = process.readline()
     process.close()
@@ -136,19 +130,7 @@ def readAudioLevel():
     except Exception, e:
         logging.info("Audio Err    : " + str(e))
 
-    audio = 1
-    if (vol <= 100):
-        audio = audio_100;
-    if (vol <= 75):
-        audio = audio_75;
-    if (vol <= 50):
-        audio = audio_50;
-    if (vol <= 25):
-        audio = audio_25;
-    if (vol == 0):
-        audio = audio_zero;
-
-    return audio;
+    return vol;
 
 
 # Read wifi (Credits: kite's SAIO project)
@@ -220,14 +202,14 @@ global brightness
 global volt
 global info
 global wifi
-global audio
+global volume
 global charge
 global bat
 
 brightness = -1
 info = False
 volt = -1
-audio = 1
+volume = 1
 wifi = 2
 charge = 0
 bat = 100
@@ -235,28 +217,18 @@ bat = 100
 condition = threading.Condition()
 
 def volumeUp():
-    global audio
-    audio = min(100, audio + 10)
-    print audio
-    os.system("amixer sset -q 'PCM' " + str(audio) + "%")
+    global volume
+    volume = min(100, volume + 10)
+    os.system("amixer sset -q 'PCM' " + str(volume) + "%")
 
 
 def volumeDown():
-    global audio
-    audio = max(0, audio - 10)
-    print audio
-    os.system("amixer sset -q 'PCM' " + str(audio) + "%")
+    global volume
+    volume = max(0, volume - 10)
+    os.system("amixer sset -q 'PCM' " + str(volume) + "%")
 
 
 def reading():
-    global brightness
-    global volt
-    global info
-    global wifi
-    global audio
-    global audiocounter
-    global charge
-    global bat
     time.sleep(1)
     while (1):
         checkFunction()
@@ -287,7 +259,7 @@ signal.signal(signal.SIGINT, exit_gracefully)
 signal.signal(signal.SIGTERM, exit_gracefully)
 
 # Read Initial States
-audio = readAudioLevel()
+current_volume = readVolumeLevel()
 
 # Main loop
 try:
@@ -296,7 +268,7 @@ try:
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)
-        updateOSD(volt, bat, 20, wifi, audio, 1, info, charge)
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
         condition.wait(10)
         condition.release()
         # time.sleep(0.5)

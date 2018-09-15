@@ -276,7 +276,7 @@ def clamp(n, minn, maxn):
 brightness = -1
 info = False
 volt = -1
-audio = 1
+volume = 1
 audiocounter = 30
 wifi = 2
 charge = 0
@@ -290,7 +290,7 @@ def reading():
     global volt
     global info
     global wifi
-    global audio
+    global volume
     global audiocounter
     global charge
     global bat

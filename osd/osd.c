@@ -61,7 +61,7 @@ static RGBA8_T backgroundColour = { 0, 0, 0, 100 };
 static RGBA8_T textColour = { 255, 255, 255, 255 };
 static RGBA8_T greenColour = { 0, 255, 0, 200 };
 static RGBA8_T redColour = { 255, 0, 0, 200 };
-static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, voltage = 0;
+static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, voltage = 0, vol_image = 0;
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*);
@@ -377,10 +377,11 @@ int main(int argc, char *argv[])
         {
             clearLayer(&wimageLayer);
         }
-         if(audio > 0)
+         if(audio >= 0)
                 {
+                    vol_image = getImageIconFromVolume(audio);
                     //TODO preload for efficienty
-                    if (loadPng(&(aimageLayer.image), AUDIO_IMAGES[audio-1]) == false)
+                    if (loadPng(&(aimageLayer.image), AUDIO_IMAGES[vol_image-1]) == false)
                     {
                         fprintf(stderr, "unable to audio load %s\n", argv[optind]);
                     }
@@ -427,6 +428,25 @@ int main(int argc, char *argv[])
     //---------------------------------------------------------------------
 
     return 0;
+}
+
+int getImageIconFromVolume(int vol) {
+    if (vol <= 100) {
+        return 5;
+        }
+    if (vol <= 75) {
+        return 4;
+        }
+    if (vol <= 50) {
+        return 3;
+        }
+    if (vol <= 25) {
+        return 2;
+        }
+    if (vol == 0) {
+        return 1;
+        }
+    return 1;
 }
 
 void updateInfo(IMAGE_LAYER_T *infoLayer)

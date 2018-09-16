@@ -119,8 +119,8 @@ KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     DOWN: e.KEY_DOWN,  # Analog down
     LEFT: e.KEY_LEFT,  # Analog left
     RIGHT: e.KEY_RIGHT,  # Analog right
-    AN_X: uinput.ABS_X + (0, VREF, 0, 0),
-    AN_Y: uinput.ABS_Y + (0, VREF, 0, 0),
+    10001: uinput.ABS_X + (0, VREF, 0, 0),
+    10002: uinput.ABS_Y + (0, VREF, 0, 0),
 }
 
 # Global Variables

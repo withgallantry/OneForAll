@@ -24,6 +24,7 @@ import time
 import os, signal, sys
 from subprocess import Popen, PIPE, check_output, check_call
 import re
+import uinput
 import logging
 import logging.handlers
 import thread
@@ -33,7 +34,7 @@ import Adafruit_ADS1x15
 from gpiozero import Button
 
 try:
-    from evdev import uinput, ecodes as e
+    from evdev import ecodes as e
 except ImportError:
     exit("This library requires the evdev module\nInstall with: sudo pip install evdev")
 

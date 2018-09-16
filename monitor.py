@@ -147,7 +147,7 @@ wifi = 2
 charge = 0
 bat = 100
 
-logging.basicConfig(filename='osd.log', level=logging.INFO)
+logging.basicConfig(filename='osd.log', level=logging.DEBUG)
 
 # TO DOOOO REPLACE A LOT WITH THE CHECK_OUTPUT
 
@@ -172,6 +172,8 @@ def handle_button(pin):
 # Initialise Buttons
 for button in BUTTONS:
     gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=1)
+    logging.debug("Button: {}".format(button))
+
 
 # Send centering commands
 device.emit(uinput.ABS_X, VREF / 2, syn=False);

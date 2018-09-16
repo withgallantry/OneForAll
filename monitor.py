@@ -108,6 +108,11 @@ BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
 
 BOUNCE_TIME = 0.01  # Debounce time in seconds
 
+# GPIO Init
+gpio.setwarnings(False)
+gpio.setmode(gpio.BCM)
+gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
+
 KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     # See /usr/include/linux/input.h for keycode names
     BUTTON_A: uinput.KEY_Z,  # 'A' button

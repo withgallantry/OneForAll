@@ -149,12 +149,7 @@ logging.basicConfig(filename='osd.log', level=logging.INFO)
 adc = Adafruit_ADS1x15.ADS1015()
 
 # Create virtual HID for Joystick
-try:
-    device = uinput.Device(KEYS.values())
-except uinput.UInputError as e:
-    sys.stdout.write(e.message)
-    sys.stdout.write("Error registering uInput Device {}".format(sys.argv[0]))
-    sys.exit(0)
+device = uinput.Device(KEYS.values())
 
 time.sleep(1)
 

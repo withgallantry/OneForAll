@@ -21,8 +21,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="163" column="4" lean-forward="false" selection-start-line="163" selection-start-column="4" selection-end-line="163" selection-end-column="4" />
+            <state relative-caret-position="383">
+              <caret line="319" column="6" lean-forward="false" selection-start-line="319" selection-start-column="6" selection-end-line="319" selection-end-column="6" />
               <folding>
                 <element signature="e#852#863#0" expanded="true" />
               </folding>
@@ -94,8 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>check_call</find>
-      <find>functionBtn</find>
       <find>checkFunction</find>
       <find>infoLayer</find>
       <find>clearLayer</find>
@@ -124,6 +122,8 @@
       <find>getCPUtemperature</find>
       <find>GPIO</find>
       <find>while</find>
+      <find>check</find>
+      <find>reading_thread</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -816,12 +816,12 @@
       <workItem from="1535387323843" duration="17378000" />
       <workItem from="1536257653884" duration="4955000" />
       <workItem from="1536448951788" duration="6248000" />
-      <workItem from="1536686176995" duration="19500000" />
+      <workItem from="1536686176995" duration="19670000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72110000" />
+    <option name="totallyTimeSpent" value="72280000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="6" />
@@ -1189,8 +1189,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="163" column="4" lean-forward="false" selection-start-line="163" selection-start-column="4" selection-end-line="163" selection-end-column="4" />
+        <state relative-caret-position="383">
+          <caret line="319" column="6" lean-forward="false" selection-start-line="319" selection-start-column="6" selection-end-line="319" selection-end-column="6" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
           </folding>

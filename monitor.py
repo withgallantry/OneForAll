@@ -300,12 +300,13 @@ def volumeDown():
 
 
 def inputReading():
-    time.sleep(1)
+    # time.sleep(1)
     while (1):
-        checkKeyInput()
+        # checkKeyInput()
+        checkJoystickInput()
 
 
-reading_thread = thread.start_new_thread(reading, ())
+inputReadingThread = thread.start_new_thread(inputReading, ())
 
 
 def checkKeyInput():

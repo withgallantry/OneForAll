@@ -34,7 +34,7 @@ import Adafruit_ADS1x15
 from gpiozero import Button
 
 try:
-    from evdev import ecodes as e
+    from evdev import UInput, ecodes as e
 except ImportError:
     exit("This library requires the evdev module\nInstall with: sudo pip install evdev")
 

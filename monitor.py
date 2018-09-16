@@ -110,16 +110,16 @@ BOUNCE_TIME = 0.01  # Debounce time in seconds
 
 KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     # See /usr/include/linux/input.h for keycode names
-    BUTTON_A: e.KEY_Z,  # 'A' button
-    BUTTON_B: e.KEY_X,  # 'B' button
-    BUTTON_X: e.KEY_A,  # 'X' button
-    BUTTON_Y: e.KEY_S,  # 'Y' button
-    SELECT: e.KEY_LEFTCTRL,  # 'Select' button
-    START: e.KEY_ENTER,  # 'Start' button
-    UP: e.KEY_UP,  # Analog up
-    DOWN: e.KEY_DOWN,  # Analog down
-    LEFT: e.KEY_LEFT,  # Analog left
-    RIGHT: e.KEY_RIGHT,  # Analog right
+    BUTTON_A: uinput.KEY_Z,  # 'A' button
+    BUTTON_B: uinput.KEY_X,  # 'B' button
+    BUTTON_X: uinput.KEY_A,  # 'X' button
+    BUTTON_Y: uinput.KEY_S,  # 'Y' button
+    SELECT: uinput.KEY_LEFTCTRL,  # 'Select' button
+    START: uinput.KEY_ENTER,  # 'Start' button
+    UP: uinput.KEY_UP,  # Analog up
+    DOWN: uinput.KEY_DOWN,  # Analog down
+    LEFT: uinput.KEY_LEFT,  # Analog left
+    RIGHT: uinput.KEY_RIGHT,  # Analog right
     10001: uinput.ABS_X + (0, VREF, 0, 0),
     10002: uinput.ABS_Y + (0, VREF, 0, 0),
 }

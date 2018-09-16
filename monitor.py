@@ -163,7 +163,8 @@ def handle_button(pin):
     key = KEYS[pin]
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
-    device.write(e.EV_KEY, key, state)
+    device.emit(key, state)
+
     device.syn()
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
 

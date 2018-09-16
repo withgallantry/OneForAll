@@ -87,6 +87,7 @@ wifi_3bar = 5
 # Joystick Hardware settings
 DZONE = 500  # dead zone applied to joystick (mV)
 VREF = 3300  # joystick Vcc (mV)
+events = [uinput.ABS_X + (0, VREF, 0, 0), uinput.ABS_Y + (0, VREF, 0, 0)]
 
 # Configure Buttons
 LEFT = 26
@@ -102,26 +103,7 @@ START = 15
 L1 = 16
 R1 = 20
 
-BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
-           BUTTON_X, BUTTON_Y, SELECT, START, L1, R1]
-
-BOUNCE_TIME = 0.01  # Debounce time in seconds
-
-KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
-    # See /usr/include/linux/input.h for keycode names
-    BUTTON_A: e.KEY_Z,  # 'A' button
-    BUTTON_B: e.KEY_X,  # 'B' button
-    BUTTON_X: e.KEY_A,  # 'X' button
-    BUTTON_Y: e.KEY_S,  # 'Y' button
-    SELECT: e.KEY_LEFTCTRL,  # 'Select' button
-    START: e.KEY_ENTER,  # 'Start' button
-    UP: e.KEY_UP,  # Analog up
-    DOWN: e.KEY_DOWN,  # Analog down
-    LEFT: e.KEY_LEFT,  # Analog left
-    RIGHT: e.KEY_RIGHT,  # Analog right
-    AN_X: uinput.ABS_X + (0, VREF, 0, 0),
-    AN_Y: uinput.ABS_Y + (0, VREF, 0, 0),
-}
+BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B, BUTTON_X, BUTTON_Y, SELECT, START, L1, R1]
 
 # Global Variables
 
@@ -148,28 +130,8 @@ logging.basicConfig(filename='osd.log', level=logging.INFO)
 adc = Adafruit_ADS1x15.ADS1015()
 
 # Create virtual HID for Joystick
-try:
-    device = uinput.Device(KEYS.values())
-except uinput.UInputError as e:
-    sys.stdout.write(e.message)
-    sys.stdout.write("Error registering uInput Device {}".format(sys.argv[0]))
-    sys.exit(0)
-
+device = uinput.Device(events)
 time.sleep(1)
-
-
-def handle_button(pin):
-    key = KEYS[pin]
-    time.sleep(BOUNCE_TIME)
-    state = 0 if gpio.input(pin) else 1
-    device.write(e.EV_KEY, key, state)
-    device.syn()
-    logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
-
-
-# Initialise Buttons
-for button in BUTTONS:
-    gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=1)
 
 # Send centering commands
 device.emit(uinput.ABS_X, VREF / 2, syn=False);

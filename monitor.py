@@ -115,16 +115,16 @@ gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     # See /usr/include/linux/input.h for keycode names
-    BUTTON_A: uinput.KEY_Z,  # 'A' button
-    BUTTON_B: uinput.KEY_X,  # 'B' button
-    BUTTON_X: uinput.KEY_A,  # 'X' button
-    BUTTON_Y: uinput.KEY_S,  # 'Y' button
-    SELECT: uinput.KEY_LEFTCTRL,  # 'Select' button
-    START: uinput.KEY_ENTER,  # 'Start' button
-    UP: uinput.KEY_UP,  # Analog up
-    DOWN: uinput.KEY_DOWN,  # Analog down
-    LEFT: uinput.KEY_LEFT,  # Analog left
-    RIGHT: uinput.KEY_RIGHT,  # Analog right
+    BUTTON_A: uinput.BTN_A,  # 'A' button
+    BUTTON_B: uinput.BTN_B,  # 'B' button
+    BUTTON_X: uinput.BTN_X,  # 'X' button
+    BUTTON_Y: uinput.BTN_Y,  # 'Y' button
+    SELECT: uinput.BTN_SELECT,  # 'Select' button
+    START: uinput.BTN_START,  # 'Start' button
+    UP: uinput.BTN_NORTH,  # Analog up
+    DOWN: uinput.BTN_SOUTH,  # Analog down
+    LEFT: uinput.BTN_EAST,  # Analog left
+    RIGHT: uinput.BTN_WEST,  # Analog right
     10001: uinput.ABS_X + (0, VREF, 0, 0),
     10002: uinput.ABS_Y + (0, VREF, 0, 0),
 }

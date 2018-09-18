@@ -44,9 +44,9 @@ except ImportError:
     exit("This library requires the RPi.GPIO module\nInstall with: sudo pip install RPi.GPIO")
 
 # Button Variables
-functionBtn = Button(22)
-volumeUpBtn = Button(12)
-volumeDownBtn = Button(6)
+# functionBtn = Button(22)
+# volumeUpBtn = Button(12)
+# volumeDownBtn = Button(6)
 
 # Config variables
 bin_dir = '/home/pi/Retropie-open-OSD/'

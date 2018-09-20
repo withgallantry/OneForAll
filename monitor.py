@@ -330,8 +330,8 @@ def checkKeyInput():
 
 
 def checkJoystickInput():
-    an0 = adc.read_adc(1, gain=1);
-    an1 = adc.read_adc(2, gain=1);
+    an0 = adc.read_adc(1, gain=2);
+    an1 = adc.read_adc(2, gain=2);
     # Check and apply joystick states
     if (an0 > (VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE)):
         val = an0 - 100 - 200 * (an0 < VREF / 2 - DZONE) + 200 * (an0 > VREF / 2 + DZONE)

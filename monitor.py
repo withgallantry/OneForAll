@@ -354,9 +354,9 @@ def checkJoystickInput():
     if (an1 > (VREF / 2 + DZONE)) or (an1 < (VREF / 2 - DZONE)):
         valy = an1 + 100 - 200 * (an1 < VREF / 2 - DZONE) + 200 * (an1 > VREF / 2 + DZONE)
         device.emit(uinput.ABS_Y, valy)
-        # print "Y:"
-        # print valy
-        # print "--"
+        print "Y:"
+        print valy
+        print "--"
     else:
         # Center the sticks if within deadzone
         device.emit(uinput.ABS_Y, VREF / 2)

@@ -332,22 +332,22 @@ def checkKeyInput():
 def checkJoystickInput():
     an1 = adc.read_adc(1, gain=1);
     an0 = adc.read_adc(2, gain=1);
-
-    print "X Raw:"
-    print an0
-    print "Below"
-    print (VREF / 2 - DZONE)
-    print "Above"
-    print (VREF / 2 + DZONE)
-    print "--"
+    #
+    # print "X Raw:"
+    # print an0
+    # print "Below"
+    # print (VREF / 2 - DZONE)
+    # print "Above"
+    # print (VREF / 2 + DZONE)
+    # print "--"
 
     # Check and apply joystick states
     if (an0 > (VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE)):
         val = an0 - 100 - 200 * (an0 < VREF / 2 - DZONE) + 200 * (an0 > VREF / 2 + DZONE)
         device.emit(uinput.ABS_X, val)
-        # print "X:"
-        # print val
-        # print "--"
+        print "X:"
+        print val
+        print "--"
     else:
         # Center the sticks if within deadzone
         device.emit(uinput.ABS_X, VREF / 2)

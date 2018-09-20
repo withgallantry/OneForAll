@@ -330,8 +330,8 @@ def checkKeyInput():
 
 
 def checkJoystickInput():
-    an1 = adc.read_adc(1, gain=1);
-    an0 = adc.read_adc(2, gain=1);
+    an1 = adc.read_adc(1, gain=2);
+    an0 = adc.read_adc(2, gain=2);
 
     print "X Raw:"
     print an0

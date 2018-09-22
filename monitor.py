@@ -333,13 +333,13 @@ def checkJoystickInput():
     an1 = adc.read_adc(2, gain=2/3);
     an0 = adc.read_adc(1, gain=2/3);
     #
-    print "Y Raw:"
-    print an1
-    print "Below"
-    print (VREF / 2 - DZONE)
-    print "Above"
-    print (VREF / 2 + DZONE)
-    print "--"
+    # print "Y Raw:"
+    # print an1
+    # print "Below"
+    # print (VREF / 2 - DZONE)
+    # print "Above"
+    # print (VREF / 2 + DZONE)
+    # print "--"
     # Check and apply joystick states
     if (an0 > (VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE)):
         val = an0 - 100 - 200 * (an0 < VREF / 2 - DZONE) + 200 * (an0 > VREF / 2 + DZONE)

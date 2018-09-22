@@ -86,8 +86,8 @@ wifi_2bar = 4
 wifi_3bar = 5
 
 # Joystick Hardware settings
-DZONE = 500  # dead zone applied to joystick (mV)
-VREF = 3300  # joystick Vcc (mV)
+DZONE = 200  # dead zone applied to joystick (mV)
+VREF = 1600  # joystick Vcc (mV)
 
 # Configure Buttons
 LEFT = 26

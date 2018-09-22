@@ -86,8 +86,8 @@ wifi_2bar = 4
 wifi_3bar = 5
 
 # Joystick Hardware settings
-DZONE = 100  # dead zone applied to joystick (mV)
-VREF = 2400  # joystick Vcc (mV)
+DZONE = 500  # dead zone applied to joystick (mV)
+VREF = 5100  # joystick Vcc (mV)
 
 # Configure Buttons
 LEFT = 26
@@ -330,8 +330,8 @@ def checkKeyInput():
 
 
 def checkJoystickInput():
-    an1 = adc.read_adc(1, gain=1);
-    an0 = adc.read_adc(2, gain=1);
+    an1 = adc.read_adc(1, gain=0);
+    an0 = adc.read_adc(2, gain=0);
     #
     # print "X Raw:"
     # print an0
@@ -340,7 +340,6 @@ def checkJoystickInput():
     # print "Above"
     # print (VREF / 2 + DZONE)
     # print "--"
-
     # Check and apply joystick states
     if (an0 > (VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE)):
         val = an0 - 100 - 200 * (an0 < VREF / 2 - DZONE) + 200 * (an0 > VREF / 2 + DZONE)

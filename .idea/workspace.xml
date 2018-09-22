@@ -12,17 +12,25 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="356" column="6" lean-forward="false" selection-start-line="356" selection-start-column="6" selection-end-line="358" selection-end-column="18" />
+            <state relative-caret-position="177">
+              <caret line="333" column="32" lean-forward="false" selection-start-line="333" selection-start-column="32" selection-end-line="333" selection-end-column="32" />
               <folding>
                 <element signature="e#852#863#0" expanded="true" />
-                <marker date="1537448381000" expanded="true" signature="8962:9010" ph="..." />
               </folding>
             </state>
           </provider>
@@ -92,9 +100,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>clearColor</find>
-      <find>charge</find>
-      <find>hud</find>
       <find>loadPng</find>
       <find>updateInfo</find>
       <find>changeSourceAndUpdateImageLayer</find>
@@ -122,6 +127,9 @@
       <find>uinput</find>
       <find>ABS_X</find>
       <find>loggin</find>
+      <find>a</find>
+      <find>ads</find>
+      <find>adc.</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -816,12 +824,12 @@
       <workItem from="1536448951788" duration="6248000" />
       <workItem from="1536686176995" duration="22392000" />
       <workItem from="1537279397586" duration="4977000" />
-      <workItem from="1537436483587" duration="4457000" />
+      <workItem from="1537436483587" duration="7891000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84436000" />
+    <option name="totallyTimeSpent" value="87870000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="824" extended-state="6" />
@@ -842,7 +850,8 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15665236" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287858" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -855,7 +864,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287858" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -911,7 +919,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
-            <marker date="1537448381000" expanded="true" signature="8962:9010" ph="..." />
           </folding>
         </state>
       </provider>
@@ -950,7 +957,6 @@
           <caret line="370" column="0" lean-forward="false" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
-            <marker date="1537448381000" expanded="true" signature="8962:9010" ph="..." />
           </folding>
         </state>
       </provider>
@@ -989,7 +995,6 @@
           <caret line="370" column="0" lean-forward="true" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
-            <marker date="1537448381000" expanded="true" signature="8962:9010" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1104,7 +1109,6 @@
           <caret line="201" column="41" lean-forward="false" selection-start-line="201" selection-start-column="20" selection-end-line="201" selection-end-column="41" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
-            <marker date="1537448381000" expanded="true" signature="8962:9010" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1191,11 +1195,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="356" column="6" lean-forward="false" selection-start-line="356" selection-start-column="6" selection-end-line="358" selection-end-column="18" />
+        <state relative-caret-position="177">
+          <caret line="333" column="32" lean-forward="false" selection-start-line="333" selection-start-column="32" selection-end-line="333" selection-end-column="32" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
-            <marker date="1537448381000" expanded="true" signature="8962:9010" ph="..." />
           </folding>
         </state>
       </provider>

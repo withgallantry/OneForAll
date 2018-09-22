@@ -333,8 +333,8 @@ def checkJoystickInput():
     an1 = adc.read_adc(2, gain=2/3);
     an0 = adc.read_adc(1, gain=2/3);
     #
-    print "X Raw:"
-    print an0
+    print "Y Raw:"
+    print an1
     print "Below"
     print (VREF / 2 - DZONE)
     print "Above"

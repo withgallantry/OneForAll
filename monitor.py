@@ -147,7 +147,7 @@ wifi = 2
 charge = 0
 bat = 100
 
-logging.basicConfig(filename='osd.log', level=logging.INFO)
+# logging.basicConfig(filename='osd.log', level=logging.INFO)
 
 # TO DOOOO REPLACE A LOT WITH THE CHECK_OUTPUT
 
@@ -204,8 +204,8 @@ def checkShdn():
 def readVoltage():
     voltVal = adc.read_adc(0, gain=1);
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
-    logging.info("VoltVal [" + str(voltVal) + "]")
-    logging.info("Volt    [" + str(volt) + "]V")
+    print "Voltage"
+    print voltVal
     return volt
 
 

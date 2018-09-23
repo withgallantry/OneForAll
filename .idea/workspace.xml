@@ -27,8 +27,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="375" column="23" lean-forward="false" selection-start-line="375" selection-start-column="23" selection-end-line="375" selection-end-column="23" />
+            <state relative-caret-position="148">
+              <caret line="206" column="18" lean-forward="false" selection-start-line="206" selection-start-column="18" selection-end-line="206" selection-end-column="18" />
               <folding>
                 <element signature="e#852#863#0" expanded="true" />
               </folding>
@@ -126,10 +126,10 @@
       <find>reading_thread</find>
       <find>uinput</find>
       <find>ABS_X</find>
-      <find>loggin</find>
       <find>a</find>
       <find>ads</find>
       <find>adc.</find>
+      <find>loggin</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -824,12 +824,12 @@
       <workItem from="1536448951788" duration="6248000" />
       <workItem from="1536686176995" duration="22392000" />
       <workItem from="1537279397586" duration="4977000" />
-      <workItem from="1537436483587" duration="12153000" />
+      <workItem from="1537436483587" duration="12942000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92132000" />
+    <option name="totallyTimeSpent" value="92921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="824" extended-state="6" />
@@ -1195,8 +1195,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="375" column="23" lean-forward="false" selection-start-line="375" selection-start-column="23" selection-end-line="375" selection-end-column="23" />
+        <state relative-caret-position="148">
+          <caret line="206" column="18" lean-forward="false" selection-start-line="206" selection-start-column="18" selection-end-line="206" selection-end-column="18" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
           </folding>

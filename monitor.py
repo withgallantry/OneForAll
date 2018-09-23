@@ -313,6 +313,7 @@ def inputReading():
     global charge
     while (1):
         condition.acquire()
+        info = False
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
         volt = readVoltage()
         bat = getVoltagepercent(volt)
@@ -340,10 +341,6 @@ def checkKeyInput():
             volumeDown()
 
     info = False
-    if info == True:
-        condition.acquire()
-        condition.notify()
-        condition.release()
 
 
 def checkJoystickInput():

@@ -29,16 +29,13 @@ import logging.handlers
 import thread
 import threading
 import signal
+import Adafruit_ADS1x15
+from gpiozero import Button
 
 try:
-    import Adafruit_ADS1x15
+    from evdev import uinput, UInput, ecodes as e
 except ImportError:
-    exit("This library requires the Adafruit ADS1x15 module\nInstall with: sudo pip install adafruit-ads1x15")
-
-try:
-    import uinput
-except ImportError:
-    exit("This library requires the evdev module\nInstall with: sudo pip install uinput")
+    exit("This library requires the evdev module\nInstall with: sudo pip install evdev")
 
 try:
     import RPi.GPIO as gpio
@@ -46,9 +43,9 @@ except ImportError:
     exit("This library requires the RPi.GPIO module\nInstall with: sudo pip install RPi.GPIO")
 
 # Button Variables
-# functionBtn = Button(22)
-# volumeUpBtn = Button(12)
-# volumeDownBtn = Button(6)
+functionBtn = Button(22)
+volumeUpBtn = Button(12)
+volumeDownBtn = Button(6)
 
 # Config variables
 bin_dir = '/home/pi/Retropie-open-OSD/'
@@ -88,8 +85,9 @@ wifi_2bar = 4
 wifi_3bar = 5
 
 # Joystick Hardware settings
-DZONE = 300  # dead zone applied to joystick (mV)
-VREF = 1600  # joystick Vcc (mV)
+DZONE = 500  # dead zone applied to joystick (mV)
+VREF = 3300  # joystick Vcc (mV)
+events = [uinput.ABS_X + (0, VREF, 0, 0), uinput.ABS_Y + (0, VREF, 0, 0)]
 
 # Configure Buttons
 LEFT = 26
@@ -104,33 +102,8 @@ SELECT = 22
 START = 15
 L1 = 16
 R1 = 20
-HOTKEY = 22
 
-BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
-           BUTTON_X, BUTTON_Y, SELECT, START, L1, R1]
-
-BOUNCE_TIME = 0.01  # Debounce time in seconds
-
-# GPIO Init
-gpio.setwarnings(False)
-gpio.setmode(gpio.BCM)
-gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
-
-KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
-    # See /usr/include/linux/input.h for keycode names
-    BUTTON_A: uinput.BTN_BASE,  # 'A' button
-    BUTTON_B: uinput.BTN_BASE2,  # 'B' button
-    BUTTON_X: uinput.BTN_BASE3,  # 'X' button
-    BUTTON_Y: uinput.BTN_BASE4,  # 'Y' button
-    SELECT: uinput.BTN_SELECT,  # 'Select' button
-    START: uinput.BTN_START,  # 'Start' button
-    UP: uinput.BTN_NORTH,  # Analog up
-    DOWN: uinput.BTN_SOUTH,  # Analog down
-    LEFT: uinput.BTN_EAST,  # Analog left
-    RIGHT: uinput.BTN_WEST,  # Analog right
-    10001: uinput.ABS_X + (0, VREF, 0, 0),
-    10002: uinput.ABS_Y + (0, VREF, 0, 0),
-}
+BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B, BUTTON_X, BUTTON_Y, SELECT, START, L1, R1]
 
 # Global Variables
 
@@ -150,32 +123,15 @@ wifi = 2
 charge = 0
 bat = 100
 
-# logging.basicConfig(filename='osd.log', level=logging.INFO)
+logging.basicConfig(filename='osd.log', level=logging.INFO)
 
-# TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
+# TO DOOOO REPLACE A LOT WITH THE CHECK_OUTPUT
 
 adc = Adafruit_ADS1x15.ADS1015()
 
 # Create virtual HID for Joystick
-device = uinput.Device(KEYS.values())
-
+device = uinput.Device(events)
 time.sleep(1)
-
-
-def handle_button(pin):
-    key = KEYS[pin]
-    time.sleep(BOUNCE_TIME)
-    state = 0 if gpio.input(pin) else 1
-    device.emit(key, state)
-
-    device.syn()
-    logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
-
-
-# Initialise Buttons
-for button in BUTTONS:
-    gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=1)
-    logging.debug("Button: {}".format(button))
 
 # Send centering commands
 device.emit(uinput.ABS_X, VREF / 2, syn=False);
@@ -207,6 +163,8 @@ def checkShdn():
 def readVoltage():
     voltVal = adc.read_adc(0, gain=1);
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
+    logging.info("VoltVal [" + str(voltVal) + "]")
+    logging.info("Volt    [" + str(volt) + "]V")
     return volt
 
 
@@ -229,7 +187,7 @@ def readVolumeLevel():
     return vol;
 
 
-# Read wifi (Credits: kite's SAIO project) Modified to only read, not set wifi.
+# Read wifi (Credits: kite's SAIO project)
 def readModeWifi(toggle=False):
     global wif
     ret = wif
@@ -304,50 +262,45 @@ def volumeDown():
 
 
 def inputReading():
-    # time.sleep(1)
+    time.sleep(1)
     while (1):
         checkKeyInput()
-        # checkJoystickInput()
-        # time.sleep(.05)
 
-inputReadingThread = thread.start_new_thread(inputReading, ())
+
+reading_thread = thread.start_new_thread(reading, ())
+
 
 def checkKeyInput():
     global info
 
     # TODO Convert to state
-    while not gpio.input(HOTKEY):
+    while functionBtn.is_pressed:
         info = True
         condition.acquire()
         condition.notify()
         condition.release()
-        if not gpio.input(UP):
+        if volumeUpBtn.is_pressed:
             volumeUp()
-        elif not gpio.input(DOWN):
+        elif volumeDownBtn.is_pressed:
             volumeDown()
     info = False
 
 
 def checkJoystickInput():
-    an1 = adc.read_adc(2, gain=2 / 3);
-    an0 = adc.read_adc(1, gain=2 / 3);
-
-    logging.debug("X: {} | Y: {}".format(an0, an1))
-    logging.debug("Above: {} | Below: {}".format((VREF / 2 + DZONE), (VREF / 2 - DZONE)))
-
+    an0 = adc.read_adc(1, gain=1);
+    an1 = adc.read_adc(2, gain=1);
     # Check and apply joystick states
     if (an0 > (VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE)):
-        val = an0 - 100 - 200 * (an0 < VREF / 2 - DZONE) + 200 * (an0 > VREF / 2 + DZONE)
-        device.emit(uinput.ABS_X, val)
+        device.emit(uinput.ABS_X, an0 - 100 - 200 * (an0 < VREF / 2 - DZONE) + 200 * (an0 > VREF / 2 + DZONE))
     else:
         # Center the sticks if within deadzone
         device.emit(uinput.ABS_X, VREF / 2)
     if (an1 > (VREF / 2 + DZONE)) or (an1 < (VREF / 2 - DZONE)):
-        valy = an1 + 100 - 200 * (an1 < VREF / 2 - DZONE) + 200 * (an1 > VREF / 2 + DZONE)
-        device.emit(uinput.ABS_Y, valy)
+        device.emit(uinput.ABS_Y, an1 + 100 - 200 * (an1 < VREF / 2 - DZONE) + 200 * (an1 > VREF / 2 + DZONE))
     else:
         # Center the sticks if within deadzone
         device.emit(uinput.ABS_Y, VREF / 2)
+    time.sleep(.05)
 
 
 def exit_gracefully(signum=None, frame=None):
@@ -363,8 +316,6 @@ signal.signal(signal.SIGTERM, exit_gracefully)
 volume = readVolumeLevel()
 print volume
 
-wifi = readModeWifi()
-
 # Main loop
 try:
     print "STARTED!"
@@ -376,6 +327,7 @@ try:
         condition.wait(10)
         condition.release()
         # time.sleep(0.5)
+# print 'WAKE'
 
 except KeyboardInterrupt:
     exit_gracefully()

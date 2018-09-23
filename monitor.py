@@ -305,29 +305,14 @@ def volumeDown():
 
 def inputReading():
     # time.sleep(1)
-    global volume
-    global wifi
-    global info
-    global volt
-    global bat
-    global charge
     while (1):
-        condition.acquire()
-        info = False
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
-        volt = readVoltage()
-        bat = getVoltagepercent(volt)
-        condition.wait(10)
-        condition.release()
+        checkKeyInput()
+        checkJoystickInput()
+        time.sleep(.05)
 
 
 def checkKeyInput():
-    global volume
-    global wifi
     global info
-    global volt
-    global bat
-    global charge
 
     # TODO Convert to state
     while not gpio.input(HOTKEY):
@@ -386,9 +371,12 @@ inputReadingThread = thread.start_new_thread(inputReading, ())
 try:
     print "STARTED!"
     while 1:
-        checkKeyInput()
-        checkJoystickInput()
-        time.sleep(.05)
+        condition.acquire()
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+        volt = readVoltage()
+        bat = getVoltagepercent(volt)
+        condition.wait(10)
+        condition.release()
         # time.sleep(0.5)
 
 except KeyboardInterrupt:

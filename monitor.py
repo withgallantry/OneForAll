@@ -309,6 +309,7 @@ def inputReading():
     global wifi
     global info
     global volt
+    global bat
     global charge
     while (1):
         condition.acquire()
@@ -320,7 +321,12 @@ def inputReading():
 
 
 def checkKeyInput():
+    global volume
+    global wifi
     global info
+    global volt
+    global bat
+    global charge
 
     # TODO Convert to state
     while not gpio.input(HOTKEY):
@@ -332,6 +338,10 @@ def checkKeyInput():
             volumeUp()
         elif not gpio.input(DOWN):
             volumeDown()
+
+    if info == True:
+        info = False
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
     info = False
 
 

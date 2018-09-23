@@ -24,19 +24,21 @@ import time
 import os, signal, sys
 from subprocess import Popen, PIPE, check_output, check_call
 import re
-import uinput
 import logging
 import logging.handlers
 import thread
 import threading
 import signal
-import Adafruit_ADS1x15
-from gpiozero import Button
 
 try:
-    from evdev import UInput, ecodes as e
+    import Adafruit_ADS1x15
 except ImportError:
-    exit("This library requires the evdev module\nInstall with: sudo pip install evdev")
+    exit("This library requires the Adafruit ADS1x15 module\nInstall with: sudo pip install adafruit-ads1x15")
+
+try:
+    import uinput
+except ImportError:
+    exit("This library requires the evdev module\nInstall with: sudo pip install uinput")
 
 try:
     import RPi.GPIO as gpio
@@ -204,8 +206,6 @@ def checkShdn():
 def readVoltage():
     voltVal = adc.read_adc(0, gain=1);
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
-    print "Voltage"
-    print voltVal
     return volt
 
 
@@ -375,7 +375,6 @@ try:
         checkJoystickInput()
         time.sleep(.05)
         # time.sleep(0.5)
-# print 'WAKE'
 
 except KeyboardInterrupt:
     exit_gracefully()

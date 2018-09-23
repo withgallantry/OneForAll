@@ -320,14 +320,14 @@ def checkKeyInput():
     global info
 
     # TODO Convert to state
-    while gpio.input(HOTKEY):
+    while not gpio.input(HOTKEY):
         info = True
         condition.acquire()
         condition.notify()
         condition.release()
-        if gpio.input(UP):
+        if not gpio.input(UP):
             volumeUp()
-        elif gpio.input(DOWN):
+        elif not gpio.input(DOWN):
             volumeDown()
     info = False
 

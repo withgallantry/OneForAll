@@ -307,8 +307,8 @@ def inputReading():
     # time.sleep(1)
     while (1):
         checkKeyInput()
-        # checkJoystickInput()
-        # time.sleep(.05)
+        checkJoystickInput()
+        time.sleep(.05)
 
 inputReadingThread = thread.start_new_thread(inputReading, ())
 

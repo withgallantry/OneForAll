@@ -29,10 +29,11 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="310" column="16" lean-forward="true" selection-start-line="310" selection-start-column="16" selection-end-line="310" selection-end-column="16" />
+            <state relative-caret-position="160">
+              <caret line="309" column="0" lean-forward="false" selection-start-line="309" selection-start-column="0" selection-end-line="310" selection-end-column="23" />
               <folding>
                 <element signature="e#852#863#0" expanded="true" />
+                <marker date="1537740002000" expanded="true" signature="7711:7755" ph="..." />
               </folding>
             </state>
           </provider>
@@ -848,12 +849,12 @@
       <workItem from="1536448951788" duration="6248000" />
       <workItem from="1536686176995" duration="22392000" />
       <workItem from="1537279397586" duration="4977000" />
-      <workItem from="1537436483587" duration="18617000" />
+      <workItem from="1537436483587" duration="18906000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98596000" />
+    <option name="totallyTimeSpent" value="98885000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="824" extended-state="6" />
@@ -943,6 +944,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
+            <marker date="1537740002000" expanded="true" signature="7711:7755" ph="..." />
           </folding>
         </state>
       </provider>
@@ -981,6 +983,7 @@
           <caret line="370" column="0" lean-forward="false" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
+            <marker date="1537740002000" expanded="true" signature="7711:7755" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1019,6 +1022,7 @@
           <caret line="370" column="0" lean-forward="true" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
+            <marker date="1537740002000" expanded="true" signature="7711:7755" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1116,6 +1120,7 @@
           <caret line="201" column="41" lean-forward="false" selection-start-line="201" selection-start-column="20" selection-end-line="201" selection-end-column="41" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
+            <marker date="1537740002000" expanded="true" signature="7711:7755" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1220,10 +1225,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="310" column="16" lean-forward="true" selection-start-line="310" selection-start-column="16" selection-end-line="310" selection-end-column="16" />
+        <state relative-caret-position="160">
+          <caret line="309" column="0" lean-forward="false" selection-start-line="309" selection-start-column="0" selection-end-line="310" selection-end-column="23" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
+            <marker date="1537740002000" expanded="true" signature="7711:7755" ph="..." />
           </folding>
         </state>
       </provider>

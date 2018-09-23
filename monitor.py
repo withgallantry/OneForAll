@@ -316,9 +316,6 @@ def inputReading():
         condition.release()
 
 
-inputReadingThread = thread.start_new_thread(inputReading, ())
-
-
 def checkKeyInput():
     global info
 
@@ -372,6 +369,7 @@ print volume
 
 wifi = readModeWifi();
 
+inputReadingThread = thread.start_new_thread(inputReading, ())
 
 # Main loop
 try:

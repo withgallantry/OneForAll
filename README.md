@@ -15,7 +15,7 @@ The software is intendeed for mobile application as it features:
 
 ## Build instructions:
 
-* git clone --recursive https://github.com/vascofazza/Retropie-open-OSD.git
+* git clone --recursive https://github.com/withgallantry/Retropie-open-OSD.git
 
 * make
 
@@ -23,7 +23,7 @@ The software is intendeed for mobile application as it features:
 
 * Configure (edit) the monitor script accordingly to your hardware configuration
 
-* python monitor.py
+* sudo python monitor.py
 
 ### or...
 

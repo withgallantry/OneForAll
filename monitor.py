@@ -151,7 +151,7 @@ bat = 100
 
 # logging.basicConfig(filename='osd.log', level=logging.INFO)
 
-# TO DOOOO REPLACE A LOT WITH THE CHECK_OUTPUT
+# TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 
 adc = Adafruit_ADS1x15.ADS1015()
 
@@ -228,7 +228,7 @@ def readVolumeLevel():
     return vol;
 
 
-# Read wifi (Credits: kite's SAIO project)
+# Read wifi (Credits: kite's SAIO project) Modified to only read, not set wifi.
 def readModeWifi(toggle=False):
     global wif
     ret = wif
@@ -304,6 +304,8 @@ def volumeDown():
 
 def inputReading():
     # time.sleep(1)
+    global volume
+    global wifi
     while (1):
         # checkKeyInput()
         condition.acquire()
@@ -367,6 +369,9 @@ signal.signal(signal.SIGTERM, exit_gracefully)
 # Read Initial States
 volume = readVolumeLevel()
 print volume
+
+wifi = readModeWifi();
+
 
 # Main loop
 try:

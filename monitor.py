@@ -307,6 +307,9 @@ def inputReading():
     # time.sleep(1)
     global volume
     global wifi
+    global info
+    global volt
+    global charge
     while (1):
         condition.acquire()
         volt = readVoltage()

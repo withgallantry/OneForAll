@@ -104,6 +104,7 @@ SELECT = 22
 START = 15
 L1 = 16
 R1 = 20
+HOTKEY = 22
 
 BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
            BUTTON_X, BUTTON_Y, SELECT, START, L1, R1]
@@ -307,7 +308,6 @@ def inputReading():
     global volume
     global wifi
     while (1):
-        # checkKeyInput()
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)
@@ -320,14 +320,14 @@ def checkKeyInput():
     global info
 
     # TODO Convert to state
-    while functionBtn.is_pressed:
+    while gpio.input(HOTKEY):
         info = True
         condition.acquire()
         condition.notify()
         condition.release()
-        if volumeUpBtn.is_pressed:
+        if gpio.input(UP):
             volumeUp()
-        elif volumeDownBtn.is_pressed:
+        elif gpio.input(DOWN):
             volumeDown()
     info = False
 
@@ -375,6 +375,7 @@ inputReadingThread = thread.start_new_thread(inputReading, ())
 try:
     print "STARTED!"
     while 1:
+        checkKeyInput()
         checkJoystickInput()
         time.sleep(.05)
         # time.sleep(0.5)

@@ -313,9 +313,9 @@ def inputReading():
     global charge
     while (1):
         condition.acquire()
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
         volt = readVoltage()
         bat = getVoltagepercent(volt)
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
         condition.wait(10)
         condition.release()
 
@@ -339,10 +339,11 @@ def checkKeyInput():
         elif not gpio.input(DOWN):
             volumeDown()
 
-    if info == True:
-        info = False
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
     info = False
+    if info == True:
+        condition.acquire()
+        condition.notify()
+        condition.release()
 
 
 def checkJoystickInput():

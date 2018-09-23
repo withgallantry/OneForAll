@@ -147,7 +147,7 @@ wifi = 2
 charge = 0
 bat = 100
 
-logging.basicConfig(filename='osd.log', level=logging.DEBUG)
+logging.basicConfig(filename='osd.log', level=logging.INFO)
 
 # TO DOOOO REPLACE A LOT WITH THE CHECK_OUTPUT
 
@@ -173,7 +173,6 @@ def handle_button(pin):
 for button in BUTTONS:
     gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=1)
     logging.debug("Button: {}".format(button))
-
 
 # Send centering commands
 device.emit(uinput.ABS_X, VREF / 2, syn=False);
@@ -307,7 +306,12 @@ def inputReading():
     # time.sleep(1)
     while (1):
         # checkKeyInput()
-        checkJoystickInput()
+        condition.acquire()
+        volt = readVoltage()
+        bat = getVoltagepercent(volt)
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+        condition.wait(10)
+        condition.release()
 
 
 inputReadingThread = thread.start_new_thread(inputReading, ())
@@ -330,36 +334,25 @@ def checkKeyInput():
 
 
 def checkJoystickInput():
-    an1 = adc.read_adc(2, gain=2/3);
-    an0 = adc.read_adc(1, gain=2/3);
-    #
-    # print "Y Raw:"
-    # print an1
-    # print "Below"
-    # print (VREF / 2 - DZONE)
-    # print "Above"
-    # print (VREF / 2 + DZONE)
-    # print "--"
+    an1 = adc.read_adc(2, gain=2 / 3);
+    an0 = adc.read_adc(1, gain=2 / 3);
+
+    logging.debug("X: {} | Y: {}".format(an0, an1))
+    logging.debug("Above: {} | Below: {}".format((VREF / 2 + DZONE), (VREF / 2 - DZONE)))
+
     # Check and apply joystick states
     if (an0 > (VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE)):
         val = an0 - 100 - 200 * (an0 < VREF / 2 - DZONE) + 200 * (an0 > VREF / 2 + DZONE)
         device.emit(uinput.ABS_X, val)
-        # print "X:"
-        # print val
-        # print "--"
     else:
         # Center the sticks if within deadzone
         device.emit(uinput.ABS_X, VREF / 2)
     if (an1 > (VREF / 2 + DZONE)) or (an1 < (VREF / 2 - DZONE)):
         valy = an1 + 100 - 200 * (an1 < VREF / 2 - DZONE) + 200 * (an1 > VREF / 2 + DZONE)
         device.emit(uinput.ABS_Y, valy)
-        # print "Y:"
-        # print valy
-        # print "--"
     else:
         # Center the sticks if within deadzone
         device.emit(uinput.ABS_Y, VREF / 2)
-    time.sleep(.05)
 
 
 def exit_gracefully(signum=None, frame=None):
@@ -379,12 +372,8 @@ print volume
 try:
     print "STARTED!"
     while 1:
-        condition.acquire()
-        volt = readVoltage()
-        bat = getVoltagepercent(volt)
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
-        condition.wait(10)
-        condition.release()
+        checkJoystickInput()
+        time.sleep(.05)
         # time.sleep(0.5)
 # print 'WAKE'
 

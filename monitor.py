@@ -313,9 +313,10 @@ def inputReading():
     global charge
     while (1):
         condition.acquire()
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
         volt = readVoltage()
         bat = getVoltagepercent(volt)
+        print info
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
         condition.wait(10)
         condition.release()
 

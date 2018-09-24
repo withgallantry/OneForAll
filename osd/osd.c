@@ -61,7 +61,7 @@ static RGBA8_T backgroundColour = { 0, 0, 0, 100 };
 static RGBA8_T textColour = { 255, 255, 255, 255 };
 static RGBA8_T greenColour = { 0, 255, 0, 200 };
 static RGBA8_T redColour = { 255, 0, 0, 200 };
-static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, voltage = 0, vol_image = 0;
+static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, voltage = 0, vol_image = 0, infos_loaded = 0;
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*);
@@ -422,10 +422,11 @@ int main(int argc, char *argv[])
         {
             updateInfo(&infoLayer);
         }
-        else if(infos == 0)
+        else if(infos <= 0)
         {
             infos = 0;
             clearLayer(&infoLayer);
+            infos_loaded = 0;
         }
         else
         {
@@ -451,6 +452,7 @@ int main(int argc, char *argv[])
 
 void updateInfo(IMAGE_LAYER_T *infoLayer)
 {
+    if (infos_loaded == 0) {
     IMAGE_T *image = &(infoLayer->image);
 //    clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);
@@ -459,6 +461,8 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
 //    int x = 1, y = 1;
 //    drawStringRGB(x, y, buffer, &textColour, image);
     changeSourceAndUpdateImageLayer(infoLayer);
+    infos_loaded = 1;
+    }
 }
 
 

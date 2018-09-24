@@ -322,16 +322,11 @@ def inputReading():
 
 
 def checkKeyInput():
-    global volume
-    global wifi
     global info
-    global volt
-    global bat
-    global charge
 
     # TODO Convert to state
     while not gpio.input(HOTKEY):
-        # info = True
+        info = True
         condition.acquire()
         condition.notify()
         condition.release()
@@ -339,7 +334,7 @@ def checkKeyInput():
             volumeUp()
         elif not gpio.input(DOWN):
             volumeDown()
-    # info = False
+    info = False
 
 
 def checkJoystickInput():

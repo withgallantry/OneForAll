@@ -313,7 +313,7 @@ def inputReading():
     global charge
     while (1):
         checkKeyInput()
-        checkJoystickInput()
+        # checkJoystickInput()
         time.sleep(.05)
 
 

@@ -45,7 +45,6 @@ try:
 except ImportError:
     exit("This library requires the RPi.GPIO module\nInstall with: sudo pip install RPi.GPIO")
 
-
 # Config variables
 bin_dir = '/home/pi/Retropie-open-OSD/'
 osd_path = bin_dir + 'osd/osd'
@@ -145,6 +144,7 @@ volume = 1
 wifi = 2
 charge = 0
 bat = 100
+last_bat_read = 100;
 
 # logging.basicConfig(filename='osd.log', level=logging.INFO)
 
@@ -201,7 +201,11 @@ def checkShdn():
 
 # Read voltage
 def readVoltage():
+    global last_bat_read;
     voltVal = adc.read_adc(0, gain=1);
+    if voltVal < 1000:
+        voltVal = last_bat_read;
+    last_bat_read = voltVal;
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
     return volt
 
@@ -312,6 +316,7 @@ def inputReading():
         checkJoystickInput()
         time.sleep(.05)
 
+
 def checkKeyInput():
     global info
 
@@ -325,7 +330,12 @@ def checkKeyInput():
             volumeUp()
         elif not gpio.input(DOWN):
             volumeDown()
-    info = False
+
+    if info == True:
+        info = False
+        time.sleep(0.5)
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+
 
 
 def checkJoystickInput():
@@ -374,11 +384,10 @@ try:
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)
-        print info
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
         condition.wait(10)
         condition.release()
-        # time.sleep(0.5)
+        time.sleep(0.5)
 
 except KeyboardInterrupt:
     exit_gracefully()

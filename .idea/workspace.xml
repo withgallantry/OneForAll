@@ -26,11 +26,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="monitor.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="378" column="12" lean-forward="false" selection-start-line="378" selection-start-column="12" selection-end-line="378" selection-end-column="12" />
+            <state relative-caret-position="313">
+              <caret line="334" column="20" lean-forward="false" selection-start-line="334" selection-start-column="20" selection-end-line="334" selection-end-column="20" />
               <folding>
                 <element signature="e#852#863#0" expanded="true" />
               </folding>
@@ -38,7 +38,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="monitor-v1.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="monitor-v1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor-v1.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="278">
@@ -74,8 +74,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6420">
-              <caret line="428" column="29" lean-forward="false" selection-start-line="428" selection-start-column="29" selection-end-line="428" selection-end-column="29" />
+            <state relative-caret-position="128">
+              <caret line="167" column="9" lean-forward="true" selection-start-line="167" selection-start-column="9" selection-end-line="167" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -123,15 +123,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>audio_image</find>
-      <find>audio_images</find>
-      <find>audio_100</find>
-      <find>audio</find>
-      <find>vol_image</find>
       <find>getImageIconFromVolume</find>
       <find>volume</find>
       <find>serial</find>
-      <find>infos</find>
       <find>getCPUtemperature</find>
       <find>GPIO</find>
       <find>while</find>
@@ -153,6 +147,12 @@
       <find>updateInfo</find>
       <find>checkKeyInput</find>
       <find>gpio</find>
+      <find>infos_loaded</find>
+      <find>infos</find>
+      <find>bat</find>
+      <find>run</find>
+      <find>getInput</find>
+      <find>logging</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -170,9 +170,9 @@
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/python-work.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/monitor-v1.py" />
         <option value="$PROJECT_DIR$/osd/osd.c" />
         <option value="$PROJECT_DIR$/monitor.py" />
-        <option value="$PROJECT_DIR$/monitor-v1.py" />
       </list>
     </option>
   </component>
@@ -852,12 +852,12 @@
       <workItem from="1537436483587" duration="22614000" />
       <workItem from="1537967464315" duration="46000" />
       <workItem from="1538033699517" duration="2093000" />
-      <workItem from="1538076417798" duration="456000" />
+      <workItem from="1538076417798" duration="3445000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105188000" />
+    <option name="totallyTimeSpent" value="108177000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1199,29 +1199,29 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/python-work.py" />
+    <entry file="file://$PROJECT_DIR$/monitor-v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="279" column="10" lean-forward="false" selection-start-line="279" selection-start-column="10" selection-end-line="279" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6420">
-          <caret line="428" column="29" lean-forward="false" selection-start-line="428" selection-start-column="29" selection-end-line="428" selection-end-column="29" />
+        <state relative-caret-position="128">
+          <caret line="167" column="9" lean-forward="true" selection-start-line="167" selection-start-column="9" selection-end-line="167" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="378" column="12" lean-forward="false" selection-start-line="378" selection-start-column="12" selection-end-line="378" selection-end-column="12" />
+        <state relative-caret-position="313">
+          <caret line="334" column="20" lean-forward="false" selection-start-line="334" selection-start-column="20" selection-end-line="334" selection-end-column="20" />
           <folding>
             <element signature="e#852#863#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monitor-v1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="279" column="10" lean-forward="false" selection-start-line="279" selection-start-column="10" selection-end-line="279" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>

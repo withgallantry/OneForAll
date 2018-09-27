@@ -424,7 +424,6 @@ int main(int argc, char *argv[])
         }
         else if(infos <= 0)
         {
-            infos = 0;
             clearLayer(&infoLayer);
             infos_loaded = 0;
         }
@@ -453,10 +452,10 @@ int main(int argc, char *argv[])
 void updateInfo(IMAGE_LAYER_T *infoLayer)
 {
     if (infos_loaded == 0) {
-//    clearImageRGB(image, &backgroundColour);
+    clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);
 
-    char buffer[128];
+//    char buffer[128];
 //    int x = 1, y = 1;
 //    drawStringRGB(x, y, buffer, &textColour, image);
     changeSourceAndUpdateImageLayer(infoLayer);

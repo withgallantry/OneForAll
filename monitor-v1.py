@@ -274,7 +274,7 @@ def checkKeyInput():
     global info
 
     # TODO Convert to state
-    while functionBtn.is_pressed:
+    if functionBtn.is_pressed:
         info = True
         condition.acquire()
         condition.notify()

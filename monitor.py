@@ -45,10 +45,6 @@ try:
 except ImportError:
     exit("This library requires the RPi.GPIO module\nInstall with: sudo pip install RPi.GPIO")
 
-# Button Variables
-# functionBtn = Button(22)
-# volumeUpBtn = Button(12)
-# volumeDownBtn = Button(6)
 
 # Config variables
 bin_dir = '/home/pi/Retropie-open-OSD/'
@@ -312,14 +308,9 @@ def inputReading():
     global bat
     global charge
     while (1):
-        condition.acquire()
-        volt = readVoltage()
-        bat = getVoltagepercent(volt)
-        print info
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
-        condition.wait(10)
-        condition.release()
-
+        checkKeyInput()
+        checkJoystickInput()
+        time.sleep(.05)
 
 def checkKeyInput():
     global info
@@ -380,9 +371,13 @@ inputReadingThread = thread.start_new_thread(inputReading, ())
 try:
     print "STARTED!"
     while 1:
-        checkKeyInput()
-        checkJoystickInput()
-        time.sleep(.05)
+        condition.acquire()
+        volt = readVoltage()
+        bat = getVoltagepercent(volt)
+        print info
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+        condition.wait(10)
+        condition.release()
         # time.sleep(0.5)
 
 except KeyboardInterrupt:

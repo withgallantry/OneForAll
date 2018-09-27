@@ -385,7 +385,7 @@ try:
         volt = readVoltage()
         bat = getVoltagepercent(volt)
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
-        condition.wait(10)
+        condition.wait(5)
         condition.release()
         time.sleep(0.5)
 

@@ -405,7 +405,7 @@ int main(int argc, char *argv[])
                         fprintf(stderr, "unable to audio load %s\n", argv[optind]);
                     }
                     changeSourceAndUpdateImageLayer(&aimageLayer);
-                    audio = -1;
+                    //audio = -1;
                 }
                 else if (!audio)
                 {

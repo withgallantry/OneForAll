@@ -73,8 +73,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="455" column="14" lean-forward="true" selection-start-line="455" selection-start-column="14" selection-end-line="455" selection-end-column="14" />
+            <state relative-caret-position="305">
+              <caret line="407" column="22" lean-forward="false" selection-start-line="407" selection-start-column="22" selection-end-line="407" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -139,9 +139,9 @@
       <find>getInput</find>
       <find>updateInfo</find>
       <find>logging</find>
-      <find>audio</find>
       <find>drawStringRGB</find>
       <find>textColour</find>
+      <find>audio</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -841,12 +841,12 @@
       <workItem from="1537436483587" duration="22614000" />
       <workItem from="1537967464315" duration="46000" />
       <workItem from="1538033699517" duration="2093000" />
-      <workItem from="1538076417798" duration="8072000" />
+      <workItem from="1538076417798" duration="8646000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112804000" />
+    <option name="totallyTimeSpent" value="113378000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1209,8 +1209,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="455" column="14" lean-forward="true" selection-start-line="455" selection-start-column="14" selection-end-line="455" selection-end-column="14" />
+        <state relative-caret-position="305">
+          <caret line="407" column="22" lean-forward="false" selection-start-line="407" selection-start-column="22" selection-end-line="407" selection-end-column="22" />
           <folding />
         </state>
       </provider>

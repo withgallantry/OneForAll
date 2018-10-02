@@ -457,7 +457,7 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
 
     char volumeText[60];
 //    int x = 1, y = 1;
-    snprintf(volumeText, sizeof(volumeText),"Volume: %d\%", audio);
+    snprintf(volumeText, sizeof(volumeText),"Volume: %d%%", audio);
 
     drawStringRGB(145, 38, volumeText, &textColour, &(infoLayer->image));
     changeSourceAndUpdateImageLayer(infoLayer);

@@ -460,6 +460,7 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
     snprintf(volumeText, sizeof(volumeText),"Volume: %d%%", audio);
 
     drawStringRGB(145, 38, volumeText, &textColour, &(infoLayer->image));
+    drawStringRGB(145, 96, volumeText, &textColour, &(infoLayer->image));
     changeSourceAndUpdateImageLayer(infoLayer);
     infos_loaded = 1;
     }

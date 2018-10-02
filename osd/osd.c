@@ -455,15 +455,14 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
 //    clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);
 
+    changeSourceAndUpdateImageLayer(infoLayer);
+    infos_loaded = 1;
+    }
     char volumeText[60];
-//    int x = 1, y = 1;
     snprintf(volumeText, sizeof(volumeText),"Volume: %d%%", audio);
 
     drawStringRGB(145, 38, volumeText, &textColour, &(infoLayer->image));
     drawStringRGB(145, 96, volumeText, &textColour, &(infoLayer->image));
-    changeSourceAndUpdateImageLayer(infoLayer);
-    infos_loaded = 1;
-    }
 }
 
 

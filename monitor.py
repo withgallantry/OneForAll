@@ -396,14 +396,14 @@ def checkKeyInput():
         condition.release()
         if not gpio.input(UP):
             volumeUp()
-            time.sleep(500)
+            time.sleep(0.5)
         elif not gpio.input(DOWN):
             volumeDown()
-            time.sleep(500)
+            time.sleep(0.5)
         elif not gpio.input(LEFT):
             readModeWifi(True)
             print "Toggle WIFI"
-            time.sleep(500)
+            time.sleep(0.5)
 
     if info == True:
         info = False

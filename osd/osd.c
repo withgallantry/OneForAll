@@ -485,7 +485,7 @@ void updateInfoText(IMAGE_LAYER_T *infoLayer)
     snprintf(volumeText, sizeof(volumeText),"Volume: %d%%", audio);
 
     if (wifi > 0) {
-        wifiText = "WiFi Enabled"
+        snprintf(wifiText, sizeof(wifiText),"WiFi Enabled");
     }
 
     drawStringRGB(145, 38, volumeText, &textColour, &(infoLayer->image));

@@ -46,7 +46,7 @@
 #define BATTERY_IMAGE "/home/pi/Retropie-open-OSD/resources/battery.png"
 #define CHARGE_IMAGE "/home/pi/Retropie-open-OSD/resources/plug.png"
 #define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/main.png"
-//#define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/battery.png"
+#define JOYSTICK_IMAGE "/home/pi/Retropie-open-OSD/resources/joystick.png"
 #define BATTERY_TH 20
 #define AUDIO_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/AUD0.png","/home/pi/Retropie-open-OSD/resources/AUD25.png","/home/pi/Retropie-open-OSD/resources/AUD50.png","/home/pi/Retropie-open-OSD/resources/AUD75.png","/home/pi/Retropie-open-OSD/resources/AUD100.png"}
 #define WIFI_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/wifi_warning.png", "/home/pi/Retropie-open-OSD/resources/wifi_error.png", "/home/pi/Retropie-open-OSD/resources/wifi_1.png", "/home/pi/Retropie-open-OSD/resources/wifi_2.png", "/home/pi/Retropie-open-OSD/resources/wifi_3.png"}
@@ -61,7 +61,7 @@ static RGBA8_T backgroundColour = { 0, 0, 0, 100 };
 static RGBA8_T textColour = { 255, 255, 255, 255 };
 static RGBA8_T greenColour = { 0, 255, 0, 200 };
 static RGBA8_T redColour = { 255, 0, 0, 200 };
-static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, voltage = 0, vol_image = 0, infos_loaded = 0;
+static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, voltage = 0, vol_image = 0, infos_loaded = 0, joystick = 0;
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*);
@@ -149,6 +149,11 @@ void getInput()
                {
                   //audio
                   audio= atoi(word+1);
+               }
+        else if(word[0] == 'j')
+               {
+                  //audio
+                  joystick= atoi(word+1);
                }
         else if(word[0] == 'l')
         {
@@ -322,10 +327,17 @@ int main(int argc, char *argv[])
 
      IMAGE_LAYER_T aimageLayer;
         initImageLayer(&aimageLayer,
-                       20,
-                       11,
+                       22,
+                       13,
                        type);
      createResourceImageLayer(&aimageLayer, layer+2);
+
+     IMAGE_LAYER_T joystickImageLayer;
+        initImageLayer(&joystickImageLayer,
+                       11,
+                       11,
+                       type);
+     createResourceImageLayer(&joystickImageLayer, layer+2);
     
     int xOffset = info.width-bimageLayer.image.width-1;
     int yOffset = 1;
@@ -350,6 +362,12 @@ int main(int argc, char *argv[])
 
     addElementImageLayerOffset(&aimageLayer,
                                (xOffset-wimageLayer.image.width)-aimageLayer.image.width-8,
+                               yOffset,
+                               display,
+                               update);
+
+    addElementImageLayerOffset(&joystickImageLayer,
+                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 20,
                                yOffset,
                                display,
                                update);
@@ -434,6 +452,12 @@ int main(int argc, char *argv[])
             clearLayer(&bimageLayer);
             clearLayer(&cimageLayer);
         }
+        if(joystick == 0) {
+            if (loadPng(&(joystickImageLayer.image), JOYSTICK_IMAGE) == false) {
+                fprintf(stderr, "unable to audio load %s\n", argv[optind]);
+            }
+            changeSourceAndUpdateImageLayer(&joystickImageLayer);
+        }
         if(infos > 0)
         {
             updateInfo(&infoLayer);
@@ -473,6 +497,7 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
 //    clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);
     changeSourceAndUpdateImageLayer(infoLayer);
+    updateInfoText(infoTextLayer);
     infos_loaded = 1;
     }
 }

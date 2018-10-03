@@ -283,7 +283,7 @@ int main(int argc, char *argv[])
                        320,
                        240,
                        type);
-    createResourceImageLayer(&infoTextLayer, layer + 3);
+    createResourceImageLayer(&infoTextLayer, layer + 4);
 
     IMAGE_LAYER_T infoLayer;
     initImageLayer(&infoLayer,
@@ -472,6 +472,7 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
     if (infos_loaded == 0) {
 //    clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);
+    changeSourceAndUpdateImageLayer(infoLayer);
     infos_loaded = 1;
     }
 }

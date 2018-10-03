@@ -73,8 +73,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="497" column="21" lean-forward="true" selection-start-line="497" selection-start-column="21" selection-end-line="497" selection-end-column="21" />
+            <state relative-caret-position="257">
+              <caret line="370" column="42" lean-forward="false" selection-start-line="370" selection-start-column="42" selection-end-line="370" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -112,7 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>check</find>
       <find>.input</find>
       <find>info</find>
       <find>checkKeyInput</find>
@@ -136,12 +135,13 @@
       <find>elif</find>
       <find>audio</find>
       <find>battery</find>
-      <find>batteryLayer</find>
       <find>bimageLayer</find>
       <find>aimageLayer</find>
       <find>infoTextLa</find>
       <find>updateInfoText(infoTextLayer);</find>
       <find>updateInfo</find>
+      <find>batteryLayer</find>
+      <find>xOffset</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -841,12 +841,12 @@
       <workItem from="1537436483587" duration="22614000" />
       <workItem from="1537967464315" duration="46000" />
       <workItem from="1538033699517" duration="2093000" />
-      <workItem from="1538076417798" duration="22846000" />
+      <workItem from="1538076417798" duration="23169000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127578000" />
+    <option name="totallyTimeSpent" value="127901000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1209,8 +1209,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="497" column="21" lean-forward="true" selection-start-line="497" selection-start-column="21" selection-end-line="497" selection-end-column="21" />
+        <state relative-caret-position="257">
+          <caret line="370" column="42" lean-forward="false" selection-start-line="370" selection-start-column="42" selection-end-line="370" selection-end-column="42" />
           <folding />
         </state>
       </provider>

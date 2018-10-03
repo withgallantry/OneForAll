@@ -367,8 +367,8 @@ int main(int argc, char *argv[])
                                update);
 
     addElementImageLayerOffset(&joystickImageLayer,
-                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 20,
-                               yOffset,
+                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 22,
+                               yOffset + 1,
                                display,
                                update);
     

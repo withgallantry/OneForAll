@@ -361,7 +361,7 @@ int main(int argc, char *argv[])
                                update);
 
     addElementImageLayerOffset(&aimageLayer,
-                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width-8,
+                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width-7,
                                yOffset,
                                display,
                                update);
@@ -449,11 +449,14 @@ int main(int argc, char *argv[])
             clearLayer(&bimageLayer);
             clearLayer(&cimageLayer);
         }
-        if(joystick == 0) {
+        if(joystick > 0) {
             if (loadPng(&(joystickImageLayer.image), JOYSTICK_IMAGE) == false) {
                 fprintf(stderr, "unable to audio load %s\n", argv[optind]);
             }
             changeSourceAndUpdateImageLayer(&joystickImageLayer);
+        }
+        else if(joystick <= 0) {
+            clearLayer(&joystickImageLayer);
         }
         if(infos > 0)
         {

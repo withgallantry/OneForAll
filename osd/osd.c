@@ -481,10 +481,17 @@ void updateInfoText(IMAGE_LAYER_T *infoLayer)
 {
     clearImageRGB(&(infoLayer->image), &clearColor);
     char volumeText[60];
+    char wifiText[20] = "Wifi Disabled";
     snprintf(volumeText, sizeof(volumeText),"Volume: %d%%", audio);
+
+    if (wifi > 0) {
+        wifiText = "WiFi Enabled"
+    }
 
     drawStringRGB(145, 38, volumeText, &textColour, &(infoLayer->image));
     drawStringRGB(145, 96, volumeText, &textColour, &(infoLayer->image));
+
+    drawStringRGB(145, 154, wifiText, &textColour, &(infoLayer->image));
 
     changeSourceAndUpdateImageLayer(infoLayer);
 }

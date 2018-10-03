@@ -148,7 +148,6 @@ void getInput()
                {
                   //audio
                   audio= atoi(word+1);
-                  changeSourceAndUpdateImageLayer(infoLayer);
                }
         else if(word[0] == 'l')
         {
@@ -455,15 +454,16 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
     if (infos_loaded == 0) {
 //    clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);
-    changeSourceAndUpdateImageLayer(infoLayer);
-    infos_loaded = 1;
-    }
 
     char volumeText[60];
     snprintf(volumeText, sizeof(volumeText),"Volume: %d%%", audio);
 
     drawStringRGB(145, 38, volumeText, &textColour, &(infoLayer->image));
     drawStringRGB(145, 96, volumeText, &textColour, &(infoLayer->image));
+
+    changeSourceAndUpdateImageLayer(infoLayer);
+    infos_loaded = 1;
+    }
 }
 
 

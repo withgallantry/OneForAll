@@ -136,6 +136,7 @@ global wifi
 global volume
 global charge
 global bat
+global joystick
 
 brightness = -1
 info = False
@@ -145,6 +146,7 @@ wifi = 2
 charge = 0
 bat = 100
 last_bat_read = 100;
+joystick = False;
 
 # logging.basicConfig(filename='osd.log', level=logging.INFO)
 
@@ -345,9 +347,11 @@ def inputReading():
     global volt
     global bat
     global charge
+    global joystick
     while (1):
         checkKeyInput()
-        # checkJoystickInput()
+        if joystick == True:
+            checkJoystickInput()
         time.sleep(.05)
 
 
@@ -387,6 +391,8 @@ class ButtonHandler(threading.Thread):
 
 def checkKeyInput():
     global info
+    global wifi
+    global joystick
 
     # TODO Convert to state
     while not gpio.input(HOTKEY):
@@ -401,8 +407,10 @@ def checkKeyInput():
             volumeDown()
             time.sleep(0.5)
         elif not gpio.input(LEFT):
-            readModeWifi(True)
-            print "Toggle WIFI"
+            wifi = readModeWifi(True)
+            time.sleep(0.5)
+        elif not gpio.input(RIGHT):
+            joystick = not joystick
             time.sleep(0.5)
 
     if info == True:

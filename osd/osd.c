@@ -65,6 +65,7 @@ static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*);
+void updateInfoText(IMAGE_LAYER_T*);
 void getInput();
 void clearLayer(IMAGE_LAYER_T*);
 void updateBattery(float, IMAGE_LAYER_T*);
@@ -398,6 +399,9 @@ int main(int argc, char *argv[])
         }
          if(audio >= 0)
                 {
+                    if (infos_loaded == 1) {
+                        updateInfoText(&infoLayer);
+                    }
                     vol_image = getImageIconFromVolume(audio);
                     //TODO preload for efficienty
                     if (loadPng(&(aimageLayer.image), AUDIO_IMAGES[vol_image-1]) == false)
@@ -455,6 +459,12 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
 //    clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);
 
+    infos_loaded = 1;
+    }
+}
+
+void updateInfoText(IMAGE_LAYER_T *infoLayer)
+{
     char volumeText[60];
     snprintf(volumeText, sizeof(volumeText),"Volume: %d%%", audio);
 
@@ -462,8 +472,6 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
     drawStringRGB(145, 96, volumeText, &textColour, &(infoLayer->image));
 
     changeSourceAndUpdateImageLayer(infoLayer);
-    infos_loaded = 1;
-    }
 }
 
 

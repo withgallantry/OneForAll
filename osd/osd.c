@@ -61,7 +61,7 @@ static RGBA8_T backgroundColour = { 0, 0, 0, 100 };
 static RGBA8_T textColour = { 255, 255, 255, 255 };
 static RGBA8_T greenColour = { 0, 255, 0, 200 };
 static RGBA8_T redColour = { 255, 0, 0, 200 };
-static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, voltage = 0, vol_image = 0, infos_loaded = 0, joystick = 0;
+static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, wifi_loaded = 0, voltage = 0, vol_image = 0, infos_loaded = 0, joystick = 0;
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*);
@@ -415,17 +415,20 @@ int main(int argc, char *argv[])
         }
         if(wifi > 0 && hud)
         {
-            //TODO preload for efficienty
-            if (loadPng(&(wimageLayer.image), WIFI_IMAGES[wifi-1]) == false)
-            {
-                fprintf(stderr, "unable to wifi load %s\n", argv[optind]);
+            if (wifi_loaded == 0) {
+                //TODO preload for efficienty
+                if (loadPng(&(wimageLayer.image), WIFI_IMAGES[wifi-1]) == false)
+                {
+                    fprintf(stderr, "unable to wifi load %s\n", argv[optind]);
+                }
+                changeSourceAndUpdateImageLayer(&wimageLayer);
+                wifi_loaded = 1;
             }
-            changeSourceAndUpdateImageLayer(&wimageLayer);
-            wifi = -1;
         }
         else if (!wifi)
         {
             clearLayer(&wimageLayer);
+            wifi_loaded = 0;
         }
          if(audio >= 0)
                 {

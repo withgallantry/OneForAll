@@ -506,17 +506,27 @@ void updateInfoText(IMAGE_LAYER_T *infoLayer)
 {
     clearImageRGB(&(infoLayer->image), &clearColor);
     char volumeText[60];
-    char wifiText[20] = "Wifi Disabled";
+    char wifiText[20];
+    char joystickText[20];
     snprintf(volumeText, sizeof(volumeText),"Volume: %d%%", audio);
 
     if (wifi > 0) {
         snprintf(wifiText, sizeof(wifiText),"WiFi Enabled");
+    } else if (wifi <= 0) {
+        snprintf(wifiText, sizeof(wifiText),"WiFi Disabled");
+    }
+
+    if (joystick > 0) {
+        snprintf(joystickText, sizeof(joystickText),"Joystick Enabled");
+    } else if (joystick <= 0) {
+        snprintf(joystickText, sizeof(joystickText),"Joystick Disabled");
     }
 
     drawStringRGB(145, 38, volumeText, &textColour, &(infoLayer->image));
     drawStringRGB(145, 96, volumeText, &textColour, &(infoLayer->image));
 
     drawStringRGB(145, 154, wifiText, &textColour, &(infoLayer->image));
+    drawStringRGB(145, 207, joystickText, &textColour, &(infoLayer->image));
 
     changeSourceAndUpdateImageLayer(infoLayer);
 }

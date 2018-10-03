@@ -29,21 +29,24 @@ import logging.handlers
 import thread
 import threading
 import signal
+import uinput
+import RPi.GPIO as gpio
+import Adafruit_ADS1x15
 
-try:
-    import Adafruit_ADS1x15
-except ImportError:
-    exit("This library requires the Adafruit ADS1x15 module\nInstall with: sudo pip install adafruit-ads1x15")
-
-try:
-    import uinput
-except ImportError:
-    exit("This library requires the evdev module\nInstall with: sudo pip install uinput")
-
-try:
-    import RPi.GPIO as gpio
-except ImportError:
-    exit("This library requires the RPi.GPIO module\nInstall with: sudo pip install RPi.GPIO")
+# try:
+#     import Adafruit_ADS1x15
+# except ImportError:
+#     exit("This library requires the Adafruit ADS1x15 module\nInstall with: sudo pip install adafruit-ads1x15")
+#
+# try:
+#     import uinput
+# except ImportError:
+#     exit("This library requires the evdev module\nInstall with: sudo pip install uinput")
+#
+# try:
+#     import RPi.GPIO as gpio
+# except ImportError:
+#     exit("This library requires the RPi.GPIO module\nInstall with: sudo pip install RPi.GPIO")
 
 # Config variables
 bin_dir = '/home/pi/Retropie-open-OSD/'

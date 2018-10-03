@@ -25,11 +25,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="monitor.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-145">
-              <caret line="366" column="0" lean-forward="true" selection-start-line="366" selection-start-column="0" selection-end-line="366" selection-end-column="0" />
+            <state relative-caret-position="108">
+              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="2" selection-end-line="48" selection-end-column="96" />
               <folding>
                 <element signature="e#852#863#0" expanded="true" />
               </folding>
@@ -70,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="424" column="32" lean-forward="false" selection-start-line="424" selection-start-column="32" selection-end-line="424" selection-end-column="32" />
+            <state relative-caret-position="161">
+              <caret line="415" column="15" lean-forward="false" selection-start-line="415" selection-start-column="11" selection-end-line="415" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -112,7 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>info</find>
       <find>checkKeyInput</find>
       <find>gpio</find>
       <find>infos</find>
@@ -141,6 +140,7 @@
       <find>xOffset</find>
       <find>joystick</find>
       <find>audio</find>
+      <find>hud</find>
       <find>wifi</find>
     </findStrings>
   </component>
@@ -160,8 +160,8 @@
         <option value="$PROJECT_DIR$/python-work.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/monitor-v1.py" />
-        <option value="$PROJECT_DIR$/monitor.py" />
         <option value="$PROJECT_DIR$/osd/osd.c" />
+        <option value="$PROJECT_DIR$/monitor.py" />
       </list>
     </option>
   </component>
@@ -841,12 +841,12 @@
       <workItem from="1537436483587" duration="22614000" />
       <workItem from="1537967464315" duration="46000" />
       <workItem from="1538033699517" duration="2093000" />
-      <workItem from="1538076417798" duration="26522000" />
+      <workItem from="1538076417798" duration="27202000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131254000" />
+    <option name="totallyTimeSpent" value="131934000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1197,21 +1197,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monitor.py">
+    <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-145">
-          <caret line="366" column="0" lean-forward="true" selection-start-line="366" selection-start-column="0" selection-end-line="366" selection-end-column="0" />
-          <folding>
-            <element signature="e#852#863#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="161">
+          <caret line="415" column="15" lean-forward="false" selection-start-line="415" selection-start-column="11" selection-end-line="415" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/osd.c">
+    <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="424" column="32" lean-forward="false" selection-start-line="424" selection-start-column="32" selection-end-line="424" selection-end-column="32" />
-          <folding />
+        <state relative-caret-position="108">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="2" selection-end-line="48" selection-end-column="96" />
+          <folding>
+            <element signature="e#852#863#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

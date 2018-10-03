@@ -277,7 +277,14 @@ int main(int argc, char *argv[])
     //---------------------------------------------------------------------
     
     static int layer = 30000;
-    
+
+    IMAGE_LAYER_T infoTextLayer;
+    initImageLayer(&infoTextLayer,
+                       320,
+                       240,
+                       type);
+    createResourceImageLayer(&infoLayer, layer + 4);
+
     IMAGE_LAYER_T infoLayer;
     initImageLayer(&infoLayer,
                    320,
@@ -324,6 +331,11 @@ int main(int argc, char *argv[])
     int yOffset = 1;
     DISPMANX_UPDATE_HANDLE_T update = vc_dispmanx_update_start(0);
     assert(update != 0);
+    addElementImageLayerOffset(&infoTextLayer,
+                               (info.width - infoTextLayer.image.width) / 2,
+                               (info.height - infoTextLayer.image.height) / 2,
+                               display,
+                               update);
     addElementImageLayerOffset(&infoLayer,
                                (info.width - infoLayer.image.width) / 2,
                                (info.height - infoLayer.image.height) / 2,
@@ -400,7 +412,7 @@ int main(int argc, char *argv[])
          if(audio >= 0)
                 {
                     if (infos_loaded == 1) {
-                        updateInfoText(&infoLayer);
+                        updateInfoText(&infoTextLayer);
                     }
                     vol_image = getImageIconFromVolume(audio);
                     //TODO preload for efficienty
@@ -429,6 +441,7 @@ int main(int argc, char *argv[])
         else if(infos <= 0)
         {
             clearLayer(&infoLayer);
+            clearLayer(&infoTextLayer);
             infos_loaded = 0;
         }
         else
@@ -440,6 +453,7 @@ int main(int argc, char *argv[])
     //---------------------------------------------------------------------
 
     destroyImageLayer(&infoLayer);
+    destroyImageLayer(&infoTextLayer);
     destroyImageLayer(&batteryLayer);
     destroyImageLayer(&wimageLayer);
     destroyImageLayer(&aimageLayer);
@@ -458,13 +472,13 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
     if (infos_loaded == 0) {
 //    clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);
-
     infos_loaded = 1;
     }
 }
 
 void updateInfoText(IMAGE_LAYER_T *infoLayer)
 {
+    clearImageRGB(&(infoLayer->image), &clearColor);
     char volumeText[60];
     snprintf(volumeText, sizeof(volumeText),"Volume: %d%%", audio);
 

@@ -429,9 +429,6 @@ int main(int argc, char *argv[])
         }
          if(audio >= 0)
                 {
-                    if (infos_loaded == 1) {
-                        updateInfoText(&infoTextLayer);
-                    }
                     vol_image = getImageIconFromVolume(audio);
                     //TODO preload for efficienty
                     if (loadPng(&(aimageLayer.image), AUDIO_IMAGES[vol_image-1]) == false)
@@ -461,6 +458,7 @@ int main(int argc, char *argv[])
         if(infos > 0)
         {
             updateInfo(&infoLayer);
+            updateInfoText(&infoTextLayer);
         }
         else if(infos <= 0)
         {
@@ -497,7 +495,6 @@ void updateInfo(IMAGE_LAYER_T *infoLayer)
 //    clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);
     changeSourceAndUpdateImageLayer(infoLayer);
-    updateInfoText(infoTextLayer);
     infos_loaded = 1;
     }
 }

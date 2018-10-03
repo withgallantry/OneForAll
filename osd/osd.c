@@ -283,7 +283,7 @@ int main(int argc, char *argv[])
                        320,
                        240,
                        type);
-    createResourceImageLayer(&infoTextLayer, layer + 4);
+    createResourceImageLayer(&infoTextLayer, layer + 3);
 
     IMAGE_LAYER_T infoLayer;
     initImageLayer(&infoLayer,

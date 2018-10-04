@@ -507,6 +507,9 @@ bluetooth = bluetooth = readModeBluetooth()
 
 inputReadingThread = thread.start_new_thread(inputReading, ())
 
+# Set up shutdown
+gpio.add_event_detect(KEEPALIVE, gpio.BOTH, callback=handle_button, bouncetime=1)
+
 # Main loop
 try:
     print "STARTED!"

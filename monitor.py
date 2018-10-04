@@ -165,11 +165,52 @@ device = uinput.Device(KEYS.values())
 time.sleep(1)
 
 
+def checkKeyInput():
+    global info
+    global wifi
+    global joystick
+    global bluetooth
+
+    # TODO Convert to state
+    while not gpio.input(HOTKEY):
+        info = True
+        condition.acquire()
+        condition.notify()
+        condition.release()
+        if not gpio.input(UP):
+            volumeUp()
+            time.sleep(0.5)
+        elif not gpio.input(DOWN):
+            volumeDown()
+            time.sleep(0.5)
+        elif not gpio.input(LEFT):
+            wifi = readModeWifi(True)
+            time.sleep(0.5)
+        elif not gpio.input(RIGHT):
+            joystick = not joystick
+            time.sleep(0.5)
+        elif not gpio.input(BUTTON_A):
+            bluetooth = readModeBluetooth(True)
+            time.sleep(0.5)
+
+    if info == True:
+        info = False
+        time.sleep(0.5)
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+
+
+def hotkeyAction(key):
+    checkKeyInput();
+    return False;
+
+
 def handle_button(pin):
     key = KEYS[pin]
     time.sleep(BOUNCE_TIME)
-    state = 0 if gpio.input(pin) else 1
-    device.emit(key, state)
+    state = 0 if gpio.input(pin) else
+
+    if not hotkeyAction(key):
+        device.emit(key, state)
 
     device.syn()
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
@@ -393,7 +434,7 @@ def inputReading():
     global charge
     global joystick
     while (1):
-        checkKeyInput()
+        # checkKeyInput()
         if joystick == True:
             checkJoystickInput()
         time.sleep(.05)
@@ -506,9 +547,6 @@ wifi = readModeWifi()
 bluetooth = bluetooth = readModeBluetooth()
 
 inputReadingThread = thread.start_new_thread(inputReading, ())
-
-# Set up shutdown
-gpio.add_event_detect(KEEPALIVE, gpio.BOTH, callback=handle_button, bouncetime=1)
 
 # Main loop
 try:

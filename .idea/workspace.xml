@@ -31,10 +31,11 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="510" column="31" lean-forward="false" selection-start-line="510" selection-start-column="31" selection-end-line="510" selection-end-column="31" />
+            <state relative-caret-position="232">
+              <caret line="437" column="25" lean-forward="true" selection-start-line="437" selection-start-column="25" selection-end-line="437" selection-end-column="25" />
               <folding>
                 <element signature="e#852#875#0" expanded="true" />
+                <marker date="1538660774000" expanded="true" signature="11778:11890" ph="..." />
               </folding>
             </state>
           </provider>
@@ -105,16 +106,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>batteryLayer</find>
-      <find>xOffset</find>
-      <find>audio</find>
-      <find>hud</find>
       <find>wifi</find>
       <find>osd_path</find>
       <find>rfkill_path</find>
       <find>global</find>
       <find>SELECT</find>
-      <find>HOTKEY</find>
       <find>RIGHT</find>
       <find>BUTTON_A</find>
       <find>joyst</find>
@@ -135,6 +131,11 @@
       <find>pi_charging</find>
       <find>serport</find>
       <find>shutdown</find>
+      <find>gpio</find>
+      <find>handle_button</find>
+      <find>KEYS</find>
+      <find>HOTKEY</find>
+      <find>checkKeyInput</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -848,12 +849,12 @@
       <workItem from="1537436483587" duration="22614000" />
       <workItem from="1537967464315" duration="46000" />
       <workItem from="1538033699517" duration="2093000" />
-      <workItem from="1538076417798" duration="35541000" />
+      <workItem from="1538076417798" duration="36122000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140273000" />
+    <option name="totallyTimeSpent" value="140854000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -870,7 +871,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2612859" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2612859" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16309012" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -943,6 +944,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
+            <marker date="1538660774000" expanded="true" signature="11778:11890" ph="..." />
           </folding>
         </state>
       </provider>
@@ -981,6 +983,7 @@
           <caret line="370" column="0" lean-forward="false" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
+            <marker date="1538660774000" expanded="true" signature="11778:11890" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1019,6 +1022,7 @@
           <caret line="370" column="0" lean-forward="true" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
+            <marker date="1538660774000" expanded="true" signature="11778:11890" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1116,6 +1120,7 @@
           <caret line="201" column="41" lean-forward="false" selection-start-line="201" selection-start-column="20" selection-end-line="201" selection-end-column="41" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
+            <marker date="1538660774000" expanded="true" signature="11778:11890" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1214,10 +1219,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="510" column="31" lean-forward="false" selection-start-line="510" selection-start-column="31" selection-end-line="510" selection-end-column="31" />
+        <state relative-caret-position="232">
+          <caret line="437" column="25" lean-forward="true" selection-start-line="437" selection-start-column="25" selection-end-line="437" selection-end-column="25" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
+            <marker date="1538660774000" expanded="true" signature="11778:11890" ph="..." />
           </folding>
         </state>
       </provider>

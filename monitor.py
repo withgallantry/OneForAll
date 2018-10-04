@@ -527,7 +527,7 @@ try:
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)
-        checkShdn(bat)
+        # checkShdn(bat)
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
         condition.wait(10)
         condition.release()

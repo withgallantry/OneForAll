@@ -32,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="295">
-              <caret line="530" column="21" lean-forward="true" selection-start-line="530" selection-start-column="21" selection-end-line="530" selection-end-column="21" />
+              <caret line="530" column="24" lean-forward="true" selection-start-line="530" selection-start-column="24" selection-end-line="530" selection-end-column="24" />
               <folding>
                 <element signature="e#852#875#0" expanded="true" />
               </folding>
@@ -105,7 +105,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>rfkill_path</find>
       <find>global</find>
       <find>SELECT</find>
       <find>RIGHT</find>
@@ -121,7 +120,6 @@
       <find>bluetooth</find>
       <find>batt_shdn</find>
       <find>bat</find>
-      <find>checkShdn</find>
       <find>doShutdown</find>
       <find>pi_shdn</find>
       <find>pi_charged</find>
@@ -135,6 +133,8 @@
       <find>checkKeyInput</find>
       <find>hotkeyAction</find>
       <find>check</find>
+      <find>checkShdn</find>
+      <find>uinput</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -848,12 +848,12 @@
       <workItem from="1537436483587" duration="22614000" />
       <workItem from="1537967464315" duration="46000" />
       <workItem from="1538033699517" duration="2093000" />
-      <workItem from="1538076417798" duration="37224000" />
+      <workItem from="1538076417798" duration="38463000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141956000" />
+    <option name="totallyTimeSpent" value="143195000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1215,7 +1215,7 @@
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
-          <caret line="530" column="21" lean-forward="true" selection-start-line="530" selection-start-column="21" selection-end-line="530" selection-end-column="21" />
+          <caret line="530" column="24" lean-forward="true" selection-start-line="530" selection-start-column="24" selection-end-line="530" selection-end-column="24" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
           </folding>

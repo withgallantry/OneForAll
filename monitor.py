@@ -180,7 +180,7 @@ def handle_button(pin):
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 
-    print hotkeyAction(key)
+    print key in HOTKEYS
     if not hotkeyAction(key):
         device.emit(key, state)
 

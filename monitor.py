@@ -116,6 +116,7 @@ BOUNCE_TIME = 0.01  # Debounce time in seconds
 gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
 gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
+gpio.setup(KEEPALIVE, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     # See /usr/include/linux/input.h for keycode names
@@ -526,7 +527,7 @@ try:
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)
-        # checkShdn(bat)
+        checkShdn(bat)
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
         condition.wait(10)
         condition.release()

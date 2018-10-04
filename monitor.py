@@ -241,6 +241,7 @@ def readVolumeLevel():
 
 # Read wifi (Credits: kite's SAIO project) Modified to only read, not set wifi.
 def readModeWifi(toggle=False):
+    ret = 0;
     wifiVal = not os.path.exists(osd_path + 'wifi')  # int(ser.readline().rstrip('\r\n'))
     if toggle:
         wifiVal = not wifiVal
@@ -300,6 +301,7 @@ def readModeWifi(toggle=False):
 
 
 def readModeBluetooth(toggle=False):
+    ret = 0;
     BtVal = not os.path.exists(osd_path + 'bluetooth')  # int(ser.readline().rstrip('\r\n'))
     if toggle:
         BtVal = not BtVal

@@ -55,10 +55,7 @@ osd_path = bin_dir + 'osd/osd'
 rfkill_path = bin_dir + 'rfkill/rfkill'
 
 # Hardware variables
-pi_charging = 26
-pi_charged = 25
-pi_shdn = 27
-serport = '/dev/ttyACM0'
+KEEPALIVE = 27
 
 # Batt variables
 voltscale = 118.0  # ADJUST THIS
@@ -202,9 +199,11 @@ except Exception as e:
 
 
 # Check for shutdown state
-def checkShdn():
-    state = gpio.input(pi_shdn)
-    if (state):
+def checkShdn(bat):
+    if bat < 2:
+        doShutdown()
+    state = gpio.input(KEEPALIVE)
+    if (not state):
         logging.info("SHUTDOWN")
         doShutdown()
 
@@ -515,6 +514,7 @@ try:
         condition.acquire()
         volt = readVoltage()
         bat = getVoltagepercent(volt)
+        checkShdn(bat)
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
         condition.wait(10)
         condition.release()

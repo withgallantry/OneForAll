@@ -384,8 +384,8 @@ int main(int argc, char *argv[])
                                update);
 
     addElementImageLayerOffset(&bluetoothImageLayer,
-                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 33,
-                               yOffset + 1,
+                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 36,
+                               yOffset -1 ,
                                display,
                                update);
     
@@ -537,6 +537,7 @@ void updateInfoText(IMAGE_LAYER_T *infoLayer)
     char volumeText[60];
     char wifiText[20];
     char joystickText[20];
+    char bluetoothText[20];
     snprintf(volumeText, sizeof(volumeText),"Volume: %d%%", audio);
 
     if (wifi > 0) {
@@ -551,11 +552,18 @@ void updateInfoText(IMAGE_LAYER_T *infoLayer)
         snprintf(joystickText, sizeof(joystickText),"Joystick Disabled");
     }
 
-    drawStringRGB(145, 38, volumeText, &textColour, &(infoLayer->image));
-    drawStringRGB(145, 96, volumeText, &textColour, &(infoLayer->image));
+    if (bluetooth > 0) {
+        snprintf(bluetoothText, sizeof(bluetoothText),"Bluetooth Enabled");
+    } else if (joystick <= 0) {
+        snprintf(bluetoothText, sizeof(bluetoothText),"Bluetooth Disabled");
+    }
 
-    drawStringRGB(145, 154, wifiText, &textColour, &(infoLayer->image));
-    drawStringRGB(145, 207, joystickText, &textColour, &(infoLayer->image));
+    drawStringRGB(137, 29, volumeText, &textColour, &(infoLayer->image));
+    drawStringRGB(137, 76, volumeText, &textColour, &(infoLayer->image));
+
+    drawStringRGB(137, 124, wifiText, &textColour, &(infoLayer->image));
+    drawStringRGB(137, 167, joystickText, &textColour, &(infoLayer->image));
+    drawStringRGB(137, 214, bluetoothText, &textColour, &(infoLayer->image));
 
     changeSourceAndUpdateImageLayer(infoLayer);
 }

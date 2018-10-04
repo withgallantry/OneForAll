@@ -33,21 +33,7 @@ import threading
 import time
 import uinput
 from subprocess import Popen, PIPE, check_output, check_call
-
-# try:
-#     import Adafruit_ADS1x15
-# except ImportError:
-#     exit("This library requires the Adafruit ADS1x15 module\nInstall with: sudo pip install adafruit-ads1x15")
-#
-# try:
-#     import uinput
-# except ImportError:
-#     exit("This library requires the evdev module\nInstall with: sudo pip install uinput")
-#
-# try:
-#     import RPi.GPIO as gpio
-# except ImportError:
-#     exit("This library requires the RPi.GPIO module\nInstall with: sudo pip install RPi.GPIO")
+import configparser
 
 # Config variables
 bin_dir = '/home/pi/Retropie-open-OSD/'
@@ -90,20 +76,23 @@ wifi_3bar = 5
 DZONE = 300  # dead zone applied to joystick (mV)
 VREF = 1600  # joystick Vcc (mV)
 
-# Configure Buttons
-LEFT = 26
-RIGHT = 13
-DOWN = 6
-UP = 12
-BUTTON_A = 5
-BUTTON_B = 7
-BUTTON_X = 4
-BUTTON_Y = 17
-SELECT = 22
-START = 15
-L1 = 16
-R1 = 20
-HOTKEY = 22
+# Configure buttons
+config = configparser.ConfigParser()
+config.read('./keys.cfg')
+keys = config['KEYS']
+LEFT = keys['LEFT']
+RIGHT = keys['RIGHT']
+DOWN = keys['DOWN']
+UP = keys['UP']
+BUTTON_A = keys['BUTTON_A']
+BUTTON_B = keys['BUTTON_B']
+BUTTON_X = keys['BUTTON_X']
+BUTTON_Y = keys['BUTTON_Y']
+SELECT = keys['SELECT']
+START = keys['START']
+L1 = keys['L1']
+R1 = keys['R1']
+HOTKEY = keys['HOTKEY']
 
 BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
            BUTTON_X, BUTTON_Y, SELECT, START, L1, R1]
@@ -166,7 +155,6 @@ adc = Adafruit_ADS1x15.ADS1015()
 device = uinput.Device(KEYS.values())
 
 time.sleep(1)
-
 
 def hotkeyAction(key):
     if not gpio.input(HOTKEY):

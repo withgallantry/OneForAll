@@ -384,8 +384,8 @@ int main(int argc, char *argv[])
                                update);
 
     addElementImageLayerOffset(&bluetoothImageLayer,
-                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 36,
-                               yOffset -1 ,
+                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 38,
+                               yOffset ,
                                display,
                                update);
     

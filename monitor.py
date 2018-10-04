@@ -80,19 +80,19 @@ VREF = 1600  # joystick Vcc (mV)
 config = configparser.ConfigParser()
 config.read('./keys.cfg')
 keys = config['KEYS']
-LEFT = keys['LEFT']
-RIGHT = keys['RIGHT']
-DOWN = keys['DOWN']
-UP = keys['UP']
-BUTTON_A = keys['BUTTON_A']
-BUTTON_B = keys['BUTTON_B']
-BUTTON_X = keys['BUTTON_X']
-BUTTON_Y = keys['BUTTON_Y']
-SELECT = keys['SELECT']
-START = keys['START']
-L1 = keys['L1']
-R1 = keys['R1']
-HOTKEY = keys['HOTKEY']
+LEFT = int(keys['LEFT'])
+RIGHT = int(keys['RIGHT'])
+DOWN = int(keys['DOWN'])
+UP = int(keys['UP'])
+BUTTON_A = int(keys['BUTTON_A'])
+BUTTON_B = int(keys['BUTTON_B'])
+BUTTON_X = int(keys['BUTTON_X'])
+BUTTON_Y = int(keys['BUTTON_Y'])
+SELECT = int(keys['SELECT'])
+START = int(keys['START'])
+L1 = int(keys['L1'])
+R1 = int(keys['R1'])
+HOTKEY = int(keys['HOTKEY'])
 
 BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
            BUTTON_X, BUTTON_Y, SELECT, START, L1, R1]

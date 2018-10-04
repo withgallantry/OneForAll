@@ -108,6 +108,8 @@ HOTKEY = 22
 BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
            BUTTON_X, BUTTON_Y, SELECT, START, L1, R1]
 
+HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
+
 BOUNCE_TIME = 0.01  # Debounce time in seconds
 
 # GPIO Init
@@ -165,43 +167,12 @@ device = uinput.Device(KEYS.values())
 time.sleep(1)
 
 
-def checkKeyInput():
-    global info
-    global wifi
-    global joystick
-    global bluetooth
-
-    # TODO Convert to state
-    while not gpio.input(HOTKEY):
-        info = True
-        condition.acquire()
-        condition.notify()
-        condition.release()
-        if not gpio.input(UP):
-            volumeUp()
-            time.sleep(0.5)
-        elif not gpio.input(DOWN):
-            volumeDown()
-            time.sleep(0.5)
-        elif not gpio.input(LEFT):
-            wifi = readModeWifi(True)
-            time.sleep(0.5)
-        elif not gpio.input(RIGHT):
-            joystick = not joystick
-            time.sleep(0.5)
-        elif not gpio.input(BUTTON_A):
-            bluetooth = readModeBluetooth(True)
-            time.sleep(0.5)
-
-    if info == True:
-        info = False
-        time.sleep(0.5)
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
-
-
 def hotkeyAction(key):
-    checkKeyInput();
-    return False;
+    if key == HOTKEY:
+        if key in HOTKEYS:
+            return True
+
+    return False
 
 
 def handle_button(pin):
@@ -434,7 +405,7 @@ def inputReading():
     global charge
     global joystick
     while (1):
-        # checkKeyInput()
+        checkKeyInput()
         if joystick == True:
             checkJoystickInput()
         time.sleep(.05)

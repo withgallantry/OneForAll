@@ -20,18 +20,19 @@
 # along with this repo. If not, see <http://www.gnu.org/licenses/>.
 #
 
-import time
-import os, signal, sys
-from subprocess import Popen, PIPE, check_output, check_call
-import re
+import Adafruit_ADS1x15
+import RPi.GPIO as gpio
 import logging
 import logging.handlers
+import os
+import re
+import signal
+import sys
 import thread
 import threading
-import signal
+import time
 import uinput
-import RPi.GPIO as gpio
-import Adafruit_ADS1x15
+from subprocess import Popen, PIPE, check_output, check_call
 
 # try:
 #     import Adafruit_ADS1x15
@@ -140,6 +141,7 @@ global volume
 global charge
 global bat
 global joystick
+global bluetooth
 
 brightness = -1
 info = False
@@ -296,6 +298,44 @@ def readModeWifi(toggle=False):
     return ret
 
 
+def readModeBluetooth(toggle=False):
+    global wif
+    ret = wif
+    BtVal = not os.path.exists(osd_path + 'bluetooth')  # int(ser.readline().rstrip('\r\n'))
+    if toggle:
+        BtVal = not BtVal
+    global bt_state
+    if (BtVal):
+        if os.path.exists(osd_path + 'bluetooth'):
+            os.remove(osd_path + 'bluetooth')
+        if (bt_state != 'ON'):
+            bt_state = 'ON'
+            logging.info("BT    [ENABLING]")
+            try:
+                out = check_output(['sudo', rfkill_path, 'unblock', 'bluetooth'])
+                logging.info("BT      [" + str(out) + "]")
+            except Exception, e:
+                logging.info("BT    : " + str(e))
+                ret = wifi_warning  # Get signal strength
+
+    else:
+        with open(osd_path + 'bluetooth', 'a'):
+            n = 1
+        if (bt_state != 'OFF'):
+            bt_state = 'OFF'
+            logging.info("BT    [DISABLING]")
+            try:
+                out = check_output(['sudo', rfkill_path, 'block', 'bluetooth'])
+                logging.info("BT      [" + str(out) + "]")
+            except Exception, e:
+                logging.info("BT    : " + str(e))
+                ret = wifi_error
+        return ret
+    # check if it's enabled
+    raw = check_output(['hcitool', 'dev'])
+    return True if raw.find("hci0") > -1 else False
+
+
 # Do a shutdown
 def doShutdown(channel=None):
     check_call("sudo killall emulationstation", shell=True)
@@ -315,8 +355,8 @@ def doShutdown(channel=None):
 # Signals the OSD binary
 def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, brightness=0, info=False, charge=False):
     commands = "v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(
-        audio) + " j" + ("1 " if joystick else "0 ") + " l" + str(brightness) + " " + ("on " if info else "off ") + (
-               "charge" if charge else "ncharge") + "\n"
+        audio) + " j" + ("1 " if joystick else "0 ") + " u" + ("1 " if bluetooth else "0 ") + " l" + str(
+        brightness) + " " + ("on " if info else "off ") + ("charge" if charge else "ncharge") + "\n"
     # print commands
     osd_proc.send_signal(signal.SIGUSR1)
     osd_in.write(commands)
@@ -397,6 +437,7 @@ def checkKeyInput():
     global info
     global wifi
     global joystick
+    global bluetooth
 
     # TODO Convert to state
     while not gpio.input(HOTKEY):
@@ -415,6 +456,9 @@ def checkKeyInput():
             time.sleep(0.5)
         elif not gpio.input(RIGHT):
             joystick = not joystick
+            time.sleep(0.5)
+        elif not gpio.input(BUTTON_A):
+            bluetooth = readModeBluetooth(True)
             time.sleep(0.5)
 
     if info == True:
@@ -458,7 +502,8 @@ signal.signal(signal.SIGTERM, exit_gracefully)
 volume = readVolumeLevel()
 print volume
 
-wifi = readModeWifi();
+wifi = readModeWifi()
+bluetooth = bluetooth = readModeBluetooth()
 
 inputReadingThread = thread.start_new_thread(inputReading, ())
 

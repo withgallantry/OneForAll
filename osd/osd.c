@@ -47,6 +47,7 @@
 #define CHARGE_IMAGE "/home/pi/Retropie-open-OSD/resources/plug.png"
 #define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/main.png"
 #define JOYSTICK_IMAGE "/home/pi/Retropie-open-OSD/resources/joystick.png"
+#define BLUETOOTH_IMAGE "/home/pi/Retropie-open-OSD/resources/bluetooth.png"
 #define BATTERY_TH 20
 #define AUDIO_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/AUD0.png","/home/pi/Retropie-open-OSD/resources/AUD25.png","/home/pi/Retropie-open-OSD/resources/AUD50.png","/home/pi/Retropie-open-OSD/resources/AUD75.png","/home/pi/Retropie-open-OSD/resources/AUD100.png"}
 #define WIFI_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/wifi_warning.png", "/home/pi/Retropie-open-OSD/resources/wifi_error.png", "/home/pi/Retropie-open-OSD/resources/wifi_1.png", "/home/pi/Retropie-open-OSD/resources/wifi_2.png", "/home/pi/Retropie-open-OSD/resources/wifi_3.png"}
@@ -61,7 +62,7 @@ static RGBA8_T backgroundColour = { 0, 0, 0, 100 };
 static RGBA8_T textColour = { 255, 255, 255, 255 };
 static RGBA8_T greenColour = { 0, 255, 0, 200 };
 static RGBA8_T redColour = { 255, 0, 0, 200 };
-static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, wifi_loaded = 0, voltage = 0, vol_image = 0, infos_loaded = 0, joystick = 0;
+static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, wifi_loaded = 0, voltage = 0, vol_image = 0, infos_loaded = 0, joystick = 0, bluetooth = 0;
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*);
@@ -152,8 +153,11 @@ void getInput()
                }
         else if(word[0] == 'j')
                {
-                  //audio
                   joystick= atoi(word+1);
+               }
+        else if(word[0] == 'u')
+               {
+                  bluetooth= atoi(word+1);
                }
         else if(word[0] == 'l')
         {
@@ -338,6 +342,13 @@ int main(int argc, char *argv[])
                        11,
                        type);
      createResourceImageLayer(&joystickImageLayer, layer+2);
+
+     IMAGE_LAYER_T bluetoothImageLayer;
+        initImageLayer(&bluetoothImageLayer,
+                       15,
+                       13,
+                       type);
+     createResourceImageLayer(&bluetoothImageLayer, layer+2);
     
     int xOffset = info.width-bimageLayer.image.width-1;
     int yOffset = 1;
@@ -368,6 +379,12 @@ int main(int argc, char *argv[])
 
     addElementImageLayerOffset(&joystickImageLayer,
                                (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 22,
+                               yOffset + 1,
+                               display,
+                               update);
+
+    addElementImageLayerOffset(&bluetoothImageLayer,
+                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 33,
                                yOffset + 1,
                                display,
                                update);
@@ -454,12 +471,21 @@ int main(int argc, char *argv[])
         }
         if(joystick > 0) {
             if (loadPng(&(joystickImageLayer.image), JOYSTICK_IMAGE) == false) {
-                fprintf(stderr, "unable to audio load %s\n", argv[optind]);
+                fprintf(stderr, "unable to joystick load %s\n", argv[optind]);
             }
             changeSourceAndUpdateImageLayer(&joystickImageLayer);
         }
         else if(joystick <= 0) {
             clearLayer(&joystickImageLayer);
+        }
+        if(bluetooth > 0) {
+            if (loadPng(&(bluetoothImageLayer.image), BLUETOOTH_IMAGE) == false) {
+                fprintf(stderr, "unable to bluetooth load %s\n", argv[optind]);
+            }
+            changeSourceAndUpdateImageLayer(&bluetoothImageLayer);
+        }
+        else if(bluetooth <= 0) {
+            clearLayer(&bluetoothImageLayer);
         }
         if(infos > 0)
         {

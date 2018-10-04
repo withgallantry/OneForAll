@@ -168,7 +168,7 @@ time.sleep(1)
 
 
 def hotkeyAction(key):
-    if key == HOTKEY:
+    if not gpio.input(HOTKEY):
         if key in HOTKEYS:
             return True
 

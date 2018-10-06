@@ -44,15 +44,15 @@
 //-------------------------------------------------------------------------
 
 #define NDEBUG
-char BATTERY_IMAGE[] = "./resources/battery.png";
-char CHARGE_IMAGE[] = "./resources/plug.png";
-char INFO_IMAGE[] = "./resources/main.png";
-char JOYSTICK_IMAGE[] = "./resources/joystick.png";
-char BLUETOOTH_IMAGE[] = "./resources/bluetooth.png";
+#define BATTERY_IMAGE "./resources/battery.png"
+#define CHARGE_IMAGE "./resources/plug.png"
+#define INFO_IMAGE "./resources/main.png"
+#define JOYSTICK_IMAGE "./resources/joystick.png"
+#define BLUETOOTH_IMAGE "./resources/bluetooth.png"
 #define BATTERY_TH 20
-char *AUDIO_IMAGES[5] = {"./resources/AUD0.png","./resources/AUD25.png","./resources/AUD50.png","./resources/AUD75.png","./resources/AUD100.png"};
-char *WIFI_IMAGES[5] = {"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"};
-#define BRIGHTNESS_MAX 7;
+#define AUDIO_IMAGES (const char*[5]){"./resources/AUD0.png","./resources/AUD25.png","./resources/AUD50.png","./resources/AUD75.png","./resources/AUD100.png"}
+#define WIFI_IMAGES (const char*[5]){"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"}
+#define BRIGHTNESS_MAX 7
 //{"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"}
 
 char cwd[PATH_MAX];

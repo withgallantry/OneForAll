@@ -226,6 +226,16 @@ int main(int argc, char *argv[])
 
     //-------------------------------------------------------------------
 
+    if(argc==1) {
+        perror("No file path provided");
+        return 1;
+    }
+
+    char cwd[1024];
+    chdir(argv[1]);
+    getcwd(cwd, sizeof(cwd));
+    printf("Current working dir: %s\n", cwd);
+
     int opt;
 
     while ((opt = getopt(argc, argv, "d:")) != -1)

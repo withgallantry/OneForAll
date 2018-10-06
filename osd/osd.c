@@ -225,11 +225,6 @@ int main(int argc, char *argv[])
 {
     uint32_t displayNumber = 0;
 
-      if (getcwd(cwd, sizeof(cwd)) != NULL) {
-      } else {
-          return 1;
-      }
-
     //-------------------------------------------------------------------
 
     int opt;

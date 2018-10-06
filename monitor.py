@@ -61,9 +61,14 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
+bin_dir = os.getcwd()
+print bin_dir
+osd_path = bin_dir + '/osd/osd'
+rfkill_path = bin_dir + '/rfkill/rfkill'
+
 # Configure buttons
 config = configparser.ConfigParser()
-config.read('./keys.cfg')
+config.read(bin_dir + '/keys.cfg')
 keys = config['KEYS']
 general = config['GENERAL']
 LEFT = int(keys['LEFT'])
@@ -81,11 +86,6 @@ R1 = int(keys['R1'])
 HOTKEY = int(keys['HOTKEY'])
 
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
-
-bin_dir = os.getcwd()
-print bin_dir
-osd_path = bin_dir + '/osd/osd'
-rfkill_path = bin_dir + '/rfkill/rfkill'
 
 # Joystick Hardware settings
 joystickConfig = config['JOYSTICK']

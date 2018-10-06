@@ -61,7 +61,7 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
-bin_dir = os.getcwd()
+bin_dir = os.path.dirname(os.path.realpath(__file__))
 print bin_dir
 osd_path = bin_dir + '/osd/osd'
 rfkill_path = bin_dir + '/rfkill/rfkill'

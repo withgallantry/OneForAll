@@ -35,14 +35,6 @@ import uinput
 from subprocess import Popen, PIPE, check_output, check_call
 import configparser
 
-# Config variables
-bin_dir = '/home/pi/Retropie-open-OSD/'
-osd_path = bin_dir + 'osd/osd'
-rfkill_path = bin_dir + 'rfkill/rfkill'
-
-# Hardware variables
-KEEPALIVE = 27
-
 # Batt variables
 voltscale = 118.0  # ADJUST THIS
 currscale = 640.0
@@ -52,9 +44,6 @@ dacres = 33.0
 dacmax = 1023.0
 
 batt_threshold = 4
-batt_full = 420
-batt_low = 340
-batt_shdn = 320
 
 temperature_max = 70.0
 temperature_threshold = 5.0
@@ -72,14 +61,11 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
-# Joystick Hardware settings
-DZONE = 300  # dead zone applied to joystick (mV)
-VREF = 1600  # joystick Vcc (mV)
-
 # Configure buttons
 config = configparser.ConfigParser()
 config.read('./keys.cfg')
 keys = config['KEYS']
+general = config['GENERAL']
 LEFT = int(keys['LEFT'])
 RIGHT = int(keys['RIGHT'])
 DOWN = int(keys['DOWN'])
@@ -94,6 +80,24 @@ L1 = int(keys['L1'])
 R1 = int(keys['R1'])
 HOTKEY = int(keys['HOTKEY'])
 
+SHUTDOWN = int(general['SHUTDOWN_DETECT'])
+
+bin_dir = os.getcwd()
+osd_path = bin_dir + 'osd/osd'
+rfkill_path = bin_dir + 'rfkill/rfkill'
+
+# Joystick Hardware settings
+joystick = config['GENERAL']
+DZONE = int(joystick['DEADZONE'])  # dead zone applied to joystick (mV)
+VREF = int(joystick['VCC'])  # joystick Vcc (mV)
+
+# Battery config
+battery = config['BATTERY']
+monitoring_enabled = battery['ENABLED']
+batt_full = int(battery['FULL_BATT_VOLTAGE'])
+batt_low = int(battery['BATT_LOW_VOLTAGE'])
+batt_shdn = int(battery['BATT_SHUTDOWN_VOLT'])
+
 BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
            BUTTON_X, BUTTON_Y, SELECT, START, L1, R1]
 
@@ -105,7 +109,7 @@ BOUNCE_TIME = 0.01  # Debounce time in seconds
 gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
 gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
-gpio.setup(KEEPALIVE, gpio.IN, pull_up_down=gpio.PUD_UP)
+gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     # See /usr/include/linux/input.h for keycode names
@@ -148,13 +152,16 @@ joystick = False;
 # logging.basicConfig(filename='osd.log', level=logging.INFO)
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
-
-adc = Adafruit_ADS1x15.ADS1015()
+if monitoring_enabled == 'True':
+    adc = Adafruit_ADS1x15.ADS1015()
+else:
+    adc = False
 
 # Create virtual HID for Joystick
 device = uinput.Device(KEYS.values())
 
 time.sleep(1)
+
 
 def hotkeyAction(key):
     if not gpio.input(HOTKEY):
@@ -203,7 +210,7 @@ except Exception as e:
 def checkShdn(bat):
     if bat < 2:
         doShutdown()
-    state = gpio.input(KEEPALIVE)
+    state = gpio.input(SHUTDOWN)
     if (not state):
         logging.info("SHUTDOWN")
         doShutdown()
@@ -513,8 +520,9 @@ try:
     print "STARTED!"
     while 1:
         condition.acquire()
-        volt = readVoltage()
-        bat = getVoltagepercent(volt)
+        if not adc == False:
+            volt = readVoltage()
+            bat = getVoltagepercent(volt)
         # checkShdn(bat)
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
         condition.wait(10)

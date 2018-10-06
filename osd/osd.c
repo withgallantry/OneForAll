@@ -27,6 +27,7 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <limits.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
@@ -35,6 +36,7 @@
 #include "imageGraphics.h"
 #include "imageLayer.h"
 #include "loadpng.h"
+#include <unistd.h>
 #include <math.h>
 
 #include "bcm_host.h"
@@ -43,14 +45,14 @@
 
 #define NDEBUG
 
-#define BATTERY_IMAGE "/home/pi/Retropie-open-OSD/resources/battery.png"
-#define CHARGE_IMAGE "/home/pi/Retropie-open-OSD/resources/plug.png"
-#define INFO_IMAGE "/home/pi/Retropie-open-OSD/resources/main.png"
-#define JOYSTICK_IMAGE "/home/pi/Retropie-open-OSD/resources/joystick.png"
-#define BLUETOOTH_IMAGE "/home/pi/Retropie-open-OSD/resources/bluetooth.png"
+#define BATTERY_IMAGE "./resources/battery.png"
+#define CHARGE_IMAGE "./resources/plug.png"
+#define INFO_IMAGE "./resources/main.png"
+#define JOYSTICK_IMAGE "./resources/joystick.png"
+#define BLUETOOTH_IMAGE "./resources/bluetooth.png"
 #define BATTERY_TH 20
-#define AUDIO_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/AUD0.png","/home/pi/Retropie-open-OSD/resources/AUD25.png","/home/pi/Retropie-open-OSD/resources/AUD50.png","/home/pi/Retropie-open-OSD/resources/AUD75.png","/home/pi/Retropie-open-OSD/resources/AUD100.png"}
-#define WIFI_IMAGES (const char*[5]){"/home/pi/Retropie-open-OSD/resources/wifi_warning.png", "/home/pi/Retropie-open-OSD/resources/wifi_error.png", "/home/pi/Retropie-open-OSD/resources/wifi_1.png", "/home/pi/Retropie-open-OSD/resources/wifi_2.png", "/home/pi/Retropie-open-OSD/resources/wifi_3.png"}
+#define AUDIO_IMAGES (const char*[5]){"./resources/AUD0.png","./resources/AUD25.png","./resources/AUD50.png","./resources/AUD75.png","./resources/AUD100.png"}
+#define WIFI_IMAGES (const char*[5]){"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"}
 #define BRIGHTNESS_MAX 7
 
 volatile bool run = true;
@@ -70,6 +72,7 @@ void updateInfoText(IMAGE_LAYER_T*);
 void getInput();
 void clearLayer(IMAGE_LAYER_T*);
 void updateBattery(float, IMAGE_LAYER_T*);
+char *getcwd(char *buf, size_t size);
 
 static void
 signalHandler(int signalNumber)
@@ -218,6 +221,12 @@ void clearLayer(IMAGE_LAYER_T *layer)
 int main(int argc, char *argv[])
 {
     uint32_t displayNumber = 0;
+
+    char cwd[PATH_MAX];
+      if (getcwd(cwd, sizeof(cwd)) != NULL) {
+      } else {
+          return 1;
+      }
 
     //-------------------------------------------------------------------
 

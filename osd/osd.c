@@ -45,15 +45,17 @@
 
 #define NDEBUG
 
-string BATTERY_IMAGE = "./resources/battery.png"
-string CHARGE_IMAGE = "./resources/plug.png"
-string INFO_IMAGE = "./resources/main.png"
-string JOYSTICK_IMAGE = "./resources/joystick.png"
-string BLUETOOTH_IMAGE = "./resources/bluetooth.png"
-int BATTERY_TH = 20
-char*[5] AUDIO_IMAGES = {"./resources/AUD0.png","./resources/AUD25.png","./resources/AUD50.png","./resources/AUD75.png","./resources/AUD100.png"}
-char*[5] WIFI_IMAGES = {"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"}
+#define BATTERY_IMAGE "/resources/battery.png"
+#define CHARGE_IMAGE "/resources/plug.png"
+#define INFO_IMAGE "/resources/main.png"
+#define JOYSTICK_IMAGE "/resources/joystick.png"
+#define BLUETOOTH_IMAGE "/resources/bluetooth.png"
+#define BATTERY_TH 20
+#define AUDIO_IMAGES (const char*[5]){"/resources/AUD0.png","/resources/AUD25.png","/resources/AUD50.png","/resources/AUD75.png","/resources/AUD100.png"}
+#define WIFI_IMAGES (const char*[5]){"/resources/wifi_warning.png", "/resources/wifi_error.png", "/resources/wifi_1.png", "/resources/wifi_2.png", "/resources/wifi_3.png"}
 #define BRIGHTNESS_MAX 7
+
+char cwd[PATH_MAX];
 
 volatile bool run = true;
 
@@ -222,7 +224,6 @@ int main(int argc, char *argv[])
 {
     uint32_t displayNumber = 0;
 
-    char cwd[PATH_MAX];
       if (getcwd(cwd, sizeof(cwd)) != NULL) {
       } else {
           return 1;
@@ -311,7 +312,7 @@ int main(int argc, char *argv[])
     createResourceImageLayer(&infoLayer, layer + 3);
     
     IMAGE_LAYER_T bimageLayer;
-    if (loadPng(&(bimageLayer.image), BATTERY_IMAGE) == false)
+    if (loadPng(&(bimageLayer.image), cwd + BATTERY_IMAGE) == false)
     {
         fprintf(stderr, "unable to load %s\n", argv[optind]);
     }

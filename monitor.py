@@ -84,8 +84,8 @@ SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 
 bin_dir = os.getcwd()
 print bin_dir
-osd_path = bin_dir + 'osd/osd'
-rfkill_path = bin_dir + 'rfkill/rfkill'
+osd_path = bin_dir + '/osd/osd'
+rfkill_path = bin_dir + '/rfkill/rfkill'
 
 # Joystick Hardware settings
 joystickConfig = config['JOYSTICK']

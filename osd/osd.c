@@ -51,7 +51,7 @@
 #define JOYSTICK_IMAGE "./resources/joystick.png"
 #define BLUETOOTH_IMAGE "./resources/bluetooth.png"
 #define BATTERY_TH 20
-char AUDIO_IMAGES[5] = {"./resources/AUD0.png","./resources/AUD25.png","./resources/AUD50.png","./resources/AUD75.png","./resources/AUD100.png"}
+char *AUDIO_IMAGES[5] = {"./resources/AUD0.png","./resources/AUD25.png","./resources/AUD50.png","./resources/AUD75.png","./resources/AUD100.png"}
 #define WIFI_IMAGES (const char*[5]){"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"}
 #define BRIGHTNESS_MAX 7
 //{"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"}

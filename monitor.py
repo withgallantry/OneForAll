@@ -83,13 +83,14 @@ HOTKEY = int(keys['HOTKEY'])
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 
 bin_dir = os.getcwd()
+print bin_dir
 osd_path = bin_dir + 'osd/osd'
 rfkill_path = bin_dir + 'rfkill/rfkill'
 
 # Joystick Hardware settings
-joystick = config['JOYSTICK']
-DZONE = int(joystick['DEADZONE'])  # dead zone applied to joystick (mV)
-VREF = int(joystick['VCC'])  # joystick Vcc (mV)
+joystickConfig = config['JOYSTICK']
+DZONE = int(joystickConfig['DEADZONE'])  # dead zone applied to joystick (mV)
+VREF = int(joystickConfig['VCC'])  # joystick Vcc (mV)
 
 # Battery config
 battery = config['BATTERY']

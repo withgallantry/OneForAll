@@ -2,25 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1e91772-da59-4698-b607-55f4207566b3" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/AUD0.png" afterPath="$PROJECT_DIR$/osd/resources/AUD0.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/AUD100.png" afterPath="$PROJECT_DIR$/osd/resources/AUD100.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/AUD25.png" afterPath="$PROJECT_DIR$/osd/resources/AUD25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/AUD50.png" afterPath="$PROJECT_DIR$/osd/resources/AUD50.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/AUD75.png" afterPath="$PROJECT_DIR$/osd/resources/AUD75.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/audio_2.png" afterPath="$PROJECT_DIR$/osd/resources/audio_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/battery.png" afterPath="$PROJECT_DIR$/osd/resources/battery.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/bluetooth.png" afterPath="$PROJECT_DIR$/osd/resources/bluetooth.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/joystick.png" afterPath="$PROJECT_DIR$/osd/resources/joystick.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/joystick.psd" afterPath="$PROJECT_DIR$/osd/resources/joystick.psd" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/main.png" afterPath="$PROJECT_DIR$/osd/resources/main.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/main16.png" afterPath="$PROJECT_DIR$/osd/resources/main16.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/main2.png" afterPath="$PROJECT_DIR$/osd/resources/main2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/plug.png" afterPath="$PROJECT_DIR$/osd/resources/plug.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/wifi_1.png" afterPath="$PROJECT_DIR$/osd/resources/wifi_1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/wifi_2.png" afterPath="$PROJECT_DIR$/osd/resources/wifi_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/wifi_3.png" afterPath="$PROJECT_DIR$/osd/resources/wifi_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/wifi_error.png" afterPath="$PROJECT_DIR$/osd/resources/wifi_error.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/wifi_warning.png" afterPath="$PROJECT_DIR$/osd/resources/wifi_warning.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/AUD0.png" afterPath="$PROJECT_DIR$/resources/AUD0.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/AUD100.png" afterPath="$PROJECT_DIR$/resources/AUD100.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/AUD25.png" afterPath="$PROJECT_DIR$/resources/AUD25.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/AUD50.png" afterPath="$PROJECT_DIR$/resources/AUD50.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/AUD75.png" afterPath="$PROJECT_DIR$/resources/AUD75.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/audio_2.png" afterPath="$PROJECT_DIR$/resources/audio_2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/battery.png" afterPath="$PROJECT_DIR$/resources/battery.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/bluetooth.png" afterPath="$PROJECT_DIR$/resources/bluetooth.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/joystick.png" afterPath="$PROJECT_DIR$/resources/joystick.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/joystick.psd" afterPath="$PROJECT_DIR$/resources/joystick.psd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/main.png" afterPath="$PROJECT_DIR$/resources/main.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/main16.png" afterPath="$PROJECT_DIR$/resources/main16.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/main2.png" afterPath="$PROJECT_DIR$/resources/main2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/plug.png" afterPath="$PROJECT_DIR$/resources/plug.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/wifi_1.png" afterPath="$PROJECT_DIR$/resources/wifi_1.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/wifi_2.png" afterPath="$PROJECT_DIR$/resources/wifi_2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/wifi_3.png" afterPath="$PROJECT_DIR$/resources/wifi_3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/wifi_error.png" afterPath="$PROJECT_DIR$/resources/wifi_error.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/wifi_warning.png" afterPath="$PROJECT_DIR$/resources/wifi_warning.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keys.cfg" afterPath="$PROJECT_DIR$/keys.cfg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor.py" afterPath="$PROJECT_DIR$/monitor.py" />
@@ -103,36 +103,36 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="225" column="31" lean-forward="false" selection-start-line="225" selection-start-column="31" selection-end-line="225" selection-end-column="31" />
+            <state relative-caret-position="443">
+              <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="AUD50.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/osd/resources/AUD50.png">
+        <entry file="file://$PROJECT_DIR$/resources/AUD50.png">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="AUD100.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/osd/resources/AUD100.png">
+        <entry file="file://$PROJECT_DIR$/resources/AUD100.png">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="audio_2.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/osd/resources/audio_2.png">
+        <entry file="file://$PROJECT_DIR$/resources/audio_2.png">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="wifi_1.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/osd/resources/wifi_1.png">
+        <entry file="file://$PROJECT_DIR$/resources/wifi_1.png">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
@@ -277,6 +277,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/osd" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -862,12 +863,12 @@
       <workItem from="1537436483587" duration="22614000" />
       <workItem from="1537967464315" duration="46000" />
       <workItem from="1538033699517" duration="2093000" />
-      <workItem from="1538076417798" duration="53126000" />
+      <workItem from="1538076417798" duration="53323000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157858000" />
+    <option name="totallyTimeSpent" value="158055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -884,7 +885,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3132695" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3132695" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16309012" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -915,22 +916,22 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD50.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD50.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD100.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD100.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/audio_2.png">
+    <entry file="file://$PROJECT_DIR$/resources/audio_2.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/wifi_1.png">
+    <entry file="file://$PROJECT_DIR$/resources/wifi_1.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -953,22 +954,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD50.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD50.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD100.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD100.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/audio_2.png">
+    <entry file="file://$PROJECT_DIR$/resources/audio_2.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/wifi_1.png">
+    <entry file="file://$PROJECT_DIR$/resources/wifi_1.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -983,22 +984,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD50.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD50.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD100.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD100.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/audio_2.png">
+    <entry file="file://$PROJECT_DIR$/resources/audio_2.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/wifi_1.png">
+    <entry file="file://$PROJECT_DIR$/resources/wifi_1.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1021,22 +1022,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD50.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD50.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD100.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD100.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/audio_2.png">
+    <entry file="file://$PROJECT_DIR$/resources/audio_2.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/wifi_1.png">
+    <entry file="file://$PROJECT_DIR$/resources/wifi_1.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1056,37 +1057,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/battery.png">
+    <entry file="file://$PROJECT_DIR$/resources/battery.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/wifi_warning.png">
+    <entry file="file://$PROJECT_DIR$/resources/wifi_warning.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/wifi_error.png">
+    <entry file="file://$PROJECT_DIR$/resources/wifi_error.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/wifi_3.png">
+    <entry file="file://$PROJECT_DIR$/resources/wifi_3.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/wifi_2.png">
+    <entry file="file://$PROJECT_DIR$/resources/wifi_2.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/plug.png">
+    <entry file="file://$PROJECT_DIR$/resources/plug.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD75.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD75.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1118,12 +1119,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD0.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD0.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD25.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD25.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1146,22 +1147,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD50.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD50.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/AUD100.png">
+    <entry file="file://$PROJECT_DIR$/resources/AUD100.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/audio_2.png">
+    <entry file="file://$PROJECT_DIR$/resources/audio_2.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/resources/wifi_1.png">
+    <entry file="file://$PROJECT_DIR$/resources/wifi_1.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1230,8 +1231,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="225" column="31" lean-forward="false" selection-start-line="225" selection-start-column="31" selection-end-line="225" selection-end-column="31" />
+        <state relative-caret-position="443">
+          <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
           <folding />
         </state>
       </provider>

@@ -51,8 +51,8 @@
 #define JOYSTICK_IMAGE "/resources/joystick.png"
 #define BLUETOOTH_IMAGE "/resources/bluetooth.png"
 #define BATTERY_TH 20
-#define AUDIO_IMAGES (const char*[5]){"/resources/AUD0.png","/resources/AUD25.png","/resources/AUD50.png","/resources/AUD75.png","/resources/AUD100.png"}
-#define WIFI_IMAGES (const char*[5]){"/resources/wifi_warning.png", "/resources/wifi_error.png", "/resources/wifi_1.png", "/resources/wifi_2.png", "/resources/wifi_3.png"}
+char AUDIO_IMAGES (const char*[5]){"/resources/AUD0.png","/resources/AUD25.png","/resources/AUD50.png","/resources/AUD75.png","/resources/AUD100.png"}
+char WIFI_IMAGES (const char*[5]){"/resources/wifi_warning.png", "/resources/wifi_error.png", "/resources/wifi_1.png", "/resources/wifi_2.png", "/resources/wifi_3.png"}
 #define BRIGHTNESS_MAX 7
 
 char cwd[PATH_MAX];
@@ -75,6 +75,7 @@ void getInput();
 void clearLayer(IMAGE_LAYER_T*);
 void updateBattery(float, IMAGE_LAYER_T*);
 char *getcwd(char *buf, size_t size);
+void concatenate_string(char*, char*);
 
 static void
 signalHandler(int signalNumber)

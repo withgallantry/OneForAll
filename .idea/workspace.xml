@@ -84,8 +84,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="314" column="44" lean-forward="false" selection-start-line="314" selection-start-column="44" selection-end-line="314" selection-end-column="44" />
+            <state relative-caret-position="323">
+              <caret line="54" column="4" lean-forward="false" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -151,8 +151,8 @@
       <find>bat</find>
       <find>readVoltage</find>
       <find>string</find>
-      <find>main</find>
       <find>BATTERY_IMAGE</find>
+      <find>main</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -840,12 +840,12 @@
       <workItem from="1537436483587" duration="22614000" />
       <workItem from="1537967464315" duration="46000" />
       <workItem from="1538033699517" duration="2093000" />
-      <workItem from="1538076417798" duration="51880000" />
+      <workItem from="1538076417798" duration="52657000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156612000" />
+    <option name="totallyTimeSpent" value="157389000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1208,8 +1208,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="314" column="44" lean-forward="false" selection-start-line="314" selection-start-column="44" selection-end-line="314" selection-end-column="44" />
+        <state relative-caret-position="323">
+          <caret line="54" column="4" lean-forward="false" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
           <folding />
         </state>
       </provider>

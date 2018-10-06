@@ -87,7 +87,7 @@ osd_path = bin_dir + 'osd/osd'
 rfkill_path = bin_dir + 'rfkill/rfkill'
 
 # Joystick Hardware settings
-joystick = config['GENERAL']
+joystick = config['JOYSTICK']
 DZONE = int(joystick['DEADZONE'])  # dead zone applied to joystick (mV)
 VREF = int(joystick['VCC'])  # joystick Vcc (mV)
 

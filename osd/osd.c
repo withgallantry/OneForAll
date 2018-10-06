@@ -49,7 +49,7 @@ char CHARGE_IMAGE[] = "./resources/plug.png";
 char INFO_IMAGE[] = "./resources/main.png";
 char JOYSTICK_IMAGE[] = "./resources/joystick.png";
 char BLUETOOTH_IMAGE[] = "./resources/bluetooth.png";
-#define BATTERY_TH 20;
+#define BATTERY_TH 20
 char *AUDIO_IMAGES[5] = {"./resources/AUD0.png","./resources/AUD25.png","./resources/AUD50.png","./resources/AUD75.png","./resources/AUD100.png"};
 char *WIFI_IMAGES[5] = {"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"};
 #define BRIGHTNESS_MAX 7;

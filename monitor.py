@@ -195,7 +195,6 @@ device.emit(uinput.ABS_Y, VREF / 2);
 
 # Set up OSD service
 try:
-    print osd_path + ' ' + bin_dir
     osd_proc = Popen([osd_path,bin_dir], shell=False, stdin=PIPE, stdout=None, stderr=None)
     osd_in = osd_proc.stdin
     time.sleep(1)

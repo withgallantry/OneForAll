@@ -53,9 +53,6 @@
 #define AUDIO_IMAGES (const char*[5]){"./resources/AUD0.png","./resources/AUD25.png","./resources/AUD50.png","./resources/AUD75.png","./resources/AUD100.png"}
 #define WIFI_IMAGES (const char*[5]){"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"}
 #define BRIGHTNESS_MAX 7
-//{"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"}
-
-char cwd[PATH_MAX];
 
 volatile bool run = true;
 
@@ -231,10 +228,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    char cwd[1024];
     chdir(argv[1]);
-    getcwd(cwd, sizeof(cwd));
-    printf("Current working dir: %s\n", cwd);
 
     int opt;
 

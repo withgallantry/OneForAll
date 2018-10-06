@@ -45,15 +45,16 @@
 
 #define NDEBUG
 
-#define BATTERY_IMAGE "/resources/battery.png"
-#define CHARGE_IMAGE "/resources/plug.png"
-#define INFO_IMAGE "/resources/main.png"
-#define JOYSTICK_IMAGE "/resources/joystick.png"
-#define BLUETOOTH_IMAGE "/resources/bluetooth.png"
+#define BATTERY_IMAGE "./resources/battery.png"
+#define CHARGE_IMAGE "./resources/plug.png"
+#define INFO_IMAGE "./resources/main.png"
+#define JOYSTICK_IMAGE "./resources/joystick.png"
+#define BLUETOOTH_IMAGE "./resources/bluetooth.png"
 #define BATTERY_TH 20
-char *AUDIO_IMAGES[5]= {"/resources/AUD0.png","/resources/AUD25.png","/resources/AUD50.png","/resources/AUD75.png","/resources/AUD100.png"}
-char *WIFI_IMAGES[5]= {"/resources/wifi_warning.png", "/resources/wifi_error.png", "/resources/wifi_1.png", "/resources/wifi_2.png", "/resources/wifi_3.png"}
+#define AUDIO_IMAGES (const char*[5]){"./resources/AUD0.png","./resources/AUD25.png","./resources/AUD50.png","./resources/AUD75.png","./resources/AUD100.png"}
+#define WIFI_IMAGES (const char*[5]){"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"}
 #define BRIGHTNESS_MAX 7
+//{"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"}
 
 char cwd[PATH_MAX];
 
@@ -75,7 +76,6 @@ void getInput();
 void clearLayer(IMAGE_LAYER_T*);
 void updateBattery(float, IMAGE_LAYER_T*);
 char *getcwd(char *buf, size_t size);
-void concatenate_string(char*, char*);
 
 static void
 signalHandler(int signalNumber)
@@ -313,7 +313,7 @@ int main(int argc, char *argv[])
     createResourceImageLayer(&infoLayer, layer + 3);
     
     IMAGE_LAYER_T bimageLayer;
-    if (loadPng(&(bimageLayer.image), cwd + BATTERY_IMAGE) == false)
+    if (loadPng(&(bimageLayer.image), BATTERY_IMAGE) == false)
     {
         fprintf(stderr, "unable to load %s\n", argv[optind]);
     }

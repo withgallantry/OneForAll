@@ -84,8 +84,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="54" column="153" lean-forward="false" selection-start-line="54" selection-start-column="153" selection-end-line="54" selection-end-column="153" />
+            <state relative-caret-position="222">
+              <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -123,7 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>BUTTON_A</find>
       <find>joyst</find>
       <find>joystick</find>
       <find>updateOSD</find>
@@ -151,8 +150,9 @@
       <find>uinput</find>
       <find>KEEPALIVE</find>
       <find>bat</find>
-      <find>main</find>
       <find>readVoltage</find>
+      <find>main</find>
+      <find>string</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -173,8 +173,8 @@
         <option value="$PROJECT_DIR$/monitor-v1.py" />
         <option value="$PROJECT_DIR$/config.cfg" />
         <option value="$PROJECT_DIR$/keys.cfg" />
-        <option value="$PROJECT_DIR$/osd/osd.c" />
         <option value="$PROJECT_DIR$/monitor.py" />
+        <option value="$PROJECT_DIR$/osd/osd.c" />
       </list>
     </option>
   </component>
@@ -840,12 +840,12 @@
       <workItem from="1537436483587" duration="22614000" />
       <workItem from="1537967464315" duration="46000" />
       <workItem from="1538033699517" duration="2093000" />
-      <workItem from="1538076417798" duration="48943000" />
+      <workItem from="1538076417798" duration="50176000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153675000" />
+    <option name="totallyTimeSpent" value="154908000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1208,8 +1208,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="54" column="153" lean-forward="false" selection-start-line="54" selection-start-column="153" selection-end-line="54" selection-end-column="153" />
+        <state relative-caret-position="222">
+          <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
           <folding />
         </state>
       </provider>

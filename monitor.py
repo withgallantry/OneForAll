@@ -61,10 +61,7 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
-print __file__
-print sys.argv[0]
 bin_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-print bin_dir
 osd_path = bin_dir + '/osd/osd'
 rfkill_path = bin_dir + '/rfkill/rfkill'
 

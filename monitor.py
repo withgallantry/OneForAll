@@ -508,7 +508,6 @@ signal.signal(signal.SIGTERM, exit_gracefully)
 
 # Read Initial States
 volume = readVolumeLevel()
-print volume
 
 wifi = readModeWifi()
 bluetooth = bluetooth = readModeBluetooth()
@@ -517,7 +516,7 @@ inputReadingThread = thread.start_new_thread(inputReading, ())
 
 # Main loop
 try:
-    print "STARTED!"
+    print "One For All Started"
     while 1:
         condition.acquire()
         if not adc == False:

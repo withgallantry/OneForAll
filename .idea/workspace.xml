@@ -4,7 +4,6 @@
     <list default="true" id="f1e91772-da59-4698-b607-55f4207566b3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor.py" afterPath="$PROJECT_DIR$/monitor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/osd/osd.c" afterPath="$PROJECT_DIR$/osd/osd.c" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,8 +27,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="105" column="18" lean-forward="false" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
+            <state relative-caret-position="474">
+              <caret line="110" column="4" lean-forward="false" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
               <folding>
                 <element signature="e#852#875#0" expanded="true" />
               </folding>
@@ -40,8 +39,8 @@
       <file leaf-file-name="keys.cfg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keys.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="16" />
+            <state relative-caret-position="15">
+              <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -83,7 +82,7 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8087">
+            <state relative-caret-position="8475">
               <caret line="565" column="24" lean-forward="false" selection-start-line="565" selection-start-column="24" selection-end-line="565" selection-end-column="24" />
               <folding />
             </state>
@@ -122,12 +121,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>batt_shdn</find>
-      <find>doShutdown</find>
-      <find>pi_shdn</find>
-      <find>pi_charged</find>
-      <find>pi_charging</find>
-      <find>serport</find>
       <find>shutdown</find>
       <find>gpio</find>
       <find>handle_button</find>
@@ -152,6 +145,12 @@
       <find>checkShdn</find>
       <find>ButtonHandler</find>
       <find>BOUNCE_TIME</find>
+      <find>wifi</find>
+      <find>ads</find>
+      <find>checkJoystickInput</find>
+      <find>adc</find>
+      <find>INFO</find>
+      <find>level</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -174,8 +173,8 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/monitor-v1.py" />
         <option value="$PROJECT_DIR$/config.cfg" />
-        <option value="$PROJECT_DIR$/keys.cfg" />
         <option value="$PROJECT_DIR$/osd/osd.c" />
+        <option value="$PROJECT_DIR$/keys.cfg" />
         <option value="$PROJECT_DIR$/monitor.py" />
       </list>
     </option>
@@ -248,8 +247,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -848,15 +847,16 @@
       <workItem from="1538033699517" duration="2093000" />
       <workItem from="1538076417798" duration="63042000" />
       <workItem from="1539156161101" duration="606000" />
-      <workItem from="1539246727966" duration="641000" />
+      <workItem from="1539246727966" duration="1296000" />
+      <workItem from="1539283323357" duration="986000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169021000" />
+    <option name="totallyTimeSpent" value="170662000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="823" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="823" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -873,7 +873,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3625171" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16738197" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1695279" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1179,26 +1179,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/keys.cfg">
+    <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="16" />
+        <state relative-caret-position="8475">
+          <caret line="565" column="24" lean-forward="false" selection-start-line="565" selection-start-column="24" selection-end-line="565" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/osd.c">
+    <entry file="file://$PROJECT_DIR$/keys.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8087">
-          <caret line="565" column="24" lean-forward="false" selection-start-line="565" selection-start-column="24" selection-end-line="565" selection-end-column="24" />
+        <state relative-caret-position="15">
+          <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="105" column="18" lean-forward="false" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
+        <state relative-caret-position="474">
+          <caret line="110" column="4" lean-forward="false" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
           </folding>

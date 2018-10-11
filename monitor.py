@@ -84,6 +84,8 @@ L1 = int(keys['L1'])
 R1 = int(keys['R1'])
 HOTKEY = int(keys['HOTKEY'])
 
+DEBUG = general['DEBUG']
+
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 
 # Joystick Hardware settings
@@ -104,6 +106,9 @@ BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
 HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
 
 BOUNCE_TIME = 0.01  # Debounce time in seconds
+
+if DEBUG:
+    logging.basicConfig(filename='osd.log', level=logging.INFO)
 
 # GPIO Init
 gpio.setwarnings(False)
@@ -149,8 +154,6 @@ bat = 100
 last_bat_read = 100;
 joystick = False;
 
-# logging.basicConfig(filename='osd.log', level=logging.INFO)
-
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 if monitoring_enabled == 'True':
     adc = Adafruit_ADS1x15.ADS1015()
@@ -195,7 +198,7 @@ device.emit(uinput.ABS_Y, VREF / 2);
 
 # Set up OSD service
 try:
-    osd_proc = Popen([osd_path,bin_dir], shell=False, stdin=PIPE, stdout=None, stderr=None)
+    osd_proc = Popen([osd_path, bin_dir], shell=False, stdin=PIPE, stdout=None, stderr=None)
     osd_in = osd_proc.stdin
     time.sleep(1)
     osd_poll = osd_proc.poll()
@@ -406,6 +409,7 @@ def inputReading():
         if joystick == True:
             checkJoystickInput()
         time.sleep(.05)
+
 
 def checkKeyInput():
     global info

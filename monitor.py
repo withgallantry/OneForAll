@@ -84,7 +84,7 @@ L1 = int(keys['L1'])
 R1 = int(keys['R1'])
 HOTKEY = int(keys['HOTKEY'])
 
-if configparser.has_option(general, 'DEBUG'):
+if config.has_option(general, 'DEBUG'):
     print "yes"
     logging.basicConfig(filename='osd.log', level=logging.INFO)
 

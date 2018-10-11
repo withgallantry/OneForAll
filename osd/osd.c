@@ -563,7 +563,7 @@ void updateInfoText(IMAGE_LAYER_T *infoLayer)
 
     if (bluetooth > 0) {
         snprintf(bluetoothText, sizeof(bluetoothText),"Bluetooth Enabled");
-    } else if (joystick <= 0) {
+    } else if (bluetooth <= 0) {
         snprintf(bluetoothText, sizeof(bluetoothText),"Bluetooth Disabled");
     }
 

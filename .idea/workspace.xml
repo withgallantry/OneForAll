@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1e91772-da59-4698-b607-55f4207566b3" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/AUD0.png" afterPath="$PROJECT_DIR$/resources/AUD0.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/AUD100.png" afterPath="$PROJECT_DIR$/resources/AUD100.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/AUD25.png" afterPath="$PROJECT_DIR$/resources/AUD25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/AUD50.png" afterPath="$PROJECT_DIR$/resources/AUD50.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/AUD75.png" afterPath="$PROJECT_DIR$/resources/AUD75.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/audio_2.png" afterPath="$PROJECT_DIR$/resources/audio_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/battery.png" afterPath="$PROJECT_DIR$/resources/battery.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/bluetooth.png" afterPath="$PROJECT_DIR$/resources/bluetooth.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/joystick.png" afterPath="$PROJECT_DIR$/resources/joystick.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/joystick.psd" afterPath="$PROJECT_DIR$/resources/joystick.psd" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/main.png" afterPath="$PROJECT_DIR$/resources/main.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/main16.png" afterPath="$PROJECT_DIR$/resources/main16.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/main2.png" afterPath="$PROJECT_DIR$/resources/main2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/plug.png" afterPath="$PROJECT_DIR$/resources/plug.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/wifi_1.png" afterPath="$PROJECT_DIR$/resources/wifi_1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/wifi_2.png" afterPath="$PROJECT_DIR$/resources/wifi_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/wifi_3.png" afterPath="$PROJECT_DIR$/resources/wifi_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/wifi_error.png" afterPath="$PROJECT_DIR$/resources/wifi_error.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/osd/resources/wifi_warning.png" afterPath="$PROJECT_DIR$/resources/wifi_warning.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keys.cfg" afterPath="$PROJECT_DIR$/keys.cfg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor.py" afterPath="$PROJECT_DIR$/monitor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/osd/osd.c" afterPath="$PROJECT_DIR$/osd/osd.c" />
     </list>
@@ -48,8 +28,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="510" column="0" lean-forward="true" selection-start-line="510" selection-start-column="0" selection-end-line="510" selection-end-column="0" />
+            <state relative-caret-position="372">
+              <caret line="105" column="18" lean-forward="false" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
               <folding>
                 <element signature="e#852#875#0" expanded="true" />
               </folding>
@@ -103,8 +83,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+            <state relative-caret-position="8087">
+              <caret line="565" column="24" lean-forward="false" selection-start-line="565" selection-start-column="24" selection-end-line="565" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -142,9 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>wif</find>
-      <find>wif</find>
-      <find>bluetooth</find>
       <find>batt_shdn</find>
       <find>doShutdown</find>
       <find>pi_shdn</find>
@@ -159,7 +136,6 @@
       <find>checkKeyInput</find>
       <find>hotkeyAction</find>
       <find>check</find>
-      <find>checkShdn</find>
       <find>uinput</find>
       <find>KEEPALIVE</find>
       <find>bat</find>
@@ -172,6 +148,10 @@
       <find>osd_path</find>
       <find>FULL_BATT_VOLTAG</find>
       <find>main</find>
+      <find>Starte</find>
+      <find>checkShdn</find>
+      <find>ButtonHandler</find>
+      <find>BOUNCE_TIME</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -226,8 +206,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -270,6 +248,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -866,12 +846,14 @@
       <workItem from="1537436483587" duration="22614000" />
       <workItem from="1537967464315" duration="46000" />
       <workItem from="1538033699517" duration="2093000" />
-      <workItem from="1538076417798" duration="61673000" />
+      <workItem from="1538076417798" duration="63042000" />
+      <workItem from="1539156161101" duration="606000" />
+      <workItem from="1539246727966" duration="641000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166405000" />
+    <option name="totallyTimeSpent" value="169021000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -888,10 +870,10 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3132695" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3625171" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16309012" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16738197" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1102,16 +1084,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/images/test.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/test1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/images/test.png" />
+    <entry file="file://$PROJECT_DIR$/images/test1.png" />
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -1146,7 +1120,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1186,30 +1159,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="437" column="15" lean-forward="false" selection-start-line="437" selection-start-column="5" selection-end-line="437" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monitor-v1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="279" column="10" lean-forward="false" selection-start-line="279" selection-start-column="10" selection-end-line="279" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor-v1.py" />
     <entry file="file://$PROJECT_DIR$/monitor.spec">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/keys.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -1222,18 +1179,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/keys.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+        <state relative-caret-position="8087">
+          <caret line="565" column="24" lean-forward="false" selection-start-line="565" selection-start-column="24" selection-end-line="565" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="510" column="0" lean-forward="true" selection-start-line="510" selection-start-column="0" selection-end-line="510" selection-end-column="0" />
+        <state relative-caret-position="372">
+          <caret line="105" column="18" lean-forward="false" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
           </folding>

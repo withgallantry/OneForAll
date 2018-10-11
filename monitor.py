@@ -85,7 +85,6 @@ R1 = int(keys['R1'])
 HOTKEY = int(keys['HOTKEY'])
 
 if config.has_option("GENERAL", "DEBUG"):
-    print "yes"
     logging.basicConfig(filename='osd.log', level=logging.INFO)
 
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])

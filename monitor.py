@@ -84,7 +84,9 @@ L1 = int(keys['L1'])
 R1 = int(keys['R1'])
 HOTKEY = int(keys['HOTKEY'])
 
-DEBUG = general['DEBUG']
+if configparser.has_option(general, 'DEBUG'):
+    print "yes"
+    logging.basicConfig(filename='osd.log', level=logging.INFO)
 
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 
@@ -107,8 +109,6 @@ HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
 
 BOUNCE_TIME = 0.01  # Debounce time in seconds
 
-if DEBUG:
-    logging.basicConfig(filename='osd.log', level=logging.INFO)
 
 # GPIO Init
 gpio.setwarnings(False)

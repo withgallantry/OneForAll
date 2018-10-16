@@ -511,7 +511,7 @@ int main(int argc, char *argv[])
         {
             pause(); //stop thread
         }
-        usleep(1000000); //sleep 1sec
+//        usleep(1000000); //sleep 1sec
     }
     //---------------------------------------------------------------------
 

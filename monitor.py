@@ -154,10 +154,10 @@ last_bat_read = 100;
 joystick = False;
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
-if monitoring_enabled == 'True':
-    adc = Adafruit_ADS1x15.ADS1015()
-else:
-    adc = False
+# if monitoring_enabled == 'True':
+#     adc = Adafruit_ADS1x15.ADS1015()
+# else:
+#     adc = False
 
 # Create virtual HID for Joystick
 device = uinput.Device(KEYS.values())
@@ -488,9 +488,9 @@ try:
     print "One For All Started"
     while 1:
         condition.acquire()
-        if not adc == False:
-            volt = readVoltage()
-            bat = getVoltagepercent(volt)
+        # if not adc == False:
+        #     volt = readVoltage()
+        #     bat = getVoltagepercent(volt)
         # checkShdn(bat)
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
         condition.wait(10)

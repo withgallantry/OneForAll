@@ -20,7 +20,7 @@
 # along with this repo. If not, see <http://www.gnu.org/licenses/>.
 #
 
-import Adafruit_ADS1x15
+# import Adafruit_ADS1x15
 import RPi.GPIO as gpio
 import logging
 import logging.handlers
@@ -154,10 +154,10 @@ last_bat_read = 100;
 joystick = False;
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
-if monitoring_enabled == 'True':
-    adc = Adafruit_ADS1x15.ADS1015()
-else:
-    adc = False
+# if monitoring_enabled == 'True':
+#     adc = Adafruit_ADS1x15.ADS1015()
+# else:
+#     adc = False
 
 # Create virtual HID for Joystick
 device = uinput.Device(KEYS.values())

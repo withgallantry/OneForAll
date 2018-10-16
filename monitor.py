@@ -85,7 +85,7 @@ R1 = int(keys['R1'])
 HOTKEY = int(keys['HOTKEY'])
 
 if config.has_option("GENERAL", "DEBUG"):
-    logging.basicConfig(filename=bin_dir+'/osd.log', level=logging.DEBUG)
+    logging.basicConfig(filename=bin_dir + '/osd.log', level=logging.DEBUG)
 
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 
@@ -107,7 +107,6 @@ BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
 HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
 
 BOUNCE_TIME = 0.01  # Debounce time in seconds
-
 
 # GPIO Init
 gpio.setwarnings(False)
@@ -483,16 +482,21 @@ bluetooth = bluetooth = readModeBluetooth()
 
 inputReadingThread = thread.start_new_thread(inputReading, ())
 
+batteryRead = 0;
 # Main loop
 try:
     print "One For All Started"
     while 1:
         condition.acquire()
         if not adc == False:
-            volt = readVoltage()
-            bat = getVoltagepercent(volt)
+            if batteryRead >= 5:
+                volt = readVoltage()
+                bat = getVoltagepercent(volt)
+                batteryRead = 0;
+        batteryRead = batteryRead + 1;
         # checkShdn(bat)
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+
         condition.wait(10)
         condition.release()
         # time.sleep(0.5)

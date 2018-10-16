@@ -27,8 +27,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="156" column="0" lean-forward="false" selection-start-line="156" selection-start-column="2" selection-end-line="159" selection-end-column="17" />
+            <state relative-caret-position="144">
+              <caret line="484" column="0" lean-forward="true" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
               <folding>
                 <element signature="e#852#875#0" expanded="true" />
               </folding>
@@ -121,8 +121,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>shutdown</find>
-      <find>gpio</find>
       <find>handle_button</find>
       <find>KEYS</find>
       <find>HOTKEY</find>
@@ -147,10 +145,12 @@
       <find>BOUNCE_TIME</find>
       <find>wifi</find>
       <find>ads</find>
-      <find>checkJoystickInput</find>
       <find>INFO</find>
       <find>level</find>
       <find>adc</find>
+      <find>checkJoystickInput</find>
+      <find>joystick</find>
+      <find>inputReading</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -849,12 +849,12 @@
       <workItem from="1539156161101" duration="606000" />
       <workItem from="1539246727966" duration="1296000" />
       <workItem from="1539283323357" duration="3305000" />
-      <workItem from="1539714464953" duration="249000" />
+      <workItem from="1539714464953" duration="392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173230000" />
+    <option name="totallyTimeSpent" value="173373000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -871,7 +871,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3625171" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3625171" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17167382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1198,8 +1198,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="156" column="0" lean-forward="false" selection-start-line="156" selection-start-column="2" selection-end-line="159" selection-end-column="17" />
+        <state relative-caret-position="144">
+          <caret line="484" column="0" lean-forward="true" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
           </folding>

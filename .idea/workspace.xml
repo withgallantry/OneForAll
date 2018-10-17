@@ -29,11 +29,10 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="394" column="17" lean-forward="true" selection-start-line="394" selection-start-column="17" selection-end-line="394" selection-end-column="17" />
+            <state relative-caret-position="173">
+              <caret line="148" column="10" lean-forward="false" selection-start-line="148" selection-start-column="10" selection-end-line="148" selection-end-column="10" />
               <folding>
                 <element signature="e#852#875#0" expanded="true" />
-                <marker date="1539784995000" expanded="true" signature="10988:11232" ph="..." />
               </folding>
             </state>
           </provider>
@@ -124,8 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>battery</find>
-      <find>BATTERY_TH</find>
       <find>osd_path</find>
       <find>FULL_BATT_VOLTAG</find>
       <find>main</find>
@@ -154,6 +151,8 @@
       <find>BATT_SHUTDOWN_VOLT</find>
       <find>batt_shdn</find>
       <find>checkShdn</find>
+      <find>volt &lt;</find>
+      <find>volt</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -853,12 +852,12 @@
       <workItem from="1539246727966" duration="1296000" />
       <workItem from="1539283323357" duration="3305000" />
       <workItem from="1539714464953" duration="2772000" />
-      <workItem from="1539724693312" duration="5567000" />
+      <workItem from="1539724693312" duration="6292000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181320000" />
+    <option name="totallyTimeSpent" value="182045000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -875,7 +874,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18331054" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18331054" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17381974" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -932,7 +931,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
-            <marker date="1539784995000" expanded="true" signature="10988:11232" ph="..." />
           </folding>
         </state>
       </provider>
@@ -971,7 +969,6 @@
           <caret line="370" column="0" lean-forward="false" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
-            <marker date="1539784995000" expanded="true" signature="10988:11232" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1010,7 +1007,6 @@
           <caret line="370" column="0" lean-forward="true" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
-            <marker date="1539784995000" expanded="true" signature="10988:11232" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1100,7 +1096,6 @@
           <caret line="201" column="41" lean-forward="false" selection-start-line="201" selection-start-column="20" selection-end-line="201" selection-end-column="41" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
-            <marker date="1539784995000" expanded="true" signature="10988:11232" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1206,11 +1201,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="394" column="17" lean-forward="true" selection-start-line="394" selection-start-column="17" selection-end-line="394" selection-end-column="17" />
+        <state relative-caret-position="173">
+          <caret line="148" column="10" lean-forward="false" selection-start-line="148" selection-start-column="10" selection-end-line="148" selection-end-column="10" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
-            <marker date="1539784995000" expanded="true" signature="10988:11232" ph="..." />
           </folding>
         </state>
       </provider>

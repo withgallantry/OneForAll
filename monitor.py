@@ -146,7 +146,7 @@ global bluetooth
 
 brightness = -1
 info = False
-volt = -1
+volt = 410
 volume = 1
 wifi = 2
 charge = 0

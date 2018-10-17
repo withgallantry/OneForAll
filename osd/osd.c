@@ -503,15 +503,15 @@ int main(int argc, char *argv[])
         }
         else if(infos <= 0)
         {
-            clearLayer(&infoLayer);
-            clearLayer(&infoTextLayer);
+           // clearLayer(&infoLayer);
+            //clearLayer(&infoTextLayer);
             infos_loaded = 0;
         }
         else
         {
             pause(); //stop thread
         }
-//        usleep(1000000); //sleep 1sec
+        usleep(1000000); //sleep 1sec
     }
     //---------------------------------------------------------------------
 

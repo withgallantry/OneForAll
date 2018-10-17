@@ -484,6 +484,7 @@ inputReadingThread = thread.start_new_thread(inputReading, ())
 
 batteryRead = 0;
 # Main loop
+
 try:
     print "One For All Started"
     while 1:

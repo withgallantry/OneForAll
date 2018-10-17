@@ -503,8 +503,8 @@ int main(int argc, char *argv[])
         }
         else if(infos <= 0)
         {
-           // clearLayer(&infoLayer);
-            //clearLayer(&infoTextLayer);
+            clearLayer(&infoLayer);
+            clearLayer(&infoTextLayer);
             infos_loaded = 0;
         }
         else

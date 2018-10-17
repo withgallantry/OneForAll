@@ -414,6 +414,9 @@ def checkKeyInput():
     global wifi
     global joystick
     global bluetooth
+    global bat
+    global volume
+    global volt
 
     # TODO Convert to state
     while not gpio.input(HOTKEY):

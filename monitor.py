@@ -482,6 +482,8 @@ volume = readVolumeLevel()
 
 wifi = readModeWifi()
 bluetooth = bluetooth = readModeBluetooth()
+volt = readVoltage()
+bat = getVoltagepercent(volt)
 
 inputReadingThread = thread.start_new_thread(inputReading, ())
 
@@ -493,7 +495,7 @@ try:
     while 1:
         condition.acquire()
         if not adc == False:
-            if batteryRead >= 5:
+            if batteryRead >= 1:
                 volt = readVoltage()
                 bat = getVoltagepercent(volt)
                 batteryRead = 0;

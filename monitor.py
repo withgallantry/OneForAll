@@ -497,7 +497,7 @@ try:
                 bat = getVoltagepercent(volt)
                 batteryRead = 0;
         batteryRead = batteryRead + 1;
-        checkShdn(volt)
+        # checkShdn(volt)
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
 
         condition.wait(10)

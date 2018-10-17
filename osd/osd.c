@@ -533,7 +533,7 @@ int main(int argc, char *argv[])
 void updateInfo(IMAGE_LAYER_T *infoLayer)
 {
     if (infos_loaded == 0) {
-    clearImageRGB(image, &backgroundColour);
+    //clearImageRGB(image, &backgroundColour);
     loadPng(&(infoLayer->image), INFO_IMAGE);
     changeSourceAndUpdateImageLayer(infoLayer);
     infos_loaded = 1;

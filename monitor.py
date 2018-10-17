@@ -84,6 +84,8 @@ L1 = int(keys['L1'])
 R1 = int(keys['R1'])
 HOTKEY = int(keys['HOTKEY'])
 
+RUN_MINIMAL = general['MINIMAL']
+
 if config.has_option("GENERAL", "DEBUG"):
     logging.basicConfig(filename=bin_dir + '/osd.log', level=logging.DEBUG)
 
@@ -209,13 +211,13 @@ except Exception as e:
 
 
 # Check for shutdown state
-def checkShdn(bat):
-    if bat < 2:
+def checkShdn(volt):
+    if volt < batt_shdn:
         doShutdown()
-    state = gpio.input(SHUTDOWN)
-    if (not state):
-        logging.info("SHUTDOWN")
-        doShutdown()
+    # state = gpio.input(SHUTDOWN)
+    # if (not state):
+    #     logging.info("SHUTDOWN")
+    #     doShutdown()
 
 
 # Read voltage
@@ -264,8 +266,6 @@ def readModeWifi(toggle=False):
             try:
                 out = check_output(['sudo', rfkill_path, 'unblock', 'wifi'])
                 logging.info("Wifi    [" + str(out) + "]")
-                out = check_output(['sudo', rfkill_path, 'unblock', 'bluetooth'])
-                logging.info("BT      [" + str(out) + "]")
             except Exception, e:
                 logging.info("Wifi    : " + str(e))
                 ret = wifi_warning  # Get signal strength
@@ -279,8 +279,6 @@ def readModeWifi(toggle=False):
             try:
                 out = check_output(['sudo', rfkill_path, 'block', 'wifi'])
                 logging.info("Wifi    [" + str(out) + "]")
-                out = check_output(['sudo', rfkill_path, 'block', 'bluetooth'])
-                logging.info("BT      [" + str(out) + "]")
             except Exception, e:
                 logging.info("Wifi    : " + str(e))
                 ret = wifi_error
@@ -394,7 +392,6 @@ def volumeDown():
 
 
 def inputReading():
-    # time.sleep(1)
     global volume
     global wifi
     global info
@@ -482,10 +479,10 @@ volume = readVolumeLevel()
 
 wifi = readModeWifi()
 bluetooth = bluetooth = readModeBluetooth()
-volt = readVoltage()
-bat = getVoltagepercent(volt)
 
-inputReadingThread = thread.start_new_thread(inputReading, ())
+
+if RUN_MINIMAL == 'False':
+    inputReadingThread = thread.start_new_thread(inputReading, ())
 
 batteryRead = 0;
 # Main loop
@@ -500,7 +497,7 @@ try:
                 bat = getVoltagepercent(volt)
                 batteryRead = 0;
         batteryRead = batteryRead + 1;
-        # checkShdn(bat)
+        checkShdn(volt)
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
 
         condition.wait(10)

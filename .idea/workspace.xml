@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f1e91772-da59-4698-b607-55f4207566b3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keys.cfg" afterPath="$PROJECT_DIR$/keys.cfg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor.py" afterPath="$PROJECT_DIR$/monitor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/osd/osd.c" afterPath="$PROJECT_DIR$/osd/osd.c" />
     </list>
@@ -28,10 +29,11 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="485" column="29" lean-forward="false" selection-start-line="485" selection-start-column="29" selection-end-line="485" selection-end-column="29" />
+            <state relative-caret-position="124">
+              <caret line="394" column="17" lean-forward="true" selection-start-line="394" selection-start-column="17" selection-end-line="394" selection-end-column="17" />
               <folding>
                 <element signature="e#852#875#0" expanded="true" />
+                <marker date="1539784995000" expanded="true" signature="10988:11232" ph="..." />
               </folding>
             </state>
           </provider>
@@ -40,8 +42,8 @@
       <file leaf-file-name="keys.cfg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keys.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+            <state relative-caret-position="405">
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -122,19 +124,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>KEEPALIVE</find>
-      <find>bat</find>
-      <find>string</find>
-      <find>BATTERY_IMAGE</find>
-      <find>loadPn</find>
-      <find>readVoltage</find>
       <find>battery</find>
       <find>BATTERY_TH</find>
       <find>osd_path</find>
       <find>FULL_BATT_VOLTAG</find>
       <find>main</find>
       <find>Starte</find>
-      <find>checkShdn</find>
       <find>ButtonHandler</find>
       <find>BOUNCE_TIME</find>
       <find>wifi</find>
@@ -145,13 +140,20 @@
       <find>joystick</find>
       <find>inputReading</find>
       <find>ADS</find>
-      <find>adc</find>
       <find>clearImageRGB</find>
       <find>clearLayer</find>
       <find>result</find>
       <find>check</find>
-      <find>HOTK</find>
       <find>clear</find>
+      <find>HOTK</find>
+      <find>General</find>
+      <find>adc</find>
+      <find>thread</find>
+      <find>checkKeyInput</find>
+      <find>shutdown</find>
+      <find>BATT_SHUTDOWN_VOLT</find>
+      <find>batt_shdn</find>
+      <find>checkShdn</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -174,8 +176,8 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/monitor-v1.py" />
         <option value="$PROJECT_DIR$/config.cfg" />
-        <option value="$PROJECT_DIR$/keys.cfg" />
         <option value="$PROJECT_DIR$/osd/osd.c" />
+        <option value="$PROJECT_DIR$/keys.cfg" />
         <option value="$PROJECT_DIR$/monitor.py" />
       </list>
     </option>
@@ -851,12 +853,12 @@
       <workItem from="1539246727966" duration="1296000" />
       <workItem from="1539283323357" duration="3305000" />
       <workItem from="1539714464953" duration="2772000" />
-      <workItem from="1539724693312" duration="4416000" />
+      <workItem from="1539724693312" duration="5567000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180169000" />
+    <option name="totallyTimeSpent" value="181320000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -930,6 +932,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
+            <marker date="1539784995000" expanded="true" signature="10988:11232" ph="..." />
           </folding>
         </state>
       </provider>
@@ -968,6 +971,7 @@
           <caret line="370" column="0" lean-forward="false" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
+            <marker date="1539784995000" expanded="true" signature="10988:11232" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1006,6 +1010,7 @@
           <caret line="370" column="0" lean-forward="true" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
+            <marker date="1539784995000" expanded="true" signature="10988:11232" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1095,6 +1100,7 @@
           <caret line="201" column="41" lean-forward="false" selection-start-line="201" selection-start-column="20" selection-end-line="201" selection-end-column="41" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
+            <marker date="1539784995000" expanded="true" signature="10988:11232" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1182,14 +1188,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/keys.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-568">
@@ -1198,12 +1196,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/keys.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="485" column="29" lean-forward="false" selection-start-line="485" selection-start-column="29" selection-end-line="485" selection-end-column="29" />
+        <state relative-caret-position="124">
+          <caret line="394" column="17" lean-forward="true" selection-start-line="394" selection-start-column="17" selection-end-line="394" selection-end-column="17" />
           <folding>
             <element signature="e#852#875#0" expanded="true" />
+            <marker date="1539784995000" expanded="true" signature="10988:11232" ph="..." />
           </folding>
         </state>
       </provider>

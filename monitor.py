@@ -217,10 +217,10 @@ except Exception as e:
 def checkShdn(volt):
     if volt < batt_shdn:
         doShutdown()
-    # state = gpio.input(SHUTDOWN)
-    # if (not state):
-    #     logging.info("SHUTDOWN")
-    #     doShutdown()
+        # state = gpio.input(SHUTDOWN)
+        # if (not state):
+        #     logging.info("SHUTDOWN")
+        #     doShutdown()
 
 
 # Read voltage
@@ -483,7 +483,6 @@ volume = readVolumeLevel()
 wifi = readModeWifi()
 bluetooth = bluetooth = readModeBluetooth()
 
-
 if RUN_MINIMAL == 'False':
     inputReadingThread = thread.start_new_thread(inputReading, ())
 
@@ -493,7 +492,8 @@ batteryRead = 0;
 try:
     print "One For All Started"
     while 1:
-        condition.acquire()
+        if RUN_MINIMAL == False:
+            condition.acquire()
         if not adc == False:
             if batteryRead >= 1:
                 volt = readVoltage()
@@ -501,11 +501,14 @@ try:
                 batteryRead = 0;
         batteryRead = batteryRead + 1;
         # checkShdn(volt)
-        #updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+        # updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
 
-        condition.wait(10)
-        condition.release()
-        # time.sleep(0.5)
+        if RUN_MINIMAL == False:
+            condition.wait(10)
+            condition.release()
+        else:
+            time.sleep(10)
+            # time.sleep(0.5)
 
 except KeyboardInterrupt:
     exit_gracefully()

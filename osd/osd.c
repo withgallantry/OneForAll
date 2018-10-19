@@ -330,8 +330,8 @@ int main(int argc, char *argv[])
                    VC_IMAGE_RGBA16);
     createResourceImageLayer(&batteryLayer, layer+1);
 
+    IMAGE_LAYER_T cimageLayer;
     if (minimum == false) {
-        IMAGE_LAYER_T cimageLayer;
         initImageLayer(&cimageLayer,
                        bimageLayer.image.width,
                        bimageLayer.image.height,
@@ -539,7 +539,7 @@ int main(int argc, char *argv[])
             pause(); //stop thread
         }
 
-        if (minimum = false) {
+        if (minimum == false) {
             usleep(1000000); //sleep 1sec
         } else {
             usleep(10000000); //sleep 10sec

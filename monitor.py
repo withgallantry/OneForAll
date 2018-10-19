@@ -201,7 +201,7 @@ try:
     if RUN_MINIMAL == 'False':
         osd_proc = Popen([osd_path, bin_dir], shell=False, stdin=PIPE, stdout=None, stderr=None)
     else:
-        osd_proc = Popen([osd_path, bin_dir, "minimal"], shell=False, stdin=PIPE, stdout=None, stderr=None)
+        osd_proc = Popen([osd_path, bin_dir, "ini"], shell=False, stdin=PIPE, stdout=None, stderr=None)
     osd_in = osd_proc.stdin
     time.sleep(1)
     osd_poll = osd_proc.poll()
@@ -501,7 +501,7 @@ try:
                 batteryRead = 0;
         batteryRead = batteryRead + 1;
         # checkShdn(volt)
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+        #updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
 
         condition.wait(10)
         condition.release()

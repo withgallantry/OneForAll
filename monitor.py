@@ -501,7 +501,7 @@ try:
                 batteryRead = 0;
         batteryRead = batteryRead + 1;
         # checkShdn(volt)
-        # updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
 
         if RUN_MINIMAL == False:
             condition.wait(10)

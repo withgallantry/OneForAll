@@ -83,8 +83,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="234" column="20" lean-forward="false" selection-start-line="234" selection-start-column="20" selection-end-line="234" selection-end-column="20" />
+            <state relative-caret-position="346">
+              <caret line="502" column="1" lean-forward="false" selection-start-line="502" selection-start-column="1" selection-end-line="504" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -122,7 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ads</find>
       <find>INFO</find>
       <find>level</find>
       <find>checkJoystickInput</find>
@@ -152,6 +151,7 @@
       <find>addElement</find>
       <find>aimageLayer</find>
       <find>cimage</find>
+      <find>changeSourceAndUpdateImageLayer</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -852,12 +852,12 @@
       <workItem from="1539283323357" duration="3305000" />
       <workItem from="1539714464953" duration="2772000" />
       <workItem from="1539724693312" duration="8270000" />
-      <workItem from="1539932612367" duration="1877000" />
+      <workItem from="1539932612367" duration="2417000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185900000" />
+    <option name="totallyTimeSpent" value="186440000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1203,8 +1203,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="234" column="20" lean-forward="false" selection-start-line="234" selection-start-column="20" selection-end-line="234" selection-end-column="20" />
+        <state relative-caret-position="346">
+          <caret line="502" column="1" lean-forward="false" selection-start-line="502" selection-start-column="1" selection-end-line="504" selection-end-column="41" />
           <folding />
         </state>
       </provider>

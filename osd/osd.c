@@ -459,7 +459,7 @@ int main(int argc, char *argv[])
             changeSourceAndUpdateImageLayer(&cimageLayer);
             charge = -1;
         }
-        else if(!charge && hud  && minimum == false)
+        else if(!charge && hud && minimum == false)
         {
             clearLayer(&cimageLayer);
             charge = -1;
@@ -499,9 +499,11 @@ int main(int argc, char *argv[])
         if (!hud) {
             clearLayer(&batteryLayer);
             clearLayer(&wimageLayer);
-            clearLayer(&aimageLayer);
-            clearLayer(&bimageLayer);
-            clearLayer(&cimageLayer);
+            if (minimum == false) {
+                clearLayer(&aimageLayer);
+                clearLayer(&bimageLayer);
+                clearLayer(&cimageLayer);
+            }
         }
         if(joystick > 0 && minimum == false) {
             if (loadPng(&(joystickImageLayer.image), JOYSTICK_IMAGE) == false) {

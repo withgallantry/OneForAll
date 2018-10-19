@@ -551,7 +551,7 @@ int main(int argc, char *argv[])
     destroyImageLayer(&batteryLayer);
     destroyImageLayer(&wimageLayer);
 
-    if (minimum = false) {
+    if (minimum == false) {
         destroyImageLayer(&infoTextLayer);
         destroyImageLayer(&aimageLayer);
         destroyImageLayer(&bimageLayer);

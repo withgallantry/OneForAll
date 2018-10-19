@@ -448,7 +448,7 @@ int main(int argc, char *argv[])
         {
             updateBattery(batval, &batteryLayer);
         }
-        if(charge > 0 && hud && minimum = false)
+        if(charge > 0 && hud && minimum == false)
         {
             //TODO preload for efficiency
             if (loadPng(&(cimageLayer.image), CHARGE_IMAGE) == false)
@@ -458,7 +458,7 @@ int main(int argc, char *argv[])
             changeSourceAndUpdateImageLayer(&cimageLayer);
             charge = -1;
         }
-        else if(!charge && hud  && minimum = false)
+        else if(!charge && hud  && minimum == false)
         {
             clearLayer(&cimageLayer);
             charge = -1;
@@ -480,7 +480,7 @@ int main(int argc, char *argv[])
             clearLayer(&wimageLayer);
             wifi_loaded = 0;
         }
-         if(audio >= 0 && minimum = false)
+         if(audio >= 0 && minimum == false)
                 {
                     vol_image = getImageIconFromVolume(audio);
                     //TODO preload for efficienty
@@ -502,30 +502,30 @@ int main(int argc, char *argv[])
             clearLayer(&bimageLayer);
             clearLayer(&cimageLayer);
         }
-        if(joystick > 0 && minimum = false) {
+        if(joystick > 0 && minimum == false) {
             if (loadPng(&(joystickImageLayer.image), JOYSTICK_IMAGE) == false) {
                 fprintf(stderr, "unable to joystick load %s\n", argv[optind]);
             }
             changeSourceAndUpdateImageLayer(&joystickImageLayer);
         }
-        else if(joystick <= 0 && minimum = false) {
+        else if(joystick <= 0 && minimum == false) {
             clearLayer(&joystickImageLayer);
         }
-        if(bluetooth > 0 && minimum = false) {
+        if(bluetooth > 0 && minimum == false) {
             if (loadPng(&(bluetoothImageLayer.image), BLUETOOTH_IMAGE) == false) {
                 fprintf(stderr, "unable to bluetooth load %s\n", argv[optind]);
             }
             changeSourceAndUpdateImageLayer(&bluetoothImageLayer);
         }
-        else if(bluetooth <= 0 && minimum = false) {
+        else if(bluetooth <= 0 && minimum == false) {
             clearLayer(&bluetoothImageLayer);
         }
-        if(infos > 0 && minimum = false)
+        if(infos > 0 && minimum == false)
         {
             updateInfo(&infoLayer);
             updateInfoText(&infoTextLayer);
         }
-        else if(infos <= 0 && minimum = false)
+        else if(infos <= 0 && minimum == false)
         {
             if (infos_loaded >= 1) {
               clearLayer(&infoLayer);

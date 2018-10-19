@@ -433,12 +433,14 @@ int main(int argc, char *argv[])
                                yOffset,
                                display,
                                update);
-    addElementImageLayerOffset(&cimageLayer,
-                               xOffset,
-                               yOffset,
-                               display,
-                               update);
-    
+
+    if (minimum == false) {
+        addElementImageLayerOffset(&cimageLayer,
+                                   xOffset,
+                                   yOffset,
+                                   display,
+                                   update);
+    }
     
     result = vc_dispmanx_update_submit_sync(update);
     assert(result == 0);

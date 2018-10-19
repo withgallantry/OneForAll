@@ -346,8 +346,11 @@ int main(int argc, char *argv[])
                    type);
     createResourceImageLayer(&wimageLayer, layer+2);
 
+    IMAGE_LAYER_T aimageLayer;
+    IMAGE_LAYER_T joystickImageLayer;
+    IMAGE_LAYER_T bluetoothImageLayer;
+
     if (minimum == false) {
-         IMAGE_LAYER_T aimageLayer;
             initImageLayer(&aimageLayer,
                            22,
                            13,
@@ -356,7 +359,6 @@ int main(int argc, char *argv[])
      }
 
     if (minimum == false) {
-         IMAGE_LAYER_T joystickImageLayer;
             initImageLayer(&joystickImageLayer,
                            11,
                            11,
@@ -365,7 +367,6 @@ int main(int argc, char *argv[])
      }
 
     if (minimum == false) {
-         IMAGE_LAYER_T bluetoothImageLayer;
             initImageLayer(&bluetoothImageLayer,
                            15,
                            13,
@@ -513,7 +514,7 @@ int main(int argc, char *argv[])
         }
         if(bluetooth > 0 && minimum == false) {
             if (loadPng(&(bluetoothImageLayer.image), BLUETOOTH_IMAGE) == false) {
-                fprintf(stderr, "unable to bluetooth load %s\n", argv[optind]);
+                fprintf(stderr, "unable to baluetooth load %s\n", argv[optind]);
             }
             changeSourceAndUpdateImageLayer(&bluetoothImageLayer);
         }

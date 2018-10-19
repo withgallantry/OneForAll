@@ -198,7 +198,10 @@ device.emit(uinput.ABS_Y, VREF / 2);
 
 # Set up OSD service
 try:
-    osd_proc = Popen([osd_path, bin_dir], shell=False, stdin=PIPE, stdout=None, stderr=None)
+    if RUN_MINIMAL == 'False':
+        osd_proc = Popen([osd_path, bin_dir], shell=False, stdin=PIPE, stdout=None, stderr=None)
+    else:
+        osd_proc = Popen([osd_path, bin_dir, "minimal"], shell=False, stdin=PIPE, stdout=None, stderr=None)
     osd_in = osd_proc.stdin
     time.sleep(1)
     osd_poll = osd_proc.poll()

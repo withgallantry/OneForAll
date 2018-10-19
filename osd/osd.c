@@ -230,6 +230,12 @@ int main(int argc, char *argv[])
 
     chdir(argv[1]);
 
+    bool minimum = false;
+
+    if (argv[2] == "minimum") {
+        minimum = true;
+    }
+
     int opt;
 
     while ((opt = getopt(argc, argv, "d:")) != -1)
@@ -323,13 +329,15 @@ int main(int argc, char *argv[])
                    bimageLayer.image.height,
                    VC_IMAGE_RGBA16);
     createResourceImageLayer(&batteryLayer, layer+1);
-    
-    IMAGE_LAYER_T cimageLayer;
-    initImageLayer(&cimageLayer,
-                   bimageLayer.image.width,
-                   bimageLayer.image.height,
-                   type);
-    createResourceImageLayer(&cimageLayer, layer+2);
+
+    if (minimum == false) {
+        IMAGE_LAYER_T cimageLayer;
+        initImageLayer(&cimageLayer,
+                       bimageLayer.image.width,
+                       bimageLayer.image.height,
+                       type);
+        createResourceImageLayer(&cimageLayer, layer+2);
+    }
     
     IMAGE_LAYER_T wimageLayer;
     initImageLayer(&wimageLayer,
@@ -338,36 +346,46 @@ int main(int argc, char *argv[])
                    type);
     createResourceImageLayer(&wimageLayer, layer+2);
 
-     IMAGE_LAYER_T aimageLayer;
-        initImageLayer(&aimageLayer,
-                       22,
-                       13,
-                       type);
-     createResourceImageLayer(&aimageLayer, layer+2);
+    if (minimum == false) {
+         IMAGE_LAYER_T aimageLayer;
+            initImageLayer(&aimageLayer,
+                           22,
+                           13,
+                           type);
+         createResourceImageLayer(&aimageLayer, layer+2);
+     }
 
-     IMAGE_LAYER_T joystickImageLayer;
-        initImageLayer(&joystickImageLayer,
-                       11,
-                       11,
-                       type);
-     createResourceImageLayer(&joystickImageLayer, layer+2);
+    if (minimum == false) {
+         IMAGE_LAYER_T joystickImageLayer;
+            initImageLayer(&joystickImageLayer,
+                           11,
+                           11,
+                           type);
+         createResourceImageLayer(&joystickImageLayer, layer+2);
+     }
 
-     IMAGE_LAYER_T bluetoothImageLayer;
-        initImageLayer(&bluetoothImageLayer,
-                       15,
-                       13,
-                       type);
-     createResourceImageLayer(&bluetoothImageLayer, layer+2);
+    if (minimum == false) {
+         IMAGE_LAYER_T bluetoothImageLayer;
+            initImageLayer(&bluetoothImageLayer,
+                           15,
+                           13,
+                           type);
+         createResourceImageLayer(&bluetoothImageLayer, layer+2);
+     }
     
     int xOffset = info.width-bimageLayer.image.width-1;
     int yOffset = 1;
     DISPMANX_UPDATE_HANDLE_T update = vc_dispmanx_update_start(0);
     assert(update != 0);
-    addElementImageLayerOffset(&infoTextLayer,
-                               (info.width - infoTextLayer.image.width) / 2,
-                               (info.height - infoTextLayer.image.height) / 2,
-                               display,
-                               update);
+
+    if (minimum == false) {
+        addElementImageLayerOffset(&infoTextLayer,
+                                   (info.width - infoTextLayer.image.width) / 2,
+                                   (info.height - infoTextLayer.image.height) / 2,
+                                   display,
+                                   update);
+    }
+
     addElementImageLayerOffset(&infoLayer,
                                (info.width - infoLayer.image.width) / 2,
                                (info.height - infoLayer.image.height) / 2,
@@ -380,23 +398,29 @@ int main(int argc, char *argv[])
                                display,
                                update);
 
-    addElementImageLayerOffset(&aimageLayer,
-                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width-7,
-                               yOffset,
-                               display,
-                               update);
+    if (minimum == false) {
+        addElementImageLayerOffset(&aimageLayer,
+                                   (xOffset-wimageLayer.image.width)-aimageLayer.image.width-7,
+                                   yOffset,
+                                   display,
+                                   update);
+    }
 
-    addElementImageLayerOffset(&joystickImageLayer,
-                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 22,
-                               yOffset + 1,
-                               display,
-                               update);
+    if (minimum == false) {
+        addElementImageLayerOffset(&joystickImageLayer,
+                                   (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 22,
+                                   yOffset + 1,
+                                   display,
+                                   update);
+    }
 
-    addElementImageLayerOffset(&bluetoothImageLayer,
-                               (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 38,
-                               yOffset ,
-                               display,
-                               update);
+    if (minimum == false) {
+        addElementImageLayerOffset(&bluetoothImageLayer,
+                                   (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 38,
+                                   yOffset ,
+                                   display,
+                                   update);
+    }
     
     addElementImageLayerOffset(&batteryLayer,
                                xOffset,
@@ -424,7 +448,7 @@ int main(int argc, char *argv[])
         {
             updateBattery(batval, &batteryLayer);
         }
-        if(charge > 0 && hud)
+        if(charge > 0 && hud && minimum = false)
         {
             //TODO preload for efficiency
             if (loadPng(&(cimageLayer.image), CHARGE_IMAGE) == false)
@@ -434,7 +458,7 @@ int main(int argc, char *argv[])
             changeSourceAndUpdateImageLayer(&cimageLayer);
             charge = -1;
         }
-        else if(!charge && hud)
+        else if(!charge && hud  && minimum = false)
         {
             clearLayer(&cimageLayer);
             charge = -1;
@@ -456,7 +480,7 @@ int main(int argc, char *argv[])
             clearLayer(&wimageLayer);
             wifi_loaded = 0;
         }
-         if(audio >= 0)
+         if(audio >= 0 && minimum = false)
                 {
                     vol_image = getImageIconFromVolume(audio);
                     //TODO preload for efficienty
@@ -478,30 +502,30 @@ int main(int argc, char *argv[])
             clearLayer(&bimageLayer);
             clearLayer(&cimageLayer);
         }
-        if(joystick > 0) {
+        if(joystick > 0 && minimum = false) {
             if (loadPng(&(joystickImageLayer.image), JOYSTICK_IMAGE) == false) {
                 fprintf(stderr, "unable to joystick load %s\n", argv[optind]);
             }
             changeSourceAndUpdateImageLayer(&joystickImageLayer);
         }
-        else if(joystick <= 0) {
+        else if(joystick <= 0 && minimum = false) {
             clearLayer(&joystickImageLayer);
         }
-        if(bluetooth > 0) {
+        if(bluetooth > 0 && minimum = false) {
             if (loadPng(&(bluetoothImageLayer.image), BLUETOOTH_IMAGE) == false) {
                 fprintf(stderr, "unable to bluetooth load %s\n", argv[optind]);
             }
             changeSourceAndUpdateImageLayer(&bluetoothImageLayer);
         }
-        else if(bluetooth <= 0) {
+        else if(bluetooth <= 0 && minimum = false) {
             clearLayer(&bluetoothImageLayer);
         }
-        if(infos > 0)
+        if(infos > 0 && minimum = false)
         {
             updateInfo(&infoLayer);
             updateInfoText(&infoTextLayer);
         }
-        else if(infos <= 0)
+        else if(infos <= 0 && minimum = false)
         {
             if (infos_loaded >= 1) {
               clearLayer(&infoLayer);
@@ -513,17 +537,26 @@ int main(int argc, char *argv[])
         {
             pause(); //stop thread
         }
-        usleep(1000000); //sleep 1sec
+
+        if (minimum = false) {
+            usleep(1000000); //sleep 1sec
+        } else {
+            usleep(10000000); //sleep 10sec
+        }
     }
     //---------------------------------------------------------------------
 
     destroyImageLayer(&infoLayer);
-    destroyImageLayer(&infoTextLayer);
     destroyImageLayer(&batteryLayer);
     destroyImageLayer(&wimageLayer);
-    destroyImageLayer(&aimageLayer);
-    destroyImageLayer(&bimageLayer);
-    destroyImageLayer(&cimageLayer);
+
+    if (minimum = false) {
+        destroyImageLayer(&infoTextLayer);
+        destroyImageLayer(&aimageLayer);
+        destroyImageLayer(&bimageLayer);
+        destroyImageLayer(&cimageLayer);
+    }
+
     result = vc_dispmanx_display_close(display);
     assert(result == 0);
 

@@ -232,7 +232,7 @@ int main(int argc, char *argv[])
 
     bool minimum = false;
 
-    if (strcmp( argc[2], "minimum") == 0) {
+    if (strcmp( argv[2], "minimum") == 0) {
         minimum = true;
     }
 

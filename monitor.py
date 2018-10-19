@@ -108,7 +108,7 @@ BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
 
 HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
 
-BOUNCE_TIME = 0.01  # Debounce time in seconds
+BOUNCE_TIME = 0.05  # Debounce time in seconds
 
 # GPIO Init
 gpio.setwarnings(False)
@@ -379,7 +379,8 @@ def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
 
 
-condition = threading.Condition()
+if RUN_MINIMAL == False:
+    condition = threading.Condition()
 
 
 def volumeUp():

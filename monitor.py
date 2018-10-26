@@ -20,6 +20,7 @@
 # along with this repo. If not, see <http://www.gnu.org/licenses/>.
 #
 
+import evdev
 import Adafruit_ADS1x15
 import RPi.GPIO as gpio
 import logging

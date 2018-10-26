@@ -20,7 +20,7 @@
 # along with this repo. If not, see <http://www.gnu.org/licenses/>.
 #
 
-from evdev import categorize, ecodes
+# from evdev import categorize, ecodes
 import Adafruit_ADS1x15
 import RPi.GPIO as gpio
 import logging
@@ -164,9 +164,9 @@ else:
 # Create virtual HID for Joystick
 device = uinput.Device(KEYS.values())
 
-for event in device.read_loop():
-    if event.type == ecodes.EV_KEY:
-        print(categorize(event))
+# for event in device.read_loop():
+#     if event.type == ecodes.EV_KEY:
+#         print(categorize(event))
 
 time.sleep(1)
 

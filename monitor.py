@@ -20,7 +20,7 @@
 # along with this repo. If not, see <http://www.gnu.org/licenses/>.
 #
 
-import evdev
+from evdev import uinput
 import Adafruit_ADS1x15
 import RPi.GPIO as gpio
 import logging
@@ -32,7 +32,7 @@ import sys
 import thread
 import threading
 import time
-import uinput
+# import uinput
 from subprocess import Popen, PIPE, check_output, check_call
 import configparser
 

@@ -19,8 +19,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this repo. If not, see <http://www.gnu.org/licenses/>.
 #
-
-from evdev import uinput, ecodes as e
 import Adafruit_ADS1x15
 import RPi.GPIO as gpio
 import logging
@@ -32,7 +30,7 @@ import sys
 import thread
 import threading
 import time
-# import uinput
+import uinput
 from subprocess import Popen, PIPE, check_output, check_call
 import configparser
 
@@ -119,18 +117,18 @@ gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     # See /usr/include/linux/input.h for keycode names
-    BUTTON_A: e.BTN_BASE,  # 'A' button
-    BUTTON_B: e.BTN_BASE2,  # 'B' button
-    BUTTON_X: e.BTN_BASE3,  # 'X' button
-    BUTTON_Y: e.BTN_BASE4,  # 'Y' button
-    SELECT: e.BTN_SELECT,  # 'Select' button
-    START: e.BTN_START,  # 'Start' button
-    UP: e.BTN_NORTH,  # Analog up
-    DOWN: e.BTN_SOUTH,  # Analog down
-    LEFT: e.BTN_EAST,  # Analog left
-    RIGHT: e.BTN_WEST,  # Analog right
-    10001: e.ABS_X + (0, VREF, 0, 0),
-    10002: e.ABS_Y + (0, VREF, 0, 0),
+    BUTTON_A: uinput.BTN_BASE,  # 'A' button
+    BUTTON_B: uinput.BTN_BASE2,  # 'B' button
+    BUTTON_X: uinput.BTN_BASE3,  # 'X' button
+    BUTTON_Y: uinput.BTN_BASE4,  # 'Y' button
+    SELECT: uinput.BTN_SELECT,  # 'Select' button
+    START: uinput.BTN_START,  # 'Start' button
+    UP: uinput.BTN_NORTH,  # Analog up
+    DOWN: uinput.BTN_SOUTH,  # Analog down
+    LEFT: uinput.BTN_EAST,  # Analog left
+    RIGHT: uinput.BTN_WEST,  # Analog right
+    10001: uinput.ABS_X + (0, VREF, 0, 0),
+    10002: uinput.ABS_Y + (0, VREF, 0, 0),
 }
 
 # Global Variables
@@ -163,9 +161,6 @@ else:
 
 # Create virtual HID for Joystick
 device = uinput.Device(KEYS.values())
-
-for event in device.read_loop():
-    print(event.type)
 
 time.sleep(1)
 

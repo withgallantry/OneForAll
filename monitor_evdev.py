@@ -424,8 +424,9 @@ def inputReading():
 
 
 def checkEvents():
-    for event in device.read():
-        print(event.type)
+    event = device.read_one();
+    # for event in device.read():
+    print(categorize(event))
 
 
 def checkKeyInput():

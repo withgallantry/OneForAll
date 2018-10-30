@@ -41,9 +41,16 @@
       <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-              <folding />
+            <state relative-caret-position="203">
+              <caret line="174" column="0" lean-forward="false" selection-start-line="174" selection-start-column="2" selection-end-line="199" selection-end-column="20" />
+              <folding>
+                <element signature="e#851#865#0" expanded="true" />
+                <marker date="1540906338000" expanded="true" signature="4649:5345" ph="..." />
+                <marker date="1540906338000" expanded="true" signature="4700:5345" ph="..." />
+                <marker date="1540906338000" expanded="true" signature="4748:4863" ph="..." />
+                <marker date="1540906338000" expanded="true" signature="4967:5137" ph="..." />
+                <marker date="1540906338000" expanded="true" signature="5183:5345" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -863,12 +870,12 @@
       <workItem from="1539714464953" duration="2772000" />
       <workItem from="1539724693312" duration="8270000" />
       <workItem from="1539932612367" duration="7382000" />
-      <workItem from="1540592777047" duration="9450000" />
+      <workItem from="1540592777047" duration="9549000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200855000" />
+    <option name="totallyTimeSpent" value="200954000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="824" extended-state="6" />
@@ -1217,9 +1224,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-          <folding />
+        <state relative-caret-position="203">
+          <caret line="174" column="0" lean-forward="false" selection-start-line="174" selection-start-column="2" selection-end-line="199" selection-end-column="20" />
+          <folding>
+            <element signature="e#851#865#0" expanded="true" />
+            <marker date="1540906338000" expanded="true" signature="4649:5345" ph="..." />
+            <marker date="1540906338000" expanded="true" signature="4700:5345" ph="..." />
+            <marker date="1540906338000" expanded="true" signature="4748:4863" ph="..." />
+            <marker date="1540906338000" expanded="true" signature="4967:5137" ph="..." />
+            <marker date="1540906338000" expanded="true" signature="5183:5345" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -172,32 +172,32 @@ device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK, e.EV_FF: RUMBLE}, 
 
 time.sleep(1)
 
-async def print_events(device):
-    async for event in device.async_read_loop():
-        print(categorize(event))
-
-        # Wait for an EV_UINPUT event that will signal us that an
-        # effect upload/erase operation is in progress.
-        if event.type != e.EV_UINPUT:
-            pass
-
-        if event.code == e.UI_FF_UPLOAD:
-            upload = device.begin_upload(event.value)
-            upload.retval = 0
-
-            print(upload.effect.type)
-            device.end_upload(upload)
-
-        elif event.code == e.UI_FF_ERASE:
-            erase = device.begin_erase(event.value)
-            print(erase.effect_id)
-
-            erase.retval = 0
-            device.end_erase(erase)
-
-asyncio.ensure_future(print_events(device))
-loop = asyncio.get_event_loop()
-loop.run_forever()
+# async def print_events(device):
+#     async for event in device.async_read_loop():
+#         print(categorize(event))
+#
+#         # Wait for an EV_UINPUT event that will signal us that an
+#         # effect upload/erase operation is in progress.
+#         if event.type != e.EV_UINPUT:
+#             pass
+#
+#         if event.code == e.UI_FF_UPLOAD:
+#             upload = device.begin_upload(event.value)
+#             upload.retval = 0
+#
+#             print(upload.effect.type)
+#             device.end_upload(upload)
+#
+#         elif event.code == e.UI_FF_ERASE:
+#             erase = device.begin_erase(event.value)
+#             print(erase.effect_id)
+#
+#             erase.retval = 0
+#             device.end_erase(erase)
+#
+# asyncio.ensure_future(print_events(device))
+# loop = asyncio.get_event_loop()
+# loop.run_forever()
 
 def hotkeyAction(key):
     if not gpio.input(HOTKEY):

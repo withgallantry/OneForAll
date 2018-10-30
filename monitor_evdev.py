@@ -19,7 +19,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this repo. If not, see <http://www.gnu.org/licenses/>.
 #
-import asyncio
 import Adafruit_ADS1x15
 import RPi.GPIO as gpio
 import logging
@@ -28,7 +27,7 @@ import os
 import re
 import signal
 import sys
-import _thread as thread
+import thread as thread
 import threading
 import time
 from evdev import uinput, UInput, AbsInfo, categorize, ecodes as e
@@ -137,7 +136,7 @@ JOYSTICK = [
                       fuzz=0, flat=0, resolution=0)),
     (e.ABS_Y, AbsInfo(0, 0, VREF, 0, 0, 0))]
 
-RUMBLE = [e.FF_RUMBLE ]
+RUMBLE = [e.FF_RUMBLE]
 
 # Global Variables
 
@@ -172,32 +171,6 @@ device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK, e.EV_FF: RUMBLE}, 
 
 time.sleep(1)
 
-# async def print_events(device):
-#     async for event in device.async_read_loop():
-#         print(categorize(event))
-#
-#         # Wait for an EV_UINPUT event that will signal us that an
-#         # effect upload/erase operation is in progress.
-#         if event.type != e.EV_UINPUT:
-#             pass
-#
-#         if event.code == e.UI_FF_UPLOAD:
-#             upload = device.begin_upload(event.value)
-#             upload.retval = 0
-#
-#             print(upload.effect.type)
-#             device.end_upload(upload)
-#
-#         elif event.code == e.UI_FF_ERASE:
-#             erase = device.begin_erase(event.value)
-#             print(erase.effect_id)
-#
-#             erase.retval = 0
-#             device.end_erase(erase)
-#
-# asyncio.ensure_future(print_events(device))
-# loop = asyncio.get_event_loop()
-# loop.run_forever()
 
 def hotkeyAction(key):
     if not gpio.input(HOTKEY):
@@ -444,9 +417,15 @@ def inputReading():
     global joystick
     while (1):
         checkKeyInput()
+        checkEvents()
         if joystick == True:
             checkJoystickInput()
         time.sleep(.05)
+
+
+def checkEvents():
+    for event in device.read():
+        print(event.type)
 
 
 def checkKeyInput():

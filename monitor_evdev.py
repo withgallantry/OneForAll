@@ -31,7 +31,7 @@ import sys
 import _thread as thread
 import threading
 import time
-from evdev import uinput, UInput, AbsInfo, ecodes, categorize as e
+from evdev import uinput, UInput, AbsInfo, categorize, ecodes as e
 from subprocess import Popen, PIPE, check_output, check_call
 import configparser
 

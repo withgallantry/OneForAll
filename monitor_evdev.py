@@ -286,7 +286,7 @@ def readVolumeLevel():
     vol = 0;
     try:
         vol = int(res.replace("%", "").replace("'C\n", ""))
-    except Exception, e:
+    except Exception as e:
         logging.info("Audio Err    : " + str(e))
 
     return vol;

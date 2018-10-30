@@ -190,6 +190,11 @@ def handle_button(pin):
     device.syn()
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
 
+def handle_shutdown(pin):
+    state = 0 if gpio.input(pin) else 1
+    if (state):
+        logging.info("SHUTDOWN")
+        doShutdown()
 
 # Initialise Safe shutdown
 gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)
@@ -224,19 +229,7 @@ except Exception as e:
 def checkShdn(volt):
     print volt
     print batt_shdn
-    # if volt < batt_shdn:
-    #     doShutdown()
-
-    state = gpio.input(SHUTDOWN)
-    if (not state):
-        logging.info("SHUTDOWN")
-        doShutdown()
-
-
-def handle_shutdown(pin):
-    state = 0 if gpio.input(pin) else 1
-    if (state):
-        logging.info("SHUTDOWN")
+    if volt < batt_shdn:
         doShutdown()
 
 

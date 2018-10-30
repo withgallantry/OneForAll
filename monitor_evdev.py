@@ -30,7 +30,7 @@ import sys
 import thread
 import threading
 import time
-import uinput
+from evdev import uinput, UInput, ecodes as e
 from subprocess import Popen, PIPE, check_output, check_call
 import configparser
 
@@ -117,20 +117,20 @@ gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     # See /usr/include/linux/input.h for keycode names
-    BUTTON_A: uinput.BTN_BASE,  # 'A' button
-    BUTTON_B: uinput.BTN_BASE2,  # 'B' button
-    BUTTON_X: uinput.BTN_BASE3,  # 'X' button
-    BUTTON_Y: uinput.BTN_BASE4,  # 'Y' button
-    BUTTON_L1: uinput.BTN_BASE4,  # 'L1' button
-    BUTTON_R1: uinput.BTN_BASE4,  # 'R1' button
-    SELECT: uinput.BTN_SELECT,  # 'Select' button
-    START: uinput.BTN_START,  # 'Start' button
-    UP: uinput.BTN_NORTH,  # Analog up
-    DOWN: uinput.BTN_SOUTH,  # Analog down
-    LEFT: uinput.BTN_EAST,  # Analog left
-    RIGHT: uinput.BTN_WEST,  # Analog right
-    10001: uinput.ABS_X + (0, VREF, 0, 0),
-    10002: uinput.ABS_Y + (0, VREF, 0, 0),
+    BUTTON_A: e.BTN_BASE,  # 'A' button
+    BUTTON_B: e.BTN_BASE2,  # 'B' button
+    BUTTON_X: e.BTN_BASE3,  # 'X' button
+    BUTTON_Y: e.BTN_BASE4,  # 'Y' button
+    BUTTON_L1: e.BTN_BASE4,  # 'L1' button
+    BUTTON_R1: e.BTN_BASE4,  # 'R1' button
+    SELECT: e.BTN_SELECT,  # 'Select' button
+    START: e.BTN_START,  # 'Start' button
+    UP: e.BTN_NORTH,  # Analog up
+    DOWN: e.BTN_SOUTH,  # Analog down
+    LEFT: e.BTN_EAST,  # Analog left
+    RIGHT: e.BTN_WEST,  # Analog right
+    10001: e.ABS_X + (0, VREF, 0, 0),
+    10002: e.ABS_Y + (0, VREF, 0, 0),
 }
 
 # Global Variables
@@ -162,7 +162,7 @@ else:
     adc = False
 
 # Create virtual HID for Joystick
-device = uinput.Device(KEYS.values())
+device = UInput({e.EV_KEY: KEYS.values()}, name="OneForAll", bustype=e.BUS_USB)
 
 time.sleep(1)
 
@@ -181,7 +181,7 @@ def handle_button(pin):
     state = 0 if gpio.input(pin) else 1
 
     if not hotkeyAction(pin):
-        device.emit(key, state)
+        device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)
 
     device.syn()
@@ -194,8 +194,8 @@ for button in BUTTONS:
     logging.debug("Button: {}".format(button))
 
 # Send centering commands
-device.emit(uinput.ABS_X, VREF / 2, syn=False);
-device.emit(uinput.ABS_Y, VREF / 2);
+device.write(e.EV_KEY, e.ABS_X, VREF / 2, syn=False);
+device.write(e.EV_KEY, e.ABS_Y, VREF / 2);
 
 # Set up OSD service
 try:

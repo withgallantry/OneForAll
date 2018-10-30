@@ -19,7 +19,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this repo. If not, see <http://www.gnu.org/licenses/>.
 #
-import asynchio
+import asyncio
 import Adafruit_ADS1x15
 import RPi.GPIO as gpio
 import logging

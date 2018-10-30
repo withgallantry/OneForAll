@@ -169,6 +169,9 @@ device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK}, name="python-uinp
 
 time.sleep(1)
 
+for event in device.read_loop():
+    print(event.type)
+
 
 def hotkeyAction(key):
     if not gpio.input(HOTKEY):
@@ -190,11 +193,13 @@ def handle_button(pin):
     device.syn()
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
 
+
 def handle_shutdown(pin):
     state = 0 if gpio.input(pin) else 1
     if (state):
         logging.info("SHUTDOWN")
         doShutdown()
+
 
 # Initialise Safe shutdown
 gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)

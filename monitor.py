@@ -124,6 +124,7 @@ KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     BUTTON_L1: uinput.BTN_BASE4,  # 'L1' button
     BUTTON_R1: uinput.BTN_BASE4,  # 'R1' button
     SELECT: uinput.BTN_SELECT,  # 'Select' button
+    SELECT: uinput.BTN_SELECT,  # 'Select' button
     START: uinput.BTN_START,  # 'Start' button
     UP: uinput.BTN_NORTH,  # Analog up
     DOWN: uinput.BTN_SOUTH,  # Analog down

@@ -129,8 +129,8 @@ KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     DOWN: e.BTN_SOUTH,  # Analog down
     LEFT: e.BTN_EAST,  # Analog left
     RIGHT: e.BTN_WEST,  # Analog right
-    10001: e.ABS_X + (0, VREF, 0, 0),
-    10002: e.ABS_Y + (0, VREF, 0, 0),
+    10001: (('ABS_X', 0), e.AbsInfo(min=0, max=VREF, fuzz=0, flat=0)),
+    10002: (('ABS_Y', 1), e.AbsInfo(min=0, max=VREF, fuzz=0, flat=0)),
 }
 
 # Global Variables
@@ -194,8 +194,8 @@ for button in BUTTONS:
     logging.debug("Button: {}".format(button))
 
 # Send centering commands
-device.write(e.EV_KEY, e.ABS_X, VREF / 2, syn=False);
-device.write(e.EV_KEY, e.ABS_Y, VREF / 2);
+device.write(e.EV_ABS, e.ABS_X, e.AbsInfo(min=0, max=VREF / 2, fuzz=0, flat=0));
+device.write(e.EV_ABS, e.ABS_Y, e.AbsInfo(min=0, max=VREF / 2, fuzz=0, flat=0));
 
 # Set up OSD service
 try:

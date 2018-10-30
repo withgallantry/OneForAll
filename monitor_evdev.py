@@ -28,7 +28,7 @@ import os
 import re
 import signal
 import sys
-import thread
+import _thread as thread
 import threading
 import time
 from evdev import uinput, UInput, AbsInfo, ecodes, categorize as e

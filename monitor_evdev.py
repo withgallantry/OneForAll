@@ -426,7 +426,7 @@ def inputReading():
 def checkEvents():
     event = device.read_one();
     # for event in device.read():
-    if event.type:
+    if event:
         print(categorize(event))
 
 

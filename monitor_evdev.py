@@ -321,7 +321,7 @@ def readModeWifi(toggle=False):
             try:
                 out = check_output(['sudo', rfkill_path, 'block', 'wifi'])
                 logging.info("Wifi    [" + str(out) + "]")
-            except Exception, e:
+            except Exception as e:
                 logging.info("Wifi    : " + str(e))
                 ret = wifi_error
         return ret
@@ -364,7 +364,7 @@ def readModeBluetooth(toggle=False):
             try:
                 out = check_output(['sudo', rfkill_path, 'unblock', 'bluetooth'])
                 logging.info("BT      [" + str(out) + "]")
-            except Exception, e:
+            except Exception as e:
                 logging.info("BT    : " + str(e))
                 ret = wifi_warning  # Get signal strength
 
@@ -377,7 +377,7 @@ def readModeBluetooth(toggle=False):
             try:
                 out = check_output(['sudo', rfkill_path, 'block', 'bluetooth'])
                 logging.info("BT      [" + str(out) + "]")
-            except Exception, e:
+            except Exception as e:
                 logging.info("BT    : " + str(e))
                 ret = wifi_error
         return ret

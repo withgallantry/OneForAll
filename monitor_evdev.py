@@ -215,7 +215,7 @@ device.write(e.EV_ABS, e.ABS_Y, VREF / 2);
 # Set up OSD service
 try:
     if RUN_MINIMAL == 'False':
-        osd_proc = Popen([osd_path, bin_dir], shell=False, stdin=PIPE, stdout=None, stderr=None)
+        osd_proc = Popen([osd_path, bin_dir, "full"], shell=False, stdin=PIPE, stdout=None, stderr=None)
     else:
         osd_proc = Popen([osd_path, bin_dir, "ini"], shell=False, stdin=PIPE, stdout=None, stderr=None)
     osd_in = osd_proc.stdin

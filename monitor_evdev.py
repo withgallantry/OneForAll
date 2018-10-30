@@ -417,17 +417,9 @@ def inputReading():
     global joystick
     while (1):
         checkKeyInput()
-        checkEvents()
         if joystick == True:
             checkJoystickInput()
         time.sleep(.05)
-
-
-def checkEvents():
-    event = device.read_one();
-    # for event in device.read():
-    if event:
-        print(categorize(event))
 
 
 def checkKeyInput():

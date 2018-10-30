@@ -115,20 +115,28 @@ gpio.setmode(gpio.BCM)
 gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
+# BUTTON_A: e.BTN_BASE,  # 'A' button
+# BUTTON_B: e.BTN_BASE2,  # 'B' button
+# BUTTON_X: e.BTN_TL,  # 'X' button
+# BUTTON_Y: e.BTN_TR,  # 'Y' button
+# BUTTON_L1: e.BTN_TOP,  # 'L1' button
+# BUTTON_R1: e.BTN_TOP2,  # 'R1' button
+# SELECT: e.BTN_SELECT,  # 'Select' button
+
 KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     # See /usr/include/linux/input.h for keycode names
-    BUTTON_A: e.BTN_BASE,  # 'A' button
-    BUTTON_B: e.BTN_BASE2,  # 'B' button
-    BUTTON_X: e.BTN_TL,  # 'X' button
-    BUTTON_Y: e.BTN_TR,  # 'Y' button
+    BUTTON_A: e.BTN_A,  # 'A' button
+    BUTTON_B: e.BTN_B,  # 'B' button
+    BUTTON_X: e.BTN_X,  # 'X' button
+    BUTTON_Y: e.BTN_Y,  # 'Y' button
     BUTTON_L1: e.BTN_TOP,  # 'L1' button
     BUTTON_R1: e.BTN_TOP2,  # 'R1' button
     SELECT: e.BTN_SELECT,  # 'Select' button
     START: e.BTN_START,  # 'Start' button
-    UP: e.BTN_NORTH,  # Analog up
-    DOWN: e.BTN_SOUTH,  # Analog down
-    LEFT: e.BTN_EAST,  # Analog left
-    RIGHT: e.BTN_WEST,  # Analog right
+    UP: e.BTN_DPAD_UP,  # Analog up
+    DOWN: e.BTN_DPAD_DOWN,  # Analog down
+    LEFT: e.BTN_DPAD_LEFT,  # Analog left
+    RIGHT: e.BTN_DPAD_RIGHT,  # Analog right
 }
 
 JOYSTICK = [

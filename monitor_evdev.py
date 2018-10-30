@@ -30,7 +30,7 @@ import sys
 import thread
 import threading
 import time
-from evdev import uinput, UInput, ecodes as e
+from evdev import uinput, UInput, AbsInfo, ecodes as e
 from subprocess import Popen, PIPE, check_output, check_call
 import configparser
 
@@ -129,9 +129,12 @@ KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     DOWN: e.BTN_SOUTH,  # Analog down
     LEFT: e.BTN_EAST,  # Analog left
     RIGHT: e.BTN_WEST,  # Analog right
-    10001: e.ABS_X,
-    10002: e.ABS_Y,
 }
+
+JOYSTICK = [
+    (e.ABS_X, AbsInfo(value=0, min=0, max=VREF,
+                      fuzz=0, flat=0, resolution=0)),
+    (e.ABS_Y, AbsInfo(0, 0, VREF, 0, 0, 0))]
 
 # Global Variables
 
@@ -162,7 +165,7 @@ else:
     adc = False
 
 # Create virtual HID for Joystick
-device = UInput({e.EV_KEY: KEYS.values()}, name="python-uinput", bustype=e.BUS_USB, version=0x3)
+device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK}, name="python-uinput", version=0x3)
 
 time.sleep(1)
 

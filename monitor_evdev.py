@@ -258,8 +258,6 @@ except Exception as e:
 
 # Check for shutdown state
 def checkShdn(volt):
-    print volt
-    print batt_shdn
     if volt < batt_shdn:
         doShutdown()
 
@@ -532,7 +530,7 @@ batteryRead = 0;
 # Main loop
 
 try:
-    print "One For All Started"
+    print("One For All Started")
     while 1:
         if RUN_MINIMAL == False:
             condition.acquire()

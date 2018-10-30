@@ -41,9 +41,11 @@
       <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="33" column="61" lean-forward="false" selection-start-line="33" selection-start-column="61" selection-end-line="33" selection-end-column="61" />
-              <folding />
+            <state relative-caret-position="144">
+              <caret line="532" column="32" lean-forward="false" selection-start-line="532" selection-start-column="32" selection-end-line="532" selection-end-column="32" />
+              <folding>
+                <element signature="e#851#866#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -126,7 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>BOUNCE_TIME</find>
       <find>li</find>
       <find>libp</find>
       <find>libpn</find>
@@ -156,6 +157,7 @@
       <find>handle_s</find>
       <find>L1</find>
       <find>device</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -863,12 +865,12 @@
       <workItem from="1539714464953" duration="2772000" />
       <workItem from="1539724693312" duration="8270000" />
       <workItem from="1539932612367" duration="7382000" />
-      <workItem from="1540592777047" duration="8805000" />
+      <workItem from="1540592777047" duration="8863000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200210000" />
+    <option name="totallyTimeSpent" value="200268000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="824" extended-state="6" />
@@ -1217,9 +1219,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="33" column="61" lean-forward="false" selection-start-line="33" selection-start-column="61" selection-end-line="33" selection-end-column="61" />
-          <folding />
+        <state relative-caret-position="144">
+          <caret line="532" column="32" lean-forward="false" selection-start-line="532" selection-start-column="32" selection-end-line="532" selection-end-column="32" />
+          <folding>
+            <element signature="e#851#866#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

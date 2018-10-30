@@ -191,6 +191,9 @@ def handle_button(pin):
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
 
 
+# Initialise Safe shutdown
+gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)
+
 # Initialise Buttons
 for button in BUTTONS:
     gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=1)
@@ -219,12 +222,22 @@ except Exception as e:
 
 # Check for shutdown state
 def checkShdn(volt):
-    if volt < batt_shdn:
+    print volt
+    print batt_shdn
+    # if volt < batt_shdn:
+    #     doShutdown()
+
+    state = gpio.input(SHUTDOWN)
+    if (not state):
+        logging.info("SHUTDOWN")
         doShutdown()
-        # state = gpio.input(SHUTDOWN)
-        # if (not state):
-        #     logging.info("SHUTDOWN")
-        #     doShutdown()
+
+
+def handle_shutdown(pin):
+    state = 0 if gpio.input(pin) else 1
+    if (state):
+        logging.info("SHUTDOWN")
+        doShutdown()
 
 
 # Read voltage
@@ -461,16 +474,16 @@ def checkJoystickInput():
     # Check and apply joystick states
     if (an0 > (VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE)):
         val = an0 - 100 - 200 * (an0 < VREF / 2 - DZONE) + 200 * (an0 > VREF / 2 + DZONE)
-        device.emit(uinput.ABS_X, val)
+        device.write(e.EV_ABS, e.ABS_X, val);
     else:
         # Center the sticks if within deadzone
         device.emit(uinput.ABS_X, VREF / 2)
     if (an1 > (VREF / 2 + DZONE)) or (an1 < (VREF / 2 - DZONE)):
         valy = an1 + 100 - 200 * (an1 < VREF / 2 - DZONE) + 200 * (an1 > VREF / 2 + DZONE)
-        device.emit(uinput.ABS_Y, valy)
+        device.write(e.EV_ABS, e.ABS_Y, valy);
     else:
         # Center the sticks if within deadzone
-        device.emit(uinput.ABS_Y, VREF / 2)
+        device.write(e.EV_ABS, e.ABS_Y, VREF / 2);
 
 
 def exit_gracefully(signum=None, frame=None):

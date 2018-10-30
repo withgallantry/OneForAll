@@ -308,7 +308,7 @@ def readModeWifi(toggle=False):
             try:
                 out = check_output(['sudo', rfkill_path, 'unblock', 'wifi'])
                 logging.info("Wifi    [" + str(out) + "]")
-            except Exception, e:
+            except Exception as e:
                 logging.info("Wifi    : " + str(e))
                 ret = wifi_warning  # Get signal strength
 

@@ -185,7 +185,7 @@ async def print_events(device):
             upload = device.begin_upload(event.value)
             upload.retval = 0
 
-            print(f'[upload] effect_id: {upload.effect_id}, type: {upload.effect.type}')
+            print(upload.effect.type)
             device.end_upload(upload)
 
         elif event.code == ecodes.UI_FF_ERASE:

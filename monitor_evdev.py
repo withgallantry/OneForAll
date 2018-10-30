@@ -391,7 +391,7 @@ def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
 
 
-if RUN_MINIMAL == False:
+if RUN_MINIMAL == 'False':
     condition = threading.Condition()
 
 
@@ -513,7 +513,7 @@ batteryRead = 0;
 try:
     print("One For All Started")
     while 1:
-        if RUN_MINIMAL == False:
+        if RUN_MINIMAL == 'False':
             condition.acquire()
         if not adc == False:
             if batteryRead >= 1:
@@ -524,7 +524,7 @@ try:
         # checkShdn(volt)
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
 
-        if RUN_MINIMAL == False:
+        if RUN_MINIMAL == 'False':
             condition.wait(10)
             condition.release()
         else:

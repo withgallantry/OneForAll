@@ -31,7 +31,7 @@ import sys
 import thread
 import threading
 import time
-from evdev import uinput, UInput, AbsInfo, ecodes as e
+from evdev import uinput, UInput, AbsInfo, ecodes, categorize as e
 from subprocess import Popen, PIPE, check_output, check_call
 import configparser
 
@@ -178,24 +178,24 @@ async def print_events(device):
 
         # Wait for an EV_UINPUT event that will signal us that an
         # effect upload/erase operation is in progress.
-        if event.type != ecodes.EV_UINPUT:
+        if event.type != e.EV_UINPUT:
             pass
 
-        if event.code == ecodes.UI_FF_UPLOAD:
+        if event.code == e.UI_FF_UPLOAD:
             upload = device.begin_upload(event.value)
             upload.retval = 0
 
             print(upload.effect.type)
             device.end_upload(upload)
 
-        elif event.code == ecodes.UI_FF_ERASE:
+        elif event.code == e.UI_FF_ERASE:
             erase = device.begin_erase(event.value)
             print(erase.effect_id)
 
             erase.retval = 0
             device.end_erase(erase)
 
-asyncio.ensure_future(print_events(ui))
+asyncio.ensure_future(print_events(device))
 loop = asyncio.get_event_loop()
 loop.run_forever()
 

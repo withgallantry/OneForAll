@@ -190,7 +190,7 @@ async def print_events(device):
 
         elif event.code == ecodes.UI_FF_ERASE:
             erase = device.begin_erase(event.value)
-            print(f'[erase] effect_id {erase.effect_id}')
+            print(erase.effect_id)
 
             erase.retval = 0
             device.end_erase(erase)

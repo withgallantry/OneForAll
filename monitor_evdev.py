@@ -119,10 +119,10 @@ KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     # See /usr/include/linux/input.h for keycode names
     BUTTON_A: e.BTN_BASE,  # 'A' button
     BUTTON_B: e.BTN_BASE2,  # 'B' button
-    BUTTON_X: e.BTN_TOP,  # 'X' button
-    BUTTON_Y: e.BTN_TOP2,  # 'Y' button
-    BUTTON_L1: e.BTN_BASE4,  # 'L1' button
-    BUTTON_R1: e.BTN_BASE4,  # 'R1' button
+    BUTTON_X: e.BTN_TL,  # 'X' button
+    BUTTON_Y: e.BTN_TR,  # 'Y' button
+    BUTTON_L1: e.BTN_TOP,  # 'L1' button
+    BUTTON_R1: e.BTN_TOP2,  # 'R1' button
     SELECT: e.BTN_SELECT,  # 'Select' button
     START: e.BTN_START,  # 'Start' button
     UP: e.BTN_NORTH,  # Analog up

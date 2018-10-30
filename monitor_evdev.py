@@ -162,7 +162,7 @@ else:
     adc = False
 
 # Create virtual HID for Joystick
-device = UInput({e.EV_KEY: KEYS.values()}, name="OneForAll", bustype=e.BUS_USB, version=0x3)
+device = UInput({e.EV_KEY: KEYS.values()}, name="python-uinput", bustype=e.BUS_USB, version=0x3)
 
 time.sleep(1)
 

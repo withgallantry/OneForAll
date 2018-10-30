@@ -119,8 +119,8 @@ KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
     # See /usr/include/linux/input.h for keycode names
     BUTTON_A: e.BTN_BASE,  # 'A' button
     BUTTON_B: e.BTN_BASE2,  # 'B' button
-    BUTTON_X: e.BTN_BASE3,  # 'X' button
-    BUTTON_Y: e.BTN_BASE4,  # 'Y' button
+    BUTTON_X: e.BTN_BASE4,  # 'X' button
+    BUTTON_Y: e.BTN_BASE3,  # 'Y' button
     BUTTON_L1: e.BTN_BASE4,  # 'L1' button
     BUTTON_R1: e.BTN_BASE4,  # 'R1' button
     SELECT: e.BTN_SELECT,  # 'Select' button

@@ -231,8 +231,6 @@ except Exception as e:
 
 # Check for shutdown state
 def checkShdn(volt):
-    print(volt)
-    print(batt_shdn)
     if volt < batt_shdn:
         doShutdown()
 

@@ -156,8 +156,8 @@ volt = 410
 volume = 1
 wifi = 2
 charge = 0
-bat = 100
-last_bat_read = 100;
+bat = 0
+last_bat_read = 0;
 joystick = False;
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
@@ -231,6 +231,8 @@ except Exception as e:
 
 # Check for shutdown state
 def checkShdn(volt):
+    print(volt)
+    print(batt_shdn)
     if volt < batt_shdn:
         doShutdown()
 
@@ -513,7 +515,7 @@ try:
                 bat = getVoltagepercent(volt)
                 batteryRead = 0;
         batteryRead = batteryRead + 1;
-        # checkShdn(volt)
+        checkShdn(volt)
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
 
         if RUN_MINIMAL == 'False':

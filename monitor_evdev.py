@@ -159,6 +159,7 @@ charge = 0
 bat = 0
 last_bat_read = 0;
 joystick = False;
+last_key = -1;
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 if monitoring_enabled == 'True':
@@ -181,13 +182,21 @@ def hotkeyAction(key):
 
 
 def handle_button(pin):
+    global last_key
     key = KEYS[pin]
-    time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 
-    if not hotkeyAction(pin):
+    if last_key == key and state == 1:
+        device.write(e.EV_KEY, key, 2)
+        last_key = key
+    elif not hotkeyAction(pin):
         device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)
+        last_key = key
+
+        # if not hotkeyAction(pin):
+        #     device.write(e.EV_KEY, key, state)
+        # time.sleep(BOUNCE_TIME)
 
     device.syn()
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))

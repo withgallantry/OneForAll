@@ -107,7 +107,7 @@ BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
 
 HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
 
-BOUNCE_TIME = 0.03  # Debounce time in seconds
+BOUNCE_TIME = 0.02  # Debounce time in seconds
 
 # GPIO Init
 gpio.setwarnings(False)
@@ -137,11 +137,6 @@ JOYSTICK = [
     (e.ABS_Y, AbsInfo(0, 0, VREF, 0, 0, 0))]
 
 RUMBLE = [e.FF_RUMBLE]
-
-REP = {
-    0x00: 500,  # REP_DELAY
-    0x01: 20,  # REP_PERIOD
-}
 
 # Global Variables
 

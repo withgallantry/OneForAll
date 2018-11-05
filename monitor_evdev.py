@@ -187,7 +187,7 @@ def handle_button(pin):
     state = 0 if gpio.input(pin) else 1
 
     if last_key == key and state == 1:
-        device.write(e.EV_KEY, key, 2)
+        device.write(e.EV_KEY, key, 1)
         last_key = key
     elif not hotkeyAction(pin):
         device.write(e.EV_KEY, key, state)

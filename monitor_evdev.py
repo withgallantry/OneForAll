@@ -198,11 +198,14 @@ def handle_button(pin):
     elif not hotkeyAction(pin):
         device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)
-        last_key = key
+        if state == 0:
+            last_key = -1
+        else:
+            last_key = key
 
-        # if not hotkeyAction(pin):
-        #     device.write(e.EV_KEY, key, state)
-        # time.sleep(BOUNCE_TIME)
+            # if not hotkeyAction(pin):
+            #     device.write(e.EV_KEY, key, state)
+            # time.sleep(BOUNCE_TIME)
 
     device.syn()
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))

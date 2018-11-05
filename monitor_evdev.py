@@ -173,8 +173,7 @@ else:
     adc = False
 
 # Create virtual HID for Joystick
-device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK, e.EV_FF: RUMBLE, e.EV_REP: REP}, name="OneForAll",
-                version=0x3)
+device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK, e.EV_FF: RUMBLE, e.EV_REP: REP}, name="OneForAll", version=0x3)
 
 time.sleep(1)
 

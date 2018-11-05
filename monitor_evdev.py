@@ -138,6 +138,11 @@ JOYSTICK = [
 
 RUMBLE = [e.FF_RUMBLE]
 
+REP = {
+    0x00: 500,  # REP_DELAY
+    0x01: 20,  # REP_PERIOD
+}
+
 # Global Variables
 
 global brightness
@@ -168,7 +173,8 @@ else:
     adc = False
 
 # Create virtual HID for Joystick
-device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK, e.EV_FF: RUMBLE}, name="OneForAll", version=0x3)
+device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK, e.EV_FF: RUMBLE, e.EV_REP: REP}, name="OneForAll",
+                version=0x3)
 
 time.sleep(1)
 
@@ -187,6 +193,7 @@ def handle_button(pin):
     state = 0 if gpio.input(pin) else 1
 
     if last_key == key and state == 1:
+        # device.write(e.EV_REP, key, 1)
         device.write(e.EV_KEY, key, 1)
         last_key = key
     elif not hotkeyAction(pin):

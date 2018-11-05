@@ -162,7 +162,7 @@ volume = 1
 wifi = 2
 charge = 0
 bat = 0
-last_bat_read = 0;
+last_bat_read = 3900;
 joystick = False;
 last_key = -1;
 

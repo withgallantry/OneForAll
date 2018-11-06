@@ -187,9 +187,7 @@ def handle_button(pin):
     state = 0 if gpio.input(pin) else 1
 
     if last_key == key and state == 1 and not hotkeyAction(pin):
-        print "Sending Repeat"
-        print key
-        print state
+        device.write(e.EV_KEY, key, 2)
         device.syn()
     elif not hotkeyAction(pin):
 
@@ -198,9 +196,6 @@ def handle_button(pin):
         else:
             last_key = key
 
-        print "Sending One off"
-        print key
-        print state
         device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)
         device.syn()

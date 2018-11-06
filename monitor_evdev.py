@@ -446,6 +446,8 @@ def checkKeyInputPowerSaving():
     global volt
     global showOverlay
 
+    print "Overlay"
+    print showOverlay
     info = showOverlay
 
     condition.acquire()
@@ -470,8 +472,7 @@ def checkKeyInputPowerSaving():
             bluetooth = readModeBluetooth(True)
             time.sleep(0.5)
 
-    print "Sending info"
-    print info
+
     updateOSD(volt, bat, 20, wifi, volume, 1, info, charge, bluetooth)
     condition.acquire()
     condition.notify()
@@ -570,7 +571,7 @@ try:
                 batteryRead = 0;
         batteryRead = batteryRead + 1;
         checkShdn(volt)
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge, bluetooth)
 
         if RUN_MINIMAL == 'False':
             condition.wait(10)

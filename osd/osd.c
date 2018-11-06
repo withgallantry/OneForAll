@@ -534,18 +534,18 @@ int main(int argc, char *argv[])
         {
               clearLayer(&infoLayer);
               clearLayer(&infoTextLayer);
-            infos_loaded = 0;
+              infos_loaded = 0;
         }
         else
         {
             pause(); //stop thread
         }
 
-        if (minimum == false) {
-            usleep(1000000); //sleep 1sec
-        } else {
-            usleep(1000000); //sleep 10sec
-        }
+//        if (minimum == false) {
+//            usleep(1000000); //sleep 1sec
+//        } else {
+//            usleep(1000000); //sleep 10sec
+//        }
     }
     //---------------------------------------------------------------------
 

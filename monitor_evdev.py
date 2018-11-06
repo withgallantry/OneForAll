@@ -187,17 +187,17 @@ def handle_button(pin):
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 
+    if not gpio.input(HOTKEY):
+        if state == 1:
+            showOverlay = True
+            print "Showing OVERLAY"
+            checkKeyInputPowerSaving()
+        else:
+            showOverlay = False
+            print "Checking Key Input"
+            checkKeyInputPowerSaving()
+
     if not hotkeyAction(pin):
-
-        if not gpio.input(HOTKEY):
-            if state == 1:
-                showOverlay = True
-                print "Showing OVERLAY"
-                checkKeyInputPowerSaving()
-            else:
-                showOverlay = False
-                print "Checking Key Input"
-
         device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)
         device.syn()

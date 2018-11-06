@@ -107,7 +107,7 @@ BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
 
 HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
 
-BOUNCE_TIME = 0.02  # Debounce time in seconds
+BOUNCE_TIME = 0.01  # Debounce time in seconds
 
 # GPIO Init
 gpio.setwarnings(False)
@@ -189,6 +189,7 @@ def handle_button(pin):
     if last_key == key and state == 1 and not hotkeyAction(pin):
         # device.write(e.EV_REP, key, 1)
         device.write(e.EV_KEY, key, 2)
+
         device.syn()
     elif not hotkeyAction(pin):
 
@@ -198,9 +199,8 @@ def handle_button(pin):
             last_key = 0
 
         device.write(e.EV_KEY, key, state)
-        # time.sleep(BOUNCE_TIME)
-
-        device.syn()
+        time.sleep(BOUNCE_TIME)
+        # device.syn()
 
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
 

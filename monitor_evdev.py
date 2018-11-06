@@ -242,10 +242,8 @@ def checkShdn(volt):
 def readVoltage():
     global last_bat_read;
     voltVal = adc.read_adc(0, gain=1);
-
-    if last_bat_read - voltVal > 300 or last_bat_read - voltVal < 0:
-        voltVal = last_bat_read
-
+    if voltVal < 1000:
+        voltVal = last_bat_read;
     last_bat_read = voltVal;
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
     return volt
@@ -425,12 +423,6 @@ def inputReading():
         if joystick == True:
             checkJoystickInput()
         time.sleep(.05)
-
-
-# def checkKeyInputFromEvent(key):
-#     if not gpio.input(HOTKEY):
-#         info = True
-#         if not
 
 def checkKeyInput():
     global info

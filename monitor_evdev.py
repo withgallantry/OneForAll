@@ -243,10 +243,8 @@ def readVoltage():
     global last_bat_read;
     voltVal = adc.read_adc(0, gain=1);
 
-    if last_bat_read - voltVal > 300 and not last_bat_read - voltVal < 0:
-        voltVal = voltVal
-    else:
-        voltVal = last_bat_read;
+    if last_bat_read - voltVal > 300 or last_bat_read - voltVal < 0:
+        voltVal = last_bat_read
 
     last_bat_read = voltVal;
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)

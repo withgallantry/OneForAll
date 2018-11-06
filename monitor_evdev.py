@@ -545,8 +545,8 @@ volume = readVolumeLevel()
 wifi = readModeWifi()
 bluetooth = bluetooth = readModeBluetooth()
 
-if RUN_MINIMAL == 'False':
-    inputReadingThread = thread.start_new_thread(inputReading, ())
+# if RUN_MINIMAL == 'False':
+    # inputReadingThread = thread.start_new_thread(inputReading, ())
 
 batteryRead = 1;
 # Main loop

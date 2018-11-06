@@ -187,7 +187,7 @@ def handle_button(pin):
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 
-    if not gpio.input(HOTKEY):
+    if key == HOTKEY:
         if state == 1:
             showOverlay = True
             print "Showing OVERLAY"

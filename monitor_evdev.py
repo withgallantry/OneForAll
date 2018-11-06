@@ -473,6 +473,9 @@ def checkKeyInputPowerSaving():
     print "Sending info"
     print info
     updateOSD(volt, bat, 20, wifi, volume, 1, info, charge, bluetooth)
+    condition.acquire()
+    condition.notify()
+    condition.release()
 
 
 def checkKeyInput():

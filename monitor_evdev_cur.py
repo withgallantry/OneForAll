@@ -188,8 +188,6 @@ def handle_button(pin):
     if not hotkeyAction(pin):
         device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)
-    else:
-        checkKeyInput()
 
         device.syn()
 
@@ -242,12 +240,8 @@ def checkShdn(volt):
 def readVoltage():
     global last_bat_read;
     voltVal = adc.read_adc(0, gain=1);
-
-    if last_bat_read - voltVal > 300 and not last_bat_read - voltVal < 0:
-        voltVal = voltVal
-    else:
+    if voltVal < 1000:
         voltVal = last_bat_read;
-
     last_bat_read = voltVal;
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
     return volt
@@ -429,11 +423,6 @@ def inputReading():
         time.sleep(.05)
 
 
-# def checkKeyInputFromEvent(key):
-#     if not gpio.input(HOTKEY):
-#         info = True
-#         if not
-
 def checkKeyInput():
     global info
     global wifi
@@ -444,7 +433,7 @@ def checkKeyInput():
     global volt
 
     # TODO Convert to state
-    if not gpio.input(HOTKEY):
+    while not gpio.input(HOTKEY):
         info = True
         condition.acquire()
         condition.notify()

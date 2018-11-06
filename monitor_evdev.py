@@ -189,7 +189,7 @@ def handle_button(pin):
         device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)
     else:
-        checkKeyInput()
+        # checkKeyInput()
 
         device.syn()
 

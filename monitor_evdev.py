@@ -107,7 +107,7 @@ BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
 
 HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
 
-BOUNCE_TIME = 0.025  # Debounce time in seconds
+BOUNCE_TIME = 0.03  # Debounce time in seconds
 
 # GPIO Init
 gpio.setwarnings(False)

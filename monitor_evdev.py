@@ -196,6 +196,7 @@ def handle_button(pin):
             last_state = 1;
 
         if last_key == key and last_state == 1 and state == 1:
+            print "Extra button press"
             device.write(e.EV_KEY, key, 0);
 
         device.write(e.EV_KEY, key, state)

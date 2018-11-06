@@ -188,10 +188,9 @@ def handle_button(pin):
     if not hotkeyAction(pin):
         device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)
-    else:
-        # checkKeyInput()
-
         device.syn()
+    else:
+        checkKeyInput()
 
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
 
@@ -423,6 +422,7 @@ def inputReading():
         if joystick == True:
             checkJoystickInput()
         time.sleep(.05)
+
 
 def checkKeyInput():
     global info

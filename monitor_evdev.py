@@ -187,8 +187,7 @@ def handle_button(pin):
     state = 0 if gpio.input(pin) else 1
 
     if last_key == key and state == 1 and not hotkeyAction(pin):
-        # device.write(e.EV_REP, key, 1)
-        # device.write(e.EV_KEY, key, 2)
+        device.write(e.EV_KEY, key, 2)
         print "Sending Repeat"
         print key
         print state
@@ -523,11 +522,10 @@ runTimer = 0;
 try:
     print("One For All Started")
     while 1:
+        runTimer = runTimer + 1;
         for button in BUTTONS:
             if gpio.event_detected(button):
-                gpio.remove_event_detect(button)
                 handle_button(button)
-                gpio.add_event_detect(button, gpio.RISING, bouncetime=1)
 
         if runTimer >= 10000:
             if not adc == False:

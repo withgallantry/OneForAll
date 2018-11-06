@@ -446,8 +446,6 @@ def checkKeyInputPowerSaving():
     global volt
     global showOverlay
 
-    print "Overlay"
-    print showOverlay
     info = showOverlay
 
     condition.acquire()
@@ -472,8 +470,6 @@ def checkKeyInputPowerSaving():
             bluetooth = readModeBluetooth(True)
             time.sleep(0.5)
 
-
-    updateOSD(volt, bat, 20, wifi, volume, 1, info, charge, bluetooth)
     condition.acquire()
     condition.notify()
     condition.release()

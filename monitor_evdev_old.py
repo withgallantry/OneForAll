@@ -222,7 +222,7 @@ gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=
 
 # Initialise Buttons
 for button in BUTTONS:
-    gpio.add_event_detect(button, gpio.BOTH, bouncetime=1)
+    gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=1)
     logging.debug("Button: {}".format(button))
 
 # Send centering commands
@@ -517,28 +517,28 @@ if RUN_MINIMAL == 'False':
     inputReadingThread = thread.start_new_thread(inputReading, ())
 
 batteryRead = 1;
-runTimer = 0;
 # Main loop
 
 try:
     print("One For All Started")
     while 1:
-        for button in BUTTONS:
-            if gpio.event_detected(button):
-                gpio.remove_event_detect(button)
-                handle_button(button)
-                gpio.add_event_detect(button, gpio.RISING, bouncetime=1)
+        if RUN_MINIMAL == 'False':
+            condition.acquire()
+        if not adc == False:
+            if batteryRead >= 1:
+                volt = readVoltage()
+                bat = getVoltagepercent(volt)
+                batteryRead = 0;
+        batteryRead = batteryRead + 1;
+        checkShdn(volt)
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
 
-        if runTimer >= 10000:
-            if not adc == False:
-                if batteryRead >= 1:
-                    volt = readVoltage()
-                    bat = getVoltagepercent(volt)
-                    batteryRead = 0;
-            batteryRead = batteryRead + 1;
-            checkShdn(volt)
-            updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
-            runTimer = 0;
+        if RUN_MINIMAL == 'False':
+            condition.wait(10)
+            condition.release()
+        else:
+            time.sleep(10)
+            # time.sleep(0.5)
 
 except KeyboardInterrupt:
     exit_gracefully()

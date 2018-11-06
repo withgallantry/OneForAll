@@ -107,7 +107,7 @@ BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
 
 HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
 
-BOUNCE_TIME = 0.02  # Debounce time in seconds
+BOUNCE_TIME = 0.025  # Debounce time in seconds
 
 # GPIO Init
 gpio.setwarnings(False)
@@ -159,8 +159,6 @@ charge = 0
 bat = 0
 last_bat_read = 3900;
 joystick = False;
-last_key = -1;
-last_state = -1;
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 if monitoring_enabled == 'True':
@@ -183,21 +181,11 @@ def hotkeyAction(key):
 
 
 def handle_button(pin):
-    global last_key
-    global last_state
     key = KEYS[pin]
     state = 0 if gpio.input(pin) else 1
 
     if not hotkeyAction(pin):
-
-        if last_key == key and last_state == 1 and state == 1:
-            print "Extra button press"
-            last_key = -1
-            state = 0
-        else:
-            last_key = key
-            last_state = state;
-
+        time.sleep(BOUNCE_TIME)
         device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)
 

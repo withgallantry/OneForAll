@@ -194,6 +194,7 @@ def handle_button(pin):
     else:
         if state == 1:
             showOverlay = True
+            print "Showing OVERLAY"
         else:
             showOverlay = False
         checkKeyInputPowerSaving()
@@ -460,11 +461,6 @@ def checkKeyInputPowerSaving():
             time.sleep(0.5)
 
     updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
-
-    if info == True:
-        info = False
-        time.sleep(0.5)
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
 
 def checkKeyInput():
     global info

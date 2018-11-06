@@ -466,11 +466,9 @@ def checkKeyInputPowerSaving():
             bluetooth = readModeBluetooth(True)
             time.sleep(0.5)
 
+    print "Sending info"
+    print info
     updateOSD(volt, bat, 20, wifi, volume, 1, info, charge, bluetooth)
-
-    if showOverlay == False:
-        info = False
-        updateOSD(volt, bat, 20, wifi, volume, 1, False, charge, bluetooth)
 
 
 def checkKeyInput():

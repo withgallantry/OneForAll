@@ -532,10 +532,8 @@ int main(int argc, char *argv[])
         }
         else if(infos <= 0 && minimum == false)
         {
-            if (infos_loaded >= 1) {
               clearLayer(&infoLayer);
               clearLayer(&infoTextLayer);
-            }
             infos_loaded = 0;
         }
         else

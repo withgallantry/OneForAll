@@ -157,8 +157,9 @@ volume = 1
 wifi = 2
 charge = 0
 bat = 0
-last_bat_read = 3900;
-joystick = False;
+last_bat_read = 3900
+joystick = False
+showOverlay = False
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 if monitoring_enabled == 'True':
@@ -181,6 +182,7 @@ def hotkeyAction(key):
 
 
 def handle_button(pin):
+    global showOverlay
     key = KEYS[pin]
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
@@ -190,6 +192,10 @@ def handle_button(pin):
         time.sleep(BOUNCE_TIME)
         device.syn()
     else:
+        if state == 1:
+            showOverlay = True
+        else:
+            showOverlay = False
         checkKeyInputPowerSaving()
 
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
@@ -431,10 +437,12 @@ def checkKeyInputPowerSaving():
     global bat
     global volume
     global volt
+    global showOverlay
+
+    info = showOverlay
 
     # TODO Convert to state
     if not gpio.input(HOTKEY):
-        info = True
         if not gpio.input(UP):
             volumeUp()
             time.sleep(0.5)

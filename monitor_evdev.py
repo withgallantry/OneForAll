@@ -187,10 +187,7 @@ def handle_button(pin):
     key = KEYS[pin]
     state = 0 if gpio.input(pin) else 1
 
-    if last_key == key and state == 1 and not hotkeyAction(pin):
-        device.write(e.EV_KEY, key, 0)
-        device.syn()
-    elif not hotkeyAction(pin):
+    if not hotkeyAction(pin):
 
         if state == 0:
             last_key = -1
@@ -216,7 +213,7 @@ gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=
 
 # Initialise Buttons
 for button in BUTTONS:
-    gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=2)
+    gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=3)
     logging.debug("Button: {}".format(button))
 
 # Send centering commands

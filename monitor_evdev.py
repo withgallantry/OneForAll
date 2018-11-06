@@ -160,6 +160,7 @@ bat = 0
 last_bat_read = 3900;
 joystick = False;
 last_key = -1;
+last_time = -1;
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 if monitoring_enabled == 'True':
@@ -187,7 +188,7 @@ def handle_button(pin):
     state = 0 if gpio.input(pin) else 1
 
     if last_key == key and state == 1 and not hotkeyAction(pin):
-        device.write(e.EV_KEY, key, 2)
+        device.write(e.EV_KEY, key, 0)
         device.syn()
     elif not hotkeyAction(pin):
 
@@ -215,7 +216,7 @@ gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=
 
 # Initialise Buttons
 for button in BUTTONS:
-    gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=1)
+    gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=2)
     logging.debug("Button: {}".format(button))
 
 # Send centering commands

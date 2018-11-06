@@ -202,8 +202,7 @@ def handle_button(pin):
 
         device.syn()
 
-
-logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
+    logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
 
 
 def handle_shutdown(pin):

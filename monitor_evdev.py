@@ -107,7 +107,7 @@ BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
 
 HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
 
-BOUNCE_TIME = 0.01  # Debounce time in seconds
+BOUNCE_TIME = 0.02  # Debounce time in seconds
 
 # GPIO Init
 gpio.setwarnings(False)
@@ -192,7 +192,7 @@ def handle_button(pin):
 
         if last_key == key and last_state == 1 and state == 1:
             print "Extra button press"
-            state = 2
+            state = 0
 
         device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)

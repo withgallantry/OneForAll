@@ -448,6 +448,10 @@ def checkKeyInputPowerSaving():
 
     info = showOverlay
 
+    condition.acquire()
+    condition.notify()
+    condition.release()
+
     # TODO Convert to state
     if not gpio.input(HOTKEY):
         if not gpio.input(UP):

@@ -188,15 +188,20 @@ def handle_button(pin):
     state = 0 if gpio.input(pin) else 1
 
     if not hotkeyAction(pin):
+
+        if not gpio.input(HOTKEY):
+            if state == 1:
+                showOverlay = True
+                print "Showing OVERLAY"
+                checkKeyInputPowerSaving()
+            else:
+                showOverlay = False
+                print "Checking Key Input"
+
         device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)
         device.syn()
     else:
-        if state == 1:
-            showOverlay = True
-            print "Showing OVERLAY"
-        else:
-            showOverlay = False
         checkKeyInputPowerSaving()
 
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
@@ -430,6 +435,7 @@ def inputReading():
             checkJoystickInput()
         time.sleep(.05)
 
+
 def checkKeyInputPowerSaving():
     global info
     global wifi
@@ -461,6 +467,7 @@ def checkKeyInputPowerSaving():
             time.sleep(0.5)
 
     updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+
 
 def checkKeyInput():
     global info

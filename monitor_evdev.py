@@ -186,23 +186,22 @@ def handle_button(pin):
     key = KEYS[pin]
     state = 0 if gpio.input(pin) else 1
 
-    if last_key == key and state == 1:
+    if last_key == key and state == 1 and not hotkeyAction(pin):
         # device.write(e.EV_REP, key, 1)
         device.write(e.EV_KEY, key, 2)
-        last_key = key
+        device.syn()
     elif not hotkeyAction(pin):
-        device.write(e.EV_KEY, key, state)
-        time.sleep(BOUNCE_TIME)
+
         if state == 0:
             last_key = -1
         else:
-            last_key = key
+            last_key = 0
 
-            # if not hotkeyAction(pin):
-            #     device.write(e.EV_KEY, key, state)
-            # time.sleep(BOUNCE_TIME)
+        device.write(e.EV_KEY, key, state)
+        time.sleep(BOUNCE_TIME)
 
-    device.syn()
+        device.syn()
+
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
 
 

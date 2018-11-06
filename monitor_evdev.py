@@ -197,16 +197,13 @@ def handle_button(pin):
         device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)
 
-        if state == 0:
-            last_key = -1
-            last_state = 0;
-        else:
-            last_key = key
-            last_state = 1;
+        last_key = key
+        last_state = state;
 
         device.syn()
 
-    logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
+
+logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
 
 
 def handle_shutdown(pin):

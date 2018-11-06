@@ -190,7 +190,7 @@ def handle_button(pin):
         time.sleep(BOUNCE_TIME)
         device.syn()
     else:
-        checkKeyInput()
+        checkKeyInputPowerSaving()
 
     logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
 
@@ -423,6 +423,40 @@ def inputReading():
             checkJoystickInput()
         time.sleep(.05)
 
+def checkKeyInputPowerSaving():
+    global info
+    global wifi
+    global joystick
+    global bluetooth
+    global bat
+    global volume
+    global volt
+
+    # TODO Convert to state
+    if not gpio.input(HOTKEY):
+        info = True
+        if not gpio.input(UP):
+            volumeUp()
+            time.sleep(0.5)
+        elif not gpio.input(DOWN):
+            volumeDown()
+            time.sleep(0.5)
+        elif not gpio.input(LEFT):
+            wifi = readModeWifi(True)
+            time.sleep(0.5)
+        elif not gpio.input(RIGHT):
+            joystick = not joystick
+            time.sleep(0.5)
+        elif not gpio.input(BUTTON_A):
+            bluetooth = readModeBluetooth(True)
+            time.sleep(0.5)
+
+    updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+
+    if info == True:
+        info = False
+        time.sleep(0.5)
+        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
 
 def checkKeyInput():
     global info
@@ -434,7 +468,7 @@ def checkKeyInput():
     global volt
 
     # TODO Convert to state
-    if not gpio.input(HOTKEY):
+    while not gpio.input(HOTKEY):
         info = True
         condition.acquire()
         condition.notify()

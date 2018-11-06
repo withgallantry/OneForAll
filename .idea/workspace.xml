@@ -30,8 +30,8 @@
       <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="192" column="8" lean-forward="false" selection-start-line="192" selection-start-column="8" selection-end-line="192" selection-end-column="8" />
+            <state relative-caret-position="144">
+              <caret line="192" column="32" lean-forward="false" selection-start-line="192" selection-start-column="32" selection-end-line="192" selection-end-column="32" />
               <folding>
                 <element signature="e#851#874#0" expanded="true" />
               </folding>
@@ -127,7 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>MINIMAL</find>
       <find>wk</find>
       <find>wk-view-c</find>
       <find>wk-view-co</find>
@@ -152,11 +151,12 @@
       <find>hotkeyAction</find>
       <find>checkKe</find>
       <find>batter</find>
-      <find>check</find>
       <find>input</find>
       <find>readVoltage</find>
       <find>checkKeyInput</find>
       <find>else</find>
+      <find>check</find>
+      <find>checkK</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -865,12 +865,12 @@
       <workItem from="1539714464953" duration="2772000" />
       <workItem from="1539724693312" duration="8270000" />
       <workItem from="1539932612367" duration="7382000" />
-      <workItem from="1540592777047" duration="33351000" />
+      <workItem from="1540592777047" duration="33459000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224756000" />
+    <option name="totallyTimeSpent" value="224864000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1227,8 +1227,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="192" column="8" lean-forward="false" selection-start-line="192" selection-start-column="8" selection-end-line="192" selection-end-column="8" />
+        <state relative-caret-position="144">
+          <caret line="192" column="32" lean-forward="false" selection-start-line="192" selection-start-column="32" selection-end-line="192" selection-end-column="32" />
           <folding>
             <element signature="e#851#874#0" expanded="true" />
           </folding>

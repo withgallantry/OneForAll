@@ -222,7 +222,7 @@ gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=
 
 # Initialise Buttons
 for button in BUTTONS:
-    gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=10)
+    gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=5)
     logging.debug("Button: {}".format(button))
 
 # Send centering commands

@@ -544,7 +544,7 @@ int main(int argc, char *argv[])
         if (minimum == false) {
             usleep(1000000); //sleep 1sec
         } else {
-            usleep(10000000); //sleep 10sec
+            usleep(1000000); //sleep 10sec
         }
     }
     //---------------------------------------------------------------------

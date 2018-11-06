@@ -192,7 +192,7 @@ def handle_button(pin):
 
         if last_key == key and last_state == 1 and state == 1:
             print "Extra button press"
-            state = 0
+            state = 2
 
         device.write(e.EV_KEY, key, state)
         time.sleep(BOUNCE_TIME)

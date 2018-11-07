@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f1e91772-da59-4698-b607-55f4207566b3" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monitor_evdev_cur.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/osd/osd-backup-2.c" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/monitor_evdev_old.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/osd/osd-backup-2.c" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keys.cfg" afterPath="$PROJECT_DIR$/keys.cfg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor_evdev.py" afterPath="$PROJECT_DIR$/monitor_evdev.py" />
@@ -32,8 +32,8 @@
       <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="447" column="0" lean-forward="true" selection-start-line="447" selection-start-column="0" selection-end-line="447" selection-end-column="0" />
+            <state relative-caret-position="147">
+              <caret line="567" column="25" lean-forward="false" selection-start-line="567" selection-start-column="25" selection-end-line="567" selection-end-column="25" />
               <folding>
                 <element signature="e#851#874#0" expanded="true" />
               </folding>
@@ -863,12 +863,12 @@
       <workItem from="1539714464953" duration="2772000" />
       <workItem from="1539724693312" duration="8270000" />
       <workItem from="1539932612367" duration="7382000" />
-      <workItem from="1540592777047" duration="37892000" />
+      <workItem from="1540592777047" duration="38211000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229297000" />
+    <option name="totallyTimeSpent" value="229616000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1229,8 +1229,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="447" column="0" lean-forward="true" selection-start-line="447" selection-start-column="0" selection-end-line="447" selection-end-column="0" />
+        <state relative-caret-position="147">
+          <caret line="567" column="25" lean-forward="false" selection-start-line="567" selection-start-column="25" selection-end-line="567" selection-end-column="25" />
           <folding>
             <element signature="e#851#874#0" expanded="true" />
           </folding>

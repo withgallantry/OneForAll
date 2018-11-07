@@ -564,6 +564,8 @@ try:
             if batteryRead >= 1:
                 volt = readVoltage()
                 bat = getVoltagepercent(volt)
+                print volt
+                print bat
                 batteryRead = 0;
         batteryRead = batteryRead + 1;
         checkShdn(volt)

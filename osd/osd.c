@@ -69,7 +69,7 @@ static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*, char[]);
-void updateInfoText(IMAGE_LAYER_T*);
+void updateInfoText(IMAGE_LAYER_T*, bool);
 void getInput();
 void clearLayer(IMAGE_LAYER_T*);
 void updateBattery(float, IMAGE_LAYER_T*);
@@ -520,7 +520,7 @@ int main(int argc, char *argv[])
             if (no_joystick) {
              updateInfo(&infoLayer, INFO_NO_JOYSTICK);
             } else {
-             updateInfo(&infoLayer, no_joystick)
+             updateInfo(&infoLayer, no_joystick);
             }
             updateInfoText(&infoTextLayer, no_joystick);
         }

@@ -229,7 +229,6 @@ device.write(e.EV_ABS, e.ABS_Y, VREF / 2);
 try:
     if JOYSTICK_DISABLED == 'True':
         osd_proc = Popen([osd_path, bin_dir, "nojoystick"], shell=False, stdin=PIPE, stdout=None, stderr=None)
-        print "NO JOYSTICK"
     else:
         osd_proc = Popen([osd_path, bin_dir, "full"], shell=False, stdin=PIPE, stdout=None, stderr=None)
     osd_in = osd_proc.stdin

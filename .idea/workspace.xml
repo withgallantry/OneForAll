@@ -28,11 +28,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="231" column="26" lean-forward="false" selection-start-line="231" selection-start-column="26" selection-end-line="231" selection-end-column="26" />
+            <state relative-caret-position="162">
+              <caret line="230" column="110" lean-forward="false" selection-start-line="230" selection-start-column="110" selection-end-line="230" selection-end-column="110" />
               <folding>
                 <element signature="e#851#874#0" expanded="true" />
               </folding>
@@ -60,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
+      <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="237" column="8" lean-forward="false" selection-start-line="237" selection-start-column="8" selection-end-line="237" selection-end-column="8" />
+            <state relative-caret-position="76">
+              <caret line="238" column="66" lean-forward="false" selection-start-line="238" selection-start-column="66" selection-end-line="238" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -132,8 +132,8 @@
       <find>MINIMAL</find>
       <find>joystick</find>
       <find>updateInfo</find>
-      <find>noj</find>
       <find>nojoystick</find>
+      <find>noj</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -164,8 +164,8 @@
         <option value="$PROJECT_DIR$/monitor.py" />
         <option value="$PROJECT_DIR$/monitor_evdev_old.py" />
         <option value="$PROJECT_DIR$/keys.cfg" />
-        <option value="$PROJECT_DIR$/osd/osd.c" />
         <option value="$PROJECT_DIR$/monitor_evdev.py" />
+        <option value="$PROJECT_DIR$/osd/osd.c" />
       </list>
     </option>
   </component>
@@ -858,12 +858,12 @@
       <workItem from="1539932612367" duration="7382000" />
       <workItem from="1540592777047" duration="38586000" />
       <workItem from="1541592657834" duration="19000" />
-      <workItem from="1541777591588" duration="6297000" />
+      <workItem from="1541777591588" duration="6443000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236307000" />
+    <option name="totallyTimeSpent" value="236453000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1187,21 +1187,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/osd/osd.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="237" column="8" lean-forward="false" selection-start-line="237" selection-start-column="8" selection-end-line="237" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="231" column="26" lean-forward="false" selection-start-line="231" selection-start-column="26" selection-end-line="231" selection-end-column="26" />
+        <state relative-caret-position="162">
+          <caret line="230" column="110" lean-forward="false" selection-start-line="230" selection-start-column="110" selection-end-line="230" selection-end-column="110" />
           <folding>
             <element signature="e#851#874#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/osd/osd.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="238" column="66" lean-forward="false" selection-start-line="238" selection-start-column="66" selection-end-line="238" selection-end-column="66" />
+          <folding />
         </state>
       </provider>
     </entry>

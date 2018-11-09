@@ -236,6 +236,9 @@ int main(int argc, char *argv[])
 
     if (strcmp( argv[2], "nojoystick") == 0) {
         no_joystick = true;
+                perror("NO JOYSTICK");
+                exit(EXIT_FAILURE);
+
     }
 
     int opt;

@@ -68,7 +68,7 @@ static RGBA8_T redColour = { 255, 0, 0, 200 };
 static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, wifi_loaded = 0, voltage = 0, vol_image = 0, infos_loaded = 0, joystick = 0, bluetooth = 0;
 static float temp = 0.f;
 
-void updateInfo(IMAGE_LAYER_T*);
+void updateInfo(IMAGE_LAYER_T*, char[]);
 void updateInfoText(IMAGE_LAYER_T*);
 void getInput();
 void clearLayer(IMAGE_LAYER_T*);

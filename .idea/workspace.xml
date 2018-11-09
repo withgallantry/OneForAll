@@ -63,8 +63,8 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="519" column="56" lean-forward="false" selection-start-line="519" selection-start-column="56" selection-end-line="519" selection-end-column="56" />
+            <state relative-caret-position="137">
+              <caret line="520" column="32" lean-forward="false" selection-start-line="520" selection-start-column="32" selection-end-line="520" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -104,8 +104,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>batter</find>
-      <find>input</find>
       <find>checkKeyInput</find>
       <find>else</find>
       <find>check</find>
@@ -114,7 +112,6 @@
       <find>checkKeyInputPowerSaving</find>
       <find>bluetooth</find>
       <find>updateOSD</find>
-      <find>info</find>
       <find>clear</find>
       <find>infos_loaded</find>
       <find>RUN_MINIMAL</find>
@@ -125,15 +122,18 @@
       <find>Joystick</find>
       <find>main(</find>
       <find>mini</find>
-      <find>INFO_IMAGE</find>
       <find>updateInfoText</find>
       <find>MINIMAL</find>
       <find>joystick</find>
-      <find>updateInfo</find>
       <find>nojoystick</find>
       <find>noj</find>
       <find>no_joystick</find>
       <find>INFO_NO_JOYSTICK</find>
+      <find>updateInfo</find>
+      <find>INFO_</find>
+      <find>INFO_IMAGE</find>
+      <find>stderr</find>
+      <find>info</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -858,12 +858,12 @@
       <workItem from="1539932612367" duration="7382000" />
       <workItem from="1540592777047" duration="38586000" />
       <workItem from="1541592657834" duration="19000" />
-      <workItem from="1541777591588" duration="6655000" />
+      <workItem from="1541777591588" duration="7332000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236665000" />
+    <option name="totallyTimeSpent" value="237342000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1199,8 +1199,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="519" column="56" lean-forward="false" selection-start-line="519" selection-start-column="56" selection-end-line="519" selection-end-column="56" />
+        <state relative-caret-position="137">
+          <caret line="520" column="32" lean-forward="false" selection-start-line="520" selection-start-column="32" selection-end-line="520" selection-end-column="32" />
           <folding />
         </state>
       </provider>

@@ -518,6 +518,7 @@ int main(int argc, char *argv[])
         if(infos > 0)
         {
             fprintf(stderr, "JOYSTICK %s\n", no_joystick);
+             exit(EXIT_FAILURE);
             if (no_joystick) {
              updateInfo(&infoLayer, INFO_NO_JOYSTICK);
             } else {

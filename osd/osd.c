@@ -520,7 +520,7 @@ int main(int argc, char *argv[])
             if (no_joystick) {
              updateInfo(&infoLayer, INFO_NO_JOYSTICK);
             } else {
-             updateInfo(&infoLayer, no_joystick);
+             updateInfo(&infoLayer, INFO_IMAGE);
             }
             updateInfoText(&infoTextLayer, no_joystick);
         }

@@ -232,7 +232,7 @@ int main(int argc, char *argv[])
 
     chdir(argv[1]);
 
-    bool no_joystick = false;
+    bool no_joystick = true;
 
     if (strcmp( argv[2], "nojoystick") == 0) {
         no_joystick = true;
@@ -517,8 +517,6 @@ int main(int argc, char *argv[])
         }
         if(infos > 0)
         {
-            fprintf(stderr, "JOYSTICK %s\n", no_joystick);
-             exit(EXIT_FAILURE);
             if (no_joystick) {
              updateInfo(&infoLayer, INFO_NO_JOYSTICK);
             } else {

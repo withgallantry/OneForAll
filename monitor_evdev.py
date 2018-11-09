@@ -94,6 +94,7 @@ SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 joystickConfig = config['JOYSTICK']
 DZONE = int(joystickConfig['DEADZONE'])  # dead zone applied to joystick (mV)
 VREF = int(joystickConfig['VCC'])  # joystick Vcc (mV)
+JOYSTICK_DISABLED = joystickConfig['DISABLED']
 
 # Battery config
 battery = config['BATTERY']
@@ -228,10 +229,10 @@ device.write(e.EV_ABS, e.ABS_Y, VREF / 2);
 
 # Set up OSD service
 try:
-    if RUN_MINIMAL == 'False':
+    if JOYSTICK_DISABLED == 'True':
         osd_proc = Popen([osd_path, bin_dir, "full"], shell=False, stdin=PIPE, stdout=None, stderr=None)
     else:
-        osd_proc = Popen([osd_path, bin_dir, "ini"], shell=False, stdin=PIPE, stdout=None, stderr=None)
+        osd_proc = Popen([osd_path, bin_dir, "nojoystick"], shell=False, stdin=PIPE, stdout=None, stderr=None)
     osd_in = osd_proc.stdin
     time.sleep(1)
     osd_poll = osd_proc.poll()
@@ -253,10 +254,12 @@ def checkShdn(volt):
 def readVoltage():
     global last_bat_read;
     voltVal = adc.read_adc(0, gain=1);
-    if voltVal < 1000:
-        voltVal = last_bat_read;
-    last_bat_read = voltVal;
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
+    last_bat_read = volt;
+
+    if voltVal < 300 or (last_bat_read > 300 and voltVal - last_bat_read > 10):
+        voltVal = last_bat_read;
+
     return volt
 
 
@@ -405,8 +408,7 @@ def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
 
 
-if RUN_MINIMAL == 'False':
-    condition = threading.Condition()
+condition = threading.Condition()
 
 
 def volumeUp():
@@ -475,43 +477,6 @@ def checkKeyInputPowerSaving():
     condition.release()
 
 
-def checkKeyInput():
-    global info
-    global wifi
-    global joystick
-    global bluetooth
-    global bat
-    global volume
-    global volt
-
-    # TODO Convert to state
-    while not gpio.input(HOTKEY):
-        info = True
-        condition.acquire()
-        condition.notify()
-        condition.release()
-        if not gpio.input(UP):
-            volumeUp()
-            time.sleep(0.5)
-        elif not gpio.input(DOWN):
-            volumeDown()
-            time.sleep(0.5)
-        elif not gpio.input(LEFT):
-            wifi = readModeWifi(True)
-            time.sleep(0.5)
-        elif not gpio.input(RIGHT):
-            joystick = not joystick
-            time.sleep(0.5)
-        elif not gpio.input(BUTTON_A):
-            bluetooth = readModeBluetooth(True)
-            time.sleep(0.5)
-
-    if info == True:
-        info = False
-        time.sleep(0.5)
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
-
-
 def checkJoystickInput():
     an1 = adc.read_adc(2, gain=2 / 3);
     an0 = adc.read_adc(1, gain=2 / 3);
@@ -549,17 +514,15 @@ volume = readVolumeLevel()
 wifi = readModeWifi()
 bluetooth = bluetooth = readModeBluetooth()
 
-# if RUN_MINIMAL == 'False':
-    # inputReadingThread = thread.start_new_thread(inputReading, ())
+if JOYSTICK_DISABLED == 'False':
+    inputReadingThread = thread.start_new_thread(inputReading, ())
 
 batteryRead = 1;
-# Main loop
 
 try:
     print("One For All Started")
     while 1:
-        if RUN_MINIMAL == 'False':
-            condition.acquire()
+        condition.acquire()
         if not adc == False:
             if batteryRead >= 1:
                 volt = readVoltage()
@@ -571,12 +534,8 @@ try:
         checkShdn(volt)
         updateOSD(volt, bat, 20, wifi, volume, 1, info, charge, bluetooth)
 
-        if RUN_MINIMAL == 'False':
-            condition.wait(10)
-            condition.release()
-        else:
-            time.sleep(10)
-            # time.sleep(0.5)
+        condition.wait(10)
+        condition.release()
 
 except KeyboardInterrupt:
     exit_gracefully()

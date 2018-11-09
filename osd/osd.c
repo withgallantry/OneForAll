@@ -46,7 +46,9 @@
 #define NDEBUG
 #define BATTERY_IMAGE "./resources/battery.png"
 #define CHARGE_IMAGE "./resources/plug.png"
+#define LOW_BATTERY_IMAGE "./resources/low-battery.png"
 #define INFO_IMAGE "./resources/main.png"
+#define INFO_NO_JOYSTICK "./resources/main_no_joystick.png"
 #define JOYSTICK_IMAGE "./resources/joystick.png"
 #define BLUETOOTH_IMAGE "./resources/bluetooth.png"
 #define BATTERY_TH 20
@@ -230,10 +232,10 @@ int main(int argc, char *argv[])
 
     chdir(argv[1]);
 
-    bool minimum = false;
+    bool no_joystick = false;
 
-    if (strcmp( argv[2], "minimum") == 0) {
-        minimum = true;
+    if (strcmp( argv[2], "nojoystick") == 0) {
+        no_joystick = true;
     }
 
     int opt;
@@ -331,14 +333,12 @@ int main(int argc, char *argv[])
     createResourceImageLayer(&batteryLayer, layer+1);
 
     IMAGE_LAYER_T cimageLayer;
-    if (minimum == false) {
         initImageLayer(&cimageLayer,
                        bimageLayer.image.width,
                        bimageLayer.image.height,
                        type);
         createResourceImageLayer(&cimageLayer, layer+2);
-    }
-    
+
     IMAGE_LAYER_T wimageLayer;
     initImageLayer(&wimageLayer,
                    bimageLayer.image.height,
@@ -350,42 +350,40 @@ int main(int argc, char *argv[])
     IMAGE_LAYER_T joystickImageLayer;
     IMAGE_LAYER_T bluetoothImageLayer;
 
-    if (minimum == false) {
+
             initImageLayer(&aimageLayer,
                            22,
                            13,
                            type);
          createResourceImageLayer(&aimageLayer, layer+2);
-     }
 
-    if (minimum == false) {
+
+
             initImageLayer(&joystickImageLayer,
                            11,
                            11,
                            type);
          createResourceImageLayer(&joystickImageLayer, layer+2);
-     }
 
-    if (minimum == false) {
+
+
             initImageLayer(&bluetoothImageLayer,
                            15,
                            13,
                            type);
          createResourceImageLayer(&bluetoothImageLayer, layer+2);
-     }
+
     
     int xOffset = info.width-bimageLayer.image.width-1;
     int yOffset = 1;
     DISPMANX_UPDATE_HANDLE_T update = vc_dispmanx_update_start(0);
     assert(update != 0);
 
-    if (minimum == false) {
         addElementImageLayerOffset(&infoTextLayer,
                                    (info.width - infoTextLayer.image.width) / 2,
                                    (info.height - infoTextLayer.image.height) / 2,
                                    display,
                                    update);
-    }
 
     addElementImageLayerOffset(&infoLayer,
                                (info.width - infoLayer.image.width) / 2,
@@ -399,29 +397,25 @@ int main(int argc, char *argv[])
                                display,
                                update);
 
-    if (minimum == false) {
-        addElementImageLayerOffset(&aimageLayer,
-                                   (xOffset-wimageLayer.image.width)-aimageLayer.image.width-7,
+    addElementImageLayerOffset(&aimageLayer,
+                              (xOffset-wimageLayer.image.width)-aimageLayer.image.width-7,
                                    yOffset,
                                    display,
                                    update);
-    }
 
-    if (minimum == false) {
+
+
         addElementImageLayerOffset(&joystickImageLayer,
                                    (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 22,
                                    yOffset + 1,
                                    display,
                                    update);
-    }
 
-    if (minimum == false) {
         addElementImageLayerOffset(&bluetoothImageLayer,
                                    (xOffset-wimageLayer.image.width)-aimageLayer.image.width - 38,
                                    yOffset ,
                                    display,
                                    update);
-    }
     
     addElementImageLayerOffset(&batteryLayer,
                                xOffset,
@@ -434,13 +428,11 @@ int main(int argc, char *argv[])
                                display,
                                update);
 
-    if (minimum == false) {
         addElementImageLayerOffset(&cimageLayer,
                                    xOffset,
                                    yOffset,
                                    display,
                                    update);
-    }
     
     result = vc_dispmanx_update_submit_sync(update);
     assert(result == 0);
@@ -451,7 +443,7 @@ int main(int argc, char *argv[])
         {
             updateBattery(batval, &batteryLayer);
         }
-        if(charge > 0 && hud && minimum == false)
+        if(charge > 0 && hud)
         {
             //TODO preload for efficiency
             if (loadPng(&(cimageLayer.image), CHARGE_IMAGE) == false)
@@ -461,7 +453,7 @@ int main(int argc, char *argv[])
             changeSourceAndUpdateImageLayer(&cimageLayer);
             charge = -1;
         }
-        else if(!charge && hud && minimum == false)
+        else if(!charge && hud)
         {
             clearLayer(&cimageLayer);
             charge = -1;
@@ -483,7 +475,7 @@ int main(int argc, char *argv[])
             clearLayer(&wimageLayer);
             wifi_loaded = 0;
         }
-         if(audio >= 0 && minimum == false)
+         if(audio >= 0)
                 {
                     vol_image = getImageIconFromVolume(audio);
                     //TODO preload for efficienty
@@ -501,36 +493,38 @@ int main(int argc, char *argv[])
         if (!hud) {
             clearLayer(&batteryLayer);
             clearLayer(&wimageLayer);
-            if (minimum == false) {
                 clearLayer(&aimageLayer);
                 clearLayer(&bimageLayer);
                 clearLayer(&cimageLayer);
-            }
         }
-        if(joystick > 0 && minimum == false) {
+        if(joystick > 0) {
             if (loadPng(&(joystickImageLayer.image), JOYSTICK_IMAGE) == false) {
                 fprintf(stderr, "unable to joystick load %s\n", argv[optind]);
             }
             changeSourceAndUpdateImageLayer(&joystickImageLayer);
         }
-        else if(joystick <= 0 && minimum == false) {
+        else if(joystick <= 0) {
             clearLayer(&joystickImageLayer);
         }
-        if(bluetooth > 0 && minimum == false) {
+        if(bluetooth > 0) {
             if (loadPng(&(bluetoothImageLayer.image), BLUETOOTH_IMAGE) == false) {
                 fprintf(stderr, "unable to baluetooth load %s\n", argv[optind]);
             }
             changeSourceAndUpdateImageLayer(&bluetoothImageLayer);
         }
-        else if(bluetooth <= 0 && minimum == false) {
+        else if(bluetooth <= 0) {
             clearLayer(&bluetoothImageLayer);
         }
-        if(infos > 0 && minimum == false)
+        if(infos > 0)
         {
-            updateInfo(&infoLayer);
-            updateInfoText(&infoTextLayer);
+            if (no_joystick) {
+             updateInfo(&infoLayer, INFO_NO_JOYSTICK);
+            } else {
+             updateInfo(&infoLayer, no_joystick)
+            }
+            updateInfoText(&infoTextLayer, no_joystick);
         }
-        else if(infos <= 0 && minimum == false)
+        else if(infos <= 0)
         {
               clearLayer(&infoLayer);
               clearLayer(&infoTextLayer);
@@ -541,11 +535,6 @@ int main(int argc, char *argv[])
             pause(); //stop thread
         }
 
-//        if (minimum == false) {
-//            usleep(1000000); //sleep 1sec
-//        } else {
-//            usleep(1000000); //sleep 10sec
-//        }
     }
     //---------------------------------------------------------------------
 
@@ -553,12 +542,10 @@ int main(int argc, char *argv[])
     destroyImageLayer(&batteryLayer);
     destroyImageLayer(&wimageLayer);
 
-    if (minimum == false) {
         destroyImageLayer(&infoTextLayer);
         destroyImageLayer(&aimageLayer);
         destroyImageLayer(&bimageLayer);
         destroyImageLayer(&cimageLayer);
-    }
 
     result = vc_dispmanx_display_close(display);
     assert(result == 0);
@@ -568,17 +555,17 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-void updateInfo(IMAGE_LAYER_T *infoLayer)
+void updateInfo(IMAGE_LAYER_T *infoLayer, char imageType[])
 {
     if (infos_loaded == 0) {
     //clearImageRGB(image, &backgroundColour);
-    loadPng(&(infoLayer->image), INFO_IMAGE);
+    loadPng(&(infoLayer->image), imageType);
     changeSourceAndUpdateImageLayer(infoLayer);
     infos_loaded = 1;
     }
 }
 
-void updateInfoText(IMAGE_LAYER_T *infoLayer)
+void updateInfoText(IMAGE_LAYER_T *infoLayer, bool no_joystick)
 {
     clearImageRGB(&(infoLayer->image), &clearColor);
     char volumeText[60];
@@ -593,6 +580,7 @@ void updateInfoText(IMAGE_LAYER_T *infoLayer)
         snprintf(wifiText, sizeof(wifiText),"WiFi Disabled");
     }
 
+
     if (joystick > 0) {
         snprintf(joystickText, sizeof(joystickText),"Joystick Enabled");
     } else if (joystick <= 0) {
@@ -605,12 +593,21 @@ void updateInfoText(IMAGE_LAYER_T *infoLayer)
         snprintf(bluetoothText, sizeof(bluetoothText),"Bluetooth Disabled");
     }
 
-    drawStringRGB(137, 29, volumeText, &textColour, &(infoLayer->image));
-    drawStringRGB(137, 76, volumeText, &textColour, &(infoLayer->image));
+    if (no_joystick == false) {
+        drawStringRGB(137, 29, volumeText, &textColour, &(infoLayer->image));
+        drawStringRGB(137, 76, volumeText, &textColour, &(infoLayer->image));
 
-    drawStringRGB(137, 124, wifiText, &textColour, &(infoLayer->image));
-    drawStringRGB(137, 167, joystickText, &textColour, &(infoLayer->image));
-    drawStringRGB(137, 214, bluetoothText, &textColour, &(infoLayer->image));
+        drawStringRGB(137, 124, wifiText, &textColour, &(infoLayer->image));
+        drawStringRGB(137, 167, joystickText, &textColour, &(infoLayer->image));
+        drawStringRGB(137, 214, bluetoothText, &textColour, &(infoLayer->image));
+    }
+    else if (no_joystick == true) {
+        drawStringRGB(137, 74, volumeText, &textColour, &(infoLayer->image));
+        drawStringRGB(137, 122, volumeText, &textColour, &(infoLayer->image));
+
+        drawStringRGB(137, 170, wifiText, &textColour, &(infoLayer->image));
+        drawStringRGB(137, 214, bluetoothText, &textColour, &(infoLayer->image));
+    }
 
     changeSourceAndUpdateImageLayer(infoLayer);
 }

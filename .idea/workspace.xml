@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f1e91772-da59-4698-b607-55f4207566b3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keys.cfg" afterPath="$PROJECT_DIR$/keys.cfg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor_evdev.py" afterPath="$PROJECT_DIR$/monitor_evdev.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/osd/osd.c" afterPath="$PROJECT_DIR$/osd/osd.c" />
@@ -58,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="osd.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="240" column="28" lean-forward="false" selection-start-line="240" selection-start-column="28" selection-end-line="240" selection-end-column="28" />
+            <state relative-caret-position="248">
+              <caret line="242" column="0" lean-forward="true" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -94,6 +95,19 @@
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -130,8 +144,8 @@
       <find>INFO_IMAGE</find>
       <find>stderr</find>
       <find>info</find>
-      <find>no_joystick</find>
       <find>noj</find>
+      <find>no_joystick</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -156,7 +170,6 @@
         <option value="$PROJECT_DIR$/monitor-test.py" />
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/python-work.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/monitor-v1.py" />
         <option value="$PROJECT_DIR$/config.cfg" />
         <option value="$PROJECT_DIR$/monitor.py" />
@@ -164,6 +177,7 @@
         <option value="$PROJECT_DIR$/keys.cfg" />
         <option value="$PROJECT_DIR$/monitor_evdev.py" />
         <option value="$PROJECT_DIR$/osd/osd.c" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -856,12 +870,12 @@
       <workItem from="1539932612367" duration="7382000" />
       <workItem from="1540592777047" duration="38586000" />
       <workItem from="1541592657834" duration="19000" />
-      <workItem from="1541777591588" duration="7848000" />
+      <workItem from="1541777591588" duration="9088000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="237858000" />
+    <option name="totallyTimeSpent" value="239098000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1087,17 +1101,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="375">
-            <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python-work.py" />
     <entry file="file://$PROJECT_DIR$/osd/osd-backup.c">
       <provider selected="true" editor-type-id="text-editor">
@@ -1197,9 +1200,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="240" column="28" lean-forward="false" selection-start-line="240" selection-start-column="28" selection-end-line="240" selection-end-column="28" />
+        <state relative-caret-position="248">
+          <caret line="242" column="0" lean-forward="true" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

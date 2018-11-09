@@ -83,8 +83,6 @@ SELECT = int(keys['SELECT'])
 START = int(keys['START'])
 HOTKEY = int(keys['HOTKEY'])
 
-RUN_MINIMAL = general['MINIMAL']
-
 if config.has_option("GENERAL", "DEBUG"):
     logging.basicConfig(filename=bin_dir + '/osd.log', level=logging.DEBUG)
 

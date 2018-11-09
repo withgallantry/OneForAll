@@ -232,10 +232,13 @@ int main(int argc, char *argv[])
 
     chdir(argv[1]);
 
-    bool no_joystick = true;
+    bool no_joystick;
 
     if (strcmp( argv[2], "nojoystick") == 0) {
         no_joystick = true;
+    } else
+    {
+        no_joystick = false;
     }
 
     int opt;

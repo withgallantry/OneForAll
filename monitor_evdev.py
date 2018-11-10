@@ -20,7 +20,6 @@
 # along with this repo. If not, see <http://www.gnu.org/licenses/>.
 #
 import Adafruit_ADS1x15
-from Adafruit_ADS1x15 import ADS1x15_CONFIG_MODE_CONTINUOUS
 import RPi.GPIO as gpio
 import logging
 import logging.handlers

@@ -114,21 +114,38 @@ gpio.setmode(gpio.BCM)
 gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
-KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
-    # See /usr/include/linux/input.h for keycode names
-    BUTTON_A: e.BTN_A,  # 'A' button
-    BUTTON_B: e.BTN_B,  # 'B' button
-    BUTTON_X: e.BTN_X,  # 'X' button
-    BUTTON_Y: e.BTN_Y,  # 'Y' button
-    BUTTON_L1: e.BTN_TL,  # 'L1' button
-    BUTTON_R1: e.BTN_TR,  # 'R1' button
-    SELECT: e.BTN_SELECT,  # 'Select' button
-    START: e.BTN_START,  # 'Start' button
-    UP: e.BTN_DPAD_UP,  # Analog up
-    DOWN: e.BTN_DPAD_DOWN,  # Analog down
-    LEFT: e.BTN_DPAD_LEFT,  # Analog left
-    RIGHT: e.BTN_DPAD_RIGHT,  # Analog right
-}
+if JOYSTICK_DISABLED == 'False':
+    KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
+        # See /usr/include/linux/input.h for keycode names
+        BUTTON_A: e.BTN_A,  # 'A' button
+        BUTTON_B: e.BTN_B,  # 'B' button
+        BUTTON_X: e.BTN_X,  # 'X' button
+        BUTTON_Y: e.BTN_Y,  # 'Y' button
+        BUTTON_L1: e.BTN_TL,  # 'L1' button
+        BUTTON_R1: e.BTN_TR,  # 'R1' button
+        SELECT: e.BTN_SELECT,  # 'Select' button
+        START: e.BTN_START,  # 'Start' button
+        UP: e.BTN_DPAD_UP,  # Analog up
+        DOWN: e.BTN_DPAD_DOWN,  # Analog down
+        LEFT: e.BTN_DPAD_LEFT,  # Analog left
+        RIGHT: e.BTN_DPAD_RIGHT,  # Analog right
+    }
+else:
+    KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
+        # See /usr/include/linux/input.h for keycode names
+        BUTTON_A: e.KEY_LEFTCTRL,  # 'A' button
+        BUTTON_B: e.KEY_LEFTALT,  # 'B' button
+        BUTTON_X: e.KEY_Z,  # 'X' button
+        BUTTON_Y: e.KEY_X,  # 'Y' button
+        BUTTON_L1: e.KEY_G,  # 'L1' button
+        BUTTON_R1: e.KEY_H,  # 'R1' button
+        SELECT: e.KEY_SPACE,  # 'Select' button
+        START: e.KEY_ENTER,  # 'Start' button
+        UP: e.KEY_UP,  # Analog up
+        DOWN: e.KEY_DOWN,  # Analog down
+        LEFT: e.KEY_LEFT,  # Analog left
+        RIGHT: e.KEY_RIGHT,  # Analog right
+    }
 
 JOYSTICK = [
     (e.ABS_X, AbsInfo(value=0, min=0, max=VREF,
@@ -169,7 +186,10 @@ else:
     adc = False
 
 # Create virtual HID for Joystick
-device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK, e.EV_FF: RUMBLE}, name="OneForAll", version=0x3)
+if JOYSTICK_DISABLED == 'False':
+    device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK, e.EV_FF: RUMBLE}, name="OneForAll", version=0x3)
+else:
+    device = UInput({e.EV_KEY: KEYS.values()}, name="OneForAll", version=0x3)
 
 time.sleep(1)
 
@@ -260,7 +280,7 @@ def readVoltage():
     global last_bat_read;
     voltVal = adc.read_adc(0, gain=1);
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
-    #volt = int(((voltVal * voltscale * dacres + (dacmax * 5)) / ((dacres * resdivval) / resdivmul)))
+    # volt = int(((voltVal * voltscale * dacres + (dacmax * 5)) / ((dacres * resdivval) / resdivmul)))
 
     if volt < 300 or (last_bat_read > 300 and volt - last_bat_read > 10):
         volt = last_bat_read;
@@ -403,8 +423,8 @@ def doShutdown(channel=None):
 def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, lowbattery=0, info=False, charge=False, bluetooth=False):
     commands = "v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(
         audio) + " j" + ("1 " if joystick else "0 ") + " u" + ("1 " if bluetooth else "0 ") + " l" + (
-               "1 " if lowbattery else "0 ") + " " + ("on " if info else "off ") + (
-               "charge" if charge else "ncharge") + "\n"
+                   "1 " if lowbattery else "0 ") + " " + ("on " if info else "off ") + (
+                   "charge" if charge else "ncharge") + "\n"
     # print commands
     osd_proc.send_signal(signal.SIGUSR1)
     osd_in.write(commands)
@@ -440,7 +460,6 @@ def inputReading():
     global charge
     global joystick
     while (1):
-        checkKeyInput()
         if joystick == True:
             checkJoystickInput()
         time.sleep(.05)
@@ -528,14 +547,14 @@ if JOYSTICK_DISABLED == 'False':
 batteryRead = 1;
 
 try:
-    #print("One For All Started")
+    # print("One For All Started")
     while 1:
         condition.acquire()
         if not adc == False:
             if batteryRead >= 1:
                 volt = readVoltage()
                 bat = getVoltagepercent(volt)
-                #print volt
+                # print volt
                 batteryRead = 0;
         batteryRead = batteryRead + 1;
         checkShdn(volt)

@@ -30,8 +30,8 @@
       <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="537" column="17" lean-forward="false" selection-start-line="537" selection-start-column="17" selection-end-line="537" selection-end-column="17" />
+            <state relative-caret-position="432">
+              <caret line="190" column="5" lean-forward="false" selection-start-line="190" selection-start-column="5" selection-end-line="190" selection-end-column="5" />
               <folding>
                 <element signature="e#851#874#0" expanded="true" />
               </folding>
@@ -62,7 +62,7 @@
       <file leaf-file-name="osd.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/osd/osd.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="3392">
               <caret line="528" column="57" lean-forward="false" selection-start-line="528" selection-start-column="57" selection-end-line="528" selection-end-column="57" />
               <folding />
             </state>
@@ -72,8 +72,8 @@
       <file leaf-file-name="keys.cfg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keys.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            <state relative-caret-position="15">
+              <caret line="1" column="20" lean-forward="true" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -136,7 +136,6 @@
       <find>.read</find>
       <find>start</find>
       <find>no_joystick</find>
-      <find>bluetooth</find>
       <find>updateOSD</find>
       <find>shutdown</find>
       <find>batt_low</find>
@@ -146,6 +145,7 @@
       <find>lowbattery</find>
       <find>hotkey</find>
       <find>info</find>
+      <find>bluetooth</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -870,12 +870,12 @@
       <workItem from="1539932612367" duration="7382000" />
       <workItem from="1540592777047" duration="38586000" />
       <workItem from="1541592657834" duration="19000" />
-      <workItem from="1541777591588" duration="16342000" />
+      <workItem from="1541777591588" duration="18962000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246352000" />
+    <option name="totallyTimeSpent" value="248972000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -892,7 +892,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40355676" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40355676" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18240343" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1159,14 +1159,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/keys.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/main_no_joystick.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1199,9 +1191,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/keys.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="20" lean-forward="true" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="3392">
           <caret line="528" column="57" lean-forward="false" selection-start-line="528" selection-start-column="57" selection-end-line="528" selection-end-column="57" />
           <folding />
         </state>
@@ -1209,8 +1209,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="537" column="17" lean-forward="false" selection-start-line="537" selection-start-column="17" selection-end-line="537" selection-end-column="17" />
+        <state relative-caret-position="432">
+          <caret line="190" column="5" lean-forward="false" selection-start-line="190" selection-start-column="5" selection-end-line="190" selection-end-column="5" />
           <folding>
             <element signature="e#851#874#0" expanded="true" />
           </folding>

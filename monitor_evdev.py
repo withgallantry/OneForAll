@@ -20,6 +20,7 @@
 # along with this repo. If not, see <http://www.gnu.org/licenses/>.
 #
 import Adafruit_ADS1x15
+from Adafruit_ADS1x15 import ADS1x15_CONFIG_MODE_CONTINUOUS
 import RPi.GPIO as gpio
 import logging
 import logging.handlers
@@ -40,7 +41,7 @@ currscale = 640.0
 resdivmul = 4.0
 resdivval = 1000.0
 dacres = 33.0
-dacmax = 1023.0
+dacmax = 4096.0
 
 batt_threshold = 4
 
@@ -148,6 +149,7 @@ global charge
 global bat
 global joystick
 global bluetooth
+global lowbattery
 
 brightness = -1
 info = False
@@ -244,7 +246,12 @@ except Exception as e:
 
 # Check for shutdown state
 def checkShdn(volt):
+    global lowbattery
     if volt < batt_shdn:
+        lowbattery = 1;
+        condition.acquire()
+        condition.notify()
+        condition.release()
         doShutdown()
 
 
@@ -253,7 +260,7 @@ def readVoltage():
     global last_bat_read;
     voltVal = adc.read_adc(0, gain=1);
     # volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
-    volt = int((( voltVal * voltscale * dacres + ( dacmax * 5 ) ) / (( dacres * resdivval ) / resdivmul)))
+    volt = int(((voltVal * voltscale * dacres + (dacmax * 5)) / ((dacres * resdivval) / resdivmul)))
 
     if volt < 300 or (last_bat_read > 300 and volt - last_bat_read > 10):
         volt = last_bat_read;
@@ -393,10 +400,11 @@ def doShutdown(channel=None):
 
 
 # Signals the OSD binary
-def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, brightness=0, info=False, charge=False, bluetooth=False):
+def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, lowbattery=0, info=False, charge=False, bluetooth=False):
     commands = "v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(
-        audio) + " j" + ("1 " if joystick else "0 ") + " u" + ("1 " if bluetooth else "0 ") + " l" + str(
-        brightness) + " " + ("on " if info else "off ") + ("charge" if charge else "ncharge") + "\n"
+        audio) + " j" + ("1 " if joystick else "0 ") + " u" + ("1 " if bluetooth else "0 ") + " l" + (
+               "1 " if lowbattery else "0 ") + " " + ("on " if info else "off ") + (
+               "charge" if charge else "ncharge") + "\n"
     # print commands
     osd_proc.send_signal(signal.SIGUSR1)
     osd_in.write(commands)
@@ -528,11 +536,10 @@ try:
                 volt = readVoltage()
                 bat = getVoltagepercent(volt)
                 print volt
-                print bat
                 batteryRead = 0;
         batteryRead = batteryRead + 1;
         checkShdn(volt)
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge, bluetooth)
+        updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
 
         condition.wait(10)
         condition.release()

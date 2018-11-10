@@ -54,7 +54,6 @@
 #define BATTERY_TH 20
 #define AUDIO_IMAGES (const char*[5]){"./resources/AUD0.png","./resources/AUD25.png","./resources/AUD50.png","./resources/AUD75.png","./resources/AUD100.png"}
 #define WIFI_IMAGES (const char*[5]){"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"}
-#define BRIGHTNESS_MAX 7
 
 volatile bool run = true;
 
@@ -65,7 +64,7 @@ static RGBA8_T backgroundColour = { 0, 0, 0, 100 };
 static RGBA8_T textColour = { 255, 255, 255, 255 };
 static RGBA8_T greenColour = { 0, 255, 0, 200 };
 static RGBA8_T redColour = { 255, 0, 0, 200 };
-static int battery = 0, infos = 0, hud = 1, brightness = 0, charge = 0, audio = 0, wifi = 0, wifi_loaded = 0, voltage = 0, vol_image = 0, infos_loaded = 0, joystick = 0, bluetooth = 0;
+static int battery = 0, infos = 0, hud = 1, charge = 0, low_battery = 0, audio = 0, wifi = 0, wifi_loaded = 0, voltage = 0, vol_image = 0, infos_loaded = 0, joystick = 0, bluetooth = 0;
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*, char[]);
@@ -164,10 +163,9 @@ void getInput()
                   bluetooth= atoi(word+1);
                }
         else if(word[0] == 'l')
-        {
-            //Brightness
-            brightness= atoi(word+1);
-        }
+               {
+                  low_battery= atoi(word+1);
+               }
         else if(word[0] == 't')
         {
             //temperature
@@ -520,12 +518,16 @@ int main(int argc, char *argv[])
         }
         if(infos > 0)
         {
+            if (low_battery <= 0) {
             if (no_joystick) {
              updateInfo(&infoLayer, INFO_NO_JOYSTICK);
             } else {
              updateInfo(&infoLayer, INFO_IMAGE);
             }
             updateInfoText(&infoTextLayer, no_joystick);
+            } else {
+                 updateInfo(&infoLayer, LOW_BATTERY_IMAGE);
+            }
         }
         else if(infos <= 0)
         {

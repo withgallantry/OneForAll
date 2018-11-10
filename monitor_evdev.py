@@ -192,7 +192,6 @@ def handle_button(pin):
         if state == 1:
             showOverlay = True
             checkKeyInputPowerSaving()
-            checkShdn(0)
         else:
             showOverlay = False
             checkKeyInputPowerSaving()
@@ -246,12 +245,14 @@ except Exception as e:
 # Check for shutdown state
 def checkShdn(volt):
     global lowbattery
+    global info
     if volt < batt_shdn:
-        lowbattery = 1;
+        lowbattery = 1
+        info = 1
         condition.acquire()
         condition.notify()
         condition.release()
-        #doShutdown()
+        doShutdown()
 
 
 # Read voltage
@@ -527,14 +528,14 @@ if JOYSTICK_DISABLED == 'False':
 batteryRead = 1;
 
 try:
-    print("One For All Started")
+    #print("One For All Started")
     while 1:
         condition.acquire()
         if not adc == False:
             if batteryRead >= 1:
                 volt = readVoltage()
                 bat = getVoltagepercent(volt)
-                print volt
+                #print volt
                 batteryRead = 0;
         batteryRead = batteryRead + 1;
         checkShdn(volt)

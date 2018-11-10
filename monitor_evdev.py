@@ -385,6 +385,12 @@ def readModeBluetooth(toggle=False):
 
 # Do a shutdown
 def doShutdown(channel=None):
+    global lowbattery
+    lowbattery = 1;
+    condition.acquire()
+    condition.notify()
+    condition.release()
+
     check_call("sudo killall emulationstation", shell=True)
     time.sleep(1)
     check_call("sudo shutdown -h now", shell=True)

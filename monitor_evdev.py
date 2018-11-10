@@ -39,7 +39,7 @@ voltscale = 118.0  # ADJUST THIS
 currscale = 640.0
 resdivmul = 4.0
 resdivval = 1000.0
-dacres = 33.0
+dacres = 20.47
 dacmax = 4096.0
 
 batt_threshold = 4

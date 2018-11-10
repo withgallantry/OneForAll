@@ -27,11 +27,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="230" column="110" lean-forward="false" selection-start-line="230" selection-start-column="110" selection-end-line="230" selection-end-column="110" />
+            <state relative-caret-position="144">
+              <caret line="255" column="58" lean-forward="true" selection-start-line="255" selection-start-column="58" selection-end-line="255" selection-end-column="58" />
               <folding>
                 <element signature="e#851#874#0" expanded="true" />
               </folding>
@@ -99,7 +99,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -116,11 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>checkKeyInput</find>
-      <find>else</find>
-      <find>check</find>
-      <find>checkK</find>
-      <find>readVoltage</find>
       <find>checkKeyInputPowerSaving</find>
       <find>bluetooth</find>
       <find>updateOSD</find>
@@ -146,6 +141,11 @@
       <find>info</find>
       <find>noj</find>
       <find>no_joystick</find>
+      <find>handler</find>
+      <find>handle</find>
+      <find>bat</find>
+      <find>last_bat_read</find>
+      <find>voltscale</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -175,9 +175,9 @@
         <option value="$PROJECT_DIR$/monitor.py" />
         <option value="$PROJECT_DIR$/monitor_evdev_old.py" />
         <option value="$PROJECT_DIR$/keys.cfg" />
-        <option value="$PROJECT_DIR$/monitor_evdev.py" />
         <option value="$PROJECT_DIR$/osd/osd.c" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/monitor_evdev.py" />
       </list>
     </option>
   </component>
@@ -870,12 +870,12 @@
       <workItem from="1539932612367" duration="7382000" />
       <workItem from="1540592777047" duration="38586000" />
       <workItem from="1541592657834" duration="19000" />
-      <workItem from="1541777591588" duration="9088000" />
+      <workItem from="1541777591588" duration="10877000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="239098000" />
+    <option name="totallyTimeSpent" value="240887000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1183,16 +1183,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="230" column="110" lean-forward="false" selection-start-line="230" selection-start-column="110" selection-end-line="230" selection-end-column="110" />
-          <folding>
-            <element signature="e#851#874#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/main_no_joystick.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1214,6 +1204,16 @@
             <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="255" column="58" lean-forward="true" selection-start-line="255" selection-start-column="58" selection-end-line="255" selection-end-column="58" />
+          <folding>
+            <element signature="e#851#874#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

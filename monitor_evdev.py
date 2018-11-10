@@ -160,6 +160,7 @@ bat = 0
 last_bat_read = 3900
 joystick = False
 showOverlay = False
+lowbattery = 0
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 if monitoring_enabled == 'True':

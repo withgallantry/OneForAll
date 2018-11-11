@@ -241,6 +241,11 @@ for button in BUTTONS:
     gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=1)
     logging.debug("Button: {}".format(button))
 
+if not HOTKEY in BUTTONS:
+    gpio.add_event_detect(HOTKEY, gpio.BOTH, callback=handle_button, bouncetime=1)
+else:
+    print "KEY IN BUTTONS"
+
 # Send centering commands
 device.write(e.EV_ABS, e.ABS_X, VREF / 2);
 device.write(e.EV_ABS, e.ABS_Y, VREF / 2);
@@ -555,7 +560,6 @@ try:
                 if batteryRead >= 1:
                     volt = readVoltage()
                     bat = getVoltagepercent(volt)
-                    # print volt
                     batteryRead = 0;
             batteryRead = batteryRead + 1;
             checkShdn(volt)

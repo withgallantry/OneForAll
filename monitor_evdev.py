@@ -549,19 +549,22 @@ batteryRead = 1;
 try:
     # print("One For All Started")
     while 1:
-        condition.acquire()
-        if not adc == False:
-            if batteryRead >= 1:
-                volt = readVoltage()
-                bat = getVoltagepercent(volt)
-                # print volt
-                batteryRead = 0;
-        batteryRead = batteryRead + 1;
-        checkShdn(volt)
-        updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
+        try:
+            condition.acquire()
+            if not adc == False:
+                if batteryRead >= 1:
+                    volt = readVoltage()
+                    bat = getVoltagepercent(volt)
+                    # print volt
+                    batteryRead = 0;
+            batteryRead = batteryRead + 1;
+            checkShdn(volt)
+            updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
 
-        condition.wait(10)
-        condition.release()
+            condition.wait(10)
+            condition.release()
+        except Exception:
+            pass
 
 except KeyboardInterrupt:
     exit_gracefully()

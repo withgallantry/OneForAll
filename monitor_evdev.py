@@ -243,8 +243,6 @@ for button in BUTTONS:
 
 if not HOTKEY in BUTTONS:
     gpio.add_event_detect(HOTKEY, gpio.BOTH, callback=handle_button, bouncetime=1)
-else:
-    print "KEY IN BUTTONS"
 
 # Send centering commands
 device.write(e.EV_ABS, e.ABS_X, VREF / 2);

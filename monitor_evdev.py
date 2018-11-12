@@ -187,7 +187,7 @@ else:
 
 # Create virtual HID for Joystick
 if JOYSTICK_DISABLED == 'False':
-    device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK, e.EV_FF: RUMBLE}, name="OneForAll", version=0x3)
+    device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK, e.EV_FF: RUMBLE}, name="OneForAll-GP", version=0x3)
 else:
     device = UInput({e.EV_KEY: KEYS.values()}, name="OneForAll", version=0x3)
 
@@ -211,10 +211,16 @@ def handle_button(pin):
     if pin == HOTKEY:
         if state == 1:
             showOverlay = True
-            checkKeyInputPowerSaving()
+            try:
+                checkKeyInputPowerSaving()
+            except Exception:
+                pass
         else:
             showOverlay = False
-            checkKeyInputPowerSaving()
+            try:
+                checkKeyInputPowerSaving()
+            except Exception:
+                pass
 
     if not hotkeyAction(pin):
         device.write(e.EV_KEY, key, state)
@@ -550,7 +556,6 @@ if JOYSTICK_DISABLED == 'False':
 batteryRead = 1;
 
 try:
-    # print("One For All Started")
     while 1:
         try:
             condition.acquire()
@@ -566,6 +571,7 @@ try:
             condition.wait(10)
             condition.release()
         except Exception:
+            logging.info("EXCEPTION")
             pass
 
 except KeyboardInterrupt:

@@ -174,7 +174,7 @@ volume = 1
 wifi = 2
 charge = 0
 bat = 0
-last_bat_read = 3900
+last_bat_read = 450
 joystick = False
 showOverlay = False
 lowbattery = 0
@@ -291,7 +291,7 @@ def readVoltage():
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
     # volt = int(((voltVal * voltscale * dacres + (dacmax * 5)) / ((dacres * resdivval) / resdivmul)))
 
-    if volt < 300 or (last_bat_read > 300 and last_bat_read - volt > 6):
+    if volt < 300 or (last_bat_read > 300 and last_bat_read - volt > 6 and not last_bat_read == 450):
         volt = last_bat_read;
 
     last_bat_read = volt;

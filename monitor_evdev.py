@@ -291,7 +291,7 @@ def readVoltage():
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
     # volt = int(((voltVal * voltscale * dacres + (dacmax * 5)) / ((dacres * resdivval) / resdivmul)))
 
-    if volt < 300 or (last_bat_read > 300 and volt - last_bat_read > 10):
+    if volt < 300 or (last_bat_read > 300 and volt - last_bat_read > 6):
         volt = last_bat_read;
 
     last_bat_read = volt;
@@ -562,7 +562,9 @@ try:
             if not adc == False:
                 if batteryRead >= 1:
                     volt = readVoltage()
+                    print volt
                     bat = getVoltagepercent(volt)
+                    print bat
                     batteryRead = 0;
             batteryRead = batteryRead + 1;
             checkShdn(volt)

@@ -549,6 +549,7 @@ runCounter = 0
 try:
     while 1:
         try:
+            runCounter = runCounter + 1;
             if runCounter > 100 or overrideCounter == True:
                 if not adc == False:
                     if batteryRead >= 1:

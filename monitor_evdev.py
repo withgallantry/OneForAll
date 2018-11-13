@@ -561,6 +561,7 @@ try:
                 checkShdn(volt)
                 updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
                 overrideCounter = False
+                runCounter = 0;
 
         except Exception:
             logging.info("EXCEPTION")

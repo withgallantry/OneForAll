@@ -42,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="219">
-              <caret line="552" column="31" lean-forward="false" selection-start-line="552" selection-start-column="31" selection-end-line="552" selection-end-column="31" />
+              <caret line="552" column="29" lean-forward="false" selection-start-line="552" selection-start-column="29" selection-end-line="552" selection-end-column="29" />
               <folding>
                 <element signature="e#851#874#0" expanded="true" />
               </folding>
@@ -873,12 +873,12 @@
       <workItem from="1541592657834" duration="19000" />
       <workItem from="1541777591588" duration="28331000" />
       <workItem from="1542048532185" duration="1439000" />
-      <workItem from="1542128792085" duration="1302000" />
+      <workItem from="1542128792085" duration="1359000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261082000" />
+    <option name="totallyTimeSpent" value="261139000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -1210,7 +1210,7 @@
     <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
-          <caret line="552" column="31" lean-forward="false" selection-start-line="552" selection-start-column="31" selection-end-line="552" selection-end-column="31" />
+          <caret line="552" column="29" lean-forward="false" selection-start-line="552" selection-start-column="29" selection-end-line="552" selection-end-column="29" />
           <folding>
             <element signature="e#851#874#0" expanded="true" />
           </folding>

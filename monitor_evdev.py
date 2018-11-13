@@ -28,6 +28,7 @@ import re
 import signal
 import sys
 import thread as thread
+from threading import Event
 import time
 from evdev import uinput, UInput, AbsInfo, categorize, ecodes as e
 from subprocess import Popen, PIPE, check_output, check_call
@@ -165,7 +166,6 @@ global bat
 global joystick
 global bluetooth
 global lowbattery
-global overrideCounter
 
 brightness = -1
 info = False
@@ -178,7 +178,7 @@ last_bat_read = 450
 joystick = False
 showOverlay = False
 lowbattery = 0
-overrideCounter = False
+overrideCounter = Event()
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 if monitoring_enabled == 'True':
@@ -276,11 +276,10 @@ except Exception as e:
 def checkShdn(volt):
     global lowbattery
     global info
-    global overrideCounter
     if volt < batt_shdn:
         lowbattery = 1
         info = 1
-        overrideCounter = True
+        overrideCounter.set()
         doShutdown()
 
 
@@ -444,6 +443,7 @@ def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, lowbattery=0, info=False, 
 def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
 
+
 def volumeUp():
     global volume
     volume = min(100, volume + 10)
@@ -479,10 +479,9 @@ def checkKeyInputPowerSaving():
     global volume
     global volt
     global showOverlay
-    global overrideCounter
 
     info = showOverlay
-    overrideCounter = True
+    overrideCounter.set()
 
     # TODO Convert to state
     if not gpio.input(HOTKEY):
@@ -544,25 +543,24 @@ if JOYSTICK_DISABLED == 'False':
     inputReadingThread = thread.start_new_thread(inputReading, ())
 
 batteryRead = 1
-runCounter = 0
 
 try:
     while 1:
         try:
-            runCounter = runCounter + 1;
-            if runCounter > 500000 or overrideCounter == True:
-                if not adc == False:
-                    if batteryRead >= 1:
-                        volt = readVoltage()
-                        print volt
-                        bat = getVoltagepercent(volt)
-                        print bat
-                        batteryRead = 0;
-                batteryRead = batteryRead + 1;
-                checkShdn(volt)
-                updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
-                overrideCounter = False
-                runCounter = 0;
+            if not adc == False:
+                if batteryRead >= 1:
+                    volt = readVoltage()
+                    print volt
+                    bat = getVoltagepercent(volt)
+                    print bat
+                    batteryRead = 0;
+            batteryRead = batteryRead + 1;
+            checkShdn(volt)
+            updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
+            overrideCounter.wait(10)
+            if overrideCounter.is_set():
+                overrideCounter.clear()
+            runCounter = 0;
 
         except Exception:
             logging.info("EXCEPTION")

@@ -553,9 +553,7 @@ try:
             if not adc == False:
                 if batteryRead >= 1:
                     volt = readVoltage()
-                    print volt
                     bat = getVoltagepercent(volt)
-                    print bat
                     batteryRead = 0;
             batteryRead = batteryRead + 1;
             checkShdn(volt)

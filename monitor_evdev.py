@@ -112,7 +112,9 @@ BOUNCE_TIME = 0.03  # Debounce time in seconds
 gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
 gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
-gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
+
+if not SHUTDOWN == -1:
+    gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 if JOYSTICK_DISABLED == 'False':
     KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
@@ -241,7 +243,8 @@ def handle_shutdown(pin):
 
 
 # Initialise Safe shutdown
-gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)
+if not SHUTDOWN == -1:
+    gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)
 
 # Initialise Buttons
 for button in BUTTONS:

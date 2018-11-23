@@ -188,9 +188,9 @@ else:
 
 # Create virtual HID for Joystick
 if JOYSTICK_DISABLED == 'False':
-    device = uinput.Device({e.EV_KEY: KEYS.values()}, name="OneForAll-GP", version=0x3)
+    device = uinput.Device({uinput.EV_KEY: KEYS.values()}, name="OneForAll-GP", version=0x3)
 else:
-    device = uinput.Device({e.EV_KEY: KEYS.values()}, name="OneForAll", version=0x3)
+    device = uinput.Device({uinput.EV_KEY: KEYS.values()}, name="OneForAll", version=0x3)
 
 time.sleep(1)
 

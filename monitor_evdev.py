@@ -206,28 +206,22 @@ def hotkeyAction(key):
 
     return False
 
-global keyDownTime
-keyDownTime = 0
 
 def handle_button(pin):
     global showOverlay
-    global keyDownTime
     key = KEYS[pin]
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 
     if pin == HOTKEY:
         if state == 1:
-            keyDownTime = keyDownTime + 1
-            if keyDownTime > 5:
-                showOverlay = True
+            showOverlay = True
             try:
                 checkKeyInputPowerSaving()
             except Exception:
                 pass
         else:
             showOverlay = False
-            keyDownTime = 0
             try:
                 checkKeyInputPowerSaving()
             except Exception:
@@ -260,7 +254,8 @@ for button in BUTTONS:
     logging.debug("Button: {}".format(button))
 
 if not HOTKEY in BUTTONS:
-    gpio.add_event_detect(HOTKEY, gpio.BOTH, callback=handle_button, bouncetime=1)
+    if HOTKEY != -1:
+        gpio.add_event_detect(HOTKEY, gpio.BOTH, callback=handle_button, bouncetime=1)
 
 # Send centering commands
 device.emit(uinput.ABS_X, VREF / 2, syn=False);

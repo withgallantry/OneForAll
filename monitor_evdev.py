@@ -219,15 +219,15 @@ def handle_button(pin):
     if pin == HOTKEY:
         if state == 1:
             keyDownTime = keyDownTime + 1
-            if keyDownTime > 5:
+            if keyDownTime > 10000:
                 showOverlay = True
             try:
                 checkKeyInputPowerSaving()
-                keyDownTime = 0
             except Exception:
                 pass
         else:
             showOverlay = False
+            keyDownTime = 0
             try:
                 checkKeyInputPowerSaving()
             except Exception:

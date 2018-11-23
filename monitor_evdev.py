@@ -513,16 +513,16 @@ def checkJoystickInput():
     # Check and apply joystick states
     if (an0 > (VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE)):
         val = an0 - 100 - 200 * (an0 < VREF / 2 - DZONE) + 200 * (an0 > VREF / 2 + DZONE)
-        device.write(e.EV_ABS, e.ABS_X, val);
+        device.emit(uinput.ABS_X, val)
     else:
         # Center the sticks if within deadzone
         device.emit(uinput.ABS_X, VREF / 2)
     if (an1 > (VREF / 2 + DZONE)) or (an1 < (VREF / 2 - DZONE)):
         valy = an1 + 100 - 200 * (an1 < VREF / 2 - DZONE) + 200 * (an1 > VREF / 2 + DZONE)
-        device.write(e.EV_ABS, e.ABS_Y, valy);
+        device.emit(uinput.ABS_Y, valy)
     else:
         # Center the sticks if within deadzone
-        device.write(e.EV_ABS, e.ABS_Y, VREF / 2);
+        device.emit(uinput.ABS_Y, VREF / 2)
 
 
 def exit_gracefully(signum=None, frame=None):

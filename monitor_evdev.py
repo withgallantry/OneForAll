@@ -96,6 +96,7 @@ joystickConfig = config['JOYSTICK']
 DZONE = int(joystickConfig['DEADZONE'])  # dead zone applied to joystick (mV)
 VREF = int(joystickConfig['VCC'])  # joystick Vcc (mV)
 JOYSTICK_DISABLED = joystickConfig['DISABLED']
+ON_BY_DEFAULT = joystickConfig['ON_BY_DEFAULT']
 
 # Battery config
 battery = config['BATTERY']
@@ -180,6 +181,9 @@ showOverlay = False
 lowbattery = 0
 overrideCounter = Event()
 
+if ON_BY_DEFAULT == 'True':
+    joystick = True
+
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 if monitoring_enabled == 'True':
     adc = Adafruit_ADS1x15.ADS1015()
@@ -202,18 +206,24 @@ def hotkeyAction(key):
 
     return False
 
+global keyDownTime
+keyDownTime = 0
 
 def handle_button(pin):
     global showOverlay
+    global keyDownTime
     key = KEYS[pin]
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 
     if pin == HOTKEY:
         if state == 1:
-            showOverlay = True
+            keyDownTime = keyDownTime + 1
+            if keyDownTime > 10000:
+                showOverlay = True
             try:
                 checkKeyInputPowerSaving()
+                keyDownTime = 0
             except Exception:
                 pass
         else:

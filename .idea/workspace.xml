@@ -5,6 +5,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/monitor_evdev_threaded.py" afterPath="" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/monitor_evdev_threaded.py" afterPath="$PROJECT_DIR$/monitor_evdev_old.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keys.cfg" afterPath="$PROJECT_DIR$/keys.cfg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor_evdev.py" afterPath="$PROJECT_DIR$/monitor_evdev.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +30,8 @@
       <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="192" column="40" lean-forward="false" selection-start-line="192" selection-start-column="40" selection-end-line="192" selection-end-column="40" />
+            <state relative-caret-position="274">
+              <caret line="225" column="31" lean-forward="false" selection-start-line="225" selection-start-column="31" selection-end-line="225" selection-end-column="31" />
               <folding>
                 <element signature="e#851#874#0" expanded="true" />
               </folding>
@@ -85,8 +86,8 @@
       <file leaf-file-name="keys.cfg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keys.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+            <state relative-caret-position="300">
+              <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -144,7 +145,6 @@
       <find>volt</find>
       <find>main</find>
       <find>SHUTDOWN</find>
-      <find>joystick</find>
       <find>inputReading</find>
       <find>JOYSTICK</find>
       <find>OneForAll</find>
@@ -159,6 +159,7 @@
       <find>event</find>
       <find>uinput</find>
       <find>device =</find>
+      <find>joystick</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -187,9 +188,9 @@
         <option value="$PROJECT_DIR$/config.cfg" />
         <option value="$PROJECT_DIR$/monitor.py" />
         <option value="$PROJECT_DIR$/monitor_evdev_old.py" />
-        <option value="$PROJECT_DIR$/keys.cfg" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/osd/osd.c" />
+        <option value="$PROJECT_DIR$/keys.cfg" />
         <option value="$PROJECT_DIR$/monitor_evdev.py" />
       </list>
     </option>
@@ -885,12 +886,12 @@
       <workItem from="1541592657834" duration="19000" />
       <workItem from="1541777591588" duration="28331000" />
       <workItem from="1542048532185" duration="1439000" />
-      <workItem from="1542128792085" duration="7771000" />
+      <workItem from="1542128792085" duration="8351000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="267551000" />
+    <option name="totallyTimeSpent" value="268131000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="0" />
@@ -1187,14 +1188,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/keys.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/osd/osd.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-734">
@@ -1231,10 +1224,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/keys.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="192" column="40" lean-forward="false" selection-start-line="192" selection-start-column="40" selection-end-line="192" selection-end-column="40" />
+        <state relative-caret-position="274">
+          <caret line="225" column="31" lean-forward="false" selection-start-line="225" selection-start-column="31" selection-end-line="225" selection-end-column="31" />
           <folding>
             <element signature="e#851#874#0" expanded="true" />
           </folding>

@@ -29,11 +29,9 @@
       <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="524" column="43" lean-forward="false" selection-start-line="524" selection-start-column="43" selection-end-line="524" selection-end-column="43" />
-              <folding>
-                <element signature="e#851#874#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="265">
+              <caret line="36" column="60" lean-forward="true" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -41,8 +39,8 @@
       <file leaf-file-name="monitor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="469" column="8" lean-forward="false" selection-start-line="469" selection-start-column="8" selection-end-line="469" selection-end-column="43" />
+            <state relative-caret-position="1766">
+              <caret line="121" column="20" lean-forward="false" selection-start-line="121" selection-start-column="14" selection-end-line="121" selection-end-column="20" />
               <folding>
                 <element signature="e#851#874#0" expanded="true" />
               </folding>
@@ -117,7 +115,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lowbat</find>
       <find>brightness</find>
       <find>shutdow</find>
       <find>lowbattery</find>
@@ -147,6 +144,7 @@
       <find>this.provider ==</find>
       <find>currentThread</find>
       <find>event</find>
+      <find>uinput</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -873,12 +871,12 @@
       <workItem from="1541592657834" duration="19000" />
       <workItem from="1541777591588" duration="28331000" />
       <workItem from="1542048532185" duration="1439000" />
-      <workItem from="1542128792085" duration="6835000" />
+      <workItem from="1542128792085" duration="7262000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="266615000" />
+    <option name="totallyTimeSpent" value="267042000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="0" />
@@ -1209,8 +1207,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="469" column="8" lean-forward="false" selection-start-line="469" selection-start-column="8" selection-end-line="469" selection-end-column="43" />
+        <state relative-caret-position="1766">
+          <caret line="121" column="20" lean-forward="false" selection-start-line="121" selection-start-column="14" selection-end-line="121" selection-end-column="20" />
           <folding>
             <element signature="e#851#874#0" expanded="true" />
           </folding>
@@ -1219,11 +1217,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="524" column="43" lean-forward="false" selection-start-line="524" selection-start-column="43" selection-end-line="524" selection-end-column="43" />
-          <folding>
-            <element signature="e#851#874#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="265">
+          <caret line="36" column="60" lean-forward="true" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
+          <folding />
         </state>
       </provider>
     </entry>

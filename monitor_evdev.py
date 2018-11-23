@@ -30,6 +30,9 @@ import sys
 import thread as thread
 from threading import Event
 import time
+
+import uinput
+
 from evdev import uinput, UInput, AbsInfo, categorize, ecodes as e
 from subprocess import Popen, PIPE, check_output, check_call
 import configparser
@@ -119,42 +122,37 @@ if not SHUTDOWN == -1:
 if JOYSTICK_DISABLED == 'False':
     KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
         # See /usr/include/linux/input.h for keycode names
-        BUTTON_A: e.BTN_A,  # 'A' button
-        BUTTON_B: e.BTN_B,  # 'B' button
-        BUTTON_X: e.BTN_X,  # 'X' button
-        BUTTON_Y: e.BTN_Y,  # 'Y' button
-        BUTTON_L1: e.BTN_TL,  # 'L1' button
-        BUTTON_R1: e.BTN_TR,  # 'R1' button
-        SELECT: e.BTN_SELECT,  # 'Select' button
-        START: e.BTN_START,  # 'Start' button
-        UP: e.BTN_DPAD_UP,  # Analog up
-        DOWN: e.BTN_DPAD_DOWN,  # Analog down
-        LEFT: e.BTN_DPAD_LEFT,  # Analog left
-        RIGHT: e.BTN_DPAD_RIGHT,  # Analog right
+        BUTTON_A: uinput.BTN_A,  # 'A' button
+        BUTTON_B: uinput.BTN_B,  # 'B' button
+        BUTTON_X: uinput.BTN_X,  # 'X' button
+        BUTTON_Y: uinput.BTN_Y,  # 'Y' button
+        BUTTON_L1: uinput.BTN_TL,  # 'L1' button
+        BUTTON_R1: uinput.BTN_TR,  # 'R1' button
+        SELECT: uinput.BTN_SELECT,  # 'Select' button
+        START: uinput.BTN_START,  # 'Start' button
+        UP: uinput.BTN_DPAD_UP,  # Analog up
+        DOWN: uinput.BTN_DPAD_DOWN,  # Analog down
+        LEFT: uinput.BTN_DPAD_LEFT,  # Analog left
+        RIGHT: uinput.BTN_DPAD_RIGHT,  # Analog right
+        10001: uinput.ABS_X + (0, VREF, 0, 0),
+        10002: uinput.ABS_Y + (0, VREF, 0, 0),
     }
 else:
     KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
         # See /usr/include/linux/input.h for keycode names
-        BUTTON_A: e.KEY_LEFTCTRL,  # 'A' button
-        BUTTON_B: e.KEY_LEFTALT,  # 'B' button
-        BUTTON_X: e.KEY_Z,  # 'X' button
-        BUTTON_Y: e.KEY_X,  # 'Y' button
-        BUTTON_L1: e.KEY_G,  # 'L1' button
-        BUTTON_R1: e.KEY_H,  # 'R1' button
-        SELECT: e.KEY_SPACE,  # 'Select' button
-        START: e.KEY_ENTER,  # 'Start' button
-        UP: e.KEY_UP,  # Analog up
-        DOWN: e.KEY_DOWN,  # Analog down
-        LEFT: e.KEY_LEFT,  # Analog left
-        RIGHT: e.KEY_RIGHT,  # Analog right
+        BUTTON_A: uinput.KEY_LEFTCTRL,  # 'A' button
+        BUTTON_B: uinput.KEY_LEFTALT,  # 'B' button
+        BUTTON_X: uinput.KEY_Z,  # 'X' button
+        BUTTON_Y: uinput.KEY_X,  # 'Y' button
+        BUTTON_L1: uinput.KEY_G,  # 'L1' button
+        BUTTON_R1: uinput.KEY_H,  # 'R1' button
+        SELECT: uinput.KEY_SPACE,  # 'Select' button
+        START: uinput.KEY_ENTER,  # 'Start' button
+        UP: uinput.KEY_UP,  # Analog up
+        DOWN: uinput.KEY_DOWN,  # Analog down
+        LEFT: uinput.KEY_LEFT,  # Analog left
+        RIGHT: uinput.KEY_RIGHT,  # Analog right
     }
-
-JOYSTICK = [
-    (e.ABS_X, AbsInfo(value=0, min=0, max=VREF,
-                      fuzz=0, flat=0, resolution=0)),
-    (e.ABS_Y, AbsInfo(0, 0, VREF, 0, 0, 0))]
-
-RUMBLE = [e.FF_RUMBLE]
 
 # Global Variables
 
@@ -190,9 +188,9 @@ else:
 
 # Create virtual HID for Joystick
 if JOYSTICK_DISABLED == 'False':
-    device = UInput({e.EV_KEY: KEYS.values(), e.EV_ABS: JOYSTICK, e.EV_FF: RUMBLE}, name="OneForAll-GP", version=0x3)
+    device = uinput.Device({e.EV_KEY: KEYS.values()}, name="OneForAll-GP", version=0x3)
 else:
-    device = UInput({e.EV_KEY: KEYS.values()}, name="OneForAll", version=0x3)
+    device = uinput.Device({e.EV_KEY: KEYS.values()}, name="OneForAll", version=0x3)
 
 time.sleep(1)
 
@@ -226,7 +224,7 @@ def handle_button(pin):
                 pass
 
     if not hotkeyAction(pin):
-        device.write(e.EV_KEY, key, state)
+        device.emit(key, state)
         time.sleep(BOUNCE_TIME)
         device.syn()
     else:
@@ -255,8 +253,8 @@ if not HOTKEY in BUTTONS:
     gpio.add_event_detect(HOTKEY, gpio.BOTH, callback=handle_button, bouncetime=1)
 
 # Send centering commands
-device.write(e.EV_ABS, e.ABS_X, VREF / 2);
-device.write(e.EV_ABS, e.ABS_Y, VREF / 2);
+device.emit(uinput.ABS_X, VREF / 2, syn=False);
+device.emit(uinput.ABS_Y, VREF / 2);
 
 # Set up OSD service
 try:

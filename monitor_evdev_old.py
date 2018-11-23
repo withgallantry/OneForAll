@@ -28,7 +28,7 @@ import re
 import signal
 import sys
 import thread as thread
-import threading
+from threading import Event
 import time
 from evdev import uinput, UInput, AbsInfo, categorize, ecodes as e
 from subprocess import Popen, PIPE, check_output, check_call
@@ -112,7 +112,9 @@ BOUNCE_TIME = 0.03  # Debounce time in seconds
 gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
 gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
-gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
+
+if not SHUTDOWN == -1:
+    gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 if JOYSTICK_DISABLED == 'False':
     KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
@@ -178,6 +180,7 @@ last_bat_read = 450
 joystick = False
 showOverlay = False
 lowbattery = 0
+overrideCounter = Event()
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 if monitoring_enabled == 'True':
@@ -240,7 +243,8 @@ def handle_shutdown(pin):
 
 
 # Initialise Safe shutdown
-gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)
+if not SHUTDOWN == -1:
+    gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)
 
 # Initialise Buttons
 for button in BUTTONS:
@@ -278,9 +282,7 @@ def checkShdn(volt):
     if volt < batt_shdn:
         lowbattery = 1
         info = 1
-        condition.acquire()
-        condition.notify()
-        condition.release()
+        overrideCounter.set()
         doShutdown()
 
 
@@ -445,9 +447,6 @@ def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
 
 
-condition = threading.Condition()
-
-
 def volumeUp():
     global volume
     volume = min(100, volume + 10)
@@ -485,10 +484,7 @@ def checkKeyInputPowerSaving():
     global showOverlay
 
     info = showOverlay
-
-    condition.acquire()
-    condition.notify()
-    condition.release()
+    overrideCounter.set()
 
     # TODO Convert to state
     if not gpio.input(HOTKEY):
@@ -507,10 +503,6 @@ def checkKeyInputPowerSaving():
         elif not gpio.input(BUTTON_A):
             bluetooth = readModeBluetooth(True)
             time.sleep(0.5)
-
-    condition.acquire()
-    condition.notify()
-    condition.release()
 
 
 def checkJoystickInput():
@@ -553,25 +545,24 @@ bluetooth = bluetooth = readModeBluetooth()
 if JOYSTICK_DISABLED == 'False':
     inputReadingThread = thread.start_new_thread(inputReading, ())
 
-batteryRead = 1;
+batteryRead = 1
 
 try:
     while 1:
         try:
-            condition.acquire()
             if not adc == False:
                 if batteryRead >= 1:
                     volt = readVoltage()
-                    print volt
                     bat = getVoltagepercent(volt)
-                    print bat
                     batteryRead = 0;
             batteryRead = batteryRead + 1;
             checkShdn(volt)
             updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
+            overrideCounter.wait(10)
+            if overrideCounter.is_set():
+                overrideCounter.clear()
+            runCounter = 0;
 
-            condition.wait(10)
-            condition.release()
         except Exception:
             logging.info("EXCEPTION")
             pass

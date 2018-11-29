@@ -85,11 +85,15 @@ BUTTON_R1 = int(keys['BUTTON_R1'])
 SELECT = int(keys['SELECT'])
 START = int(keys['START'])
 HOTKEY = int(keys['HOTKEY'])
+QUICKSAVE = int(keys['QUICKSAVE'])
+QUICKLOAD = 99  # Probably not the cleanest way to do this, but we're pretending like quickload is GPIO pin 99
+
 
 if config.has_option("GENERAL", "DEBUG"):
     logging.basicConfig(filename=bin_dir + '/osd.log', level=logging.DEBUG)
 
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
+LID_SENSOR = int(general['LID_SENSOR'])
 
 # Joystick Hardware settings
 joystickConfig = config['JOYSTICK']
@@ -106,9 +110,9 @@ batt_low = int(battery['BATT_LOW_VOLTAGE'])
 batt_shdn = int(battery['BATT_SHUTDOWN_VOLT'])
 
 BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
-           BUTTON_X, BUTTON_Y, BUTTON_L1, BUTTON_R1, SELECT, START]
+           BUTTON_X, BUTTON_Y, BUTTON_L1, BUTTON_R1, SELECT, START, HOTKEY, QUICKSAVE]
 
-HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
+HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, QUICKSAVE]
 
 BOUNCE_TIME = 0.03  # Debounce time in seconds
 
@@ -119,6 +123,9 @@ gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 if not SHUTDOWN == -1:
     gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
+
+if not LID_SENSOR == -1:
+    gpio.setup(LID_SENSOR, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 if JOYSTICK_DISABLED == 'False':
     KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
@@ -153,6 +160,8 @@ else:
         DOWN: uinput.KEY_DOWN,  # Analog down
         LEFT: uinput.KEY_LEFT,  # Analog left
         RIGHT: uinput.KEY_RIGHT,  # Analog right
+        QUICKSAVE: uinput.KEY_J,  # Quick save key
+        QUICKLOAD: uinput.KEY_K,  # Quick load key
     }
 
 # Global Variables
@@ -243,10 +252,16 @@ def handle_shutdown(pin):
         logging.info("SHUTDOWN")
         doShutdown()
 
+def handle_lid_close(pin):
+    state = gpio.input(pin)
+    print 'Hall effect sensor tripped: ' + str(state)
 
 # Initialise Safe shutdown
 if not SHUTDOWN == -1:
     gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)
+
+if not LID_SENSOR == -1:
+    gpio.add_event_detect(LID_SENSOR, gpio.BOTH, callback=handle_lid_close, bouncetime=5)
 
 # Initialise Buttons
 for button in BUTTONS:
@@ -258,8 +273,8 @@ if not HOTKEY in BUTTONS:
         gpio.add_event_detect(HOTKEY, gpio.BOTH, callback=handle_button, bouncetime=1)
 
 # Send centering commands
-device.emit(uinput.ABS_X, VREF / 2, syn=False);
-device.emit(uinput.ABS_Y, VREF / 2);
+device.emit(uinput.ABS_X, VREF / 2, syn=False)
+device.emit(uinput.ABS_Y, VREF / 2)
 
 # Set up OSD service
 try:
@@ -274,8 +289,8 @@ try:
         logging.error("ERROR: Failed to start OSD, got return code [" + str(osd_poll) + "]\n")
         sys.exit(1)
 except Exception as e:
-    logging.exception("ERROR: Failed start OSD binary");
-    sys.exit(1);
+    logging.exception("ERROR: Failed start OSD binary")
+    sys.exit(1)
 
 
 # Check for shutdown state
@@ -291,15 +306,15 @@ def checkShdn(volt):
 
 # Read voltage
 def readVoltage():
-    global last_bat_read;
-    voltVal = adc.read_adc(0, gain=1);
+    global last_bat_read
+    voltVal = adc.read_adc(0, gain=1)
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
     # volt = int(((voltVal * voltscale * dacres + (dacmax * 5)) / ((dacres * resdivval) / resdivmul)))
 
     if volt < 300 or (last_bat_read > 300 and last_bat_read - volt > 6 and not last_bat_read == 450):
-        volt = last_bat_read;
+        volt = last_bat_read
 
-    last_bat_read = volt;
+    last_bat_read = volt
 
     return volt
 
@@ -314,18 +329,18 @@ def readVolumeLevel():
     res = process.readline()
     process.close()
 
-    vol = 0;
+    vol = 0
     try:
         vol = int(res.replace("%", "").replace("'C\n", ""))
     except Exception as e:
         logging.info("Audio Err    : " + str(e))
 
-    return vol;
+    return vol
 
 
 # Read wifi (Credits: kite's SAIO project) Modified to only read, not set wifi.
 def readModeWifi(toggle=False):
-    ret = 0;
+    ret = 0
     wifiVal = not os.path.exists(osd_path + 'wifi')  # int(ser.readline().rstrip('\r\n'))
     if toggle:
         wifiVal = not wifiVal
@@ -381,7 +396,7 @@ def readModeWifi(toggle=False):
 
 
 def readModeBluetooth(toggle=False):
-    ret = 0;
+    ret = 0
     BtVal = not os.path.exists(osd_path + 'bluetooth')  # int(ser.readline().rstrip('\r\n'))
     if toggle:
         BtVal = not BtVal
@@ -506,11 +521,15 @@ def checkKeyInputPowerSaving():
         elif not gpio.input(BUTTON_A):
             bluetooth = readModeBluetooth(True)
             time.sleep(0.5)
+        elif not gpio.input(QUICKSAVE):
+            device.emit(KEYS[QUICKLOAD], 1)
+            time.sleep(2)
+            device.syn()
 
 
 def checkJoystickInput():
-    an1 = adc.read_adc(2, gain=2 / 3);
-    an0 = adc.read_adc(1, gain=2 / 3);
+    an1 = adc.read_adc(2, gain=2 / 3)
+    an0 = adc.read_adc(1, gain=2 / 3)
 
     logging.debug("X: {} | Y: {}".format(an0, an1))
     logging.debug("Above: {} | Below: {}".format((VREF / 2 + DZONE), (VREF / 2 - DZONE)))
@@ -557,14 +576,14 @@ try:
                 if batteryRead >= 1:
                     volt = readVoltage()
                     bat = getVoltagepercent(volt)
-                    batteryRead = 0;
-            batteryRead = batteryRead + 1;
+                    batteryRead = 0
+            batteryRead = batteryRead + 1
             checkShdn(volt)
             updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
             overrideCounter.wait(10)
             if overrideCounter.is_set():
                 overrideCounter.clear()
-            runCounter = 0;
+            runCounter = 0
 
         except Exception:
             logging.info("EXCEPTION")

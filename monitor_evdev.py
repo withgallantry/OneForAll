@@ -110,7 +110,7 @@ batt_low = int(battery['BATT_LOW_VOLTAGE'])
 batt_shdn = int(battery['BATT_SHUTDOWN_VOLT'])
 
 BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
-           BUTTON_X, BUTTON_Y, BUTTON_L1, BUTTON_R1, SELECT, START, HOTKEY, QUICKSAVE]
+           BUTTON_X, BUTTON_Y, BUTTON_L1, BUTTON_R1, SELECT, START, QUICKSAVE]
 
 HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, QUICKSAVE]
 
@@ -126,6 +126,10 @@ if not SHUTDOWN == -1:
 
 if not LID_SENSOR == -1:
     gpio.setup(LID_SENSOR, gpio.IN, pull_up_down=gpio.PUD_UP)
+
+if not HOTKEY in BUTTONS:
+    if HOTKEY != -1:
+        gpio.setup(HOTKEY, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 if JOYSTICK_DISABLED == 'False':
     KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
@@ -160,8 +164,8 @@ else:
         DOWN: uinput.KEY_DOWN,  # Analog down
         LEFT: uinput.KEY_LEFT,  # Analog left
         RIGHT: uinput.KEY_RIGHT,  # Analog right
-        QUICKSAVE: uinput.KEY_J,  # Quick save key
-        QUICKLOAD: uinput.KEY_K,  # Quick load key
+        QUICKSAVE: uinput.KEY_F2,  # Quick save key
+        QUICKLOAD: uinput.KEY_F4,  # Quick load key
     }
 
 # Global Variables
@@ -218,24 +222,32 @@ def hotkeyAction(key):
 
 def handle_button(pin):
     global showOverlay
-    key = KEYS[pin]
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 
     if pin == HOTKEY:
+        print "hotkey pressed"
         if state == 1:
             showOverlay = True
-            try:
-                checkKeyInputPowerSaving()
-            except Exception:
-                pass
         else:
             showOverlay = False
-            try:
-                checkKeyInputPowerSaving()
-            except Exception:
-                pass
+        try:
+            checkKeyInputPowerSaving()
+        except Exception:
+            pass
+        return
+    elif pin == QUICKSAVE:
+        print "quicksave pressed"
+        device.emit(KEYS[SELECT], state)
+        if not gpio.input(HOTKEY):
+            device.emit(KEYS[QUICKLOAD], state)
+        else:
+            device.emit(KEYS[QUICKSAVE], state)
+        time.sleep(BOUNCE_TIME)
+        device.syn()
+        return
 
+    key = KEYS[pin]
     if not hotkeyAction(pin):
         device.emit(key, state)
         time.sleep(BOUNCE_TIME)
@@ -255,6 +267,20 @@ def handle_shutdown(pin):
 def handle_lid_close(pin):
     state = gpio.input(pin)
     print 'Hall effect sensor tripped: ' + str(state)
+    if state == 0:
+        device.emit(KEYS[SELECT], 1)
+        device.emit(KEYS[QUICKSAVE], 1)
+        time.sleep(BOUNCE_TIME)
+        device.syn()
+        device.emit(KEYS[SELECT], 0)
+        device.emit(KEYS[QUICKSAVE], 0)
+        time.sleep(BOUNCE_TIME)
+        device.syn()
+        time.sleep(3)
+        os.system("killall retroarch")
+        time.sleep(2)
+        os.system("aplay /home/pi/OneForAll/Robot_blip.wav")
+        doShutdown()
 
 # Initialise Safe shutdown
 if not SHUTDOWN == -1:

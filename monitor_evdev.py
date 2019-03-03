@@ -279,7 +279,7 @@ def handle_lid_close(pin):
         time.sleep(3)
         os.system("killall retroarch")
         time.sleep(2)
-        os.system("aplay /home/pi/OneForAll/Robot_blip.wav")
+        os.system('aplay ' + bin_dir + '/resources/lid_beep.wav')
         doShutdown()
 
 # Initialise Safe shutdown

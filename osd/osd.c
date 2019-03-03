@@ -56,6 +56,7 @@
 #define WIFI_IMAGES (const char*[5]){"./resources/wifi_warning.png", "./resources/wifi_error.png", "./resources/wifi_1.png", "./resources/wifi_2.png", "./resources/wifi_3.png"}
 
 volatile bool run = true;
+volatile bool show = false;
 
 //-------------------------------------------------------------------------
 
@@ -143,6 +144,10 @@ void getInput()
         {
             //Battery
             battery = atoi(word+1);
+        }
+        else if(word[0] == 's')
+        {
+            show = atoi(word+1) > 0;
         }
         else if(word[0] == 'w')
         {
@@ -317,7 +322,7 @@ int main(int argc, char *argv[])
                    320,
                    240,
                    type);
-    createResourceImageLayer(&infoLayer, layer + 3);
+    createResourceImageLayer(&infoLayer, layer);
     
     IMAGE_LAYER_T bimageLayer;
     if (loadPng(&(bimageLayer.image), BATTERY_IMAGE) == false)
@@ -440,84 +445,11 @@ int main(int argc, char *argv[])
     
     while (run)
     {
-        float batval = battery/100.f;
-        {
-            updateBattery(batval, &batteryLayer);
-        }
-        if(charge > 0 && hud)
-        {
-            //TODO preload for efficiency
-            if (loadPng(&(cimageLayer.image), CHARGE_IMAGE) == false)
-            {
-                fprintf(stderr, "unable to charge load %s\n", argv[optind]);
-            }
-            changeSourceAndUpdateImageLayer(&cimageLayer);
-            charge = -1;
-        }
-        else if(!charge && hud)
-        {
-            clearLayer(&cimageLayer);
-            charge = -1;
-        }
-        if(wifi > 0 && hud)
-        {
-            if (wifi_loaded == 0) {
-                //TODO preload for efficienty
-                if (loadPng(&(wimageLayer.image), WIFI_IMAGES[wifi-1]) == false)
-                {
-                    fprintf(stderr, "unable to wifi load %s\n", argv[optind]);
-                }
-                changeSourceAndUpdateImageLayer(&wimageLayer);
-                wifi_loaded = 1;
-            }
-        }
-        else if (!wifi)
-        {
-            clearLayer(&wimageLayer);
-            wifi_loaded = 0;
-        }
-         if(audio >= 0)
-                {
-                    vol_image = getImageIconFromVolume(audio);
-                    //TODO preload for efficienty
-                    if (loadPng(&(aimageLayer.image), AUDIO_IMAGES[vol_image-1]) == false)
-                    {
-                        fprintf(stderr, "unable to audio load %s\n", argv[optind]);
-                    }
-                    changeSourceAndUpdateImageLayer(&aimageLayer);
-                    //audio = -1;
-                }
-                else if (!audio)
-                {
-                    clearLayer(&aimageLayer);
-                }
-        if (!hud) {
-            clearLayer(&batteryLayer);
-            clearLayer(&wimageLayer);
-                clearLayer(&aimageLayer);
-                clearLayer(&bimageLayer);
-                clearLayer(&cimageLayer);
-        }
-        if(joystick > 0) {
-            if (loadPng(&(joystickImageLayer.image), JOYSTICK_IMAGE) == false) {
-                fprintf(stderr, "unable to joystick load %s\n", argv[optind]);
-            }
-            changeSourceAndUpdateImageLayer(&joystickImageLayer);
-        }
-        else if(joystick <= 0) {
-            clearLayer(&joystickImageLayer);
-        }
-        if(bluetooth > 0) {
-            if (loadPng(&(bluetoothImageLayer.image), BLUETOOTH_IMAGE) == false) {
-                fprintf(stderr, "unable to baluetooth load %s\n", argv[optind]);
-            }
-            changeSourceAndUpdateImageLayer(&bluetoothImageLayer);
-        }
-        else if(bluetooth <= 0) {
-            clearLayer(&bluetoothImageLayer);
-        }
+        int sleepTime = 10000000;
+
         if(infos > 0)
         {
+            sleepTime = 100000;
             if (low_battery <= 0) {
             if (no_joystick) {
              updateInfo(&infoLayer, INFO_NO_JOYSTICK);
@@ -535,11 +467,94 @@ int main(int argc, char *argv[])
               clearLayer(&infoTextLayer);
               infos_loaded = 0;
         }
-        else
-        {
-            pause(); //stop thread
+
+        if (show) {
+
+            float batval = battery/100.f;
+            {
+                updateBattery(batval, &batteryLayer);
+            }
+            if(charge > 0 && hud)
+            {
+                //TODO preload for efficiency
+                if (loadPng(&(cimageLayer.image), CHARGE_IMAGE) == false)
+                {
+                    fprintf(stderr, "unable to charge load %s\n", argv[optind]);
+                }
+                changeSourceAndUpdateImageLayer(&cimageLayer);
+                charge = -1;
+            }
+            else if(!charge && hud)
+            {
+                clearLayer(&cimageLayer);
+                charge = -1;
+            }
+            if(wifi > 0 && hud)
+            {
+                if (wifi_loaded == 0) {
+                    //TODO preload for efficienty
+                    if (loadPng(&(wimageLayer.image), WIFI_IMAGES[wifi-1]) == false)
+                    {
+                        fprintf(stderr, "unable to wifi load %s\n", argv[optind]);
+                    }
+                    changeSourceAndUpdateImageLayer(&wimageLayer);
+                    wifi_loaded = 1;
+                }
+            }
+            else if (!wifi)
+            {
+                clearLayer(&wimageLayer);
+                wifi_loaded = 0;
+            }
+            if(audio >= 0)
+                    {
+                        vol_image = getImageIconFromVolume(audio);
+                        //TODO preload for efficienty
+                        if (loadPng(&(aimageLayer.image), AUDIO_IMAGES[vol_image-1]) == false)
+                        {
+                            fprintf(stderr, "unable to audio load %s\n", argv[optind]);
+                        }
+                        changeSourceAndUpdateImageLayer(&aimageLayer);
+                        //audio = -1;
+                    }
+                    else if (!audio)
+                    {
+                        clearLayer(&aimageLayer);
+                    }
+            if (!hud) {
+                clearLayer(&batteryLayer);
+                clearLayer(&wimageLayer);
+                    clearLayer(&aimageLayer);
+                    clearLayer(&bimageLayer);
+                    clearLayer(&cimageLayer);
+            }
+            if(joystick > 0) {
+                if (loadPng(&(joystickImageLayer.image), JOYSTICK_IMAGE) == false) {
+                    fprintf(stderr, "unable to joystick load %s\n", argv[optind]);
+                }
+                changeSourceAndUpdateImageLayer(&joystickImageLayer);
+            }
+            else if(joystick <= 0) {
+                clearLayer(&joystickImageLayer);
+            }
+            if(bluetooth > 0) {
+                if (loadPng(&(bluetoothImageLayer.image), BLUETOOTH_IMAGE) == false) {
+                    fprintf(stderr, "unable to baluetooth load %s\n", argv[optind]);
+                }
+                changeSourceAndUpdateImageLayer(&bluetoothImageLayer);
+            }
+            else if(bluetooth <= 0) {
+                clearLayer(&bluetoothImageLayer);
+            }
+        } else {
+            clearLayer(&batteryLayer);
+            clearLayer(&wimageLayer);
+            clearLayer(&aimageLayer);
+            clearLayer(&bimageLayer);
+            clearLayer(&cimageLayer);
+            clearLayer(&bluetoothImageLayer);
         }
-        usleep(10000000); //sleep 10sec
+        usleep(sleepTime);
     }
     //---------------------------------------------------------------------
 

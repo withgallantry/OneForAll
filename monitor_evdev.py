@@ -65,7 +65,7 @@ wifi_3bar = 5
 
 bin_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 osd_path = bin_dir + '/osd/osd'
-rfkill_path = bin_dir + '/rfkill/rfkill'
+rfkill_path = 'rfkill'
 
 # Configure buttons
 config = configparser.ConfigParser()
@@ -476,7 +476,7 @@ def doShutdown(channel=None):
 
 # Signals the OSD binary
 def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, lowbattery=0, info=False, charge=False, bluetooth=False):
-    commands = "v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(
+    commands = "s" + str(int(showOverlay)) +  " v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(
         audio) + " j" + ("1 " if joystick else "0 ") + " u" + ("1 " if bluetooth else "0 ") + " l" + (
                    "1 " if lowbattery else "0 ") + " " + ("on " if info else "off ") + (
                    "charge" if charge else "ncharge") + "\n"

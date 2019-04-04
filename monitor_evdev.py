@@ -21,6 +21,7 @@
 #
 import Adafruit_ADS1x15
 import RPi.GPIO as gpio
+import configparser
 import logging
 import logging.handlers
 import os
@@ -28,14 +29,11 @@ import re
 import signal
 import sys
 import thread as thread
-from threading import Event
 import time
-
 import uinput
-
 # from evdev import uinput, UInput, AbsInfo, categorize, ecodes as e
 from subprocess import Popen, PIPE, check_output, check_call
-import configparser
+from threading import Event
 
 # Batt variables
 voltscale = 118.0  # ADJUST THIS
@@ -87,7 +85,6 @@ START = int(keys['START'])
 HOTKEY = int(keys['HOTKEY'])
 QUICKSAVE = int(keys['QUICKSAVE'])
 QUICKLOAD = 99  # Probably not the cleanest way to do this, but we're pretending like quickload is GPIO pin 99
-
 
 if config.has_option("GENERAL", "DEBUG"):
     logging.basicConfig(filename=bin_dir + '/osd.log', level=logging.DEBUG)
@@ -264,6 +261,7 @@ def handle_shutdown(pin):
         logging.info("SHUTDOWN")
         doShutdown()
 
+
 def handle_lid_close(pin):
     state = gpio.input(pin)
     print 'Hall effect sensor tripped: ' + str(state)
@@ -281,6 +279,7 @@ def handle_lid_close(pin):
         time.sleep(2)
         os.system('aplay ' + bin_dir + '/resources/lid_beep.wav')
         doShutdown()
+
 
 # Initialise Safe shutdown
 if not SHUTDOWN == -1:
@@ -476,7 +475,8 @@ def doShutdown(channel=None):
 
 # Signals the OSD binary
 def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, lowbattery=0, info=False, charge=False, bluetooth=False):
-    commands = "s" + str(int(showOverlay)) +  " v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(
+    commands = "s" + str(int(showOverlay)) + " v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(
+        wifi) + " a" + str(
         audio) + " j" + ("1 " if joystick else "0 ") + " u" + ("1 " if bluetooth else "0 ") + " l" + (
                    "1 " if lowbattery else "0 ") + " " + ("on " if info else "off ") + (
                    "charge" if charge else "ncharge") + "\n"
@@ -593,17 +593,14 @@ bluetooth = bluetooth = readModeBluetooth()
 if JOYSTICK_DISABLED == 'False':
     inputReadingThread = thread.start_new_thread(inputReading, ())
 
-batteryRead = 1
-
 try:
     while 1:
         try:
             if not adc == False:
-                if batteryRead >= 1:
-                    volt = readVoltage()
-                    bat = getVoltagepercent(volt)
-                    batteryRead = 0
-            batteryRead = batteryRead + 1
+                volt = readVoltage()
+                logging.info('Battery Voltage' + str(volt));
+                bat = getVoltagepercent(volt)
+                logging.info('Battery Percent' + str(bat));
             checkShdn(volt)
             updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
             overrideCounter.wait(10)

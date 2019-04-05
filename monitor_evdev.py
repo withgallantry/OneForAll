@@ -553,7 +553,6 @@ try:
                 volt = readVoltage()
                 bat = getVoltagepercent(volt)
             checkShdn(volt)
-            wifi = readModeWifi()
             updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
             overrideCounter.wait(10)
             if overrideCounter.is_set():

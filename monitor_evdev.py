@@ -253,6 +253,7 @@ for button in BUTTONS:
 
 if not HOTKEY in BUTTONS:
     if HOTKEY != -1:
+        gpio.setup(HOTKEY, gpio.IN, pull_up_down=gpio.PUD_UP)
         gpio.add_event_detect(HOTKEY, gpio.BOTH, callback=handle_button, bouncetime=1)
 
 # Send centering commands

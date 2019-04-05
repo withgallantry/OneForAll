@@ -21,6 +21,7 @@
 #
 import Adafruit_ADS1x15
 import RPi.GPIO as gpio
+import configparser
 import logging
 import logging.handlers
 import os
@@ -28,14 +29,11 @@ import re
 import signal
 import sys
 import thread as thread
-from threading import Event
 import time
-
 import uinput
-
 # from evdev import uinput, UInput, AbsInfo, categorize, ecodes as e
 from subprocess import Popen, PIPE, check_output, check_call
-import configparser
+from threading import Event
 
 # Batt variables
 voltscale = 118.0  # ADJUST THIS

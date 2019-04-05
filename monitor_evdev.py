@@ -293,7 +293,6 @@ def readVoltage():
     global last_bat_read;
     voltVal = adc.read_adc(0, gain=1);
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
-    # volt = int(((voltVal * voltscale * dacres + (dacmax * 5)) / ((dacres * resdivval) / resdivmul)))
 
     if volt < 300 or (last_bat_read > 300 and last_bat_read - volt > 6 and not last_bat_read == 450):
         volt = last_bat_read;
@@ -547,18 +546,14 @@ bluetooth = bluetooth = readModeBluetooth()
 if JOYSTICK_DISABLED == 'False':
     inputReadingThread = thread.start_new_thread(inputReading, ())
 
-batteryRead = 1
-
 try:
     while 1:
         try:
             if not adc == False:
-                if batteryRead >= 1:
-                    volt = readVoltage()
-                    bat = getVoltagepercent(volt)
-                    batteryRead = 0;
-            batteryRead = batteryRead + 1;
+                volt = readVoltage()
+                bat = getVoltagepercent(volt)
             checkShdn(volt)
+            wifi = readModeWifi()
             updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
             overrideCounter.wait(10)
             if overrideCounter.is_set():

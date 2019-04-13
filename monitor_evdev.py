@@ -433,6 +433,7 @@ def readModeBluetooth(toggle=False):
             bt_state = 'ON'
             logging.info("BT    [ENABLING]")
             try:
+                check_call("sudo systemctl enable hciuart.service && sudo systemctl start hciuart.service", shell=True)
                 out = check_output(['sudo', rfkill_path, 'unblock', 'bluetooth'])
                 logging.info("BT      [" + str(out) + "]")
             except Exception as e:
@@ -446,6 +447,7 @@ def readModeBluetooth(toggle=False):
             bt_state = 'OFF'
             logging.info("BT    [DISABLING]")
             try:
+                check_call("sudo systemctl disable hciuart.service && sudo systemctl stop hciuart.service", shell=True)
                 out = check_output(['sudo', rfkill_path, 'block', 'bluetooth'])
                 logging.info("BT      [" + str(out) + "]")
             except Exception as e:

@@ -323,6 +323,7 @@ def checkShdn(volt):
     global lowbattery
     global info
     if volt < batt_shdn:
+        logging.info("Low Voltage Shutdown Triggered")
         lowbattery = 1
         info = 1
         overrideCounter.set()

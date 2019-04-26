@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1e91772-da59-4698-b607-55f4207566b3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/main_no_joystick_pocketfe.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/main_no_joystick.png" afterPath="$PROJECT_DIR$/resources/main_no_joystick.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keys.cfg" afterPath="$PROJECT_DIR$/keys.cfg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monitor_evdev.py" afterPath="$PROJECT_DIR$/monitor_evdev.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,11 +24,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="325" column="52" lean-forward="false" selection-start-line="325" selection-start-column="52" selection-end-line="325" selection-end-column="52" />
+            <state relative-caret-position="231">
+              <caret line="90" column="59" lean-forward="false" selection-start-line="90" selection-start-column="59" selection-end-line="90" selection-end-column="59" />
               <folding>
                 <element signature="e#851#874#0" expanded="true" />
               </folding>
@@ -46,18 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main_no_joystick_pocketfe.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/main_no_joystick_pocketfe.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="keys.cfg" pinned="false" current-in-tab="true">
+      <file leaf-file-name="keys.cfg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keys.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+            <state relative-caret-position="210">
+              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -120,14 +110,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>KeyboardInterrupt</find>
-      <find>condition</find>
-      <find>acquire</find>
       <find>thread</find>
       <find>overrideCounter</find>
       <find>volt</find>
       <find>main</find>
-      <find>inputReading</find>
       <find>JOYSTICK</find>
       <find>OneForAll</find>
       <find>t</find>
@@ -140,7 +126,6 @@
       <find>event</find>
       <find>uinput</find>
       <find>device =</find>
-      <find>joystick</find>
       <find>-1</find>
       <find>keys</find>
       <find>if not HOTKEY in BUTTONS</find>
@@ -150,6 +135,11 @@
       <find>safe</find>
       <find>safe shut</find>
       <find>check</find>
+      <find>joystick</find>
+      <find>ON_BY_DEFAULT</find>
+      <find>inputReading</find>
+      <find>loggin</find>
+      <find>logging</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -180,8 +170,8 @@
         <option value="$PROJECT_DIR$/monitor_evdev_old.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/osd/osd.c" />
-        <option value="$PROJECT_DIR$/monitor_evdev.py" />
         <option value="$PROJECT_DIR$/keys.cfg" />
+        <option value="$PROJECT_DIR$/monitor_evdev.py" />
       </list>
     </option>
   </component>
@@ -212,8 +202,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -256,6 +244,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -866,12 +856,14 @@
       <workItem from="1554460961354" duration="1518000" />
       <workItem from="1554880380417" duration="1041000" />
       <workItem from="1555443174253" duration="629000" />
-      <workItem from="1556228085617" duration="170000" />
+      <workItem from="1556228085617" duration="923000" />
+      <workItem from="1556264270398" duration="615000" />
+      <workItem from="1556314098109" duration="281000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="273595000" />
+    <option name="totallyTimeSpent" value="275244000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
@@ -888,10 +880,10 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39124486" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39124486" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19670959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20243205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1163,11 +1155,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/main_no_joystick_pocketfe.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/main_no_joystick_pocketfe.png" />
     <entry file="file://$PROJECT_DIR$/resources/main_no_joystick.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1178,21 +1166,21 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
+    <entry file="file://$PROJECT_DIR$/keys.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="325" column="52" lean-forward="false" selection-start-line="325" selection-start-column="52" selection-end-line="325" selection-end-column="52" />
-          <folding>
-            <element signature="e#851#874#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="210">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/keys.cfg">
+    <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-          <folding />
+        <state relative-caret-position="231">
+          <caret line="90" column="59" lean-forward="false" selection-start-line="90" selection-start-column="59" selection-end-line="90" selection-end-column="59" />
+          <folding>
+            <element signature="e#851#874#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

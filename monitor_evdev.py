@@ -87,7 +87,9 @@ QUICKSAVE = int(keys['QUICKSAVE'])
 QUICKLOAD = 99  # Probably not the cleanest way to do this, but we're pretending like quickload is GPIO pin 99
 
 if config.has_option("GENERAL", "DEBUG"):
-    logging.basicConfig(filename=bin_dir + '/osd.log', level=logging.DEBUG)
+    logging.basicConfig(filename=bin_dir + '/osd.log', level=logging.DEBUG,
+                        format='%(asctime)s %(levelname)s - %(message)s',
+                        datefmt='%Y-%m-%d,%H:%M:%S:%f', )
 
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 LID_SENSOR = int(general['LID_SENSOR'])

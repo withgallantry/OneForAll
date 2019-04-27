@@ -190,7 +190,7 @@ bat = 0
 last_bat_read = 450
 joystick = False
 showOverlay = False
-lowbattery = 0
+lowbattery = 1
 overrideCounter = Event()
 
 if ON_BY_DEFAULT == 'True':

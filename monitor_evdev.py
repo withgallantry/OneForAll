@@ -34,6 +34,7 @@ import uinput
 # from evdev import uinput, UInput, AbsInfo, categorize, ecodes as e
 from subprocess import Popen, PIPE, check_output, check_call
 from threading import Event
+from threading import Timer
 
 # Batt variables
 voltscale = 118.0  # ADJUST THIS
@@ -190,7 +191,7 @@ bat = 0
 last_bat_read = 450
 joystick = False
 showOverlay = False
-lowbattery = 1
+lowbattery = 0
 overrideCounter = Event()
 
 if ON_BY_DEFAULT == 'True':
@@ -319,14 +320,21 @@ except Exception as e:
     logging.exception("ERROR: Failed start OSD binary")
     sys.exit(1)
 
+def turnOffLowBatteryWarning():
+    global lowbattery
+    lowbattery = 0
+    overrideCounter.set()
 
 # Check for shutdown state
 def checkShdn(volt):
     global lowbattery
     global info
+    if volt < batt_low:
+        lowbattery = 1
+        t = Timer(2.0, turnOffLowBatteryWarning)
+        t.start()
     if volt < batt_shdn:
         logging.info("Low Voltage Shutdown Triggered")
-        lowbattery = 1
         info = 1
         overrideCounter.set()
         doShutdown()
@@ -597,6 +605,7 @@ bluetooth = bluetooth = readModeBluetooth()
 
 if JOYSTICK_DISABLED == 'False':
     inputReadingThread = thread.start_new_thread(inputReading, ())
+
 
 try:
     while 1:

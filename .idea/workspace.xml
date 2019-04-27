@@ -28,10 +28,11 @@
       <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="192" column="14" lean-forward="false" selection-start-line="192" selection-start-column="14" selection-end-line="192" selection-end-column="14" />
+            <state relative-caret-position="185">
+              <caret line="325" column="25" lean-forward="false" selection-start-line="325" selection-start-column="25" selection-end-line="325" selection-end-column="25" />
               <folding>
                 <element signature="e#851#874#0" expanded="true" />
+                <marker date="1556387205000" expanded="true" signature="9442:9483" ph="..." />
               </folding>
             </state>
           </provider>
@@ -111,9 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>this.provider ==</find>
-      <find>currentThread</find>
-      <find>event</find>
       <find>uinput</find>
       <find>device =</find>
       <find>-1</find>
@@ -141,6 +139,9 @@
       <find>updateWarning</find>
       <find>warning_loaded</find>
       <find>lowbattery</find>
+      <find>BATT_LOW</find>
+      <find>batt_low</find>
+      <find>overrideCounter</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -860,12 +861,12 @@
       <workItem from="1556228085617" duration="923000" />
       <workItem from="1556264270398" duration="615000" />
       <workItem from="1556314098109" duration="362000" />
-      <workItem from="1556319962672" duration="2004000" />
+      <workItem from="1556319962672" duration="2729000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="277329000" />
+    <option name="totallyTimeSpent" value="278054000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="815" extended-state="6" />
@@ -1150,14 +1151,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/keys.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/battery.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1176,12 +1169,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/keys.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="192" column="14" lean-forward="false" selection-start-line="192" selection-start-column="14" selection-end-line="192" selection-end-column="14" />
+        <state relative-caret-position="185">
+          <caret line="325" column="25" lean-forward="false" selection-start-line="325" selection-start-column="25" selection-end-line="325" selection-end-column="25" />
           <folding>
             <element signature="e#851#874#0" expanded="true" />
+            <marker date="1556387205000" expanded="true" signature="9442:9483" ph="..." />
           </folding>
         </state>
       </provider>

@@ -65,7 +65,7 @@ static RGBA8_T backgroundColour = { 0, 0, 0, 100 };
 static RGBA8_T textColour = { 255, 255, 255, 255 };
 static RGBA8_T greenColour = { 0, 255, 0, 200 };
 static RGBA8_T redColour = { 255, 0, 0, 200 };
-static int battery = 0, infos = 0, hud = 1, charge = 0, low_battery = 0, audio = 0, wifi = 0, wifi_loaded = 0, voltage = 0, vol_image = 0, infos_loaded = 0, joystick = 0, bluetooth = 0;
+static int battery = 0, infos = 0, hud = 1, charge = 0, low_battery = 0, audio = 0, wifi = 0, wifi_loaded = 0, voltage = 0, vol_image = 0, infos_loaded = 0, warning_loader = 0, joystick = 0, bluetooth = 0;
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*, char[]);
@@ -323,6 +323,13 @@ int main(int argc, char *argv[])
                    240,
                    type);
     createResourceImageLayer(&infoLayer, layer);
+
+    IMAGE_LAYER_T warningLayer;
+    initImageLayer(&warningLayer,
+                   320,
+                   240,
+                   type);
+    createResourceImageLayer(&warningLayer, layer);
     
     IMAGE_LAYER_T bimageLayer;
     if (loadPng(&(bimageLayer.image), BATTERY_IMAGE) == false)
@@ -397,6 +404,12 @@ int main(int argc, char *argv[])
                                display,
                                update);
 
+    addElementImageLayerOffset(&warningLayer,
+                               (info.width - warningLayer.image.width) / 2,
+                               (info.height - warningLayer.image.height) / 2,
+                               display,
+                               update);
+
     addElementImageLayerOffset(&wimageLayer,
                                xOffset-wimageLayer.image.width-2,
                                yOffset,
@@ -450,15 +463,13 @@ int main(int argc, char *argv[])
         if(infos > 0)
         {
             sleepTime = 100000;
-            if (low_battery <= 0) {
+
             if (no_joystick) {
              updateInfo(&infoLayer, INFO_NO_JOYSTICK);
             } else {
              updateInfo(&infoLayer, INFO_IMAGE);
             }
             updateInfoText(&infoTextLayer, no_joystick);
-            } else {
-                 updateInfo(&infoLayer, LOW_BATTERY_IMAGE);
             }
         }
         else if(infos <= 0)
@@ -466,6 +477,12 @@ int main(int argc, char *argv[])
               clearLayer(&infoLayer);
               clearLayer(&infoTextLayer);
               infos_loaded = 0;
+        }
+
+        if (low_battery > 0) {
+            updateWarning(&warningLayer, LOW_BATTERY_IMAGE);
+        } else if (low_battery <= 0 && warning_loaded > 0) {
+            clearLayer(&warningLayer);
         }
 
         if (show) {
@@ -546,6 +563,9 @@ int main(int argc, char *argv[])
             else if(bluetooth <= 0) {
                 clearLayer(&bluetoothImageLayer);
             }
+            else if(low_battery > 0) {
+                updateInfo(&infoLayer, LOW_BATTERY_IMAGE);
+            }
         } else {
             clearLayer(&batteryLayer);
             clearLayer(&wimageLayer);
@@ -583,6 +603,14 @@ void updateInfo(IMAGE_LAYER_T *infoLayer, char imageType[])
     changeSourceAndUpdateImageLayer(infoLayer);
     infos_loaded = 1;
     }
+}
+
+void updateWarning(IMAGE_LAYER_T *infoLayer, char imageType[])
+{
+    //clearImageRGB(image, &backgroundColour);
+    loadPng(&(infoLayer->image), imageType);
+    changeSourceAndUpdateImageLayer(infoLayer);
+    warning_loaded = 1;
 }
 
 void updateInfoText(IMAGE_LAYER_T *infoLayer, bool no_joystick)

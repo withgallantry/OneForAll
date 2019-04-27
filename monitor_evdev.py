@@ -320,11 +320,13 @@ except Exception as e:
     logging.exception("ERROR: Failed start OSD binary")
     sys.exit(1)
 
+
 def turnOffLowBatteryWarning():
     global lowbattery
     lowbattery = 2
     overrideCounter.set()
     print "Turning off low battery"
+
 
 # Check for shutdown state
 def checkShdn(volt):
@@ -492,8 +494,8 @@ def doShutdown(channel=None):
 def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, lowbattery=0, info=False, charge=False, bluetooth=False):
     commands = "s" + str(int(showOverlay)) + " v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(
         wifi) + " a" + str(
-        audio) + " j" + ("1 " if joystick else "0 ") + " u" + ("1 " if bluetooth else "0 ") + " l" + (
-                   "1 " if lowbattery else "0 ") + " " + ("on " if info else "off ") + (
+        audio) + " j" + ("1 " if joystick else "0 ") + " u" + ("1 " if bluetooth else "0 ") + " l" + str(
+        int(lowbattery)) + " " + ("on " if info else "off ") + (
                    "charge" if charge else "ncharge") + "\n"
     # print commands
     osd_proc.send_signal(signal.SIGUSR1)
@@ -607,7 +609,6 @@ bluetooth = bluetooth = readModeBluetooth()
 
 if JOYSTICK_DISABLED == 'False':
     inputReadingThread = thread.start_new_thread(inputReading, ())
-
 
 try:
     while 1:

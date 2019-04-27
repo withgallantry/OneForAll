@@ -322,7 +322,7 @@ except Exception as e:
 
 def turnOffLowBatteryWarning():
     global lowbattery
-    lowbattery = 3
+    lowbattery = 2
     overrideCounter.set()
     print "Turning off low battery"
 

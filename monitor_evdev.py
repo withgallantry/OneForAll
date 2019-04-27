@@ -322,7 +322,7 @@ except Exception as e:
 
 def turnOffLowBatteryWarning():
     global lowbattery
-    lowbattery = 0
+    lowbattery = 3
     overrideCounter.set()
     print "Turning off low battery"
 
@@ -330,7 +330,7 @@ def turnOffLowBatteryWarning():
 def checkShdn(volt):
     global lowbattery
     global info
-    if volt < batt_low:
+    if volt < batt_low and lowbattery == 0:
         print "Triggering Low Batt warning"
         lowbattery = 1
         t = Timer(2.0, turnOffLowBatteryWarning)

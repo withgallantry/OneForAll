@@ -479,7 +479,7 @@ int main(int argc, char *argv[])
               infos_loaded = 0;
         }
 
-        if (low_battery > 0) {
+        if (low_battery == 1) {
             updateWarning(&warningLayer, LOW_BATTERY_IMAGE);
         } else if (low_battery <= 0 && warning_loaded > 0) {
             clearLayer(&warningLayer);

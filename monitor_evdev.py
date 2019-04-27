@@ -324,12 +324,14 @@ def turnOffLowBatteryWarning():
     global lowbattery
     lowbattery = 0
     overrideCounter.set()
+    print "Turning off low battery"
 
 # Check for shutdown state
 def checkShdn(volt):
     global lowbattery
     global info
     if volt < batt_low:
+        print "Triggering Low Batt warning"
         lowbattery = 1
         t = Timer(2.0, turnOffLowBatteryWarning)
         t.start()

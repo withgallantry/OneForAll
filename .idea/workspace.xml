@@ -26,11 +26,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="monitor_evdev.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="325" column="25" lean-forward="false" selection-start-line="325" selection-start-column="25" selection-end-line="325" selection-end-column="25" />
+            <state relative-caret-position="191">
+              <caret line="333" column="43" lean-forward="false" selection-start-line="333" selection-start-column="43" selection-end-line="333" selection-end-column="43" />
               <folding>
                 <element signature="e#851#874#0" expanded="true" />
               </folding>
@@ -45,7 +45,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="keys.cfg" pinned="false" current-in-tab="true">
+      <file leaf-file-name="keys.cfg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keys.cfg">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="293">
@@ -112,7 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>uinput</find>
       <find>device =</find>
       <find>-1</find>
       <find>keys</find>
@@ -142,6 +141,7 @@
       <find>BATT_LOW</find>
       <find>batt_low</find>
       <find>overrideCounter</find>
+      <find>low</find>
     </findStrings>
     <replaceStrings>
       <replace>./resources</replace>
@@ -172,8 +172,8 @@
         <option value="$PROJECT_DIR$/monitor_evdev_old.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/osd/osd.c" />
-        <option value="$PROJECT_DIR$/monitor_evdev.py" />
         <option value="$PROJECT_DIR$/keys.cfg" />
+        <option value="$PROJECT_DIR$/monitor_evdev.py" />
       </list>
     </option>
   </component>
@@ -861,12 +861,12 @@
       <workItem from="1556228085617" duration="923000" />
       <workItem from="1556264270398" duration="615000" />
       <workItem from="1556314098109" duration="362000" />
-      <workItem from="1556319962672" duration="2764000" />
+      <workItem from="1556319962672" duration="2852000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="278089000" />
+    <option name="totallyTimeSpent" value="278177000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="815" extended-state="6" />
@@ -1169,21 +1169,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="325" column="25" lean-forward="false" selection-start-line="325" selection-start-column="25" selection-end-line="325" selection-end-column="25" />
-          <folding>
-            <element signature="e#851#874#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/keys.cfg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="29" column="20" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor_evdev.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="333" column="43" lean-forward="false" selection-start-line="333" selection-start-column="43" selection-end-line="333" selection-end-column="43" />
+          <folding>
+            <element signature="e#851#874#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

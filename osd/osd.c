@@ -470,7 +470,7 @@ int main(int argc, char *argv[])
              updateInfo(&infoLayer, INFO_IMAGE);
             }
             updateInfoText(&infoTextLayer, no_joystick);
-            }
+
         }
         else if(infos <= 0)
         {
@@ -562,9 +562,6 @@ int main(int argc, char *argv[])
             }
             else if(bluetooth <= 0) {
                 clearLayer(&bluetoothImageLayer);
-            }
-            else if(low_battery > 0) {
-                updateInfo(&infoLayer, LOW_BATTERY_IMAGE);
             }
         } else {
             clearLayer(&batteryLayer);

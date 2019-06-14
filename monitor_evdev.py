@@ -83,6 +83,7 @@ BUTTON_R1 = int(keys['BUTTON_R1'])
 SELECT = int(keys['SELECT'])
 START = int(keys['START'])
 HOTKEY = int(keys['HOTKEY'])
+SHOW_OSD_KEY = int(keys['SHOW_OSD'])
 
 if config.has_option("GENERAL", "DEBUG"):
     logging.basicConfig(filename=bin_dir + '/osd.log', level=logging.DEBUG)
@@ -151,6 +152,7 @@ else:
         DOWN: uinput.KEY_DOWN,  # Analog down
         LEFT: uinput.KEY_LEFT,  # Analog left
         RIGHT: uinput.KEY_RIGHT,  # Analog right
+        HOTKEY: uinput.KEY_LEFTSHIFT,
     }
 
 # Global Variables
@@ -198,7 +200,7 @@ time.sleep(1)
 
 
 def hotkeyAction(key):
-    if not gpio.input(HOTKEY):
+    if not gpio.input(SHOW_OSD_KEY):
         if key in HOTKEYS:
             return True
 
@@ -207,11 +209,10 @@ def hotkeyAction(key):
 
 def handle_button(pin):
     global showOverlay
-    key = KEYS[pin]
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 
-    if pin == HOTKEY:
+    if pin == SHOW_OSD_KEY:
         if state == 1:
             showOverlay = True
             try:
@@ -226,6 +227,7 @@ def handle_button(pin):
                 pass
 
     if not hotkeyAction(pin):
+        key = KEYS[pin]
         device.emit(key, state)
         time.sleep(BOUNCE_TIME)
         device.syn()
@@ -251,10 +253,10 @@ for button in BUTTONS:
     gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=1)
     logging.debug("Button: {}".format(button))
 
-if not HOTKEY in BUTTONS:
-    if HOTKEY != -1:
-        gpio.setup(HOTKEY, gpio.IN, pull_up_down=gpio.PUD_UP)
-        gpio.add_event_detect(HOTKEY, gpio.BOTH, callback=handle_button, bouncetime=1)
+if not SHOW_OSD_KEY in BUTTONS:
+    if SHOW_OSD_KEY != -1:
+        gpio.setup(SHOW_OSD_KEY, gpio.IN, pull_up_down=gpio.PUD_UP)
+        gpio.add_event_detect(SHOW_OSD_KEY, gpio.BOTH, callback=handle_button, bouncetime=1)
 
 # Send centering commands
 device.emit(uinput.ABS_X, VREF / 2, syn=False);
@@ -488,7 +490,7 @@ def checkKeyInputPowerSaving():
     overrideCounter.set()
 
     # TODO Convert to state
-    if not gpio.input(HOTKEY):
+    if not gpio.input(SHOW_OSD_KEY):
         if not gpio.input(UP):
             volumeUp()
             time.sleep(0.5)

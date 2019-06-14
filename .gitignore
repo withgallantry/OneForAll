@@ -1,4 +1,4 @@
-# Prerequisites
+q# Prerequisites
 *.d
 
 # Object files
@@ -6,6 +6,8 @@
 *.ko
 *.obj
 *.elf
+
+*.idea*
 
 # Linker output
 *.ilk

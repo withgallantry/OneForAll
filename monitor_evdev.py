@@ -82,7 +82,6 @@ BUTTON_L1 = int(keys['BUTTON_L1'])
 BUTTON_R1 = int(keys['BUTTON_R1'])
 SELECT = int(keys['SELECT'])
 START = int(keys['START'])
-HOTKEY = int(keys['HOTKEY'])
 SHOW_OSD_KEY = int(keys['SHOW_OSD'])
 
 if config.has_option("GENERAL", "DEBUG"):
@@ -152,7 +151,7 @@ else:
         DOWN: uinput.KEY_DOWN,  # Analog down
         LEFT: uinput.KEY_LEFT,  # Analog left
         RIGHT: uinput.KEY_RIGHT,  # Analog right
-        HOTKEY: uinput.KEY_LEFTSHIFT,
+        SHOW_OSD_KEY: uinput.KEY_LEFTSHIFT,
     }
 
 # Global Variables

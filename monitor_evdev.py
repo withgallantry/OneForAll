@@ -70,6 +70,8 @@ config = configparser.ConfigParser()
 config.read(bin_dir + '/keys.cfg')
 keys = config['KEYS']
 general = config['GENERAL']
+extrakeys = config['EXTRA_KEYS']
+
 LEFT = int(keys['LEFT'])
 RIGHT = int(keys['RIGHT'])
 DOWN = int(keys['DOWN'])
@@ -82,7 +84,7 @@ BUTTON_L1 = int(keys['BUTTON_L1'])
 BUTTON_R1 = int(keys['BUTTON_R1'])
 SELECT = int(keys['SELECT'])
 START = int(keys['START'])
-SHOW_OSD_KEY = int(keys['SHOW_OSD'])
+SHOW_OSD_KEY = int(keys['OSD_HOTKEY'])
 
 if config.has_option("GENERAL", "DEBUG"):
     logging.basicConfig(filename=bin_dir + '/osd.log', level=logging.DEBUG)
@@ -309,7 +311,7 @@ def getVoltagepercent(volt):
 
 
 def readVolumeLevel():
-    process = os.popen("amixer | grep 'Left:' | awk -F'[][]' '{ print $2 }'")
+    process = os.popen("amixer | awk -F'[][]' '/Left:|Mono:/ { print $2 }'")
     res = process.readline()
     process.close()
 
@@ -515,13 +517,13 @@ def checkJoystickInput():
     logging.debug("Above: {} | Below: {}".format((VREF / 2 + DZONE), (VREF / 2 - DZONE)))
 
     # Check and apply joystick states
-    if (an0 > (VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE)):
+    if (an0 > ((VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE))) and an0 <= VREF:
         val = an0 - 100 - 200 * (an0 < VREF / 2 - DZONE) + 200 * (an0 > VREF / 2 + DZONE)
-        device.emit(uinput.ABS_X, val)
+        device.emit(uinput.ABS_X, val, syn=False)
     else:
         # Center the sticks if within deadzone
-        device.emit(uinput.ABS_X, VREF / 2)
-    if (an1 > (VREF / 2 + DZONE)) or (an1 < (VREF / 2 - DZONE)):
+        device.emit(uinput.ABS_X, VREF / 2, syn=False)
+    if ((an1 > (VREF / 2 + DZONE)) or (an1 < (VREF / 2 - DZONE))) and an1 <= VREF:
         valy = an1 + 100 - 200 * (an1 < VREF / 2 - DZONE) + 200 * (an1 > VREF / 2 + DZONE)
         device.emit(uinput.ABS_Y, valy)
     else:

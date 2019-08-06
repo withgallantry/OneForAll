@@ -123,7 +123,7 @@ if not SHUTDOWN == -1:
 if JOYSTICK_DISABLED == 'False':
     KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
         # See /usr/include/linux/input.h for keycode names
-        BUTTON_A: uinput['BTN_A'],  # 'A' button Possibly
+        BUTTON_A: uinput['BTN_A1'],  # 'A' button Possibly
         BUTTON_B: uinput.BTN_B,  # 'B' button
         BUTTON_X: uinput.BTN_X,  # 'X' button
         BUTTON_Y: uinput.BTN_Y,  # 'Y' button

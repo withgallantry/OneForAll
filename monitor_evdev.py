@@ -120,10 +120,10 @@ gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 if not SHUTDOWN == -1:
     gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
-if JOYSTICK_DISABLED == 'False':
+if JOYSTICK_DISABLED == 'True':
     KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
         # See /usr/include/linux/input.h for keycode names
-        BUTTON_A: uinput['BTN_A'],  # 'A' button Possibly
+        BUTTON_A: uinput.BTN_A,  # 'A' button Possibly
         BUTTON_B: uinput.BTN_B,  # 'B' button
         BUTTON_X: uinput.BTN_X,  # 'X' button
         BUTTON_Y: uinput.BTN_Y,  # 'Y' button
@@ -142,18 +142,18 @@ else:
     KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
         # See /usr/include/linux/input.h for keycode names
         BUTTON_A: getattr(uinput, 'KEY_LEFTCTRL'),  # 'A' button
-        BUTTON_B: uinput.KEY_LEFTALT,  # 'B' button
-        BUTTON_X: uinput.KEY_Z,  # 'X' button
-        BUTTON_Y: uinput.KEY_X,  # 'Y' button
-        BUTTON_L1: uinput.KEY_G,  # 'L1' button
-        BUTTON_R1: uinput.KEY_H,  # 'R1' button
-        SELECT: uinput.KEY_SPACE,  # 'Select' button
-        START: uinput.KEY_ENTER,  # 'Start' button
-        UP: uinput.KEY_UP,  # Analog up
-        DOWN: uinput.KEY_DOWN,  # Analog down
-        LEFT: uinput.KEY_LEFT,  # Analog left
-        RIGHT: uinput.KEY_RIGHT,  # Analog right
-        SHOW_OSD_KEY: uinput.KEY_LEFTSHIFT,
+        BUTTON_B: getattr(uinput, 'KEY_LEFTALT'),  # 'B' button
+        BUTTON_X: getattr(uinput, 'KEY_Z'),  # 'X' button
+        BUTTON_Y: getattr(uinput, 'KEY_X'),  # 'Y' button
+        BUTTON_L1: getattr(uinput, 'KEY_G'),  # 'L1' button
+        BUTTON_R1: getattr(uinput, 'KEY_H'),  # 'R1' button
+        SELECT: getattr(uinput, 'KEY_SPACCE'),  # 'Select' button
+        START: getattr(uinput, 'KEY_ENTER'),  # 'Start' button
+        UP: getattr(uinput, 'KEY_UP'),  # Analog up
+        DOWN: getattr(uinput, 'KEY_DOWN'),  # Analog down
+        LEFT: getattr(uinput, 'KEY_LEFT'),  # Analog left
+        RIGHT: getattr(uinput, 'KEY_RIGHT'),  # Analog right
+        SHOW_OSD_KEY: getattr(uinput, 'KEY_LEFTSHIFT'),
     }
 
 # Global Variables

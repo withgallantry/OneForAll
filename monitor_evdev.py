@@ -211,7 +211,7 @@ def handle_button(pin):
             device.emit(KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)], 1)
             print "Combo start"
     else:
-        if LAST_TRIGGERED_COMBO is not None:
+        if LAST_TRIGGERED_COMBO:
             device.emit(LAST_TRIGGERED_COMBO, 0)
             print "Stopped Combo"
 

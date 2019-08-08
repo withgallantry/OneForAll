@@ -103,7 +103,6 @@ for key, pin in keysConfig.items('HOTKEYS'):
             gpio.setup(pin, gpio.IN, pull_up_down=gpio.PUD_UP)
             gpio.add_event_detect(pin, gpio.BOTH, callback=handle_button, bouncetime=1)
 
-
 VOLUME_UP = int(hotkeys['VOLUME_UP'])
 VOLUME_DOWN = int(hotkeys['VOLUME_DOWN'])
 TOGGLE_WIFI = int(hotkeys['TOGGLE_WIFI'])
@@ -190,6 +189,7 @@ def hotkeyAction(key):
 
 def handle_button(pin):
     global showOverlay
+    global info
     global LAST_TRIGGERED_COMBO
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
@@ -215,13 +215,16 @@ def handle_button(pin):
         if state == 1:
             showOverlay = True
             try:
-                checkKeyInputPowerSaving()
+                info = showOverlay
+                overrideCounter.set()
             except Exception:
                 pass
         else:
             showOverlay = False
             try:
-                checkKeyInputPowerSaving()
+                # checkKeyInputPowerSaving()
+                info = showOverlay
+                overrideCounter.set()
             except Exception:
                 pass
 

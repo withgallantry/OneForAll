@@ -459,6 +459,8 @@ def clamp(n, minn, maxn):
 
 def volumeUp():
     global volume
+    print "Volume Up"
+    print volume
     volume = min(100, volume + 5)
     os.system("amixer -c 0 sset -q 'PCM' " + str(volume) + "%")
 
@@ -499,19 +501,19 @@ def checkKeyInputPowerSaving():
     if not gpio.input(SHOW_OSD_KEY):
         if not gpio.input(VOLUME_UP):
             volumeUp()
-            time.sleep(0.8)
+            time.sleep(0.6)
         elif not gpio.input(VOLUME_DOWN):
             volumeDown()
-            time.sleep(0.8)
+            time.sleep(0.6)
         elif not gpio.input(TOGGLE_WIFI):
             wifi = readModeWifi(True)
-            time.sleep(0.8)
+            time.sleep(0.6)
         elif not gpio.input(TOGGLE_JOYSTICK):
             joystick = not joystick
-            time.sleep(0.8)
+            time.sleep(0.6)
         elif not gpio.input(TOGGLE_BLE):
             bluetooth = readModeBluetooth(True)
-            time.sleep(0.8)
+            time.sleep(0.6)
 
 
 def checkJoystickInput():

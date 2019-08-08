@@ -219,7 +219,7 @@ def handle_button(pin):
 
     if not hotkeyAction(pin):
         key = KEYS[pin]
-        if PREVIOUS_KEYSTATES[pin] == 1:
+        if PREVIOUS_KEYSTATES[pin] == 1 and state == 1:
             device.emit(key, 2)
         else:
             device.emit(key, state)

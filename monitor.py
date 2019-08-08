@@ -21,26 +21,26 @@
 #
 import Adafruit_ADS1x15
 import RPi.GPIO as gpio
+import configparser
 import logging
 import logging.handlers
 import os
 import re
 import signal
 import sys
-import thread
-import threading
+import thread as thread
 import time
 import uinput
 from subprocess import Popen, PIPE, check_output, check_call
-import configparser
+from threading import Event
 
 # Batt variables
 voltscale = 118.0  # ADJUST THIS
 currscale = 640.0
 resdivmul = 4.0
 resdivval = 1000.0
-dacres = 33.0
-dacmax = 1023.0
+dacres = 20.47
+dacmax = 4096.0
 
 batt_threshold = 4
 
@@ -64,77 +64,82 @@ bin_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 osd_path = bin_dir + '/osd/osd'
 rfkill_path = bin_dir + '/rfkill/rfkill'
 
-# Configure buttons
-config = configparser.ConfigParser()
-config.read(bin_dir + '/keys.cfg')
-keys = config['KEYS']
-general = config['GENERAL']
-LEFT = int(keys['LEFT'])
-RIGHT = int(keys['RIGHT'])
-DOWN = int(keys['DOWN'])
-UP = int(keys['UP'])
-BUTTON_A = int(keys['BUTTON_A'])
-BUTTON_B = int(keys['BUTTON_B'])
-BUTTON_X = int(keys['BUTTON_X'])
-BUTTON_Y = int(keys['BUTTON_Y'])
-BUTTON_L1 = int(keys['BUTTON_L1'])
-BUTTON_R1 = int(keys['BUTTON_R1'])
-SELECT = int(keys['SELECT'])
-START = int(keys['START'])
-HOTKEY = int(keys['HOTKEY'])
+# General Configuration
+generalConfig = configparser.ConfigParser()
+generalConfig.read(bin_dir + '/general.cfg')
 
-RUN_MINIMAL = general['MINIMAL']
+general = generalConfig['GENERAL']
 
-if config.has_option("GENERAL", "DEBUG"):
+# Keys Configuration
+keysConfig = configparser.ConfigParser(inline_comment_prefixes="#")
+keysConfig.read(bin_dir + '/' + general['KEYS_CONFIG'])
+hotkeys = keysConfig['HOTKEYS']
+
+if generalConfig.has_option("GENERAL", "DEBUG"):
     logging.basicConfig(filename=bin_dir + '/osd.log', level=logging.DEBUG)
 
+HOTKEYS = []
+BUTTONS = []
+KEYS = {}
+PREVIOUS_KEYSTATES = {}
+COMBO_CURRENT_KEYS = set()
+
+KEY_COMBOS = {}
+
+for key, ping in keysConfig.items('KEYS'):
+    BUTTONS.append(int(pin))
+    KEYS.update({int(pin): getattr(uinput, key.upper())})
+    PREVIOUS_KEYSTATES.update({int(pin): 0})
+
+for key, pinSet in keysConfig.items('COMBOS'):
+    pins = set(map(int, pinSet.split(',')))
+    KEY_COMBOS.update({frozenset(pins): getattr(uinput, key.upper())})
+
+for key, pin in keysConfig.items('HOTKEYS'):
+    HOTKEYS.append(int(pin))
+
+    if not pin in BUTTONS:
+        if pin != -1:
+            gpio.setup(pin, gpio.IN, pull_up_down=gpio.PUD_UP)
+            gpio.add_event_detect(pin, gpio.BOTH, callback=handle_button, bouncetime=1)
+
+
+VOLUME_UP = int(hotkeys['VOLUME_UP'])
+VOLUME_DOWN = int(hotkeys['VOLUME_DOWN'])
+TOGGLE_WIFI = int(hotkeys['TOGGLE_WIFI'])
+TOGGLE_BLE = int(hotkeys['TOGGLE_BLE'])
+TOGGLE_JOYSTICK = int(hotkeys['TOGGLE_JOYSTICK'])
+SHOW_OSD_KEY = int(hotkeys['OSD_SHOW'])
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 
 # Joystick Hardware settings
-joystickConfig = config['JOYSTICK']
+joystickConfig = keysConfig['JOYSTICK']  # TODO: Make this go to keys
 DZONE = int(joystickConfig['DEADZONE'])  # dead zone applied to joystick (mV)
 VREF = int(joystickConfig['VCC'])  # joystick Vcc (mV)
+JOYSTICK_ENABLED = joystickConfig['ENABLED']
+
+if JOYSTICK_ENABLED == 'True':
+    KEYS.update({10001: uinput.ABS_X + (0, VREF, 0, 0),
+                 10002: uinput.ABS_Y + (0, VREF, 0, 0), })
 
 # Battery config
-battery = config['BATTERY']
+battery = generalConfig['BATTERY']
 monitoring_enabled = battery['ENABLED']
 batt_full = int(battery['FULL_BATT_VOLTAGE'])
 batt_low = int(battery['BATT_LOW_VOLTAGE'])
 batt_shdn = int(battery['BATT_SHUTDOWN_VOLT'])
 
-BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
-           BUTTON_X, BUTTON_Y, BUTTON_L1, BUTTON_R1, SELECT, START]
-
-HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
-
-BOUNCE_TIME = 0.05  # Debounce time in seconds
+BOUNCE_TIME = 0.03  # Debounce time in seconds
 
 # GPIO Init
 gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
 gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
-gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
-KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
-    # See /usr/include/linux/input.h for keycode names
-    BUTTON_A: uinput.BTN_BASE,  # 'A' button
-    BUTTON_B: uinput.BTN_BASE2,  # 'B' button
-    BUTTON_X: uinput.BTN_BASE3,  # 'X' button
-    BUTTON_Y: uinput.BTN_BASE4,  # 'Y' button
-    BUTTON_L1: uinput.BTN_BASE4,  # 'L1' button
-    BUTTON_R1: uinput.BTN_BASE4,  # 'R1' button
-    SELECT: uinput.BTN_SELECT,  # 'Select' button
-    START: uinput.BTN_START,  # 'Start' button
-    UP: uinput.BTN_NORTH,  # Analog up
-    DOWN: uinput.BTN_SOUTH,  # Analog down
-    LEFT: uinput.BTN_EAST,  # Analog left
-    RIGHT: uinput.BTN_WEST,  # Analog right
-    10001: uinput.ABS_X + (0, VREF, 0, 0),
-    10002: uinput.ABS_Y + (0, VREF, 0, 0),
-}
+if not SHUTDOWN == -1:
+    gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 # Global Variables
-
 global brightness
 global volt
 global info
@@ -144,6 +149,9 @@ global charge
 global bat
 global joystick
 global bluetooth
+global lowbattery
+global LAST_TRIGGERED_COMBO
+LAST_TRIGGERED_COMBO = None
 
 brightness = -1
 info = False
@@ -151,9 +159,15 @@ volt = 410
 volume = 1
 wifi = 2
 charge = 0
-bat = 100
-last_bat_read = 100;
-joystick = False;
+bat = 0
+last_bat_read = 450
+joystick = False
+showOverlay = False
+lowbattery = 0
+overrideCounter = Event()
+
+if JOYSTICK_ENABLED == 'True':
+    joystick = True
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 if monitoring_enabled == 'True':
@@ -161,14 +175,13 @@ if monitoring_enabled == 'True':
 else:
     adc = False
 
-# Create virtual HID for Joystick
-device = uinput.Device(KEYS.values())
+device = uinput.Device(KEYS.values(), name="OneForAll", version=0x3)
 
 time.sleep(1)
 
 
 def hotkeyAction(key):
-    if not gpio.input(HOTKEY):
+    if not gpio.input(SHOW_OSD_KEY):
         if key in HOTKEYS:
             return True
 
@@ -176,22 +189,80 @@ def hotkeyAction(key):
 
 
 def handle_button(pin):
-    key = KEYS[pin]
+    global showOverlay
+    global LAST_TRIGGERED_COMBO
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 
+    if state == 1:
+        COMBO_CURRENT_KEYS.add(pin)
+    else:
+        COMBO_CURRENT_KEYS.discard(pin)
+
+    print COMBO_CURRENT_KEYS
+
+    if frozenset(COMBO_CURRENT_KEYS) in KEY_COMBOS:
+        # If the current set of keys are in the mapping, execute the function
+        if KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)] == LAST_TRIGGERED_COMBO:
+            device.emit(KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)], 2)
+        else:
+            device.emit(KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)], 1)
+        LAST_TRIGGERED_COMBO = KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)]
+    else:
+        if LAST_TRIGGERED_COMBO is not None:
+            device.emit(LAST_TRIGGERED_COMBO, 0)
+            LAST_TRIGGERED_COMBO = None
+
+    if pin == SHOW_OSD_KEY:
+        if state == 1:
+            showOverlay = True
+            try:
+                checkKeyInputPowerSaving()
+            except Exception:
+                pass
+        else:
+            showOverlay = False
+            try:
+                checkKeyInputPowerSaving()
+            except Exception:
+                pass
+
     if not hotkeyAction(pin):
-        device.emit(key, state)
+        key = KEYS[pin]
+        if PREVIOUS_KEYSTATES[pin] == 1 and state == 1:
+            device.emit(key, 2)
+        else:
+            device.emit(key, state)
+        PREVIOUS_KEYSTATES.update({pin: state})
         time.sleep(BOUNCE_TIME)
+        device.syn()
+        logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
+    # else:
+    #     checkKeyInputPowerSaving()
 
-    device.syn()
-    logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
+    PREVIOUS_KEYSTATES.update({pin: state})
 
+
+def handle_shutdown(pin):
+    state = 0 if gpio.input(pin) else 1
+    if (state):
+        logging.info("SHUTDOWN")
+        doShutdown()
+
+
+# Initialise Safe shutdown
+if not SHUTDOWN == -1:
+    gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)
 
 # Initialise Buttons
 for button in BUTTONS:
     gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=1)
     logging.debug("Button: {}".format(button))
+
+if not SHOW_OSD_KEY in BUTTONS:
+    if SHOW_OSD_KEY != -1:
+        gpio.setup(SHOW_OSD_KEY, gpio.IN, pull_up_down=gpio.PUD_UP)
+        gpio.add_event_detect(SHOW_OSD_KEY, gpio.BOTH, callback=handle_button, bouncetime=1)
 
 # Send centering commands
 device.emit(uinput.ABS_X, VREF / 2, syn=False);
@@ -199,10 +270,10 @@ device.emit(uinput.ABS_Y, VREF / 2);
 
 # Set up OSD service
 try:
-    if RUN_MINIMAL == 'False':
-        osd_proc = Popen([osd_path, bin_dir], shell=False, stdin=PIPE, stdout=None, stderr=None)
+    if JOYSTICK_ENABLED == 'False':
+        osd_proc = Popen([osd_path, bin_dir, "nojoystick"], shell=False, stdin=PIPE, stdout=None, stderr=None)
     else:
-        osd_proc = Popen([osd_path, bin_dir, "ini"], shell=False, stdin=PIPE, stdout=None, stderr=None)
+        osd_proc = Popen([osd_path, bin_dir, "full"], shell=False, stdin=PIPE, stdout=None, stderr=None)
     osd_in = osd_proc.stdin
     time.sleep(1)
     osd_poll = osd_proc.poll()
@@ -216,22 +287,26 @@ except Exception as e:
 
 # Check for shutdown state
 def checkShdn(volt):
+    global lowbattery
+    global info
     if volt < batt_shdn:
+        lowbattery = 1
+        info = 1
+        overrideCounter.set()
         doShutdown()
-        # state = gpio.input(SHUTDOWN)
-        # if (not state):
-        #     logging.info("SHUTDOWN")
-        #     doShutdown()
 
 
 # Read voltage
 def readVoltage():
     global last_bat_read;
     voltVal = adc.read_adc(0, gain=1);
-    if voltVal < 1000:
-        voltVal = last_bat_read;
-    last_bat_read = voltVal;
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
+
+    if volt < 300 or (last_bat_read > 300 and last_bat_read - volt > 6 and not last_bat_read == 450):
+        volt = last_bat_read;
+
+    last_bat_read = volt;
+
     return volt
 
 
@@ -241,14 +316,14 @@ def getVoltagepercent(volt):
 
 
 def readVolumeLevel():
-    process = os.popen("amixer | grep 'Left:' | awk -F'[][]' '{ print $2 }'")
+    process = os.popen("amixer | awk -F'[][]' '/Left:|Mono:/ { print $2 }'")
     res = process.readline()
     process.close()
 
     vol = 0;
     try:
         vol = int(res.replace("%", "").replace("'C\n", ""))
-    except Exception, e:
+    except Exception as e:
         logging.info("Audio Err    : " + str(e))
 
     return vol;
@@ -270,7 +345,7 @@ def readModeWifi(toggle=False):
             try:
                 out = check_output(['sudo', rfkill_path, 'unblock', 'wifi'])
                 logging.info("Wifi    [" + str(out) + "]")
-            except Exception, e:
+            except Exception as e:
                 logging.info("Wifi    : " + str(e))
                 ret = wifi_warning  # Get signal strength
 
@@ -283,7 +358,7 @@ def readModeWifi(toggle=False):
             try:
                 out = check_output(['sudo', rfkill_path, 'block', 'wifi'])
                 logging.info("Wifi    [" + str(out) + "]")
-            except Exception, e:
+            except Exception as e:
                 logging.info("Wifi    : " + str(e))
                 ret = wifi_error
         return ret
@@ -326,7 +401,7 @@ def readModeBluetooth(toggle=False):
             try:
                 out = check_output(['sudo', rfkill_path, 'unblock', 'bluetooth'])
                 logging.info("BT      [" + str(out) + "]")
-            except Exception, e:
+            except Exception as e:
                 logging.info("BT    : " + str(e))
                 ret = wifi_warning  # Get signal strength
 
@@ -339,7 +414,7 @@ def readModeBluetooth(toggle=False):
             try:
                 out = check_output(['sudo', rfkill_path, 'block', 'bluetooth'])
                 logging.info("BT      [" + str(out) + "]")
-            except Exception, e:
+            except Exception as e:
                 logging.info("BT    : " + str(e))
                 ret = wifi_error
         return ret
@@ -365,10 +440,11 @@ def doShutdown(channel=None):
 
 
 # Signals the OSD binary
-def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, brightness=0, info=False, charge=False):
+def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, lowbattery=0, info=False, charge=False, bluetooth=False):
     commands = "v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(wifi) + " a" + str(
-        audio) + " j" + ("1 " if joystick else "0 ") + " u" + ("1 " if bluetooth else "0 ") + " l" + str(
-        brightness) + " " + ("on " if info else "off ") + ("charge" if charge else "ncharge") + "\n"
+        audio) + " j" + ("1 " if joystick else "0 ") + " u" + ("1 " if bluetooth else "0 ") + " l" + (
+                   "1 " if lowbattery else "0 ") + " " + ("on " if info else "off ") + (
+                   "charge" if charge else "ncharge") + "\n"
     # print commands
     osd_proc.send_signal(signal.SIGUSR1)
     osd_in.write(commands)
@@ -380,20 +456,16 @@ def clamp(n, minn, maxn):
     return max(min(maxn, n), minn)
 
 
-if RUN_MINIMAL == False:
-    condition = threading.Condition()
-
-
 def volumeUp():
     global volume
-    volume = min(100, volume + 10)
-    os.system("amixer sset -q 'PCM' " + str(volume) + "%")
+    volume = min(100, volume + 5)
+    os.system("amixer -c 0 sset -q 'PCM' " + str(volume) + "%")
 
 
 def volumeDown():
     global volume
-    volume = max(0, volume - 10)
-    os.system("amixer sset -q 'PCM' " + str(volume) + "%")
+    volume = max(0, volume - 5)
+    os.system("amixer -c 0 sset -q 'PCM' " + str(volume) + "%")
 
 
 def inputReading():
@@ -405,13 +477,12 @@ def inputReading():
     global charge
     global joystick
     while (1):
-        checkKeyInput()
         if joystick == True:
             checkJoystickInput()
         time.sleep(.05)
 
 
-def checkKeyInput():
+def checkKeyInputPowerSaving():
     global info
     global wifi
     global joystick
@@ -419,33 +490,27 @@ def checkKeyInput():
     global bat
     global volume
     global volt
+    global showOverlay
 
-    # TODO Convert to state
-    while not gpio.input(HOTKEY):
-        info = True
-        condition.acquire()
-        condition.notify()
-        condition.release()
-        if not gpio.input(UP):
+    info = showOverlay
+    overrideCounter.set()
+
+    if not gpio.input(SHOW_OSD_KEY):
+        if not gpio.input(VOLUME_UP):
             volumeUp()
             time.sleep(0.5)
-        elif not gpio.input(DOWN):
+        elif not gpio.input(VOLUME_DOWN):
             volumeDown()
             time.sleep(0.5)
-        elif not gpio.input(LEFT):
+        elif not gpio.input(TOGGLE_WIFI):
             wifi = readModeWifi(True)
             time.sleep(0.5)
-        elif not gpio.input(RIGHT):
+        elif not gpio.input(TOGGLE_JOYSTICK):
             joystick = not joystick
             time.sleep(0.5)
-        elif not gpio.input(BUTTON_A):
+        elif not gpio.input(TOGGLE_BLE):
             bluetooth = readModeBluetooth(True)
             time.sleep(0.5)
-
-    if info == True:
-        info = False
-        time.sleep(0.5)
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
 
 
 def checkJoystickInput():
@@ -456,13 +521,13 @@ def checkJoystickInput():
     logging.debug("Above: {} | Below: {}".format((VREF / 2 + DZONE), (VREF / 2 - DZONE)))
 
     # Check and apply joystick states
-    if (an0 > (VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE)):
+    if (an0 > ((VREF / 2 + DZONE)) or (an0 < (VREF / 2 - DZONE))) and an0 <= VREF:
         val = an0 - 100 - 200 * (an0 < VREF / 2 - DZONE) + 200 * (an0 > VREF / 2 + DZONE)
-        device.emit(uinput.ABS_X, val)
+        device.emit(uinput.ABS_X, val, syn=False)
     else:
         # Center the sticks if within deadzone
-        device.emit(uinput.ABS_X, VREF / 2)
-    if (an1 > (VREF / 2 + DZONE)) or (an1 < (VREF / 2 - DZONE)):
+        device.emit(uinput.ABS_X, VREF / 2, syn=False)
+    if ((an1 > (VREF / 2 + DZONE)) or (an1 < (VREF / 2 - DZONE))) and an1 <= VREF:
         valy = an1 + 100 - 200 * (an1 < VREF / 2 - DZONE) + 200 * (an1 > VREF / 2 + DZONE)
         device.emit(uinput.ABS_Y, valy)
     else:
@@ -485,32 +550,25 @@ volume = readVolumeLevel()
 wifi = readModeWifi()
 bluetooth = bluetooth = readModeBluetooth()
 
-if RUN_MINIMAL == 'False':
+if JOYSTICK_ENABLED == 'True':
     inputReadingThread = thread.start_new_thread(inputReading, ())
 
-batteryRead = 0;
-# Main loop
-
 try:
-    print "One For All Started"
     while 1:
-        if RUN_MINIMAL == False:
-            condition.acquire()
-        if not adc == False:
-            if batteryRead >= 1:
+        try:
+            if not adc == False:
                 volt = readVoltage()
                 bat = getVoltagepercent(volt)
-                batteryRead = 0;
-        batteryRead = batteryRead + 1;
-        # checkShdn(volt)
-        updateOSD(volt, bat, 20, wifi, volume, 1, info, charge)
+            checkShdn(volt)
+            updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
+            overrideCounter.wait(10)
+            if overrideCounter.is_set():
+                overrideCounter.clear()
+            runCounter = 0;
 
-        if RUN_MINIMAL == False:
-            condition.wait(10)
-            condition.release()
-        else:
-            time.sleep(10)
-            # time.sleep(0.5)
+        except Exception:
+            logging.info("EXCEPTION")
+            pass
 
 except KeyboardInterrupt:
     exit_gracefully()

@@ -235,8 +235,8 @@ def handle_button(pin):
         time.sleep(BOUNCE_TIME)
         device.syn()
         logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
-    # else:
-    #     checkKeyInputPowerSaving()
+    else:
+        checkKeyInputPowerSaving()
 
     PREVIOUS_KEYSTATES.update({pin: state})
 

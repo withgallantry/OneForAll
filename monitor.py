@@ -86,7 +86,7 @@ COMBO_CURRENT_KEYS = set()
 
 KEY_COMBOS = {}
 
-for key, ping in keysConfig.items('KEYS'):
+for key, pin in keysConfig.items('KEYS'):
     BUTTONS.append(int(pin))
     KEYS.update({int(pin): getattr(uinput, key.upper())})
     PREVIOUS_KEYSTATES.update({int(pin): 0})

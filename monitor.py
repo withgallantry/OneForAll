@@ -222,7 +222,6 @@ def handle_button(pin):
         else:
             showOverlay = False
             try:
-                # checkKeyInputPowerSaving()
                 info = showOverlay
                 overrideCounter.set()
             except Exception:
@@ -459,8 +458,6 @@ def clamp(n, minn, maxn):
 
 def volumeUp():
     global volume
-    print "Volume Up"
-    print volume
     volume = min(100, volume + 5)
     os.system("amixer -c 0 sset -q 'PCM' " + str(volume) + "%")
 

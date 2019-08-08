@@ -84,7 +84,7 @@ BUTTONS = []
 KEYS = {}
 PREVIOUS_KEYSTATES = {}
 COMBO_CURRENT_KEYS = set()
-global LAST_TRIGGERED_COMBO
+LAST_TRIGGERED_COMBO = None
 
 KEY_COMBOS = {}
 
@@ -191,7 +191,6 @@ def hotkeyAction(key):
 
 def handle_button(pin):
     global showOverlay
-    global LAST_TRIGGERED_COMBO
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 
@@ -211,8 +210,9 @@ def handle_button(pin):
             device.emit(KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)], 1)
             print "Combo start"
     else:
-        if LAST_TRIGGERED_COMBO:
+        if LAST_TRIGGERED_COMBO is not None:
             device.emit(LAST_TRIGGERED_COMBO, 0)
+            LAST_TRIGGERED_COMBO = None
             print "Stopped Combo"
 
 

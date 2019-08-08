@@ -84,8 +84,7 @@ KEYS = {}
 
 for name, value in keysConfig.items('KEYS'):
     BUTTONS.append(value)
-    uu = getattr(uinput, name.upper())
-    KEYS.update({value: uu})
+    KEYS.update({value: getattr(uinput, name.upper())})
 
 VOLUME_UP = int(hotkeys['VOLUME_UP'])
 VOLUME_DOWN = int(hotkeys['VOLUME_DOWN'])
@@ -97,7 +96,7 @@ SHOW_OSD_KEY = int(hotkeys['OSD_SHOW'])
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 
 # Joystick Hardware settings
-joystickConfig = config['JOYSTICK']  # TODO: Make this go to keys
+joystickConfig = generalConfig['JOYSTICK']  # TODO: Make this go to keys
 DZONE = int(joystickConfig['DEADZONE'])  # dead zone applied to joystick (mV)
 VREF = int(joystickConfig['VCC'])  # joystick Vcc (mV)
 JOYSTICK_ENABLED = joystickConfig['ENABLED']

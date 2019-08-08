@@ -180,7 +180,7 @@ else:
     adc = False
 
 # Create virtual HID for Joystick
-if JOYSTICK_ENABLED == 'False':
+if JOYSTICK_ENABLED == 'True':
     device = uinput.Device(KEYS.values(), name="OneForAll-GP", version=0x3)
 else:
     device = uinput.Device(KEYS.values(), name="OneForAll", version=0x3)
@@ -253,7 +253,7 @@ device.emit(uinput.ABS_Y, VREF / 2);
 
 # Set up OSD service
 try:
-    if JOYSTICK_ENABLED == 'True':
+    if JOYSTICK_ENABLED == 'False':
         osd_proc = Popen([osd_path, bin_dir, "nojoystick"], shell=False, stdin=PIPE, stdout=None, stderr=None)
     else:
         osd_proc = Popen([osd_path, bin_dir, "full"], shell=False, stdin=PIPE, stdout=None, stderr=None)
@@ -534,7 +534,7 @@ volume = readVolumeLevel()
 wifi = readModeWifi()
 bluetooth = bluetooth = readModeBluetooth()
 
-if JOYSTICK_ENABLED == 'False':
+if JOYSTICK_ENABLED == 'True':
     inputReadingThread = thread.start_new_thread(inputReading, ())
 
 try:

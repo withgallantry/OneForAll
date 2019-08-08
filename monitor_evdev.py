@@ -48,8 +48,6 @@ batt_threshold = 4
 temperature_max = 70.0
 temperature_threshold = 5.0
 
-LAST_TRIGGERED_COMBO = None
-
 # BT Variables
 bt_state = 'UNKNOWN'
 
@@ -150,6 +148,8 @@ global bat
 global joystick
 global bluetooth
 global lowbattery
+global LAST_TRIGGERED_COMBO
+LAST_TRIGGERED_COMBO = None
 
 brightness = -1
 info = False

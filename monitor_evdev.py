@@ -85,10 +85,7 @@ KEYS = {}
 PREVIOUS_KEYSTATES = {}
 COMBO_CURRENT_KEYS = set()
 
-KEY_COMBOS = {
-    frozenset([Key.shift, KeyCode(char='a')]): function_1,
-# No `()` after function_1 because we want to pass the function, not the value of the function
-}
+KEY_COMBOS = {}
 
 for name, value in keysConfig.items('KEYS'):
     BUTTONS.append(int(value))

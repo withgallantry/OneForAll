@@ -70,7 +70,7 @@ generalConfig = configparser.ConfigParser()
 generalConfig.read(bin_dir + '/general.cfg')
 
 # Keys Configuration
-keysConfig = configparser.ConfigParser()
+keysConfig = configparser.ConfigParser(inline_comment_prefixes="#")
 keysConfig.read(bin_dir + '/keys.cfg')
 
 general = generalConfig['GENERAL']

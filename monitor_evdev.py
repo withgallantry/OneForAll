@@ -34,7 +34,6 @@ import uinput
 # from evdev import uinput, UInput, AbsInfo, categorize, ecodes as e
 from subprocess import Popen, PIPE, check_output, check_call
 from threading import Event
-from intbitset import intbitset
 
 # Batt variables
 voltscale = 118.0  # ADJUST THIS

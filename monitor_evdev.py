@@ -211,12 +211,12 @@ def handle_button(pin):
         else:
             device.emit(KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)], 1)
             print "Combo start"
+        LAST_TRIGGERED_COMBO = KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)]
     else:
         if LAST_TRIGGERED_COMBO is not None:
             device.emit(LAST_TRIGGERED_COMBO, 0)
             LAST_TRIGGERED_COMBO = None
             print "Stopped Combo"
-    LAST_TRIGGERED_COMBO = KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)]
 
     if pin == SHOW_OSD_KEY:
         if state == 1:

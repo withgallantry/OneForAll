@@ -219,11 +219,11 @@ def handle_button(pin):
 
     if not hotkeyAction(pin):
         key = KEYS[pin]
-        if PREVIOUS_KEYSTATES[key] == 1:
+        if PREVIOUS_KEYSTATES[pin] == 1:
             device.emit(key, 2)
         else:
             device.emit(key, state)
-        PREVIOUS_KEYSTATES.update({key: state});
+        PREVIOUS_KEYSTATES.update({pin: state});
         time.sleep(BOUNCE_TIME)
         device.syn()
         logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))

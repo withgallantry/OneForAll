@@ -214,16 +214,16 @@ def handle_button(pin):
     if pin == SHOW_OSD_KEY:
         if state == 1:
             showOverlay = True
-            # try:
-            #     checkKeyInputPowerSaving()
-            # except Exception:
-            #     pass
+            try:
+                checkKeyInputPowerSaving()
+            except Exception:
+                pass
         else:
             showOverlay = False
-            # try:
-            #     checkKeyInputPowerSaving()
-            # except Exception:
-            #     pass
+            try:
+                checkKeyInputPowerSaving()
+            except Exception:
+                pass
 
     if not hotkeyAction(pin):
         key = KEYS[pin]
@@ -496,19 +496,19 @@ def checkKeyInputPowerSaving():
     if not gpio.input(SHOW_OSD_KEY):
         if not gpio.input(VOLUME_UP):
             volumeUp()
-            time.sleep(0.5)
+            time.sleep(0.8)
         elif not gpio.input(VOLUME_DOWN):
             volumeDown()
-            time.sleep(0.5)
+            time.sleep(0.8)
         elif not gpio.input(TOGGLE_WIFI):
             wifi = readModeWifi(True)
-            time.sleep(0.5)
+            time.sleep(0.8)
         elif not gpio.input(TOGGLE_JOYSTICK):
             joystick = not joystick
-            time.sleep(0.5)
+            time.sleep(0.8)
         elif not gpio.input(TOGGLE_BLE):
             bluetooth = readModeBluetooth(True)
-            time.sleep(0.5)
+            time.sleep(0.8)
 
 
 def checkJoystickInput():

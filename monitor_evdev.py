@@ -65,50 +65,53 @@ bin_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 osd_path = bin_dir + '/osd/osd'
 rfkill_path = bin_dir + '/rfkill/rfkill'
 
-# Configure buttons
-config = configparser.ConfigParser()
-config.read(bin_dir + '/keys.cfg')
-keys = config['KEYS']
-general = config['GENERAL']
-extrakeys = config['EXTRA_KEYS']
+# General Configuration
+generalConfig = configparser.ConfigParser()
+generalConfig.read(bin_dir + '/general.cfg')
 
-LEFT = int(keys['LEFT'])
-RIGHT = int(keys['RIGHT'])
-DOWN = int(keys['DOWN'])
-UP = int(keys['UP'])
-BUTTON_A = int(keys['BUTTON_A'])
-BUTTON_B = int(keys['BUTTON_B'])
-BUTTON_X = int(keys['BUTTON_X'])
-BUTTON_Y = int(keys['BUTTON_Y'])
-BUTTON_L1 = int(keys['BUTTON_L1'])
-BUTTON_R1 = int(keys['BUTTON_R1'])
-SELECT = int(keys['SELECT'])
-START = int(keys['START'])
-SHOW_OSD_KEY = int(keys['OSD_HOTKEY'])
+# Keys Configuration
+keysConfig = configparser.ConfigParser()
+keysConfig.read(bin_dir + '/keys.cfg')
 
-if config.has_option("GENERAL", "DEBUG"):
+general = generalConfig['GENERAL']
+hotkeys = keysConfig['HOTKEYS']
+
+if generalConfig.has_option("GENERAL", "DEBUG"):
     logging.basicConfig(filename=bin_dir + '/osd.log', level=logging.DEBUG)
+
+BUTTONS = []
+KEYS = {}
+
+for name, value in keysConfig.items('KEYS'):
+    BUTTONS.append(value)
+    KEYS.update({value, getattr(uinput, name)})
+
+VOLUME_UP = int(hotkeys['VOLUME_UP'])
+VOLUME_DOWN = int(hotkeys['VOLUME_DOWN'])
+TOGGLE_WIFI = int(hotkeys['TOGGLE_WIFI'])
+TOGGLE_BLE = int(hotkeys['TOGGLE_BLE'])
+TOGGLE_JOYSTICK = int(hotkeys['TOGGLE_JOYSTICK'])
+SHOW_OSD_KEY = int(hotkeys['OSD_SHOW'])
 
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 
 # Joystick Hardware settings
-joystickConfig = config['JOYSTICK']
+joystickConfig = config['JOYSTICK']  # TODO: Make this go to keys
 DZONE = int(joystickConfig['DEADZONE'])  # dead zone applied to joystick (mV)
 VREF = int(joystickConfig['VCC'])  # joystick Vcc (mV)
-JOYSTICK_DISABLED = joystickConfig['DISABLED']
+JOYSTICK_ENABLED = joystickConfig['ENABLED']
 ON_BY_DEFAULT = joystickConfig['ON_BY_DEFAULT']
 
+if JOYSTICK_ENABLED == 'True':
+    KEYS.update({10001: uinput.ABS_X + (0, VREF, 0, 0),
+                 10002: uinput.ABS_Y + (0, VREF, 0, 0), })
+
 # Battery config
-battery = config['BATTERY']
+battery = generalConfig['BATTERY']
 monitoring_enabled = battery['ENABLED']
 batt_full = int(battery['FULL_BATT_VOLTAGE'])
 batt_low = int(battery['BATT_LOW_VOLTAGE'])
 batt_shdn = int(battery['BATT_SHUTDOWN_VOLT'])
-
-BUTTONS = [LEFT, RIGHT, DOWN, UP, BUTTON_A, BUTTON_B,
-           BUTTON_X, BUTTON_Y, BUTTON_L1, BUTTON_R1, SELECT, START]
-
-HOTKEYS = [LEFT, RIGHT, DOWN, UP, BUTTON_A]
 
 BOUNCE_TIME = 0.03  # Debounce time in seconds
 
@@ -120,41 +123,22 @@ gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 if not SHUTDOWN == -1:
     gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
-if JOYSTICK_DISABLED == 'True':
-    KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
-        # See /usr/include/linux/input.h for keycode names
-        BUTTON_A: uinput.BTN_A,  # 'A' button Possibly
-        BUTTON_B: uinput.BTN_B,  # 'B' button
-        BUTTON_X: uinput.BTN_X,  # 'X' button
-        BUTTON_Y: uinput.BTN_Y,  # 'Y' button
-        BUTTON_L1: uinput.BTN_TL,  # 'L1' button
-        BUTTON_R1: uinput.BTN_TR,  # 'R1' button
-        SELECT: uinput.BTN_SELECT,  # 'Select' button
-        START: uinput.BTN_START,  # 'Start' button
-        UP: uinput.BTN_DPAD_UP,  # Analog up
-        DOWN: uinput.BTN_DPAD_DOWN,  # Analog down
-        LEFT: uinput.BTN_DPAD_LEFT,  # Analog left
-        RIGHT: uinput.BTN_DPAD_RIGHT,  # Analog right
-        10001: uinput.ABS_X + (0, VREF, 0, 0),
-        10002: uinput.ABS_Y + (0, VREF, 0, 0),
-    }
-else:
-    KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
-        # See /usr/include/linux/input.h for keycode names
-        BUTTON_A: getattr(uinput, 'KEY_LEFTCTRL'),  # 'A' button
-        BUTTON_B: getattr(uinput, 'KEY_LEFTALT'),  # 'B' button
-        BUTTON_X: getattr(uinput, 'KEY_Z'),  # 'X' button
-        BUTTON_Y: getattr(uinput, 'KEY_X'),  # 'Y' button
-        BUTTON_L1: getattr(uinput, 'KEY_G'),  # 'L1' button
-        BUTTON_R1: getattr(uinput, 'KEY_H'),  # 'R1' button
-        SELECT: getattr(uinput, 'KEY_SPACCE'),  # 'Select' button
-        START: getattr(uinput, 'KEY_ENTER'),  # 'Start' button
-        UP: getattr(uinput, 'KEY_UP'),  # Analog up
-        DOWN: getattr(uinput, 'KEY_DOWN'),  # Analog down
-        LEFT: getattr(uinput, 'KEY_LEFT'),  # Analog left
-        RIGHT: getattr(uinput, 'KEY_RIGHT'),  # Analog right
-        SHOW_OSD_KEY: getattr(uinput, 'KEY_LEFTSHIFT'),
-    }
+    # KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
+    #     # See /usr/include/linux/input.h for keycode names
+    #     BUTTON_A: getattr(uinput, 'KEY_LEFTCTRL'),  # 'A' button
+    #     BUTTON_B: getattr(uinput, 'KEY_LEFTALT'),  # 'B' button
+    #     BUTTON_X: getattr(uinput, 'KEY_Z'),  # 'X' button
+    #     BUTTON_Y: getattr(uinput, 'KEY_X'),  # 'Y' button
+    #     BUTTON_L1: getattr(uinput, 'KEY_G'),  # 'L1' button
+    #     BUTTON_R1: getattr(uinput, 'KEY_H'),  # 'R1' button
+    #     SELECT: getattr(uinput, 'KEY_SPACCE'),  # 'Select' button
+    #     START: getattr(uinput, 'KEY_ENTER'),  # 'Start' button
+    #     UP: getattr(uinput, 'KEY_UP'),  # Analog up
+    #     DOWN: getattr(uinput, 'KEY_DOWN'),  # Analog down
+    #     LEFT: getattr(uinput, 'KEY_LEFT'),  # Analog left
+    #     RIGHT: getattr(uinput, 'KEY_RIGHT'),  # Analog right
+    #     SHOW_OSD_KEY: getattr(uinput, 'KEY_LEFTSHIFT'),
+    # }
 
 # Global Variables
 
@@ -192,7 +176,7 @@ else:
     adc = False
 
 # Create virtual HID for Joystick
-if JOYSTICK_DISABLED == 'False':
+if JOYSTICK_ENABLED == 'False':
     device = uinput.Device(KEYS.values(), name="OneForAll-GP", version=0x3)
 else:
     device = uinput.Device(KEYS.values(), name="OneForAll", version=0x3)
@@ -265,7 +249,7 @@ device.emit(uinput.ABS_Y, VREF / 2);
 
 # Set up OSD service
 try:
-    if JOYSTICK_DISABLED == 'True':
+    if JOYSTICK_ENABLED == 'True':
         osd_proc = Popen([osd_path, bin_dir, "nojoystick"], shell=False, stdin=PIPE, stdout=None, stderr=None)
     else:
         osd_proc = Popen([osd_path, bin_dir, "full"], shell=False, stdin=PIPE, stdout=None, stderr=None)
@@ -454,13 +438,13 @@ def clamp(n, minn, maxn):
 def volumeUp():
     global volume
     volume = min(100, volume + 10)
-    os.system("amixer sset -q 'PCM' " + str(volume) + "%")
+    os.system("amixer -c 0 sset -q 'PCM' " + str(volume) + "%")
 
 
 def volumeDown():
     global volume
     volume = max(0, volume - 10)
-    os.system("amixer sset -q 'PCM' " + str(volume) + "%")
+    os.system("amixer -c 0 sset -q 'PCM' " + str(volume) + "%")
 
 
 def inputReading():
@@ -492,19 +476,19 @@ def checkKeyInputPowerSaving():
 
     # TODO Convert to state
     if not gpio.input(SHOW_OSD_KEY):
-        if not gpio.input(UP):
+        if not gpio.input(VOLUME_UP):
             volumeUp()
             time.sleep(0.5)
-        elif not gpio.input(DOWN):
+        elif not gpio.input(VOLUME_DOWN):
             volumeDown()
             time.sleep(0.5)
-        elif not gpio.input(LEFT):
+        elif not gpio.input(TOGGLE_WIFI):
             wifi = readModeWifi(True)
             time.sleep(0.5)
-        elif not gpio.input(RIGHT):
+        elif not gpio.input(TOGGLE_JOYSTICK):
             joystick = not joystick
             time.sleep(0.5)
-        elif not gpio.input(BUTTON_A):
+        elif not gpio.input(TOGGLE_BLE):
             bluetooth = readModeBluetooth(True)
             time.sleep(0.5)
 
@@ -546,7 +530,7 @@ volume = readVolumeLevel()
 wifi = readModeWifi()
 bluetooth = bluetooth = readModeBluetooth()
 
-if JOYSTICK_DISABLED == 'False':
+if JOYSTICK_ENABLED == 'False':
     inputReadingThread = thread.start_new_thread(inputReading, ())
 
 try:

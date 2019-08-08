@@ -198,6 +198,8 @@ def handle_button(pin):
     else:
         COMBO_CURRENT_KEYS.discard(pin)
 
+    print COMBO_CURRENT_KEYS
+
     if frozenset(COMBO_CURRENT_KEYS) in KEY_COMBOS:
         # If the current set of keys are in the mapping, execute the function
         device.emit(KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)], 1)

@@ -220,10 +220,9 @@ def handle_button(pin):
         device.emit(key, state)
         time.sleep(BOUNCE_TIME)
         device.syn()
+        logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
     else:
         checkKeyInputPowerSaving()
-
-    logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))
 
 
 def handle_shutdown(pin):

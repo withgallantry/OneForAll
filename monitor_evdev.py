@@ -48,6 +48,8 @@ batt_threshold = 4
 temperature_max = 70.0
 temperature_threshold = 5.0
 
+LAST_TRIGGERED_COMBO = None
+
 # BT Variables
 bt_state = 'UNKNOWN'
 
@@ -84,7 +86,6 @@ BUTTONS = []
 KEYS = {}
 PREVIOUS_KEYSTATES = {}
 COMBO_CURRENT_KEYS = set()
-global LAST_TRIGGERED_COMBO = None
 
 KEY_COMBOS = {}
 
@@ -191,7 +192,6 @@ def hotkeyAction(key):
 
 def handle_button(pin):
     global showOverlay
-    global LAST_TRIGGERED_COMBO
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 

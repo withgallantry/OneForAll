@@ -196,7 +196,7 @@ def handle_button(pin):
     if state == 1:
         COMBO_CURRENT_KEYS.add(pin)
     else:
-        COMBO_CURRENT_KEYS.remove(pin)
+        COMBO_CURRENT_KEYS.discard(pin)
 
     if frozenset(COMBO_CURRENT_KEYS) in KEY_COMBOS:
         # If the current set of keys are in the mapping, execute the function

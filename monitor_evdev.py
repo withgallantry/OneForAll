@@ -84,7 +84,7 @@ KEYS = {}
 
 for name, value in keysConfig.items('KEYS'):
     BUTTONS.append(value)
-    KEYS.update({value, getattr(uinput, name)})
+    KEYS.update({value, getattr(uinput, upper(name))})
 
 VOLUME_UP = int(hotkeys['VOLUME_UP'])
 VOLUME_DOWN = int(hotkeys['VOLUME_DOWN'])

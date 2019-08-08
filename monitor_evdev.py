@@ -96,7 +96,8 @@ for name, value in keysConfig.items('HOTKEYS'):
     HOTKEYS.append(int(value))
 
 for name, value in keysConfig.items('COMBOS'):
-    pins = value.split(',')
+    pins = set(value.split(','))
+    print pins
     KEY_COMBOS.update({frozenset(pins): getattr(uinput, name.upper())})
 
 VOLUME_UP = int(hotkeys['VOLUME_UP'])

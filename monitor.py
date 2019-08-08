@@ -214,16 +214,16 @@ def handle_button(pin):
     if pin == SHOW_OSD_KEY:
         if state == 1:
             showOverlay = True
-            try:
-                checkKeyInputPowerSaving()
-            except Exception:
-                pass
+            # try:
+            #     checkKeyInputPowerSaving()
+            # except Exception:
+            #     pass
         else:
             showOverlay = False
-            try:
-                checkKeyInputPowerSaving()
-            except Exception:
-                pass
+            # try:
+            #     checkKeyInputPowerSaving()
+            # except Exception:
+            #     pass
 
     if not hotkeyAction(pin):
         key = KEYS[pin]

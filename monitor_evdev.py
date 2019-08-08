@@ -71,7 +71,7 @@ generalConfig.read(bin_dir + '/general.cfg')
 
 # Keys Configuration
 keysConfig = configparser.ConfigParser(inline_comment_prefixes="#")
-keysConfig.read(bin_dir + '/keys.cfg')
+keysConfig.read(bin_dir + '/keysKeyboard.cfg')
 
 general = generalConfig['GENERAL']
 hotkeys = keysConfig['HOTKEYS']
@@ -82,10 +82,12 @@ if generalConfig.has_option("GENERAL", "DEBUG"):
 HOTKEYS = []
 BUTTONS = []
 KEYS = {}
+PREVIOUS_KEYSTATES = {}
 
 for name, value in keysConfig.items('KEYS'):
     BUTTONS.append(int(value))
     KEYS.update({int(value): getattr(uinput, name.upper())})
+    PREVIOUS_KEYSTATES.update({int(value): 0})
 
 for name, value in keysConfig.items('HOTKEYS'):
     HOTKEYS.append(int(value))
@@ -217,7 +219,11 @@ def handle_button(pin):
 
     if not hotkeyAction(pin):
         key = KEYS[pin]
-        device.emit(key, state)
+        if PREVIOUS_KEYSTATES[key] == 1:
+            device.emit(key, 2)
+        else:
+            device.emit(key, state)
+        PREVIOUS_KEYSTATES.update({key: state});
         time.sleep(BOUNCE_TIME)
         device.syn()
         logging.debug("Pin: {}, KeyCode: {}, Event: {}".format(pin, key, 'press' if state else 'release'))

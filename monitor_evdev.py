@@ -34,6 +34,7 @@ import uinput
 # from evdev import uinput, UInput, AbsInfo, categorize, ecodes as e
 from subprocess import Popen, PIPE, check_output, check_call
 from threading import Event
+from intbitset import intbitset
 
 # Batt variables
 voltscale = 118.0  # ADJUST THIS
@@ -83,6 +84,12 @@ HOTKEYS = []
 BUTTONS = []
 KEYS = {}
 PREVIOUS_KEYSTATES = {}
+COMBO_CURRENT_KEYS = set()
+
+KEY_COMBOS = {
+    frozenset([Key.shift, KeyCode(char='a')]): function_1,
+# No `()` after function_1 because we want to pass the function, not the value of the function
+}
 
 for name, value in keysConfig.items('KEYS'):
     BUTTONS.append(int(value))
@@ -91,6 +98,10 @@ for name, value in keysConfig.items('KEYS'):
 
 for name, value in keysConfig.items('HOTKEYS'):
     HOTKEYS.append(int(value))
+
+for name, value in keysConfig.items('COMBOS'):
+    pins = value.split(',')
+    KEY_COMBOS.update({frozenset(pins): getattr(uinput, name.upper())})
 
 VOLUME_UP = int(hotkeys['VOLUME_UP'])
 VOLUME_DOWN = int(hotkeys['VOLUME_DOWN'])
@@ -128,23 +139,6 @@ gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 if not SHUTDOWN == -1:
     gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
-
-    # KEYS = {  # EDIT KEYCODES IN THIS TABLE TO YOUR PREFERENCES:
-    #     # See /usr/include/linux/input.h for keycode names
-    #     BUTTON_A: getattr(uinput, 'KEY_LEFTCTRL'),  # 'A' button
-    #     BUTTON_B: getattr(uinput, 'KEY_LEFTALT'),  # 'B' button
-    #     BUTTON_X: getattr(uinput, 'KEY_Z'),  # 'X' button
-    #     BUTTON_Y: getattr(uinput, 'KEY_X'),  # 'Y' button
-    #     BUTTON_L1: getattr(uinput, 'KEY_G'),  # 'L1' button
-    #     BUTTON_R1: getattr(uinput, 'KEY_H'),  # 'R1' button
-    #     SELECT: getattr(uinput, 'KEY_SPACCE'),  # 'Select' button
-    #     START: getattr(uinput, 'KEY_ENTER'),  # 'Start' button
-    #     UP: getattr(uinput, 'KEY_UP'),  # Analog up
-    #     DOWN: getattr(uinput, 'KEY_DOWN'),  # Analog down
-    #     LEFT: getattr(uinput, 'KEY_LEFT'),  # Analog left
-    #     RIGHT: getattr(uinput, 'KEY_RIGHT'),  # Analog right
-    #     SHOW_OSD_KEY: getattr(uinput, 'KEY_LEFTSHIFT'),
-    # }
 
 # Global Variables
 
@@ -202,6 +196,16 @@ def handle_button(pin):
     global showOverlay
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
+
+    if state == 1:
+        COMBO_CURRENT_KEYS.add(pin)
+    else:
+        COMBO_CURRENT_KEYS.remove(pin)
+
+    if frozenset(COMBO_CURRENT_KEYS) in KEY_COMBOS:
+        # If the current set of keys are in the mapping, execute the function
+        device.emit(KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)], 1)
+        return
 
     if pin == SHOW_OSD_KEY:
         if state == 1:

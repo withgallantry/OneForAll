@@ -79,12 +79,16 @@ hotkeys = keysConfig['HOTKEYS']
 if generalConfig.has_option("GENERAL", "DEBUG"):
     logging.basicConfig(filename=bin_dir + '/osd.log', level=logging.DEBUG)
 
+HOTKEYS = []
 BUTTONS = []
 KEYS = {}
 
 for name, value in keysConfig.items('KEYS'):
     BUTTONS.append(int(value))
     KEYS.update({int(value): getattr(uinput, name.upper())})
+
+for name, value in keysConfig.items('HOTKEYS'):
+    HOTKEYS.append(int(value))
 
 VOLUME_UP = int(hotkeys['VOLUME_UP'])
 VOLUME_DOWN = int(hotkeys['VOLUME_DOWN'])

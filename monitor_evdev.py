@@ -192,6 +192,7 @@ def hotkeyAction(key):
 
 def handle_button(pin):
     global showOverlay
+    global LAST_TRIGGERED_COMBO
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 

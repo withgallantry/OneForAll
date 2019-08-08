@@ -84,6 +84,7 @@ BUTTONS = []
 KEYS = {}
 PREVIOUS_KEYSTATES = {}
 COMBO_CURRENT_KEYS = set()
+global LAST_TRIGGERED_COMBO
 
 KEY_COMBOS = {}
 
@@ -97,7 +98,6 @@ for name, value in keysConfig.items('HOTKEYS'):
 
 for name, value in keysConfig.items('COMBOS'):
     pins = set(map(int, value.split(',')))
-    print pins
     KEY_COMBOS.update({frozenset(pins): getattr(uinput, name.upper())})
 
 VOLUME_UP = int(hotkeys['VOLUME_UP'])
@@ -191,6 +191,7 @@ def hotkeyAction(key):
 
 def handle_button(pin):
     global showOverlay
+    global LAST_TRIGGERED_COMBO
     time.sleep(BOUNCE_TIME)
     state = 0 if gpio.input(pin) else 1
 
@@ -203,8 +204,17 @@ def handle_button(pin):
 
     if frozenset(COMBO_CURRENT_KEYS) in KEY_COMBOS:
         # If the current set of keys are in the mapping, execute the function
-        device.emit(KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)], 1)
-        print "COMBO KEY PRESSED"
+        if KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)] == LAST_TRIGGERED_COMBO:
+            device.emit(KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)], 2)
+            print "Combo Repeat"
+        else:
+            device.emit(KEY_COMBOS[frozenset(COMBO_CURRENT_KEYS)], 1)
+            print "Combo start"
+    else:
+        if COMBO_CURRENT_KEYS is not None:
+            device.emit(LAST_TRIGGERED_COMBO, 0)
+            print "Stopped Combo"
+
 
     if pin == SHOW_OSD_KEY:
         if state == 1:

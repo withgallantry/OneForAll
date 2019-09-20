@@ -180,7 +180,7 @@ time.sleep(1)
 
 
 def hotkeyAction(key):
-    if not gpio.input(SHOW_OSD_KEY):
+    if not gpio.input(SHOW_OSD_KEY) and not key == OSD_SHOW:
         if key in HOTKEYS:
             return True
 

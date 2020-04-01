@@ -87,6 +87,14 @@ COMBO_CURRENT_KEYS = set()
 
 KEY_COMBOS = {}
 
+# GPIO Init
+gpio.setwarnings(False)
+gpio.setmode(gpio.BCM)
+gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
+
+backlight = gpio.PWM(13, 19.2)
+backlight.start(backlightSetting)
+
 for key, pin in keysConfig.items('KEYS'):
     BUTTONS.append(int(pin))
     KEYS.update({int(pin): getattr(uinput, key.upper())})
@@ -101,12 +109,9 @@ for key, pin in keysConfig.items('HOTKEYS'):
 
     if not int(pin) in BUTTONS:
         if pin != -1:
-            gpio.setup(pin, gpio.IN, pull_up_down=gpio.PUD_UP)
+            gpio.setup(int(pin), gpio.IN, pull_up_down=gpio.PUD_UP)
             gpio.add_event_detect(pin, gpio.BOTH, callback=handle_button, bouncetime=1)
 
-
-backlight = gpio.PWM(13, 19.2);
-backlight.start(backlightSetting);
 
 VOLUME_UP = int(hotkeys['VOLUME_UP'])
 VOLUME_DOWN = int(hotkeys['VOLUME_DOWN'])
@@ -136,11 +141,6 @@ batt_low = int(battery['BATT_LOW_VOLTAGE'])
 batt_shdn = int(battery['BATT_SHUTDOWN_VOLT'])
 
 BOUNCE_TIME = 0.03  # Debounce time in seconds
-
-# GPIO Init
-gpio.setwarnings(False)
-gpio.setmode(gpio.BCM)
-gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 if not SHUTDOWN == -1:
     gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)

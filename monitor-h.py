@@ -92,7 +92,7 @@ gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
 
 gpio.setup(13, gpio.OUT)
-backlight = gpio.PWM(13, 19.2)
+backlight = gpio.PWM(13, 1000)
 backlight.start(backlightSetting)
 
 for key, pin in keysConfig.items('KEYS'):

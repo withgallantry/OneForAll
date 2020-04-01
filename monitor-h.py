@@ -92,6 +92,7 @@ gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
 gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 
+gpio.setup(13, gpio.OUT)
 backlight = gpio.PWM(13, 19.2)
 backlight.start(backlightSetting)
 

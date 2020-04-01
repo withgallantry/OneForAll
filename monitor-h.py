@@ -90,7 +90,6 @@ KEY_COMBOS = {}
 # GPIO Init
 gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
-gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 gpio.setup(13, gpio.OUT)
 backlight = gpio.PWM(13, 19.2)
@@ -113,6 +112,7 @@ for key, pin in keysConfig.items('HOTKEYS'):
             gpio.setup(int(pin), gpio.IN, pull_up_down=gpio.PUD_UP)
             gpio.add_event_detect(pin, gpio.BOTH, callback=handle_button, bouncetime=1)
 
+gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 VOLUME_UP = int(hotkeys['VOLUME_UP'])
 VOLUME_DOWN = int(hotkeys['VOLUME_DOWN'])

@@ -552,13 +552,15 @@ def constrain(val, min_val, max_val):
 
 def brightnessUp():
     global backlightSetting
+    global backlight
     backlightSetting = constrain(backlightSetting + 10, 0, 100)
-    gpio.ChangeDutyCycle(backlightSetting)
+    backlight.ChangeDutyCycle(backlightSetting)
 
 def brightnessDown():
     global backlightSetting
+    global backlight
     backlightSetting = constrain(backlightSetting - 10, 0, 100)
-    gpio.ChangeDutyCycle(backlightSetting)
+    backlight.ChangeDutyCycle(backlightSetting)
 
 
 def exit_gracefully(signum=None, frame=None):

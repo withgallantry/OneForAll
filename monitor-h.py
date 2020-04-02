@@ -94,8 +94,8 @@ gpio.setmode(gpio.BCM)
 wiringpi.wiringPiSetupGpio()
 
 wiringpi.pinMode(13,wiringpi.OUTPUT)
-wiringpi.pinMode(13,wiringpi.PWM_OUTPUT);
-wiringpi.pwmWrite(13, backlightSetting);
+wiringpi.pinMode(13,wiringpi.PWM_OUTPUT)
+wiringpi.pwmWrite(13, backlightSetting)
 
 for key, pin in keysConfig.items('KEYS'):
     BUTTONS.append(int(pin))
@@ -554,12 +554,12 @@ def constrain(val, min_val, max_val):
 
 def brightnessUp():
     global backlightSetting
-    backlightSetting = constrain(backlightSetting + 64, 0, 1024)
+    backlightSetting = constrain(backlightSetting + 128, 0, 1024)
     wiringpi.pwmWrite(13, backlightSetting);
 
 def brightnessDown():
     global backlightSetting
-    backlightSetting = constrain(backlightSetting - 64, 0, 1024)
+    backlightSetting = constrain(backlightSetting - 128, 0, 1024)
     wiringpi.pwmWrite(13, backlightSetting);
 
 

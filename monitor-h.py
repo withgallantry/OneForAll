@@ -21,6 +21,7 @@
 #
 import Adafruit_ADS1x15
 import RPi.GPIO as gpio
+import wiringpi
 import configparser
 import logging
 import logging.handlers
@@ -41,7 +42,7 @@ resdivmul = 4.0
 resdivval = 1000.0
 dacres = 20.47
 dacmax = 4096.0
-backlightSetting = 100
+backlightSetting = 1024
 
 batt_threshold = 4
 
@@ -90,10 +91,11 @@ KEY_COMBOS = {}
 # GPIO Init
 gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
+wiringpi.wiringPiSetupGpio()
 
-gpio.setup(13, gpio.OUT)
-backlight = gpio.PWM(13, 50000)
-backlight.start(backlightSetting)
+wiringpi.pinMode(13,wiringpi.OUTPUT)
+wiringpi.pinMode(13,wiringpi.PWM_OUTPUT);
+wiringpi.pwmWrite(13, backlightSetting);
 
 for key, pin in keysConfig.items('KEYS'):
     BUTTONS.append(int(pin))
@@ -552,15 +554,13 @@ def constrain(val, min_val, max_val):
 
 def brightnessUp():
     global backlightSetting
-    global backlight
-    backlightSetting = constrain(backlightSetting + 10, 0, 100)
-    backlight.ChangeDutyCycle(backlightSetting)
+    backlightSetting = constrain(backlightSetting + 64, 0, 1024)
+    wiringpi.pwmWrite(13, backlightSetting);
 
 def brightnessDown():
     global backlightSetting
-    global backlight
-    backlightSetting = constrain(backlightSetting - 10, 0, 100)
-    backlight.ChangeDutyCycle(backlightSetting)
+    backlightSetting = constrain(backlightSetting - 64, 0, 1024)
+    wiringpi.pwmWrite(13, backlightSetting);
 
 
 def exit_gracefully(signum=None, frame=None):

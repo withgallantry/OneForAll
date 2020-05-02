@@ -104,6 +104,7 @@ TOGGLE_WIFI = int(hotkeys['TOGGLE_WIFI'])
 TOGGLE_BLE = int(hotkeys['TOGGLE_BLE'])
 TOGGLE_JOYSTICK = int(hotkeys['TOGGLE_JOYSTICK'])
 SHOW_OSD_KEY = int(hotkeys['OSD_SHOW'])
+QUICKSAVE = int(hotkeys['QUICKSAVE'])
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 SHOW_OVERLAY_HOTKEY_ONLY = general['SHOW_OVERLAY_HOTKEY_ONLY']
 
@@ -174,6 +175,9 @@ time.sleep(1)
 
 
 def hotkeyAction(key):
+    if key == QUICKSAVE:
+        return True
+
     if not gpio.input(SHOW_OSD_KEY) and not key == SHOW_OSD_KEY:
         if key in HOTKEYS:
             return True

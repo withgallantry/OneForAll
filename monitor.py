@@ -187,12 +187,15 @@ def hotkeyAction(key):
 
 def handle_quicksave(pin):
     print("Handling QUICKSAVE press")
+    logging.debug("Handling QUICKSAVE press")
     state = 0 if gpio.input(pin) else 1
     if not gpio.input(SHOW_OSD_KEY):
         print("Loading Game")
+        logging.debug("Loading Game")
         device.emit(getattr(uinput, 'KEY_F4'), state)
     if gpio.input(SHOW_OSD_KEY):
         print("Saving Game")
+        logging.debug("Saving Game")
         device.emit(getattr(uinput, 'KEY_F2'), state)
 
 
@@ -273,6 +276,7 @@ for key, pin in keysConfig.items('HOTKEYS'):
 
     if key == 'QUICKSAVE':
         print("Applying quicksave GPIO setup")
+        logging.debug("Applying quicksave GPIO SETUP")
         gpio.setup(int(pin), gpio.IN, pull_up_down=gpio.PUD_UP)
         gpio.add_event_detect(int(pin), gpio.BOTH, callback=handle_quicksave, bouncetime=1)
 

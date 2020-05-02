@@ -95,6 +95,9 @@ for key, pinSet in keysConfig.items('COMBOS'):
     pins = set(map(int, pinSet.split(',')))
     KEY_COMBOS.update({frozenset(pins): getattr(uinput, key.upper())})
 
+gpio.setwarnings(False)
+gpio.setmode(gpio.BCM)
+
 for key, pin in keysConfig.items('HOTKEYS'):
     HOTKEYS.append(int(pin))
 
@@ -132,8 +135,6 @@ batt_shdn = int(battery['BATT_SHUTDOWN_VOLT'])
 BOUNCE_TIME = 0.03  # Debounce time in seconds
 
 # GPIO Init
-gpio.setwarnings(False)
-gpio.setmode(gpio.BCM)
 gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 if not SHUTDOWN == -1:

@@ -259,7 +259,7 @@ for key, pin in keysConfig.items('HOTKEYS'):
     if not int(pin) in BUTTONS:
         if pin != -1:
             gpio.setup(int(pin), gpio.IN, pull_up_down=gpio.PUD_UP)
-            gpio.add_event_detect(pin, gpio.BOTH, callback=handle_button, bouncetime=1)
+            gpio.add_event_detect(int(pin), gpio.BOTH, callback=handle_button, bouncetime=1)
 
 # Send centering commands
 device.emit(uinput.ABS_X, VREF / 2, syn=False);

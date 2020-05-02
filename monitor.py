@@ -459,13 +459,13 @@ def clamp(n, minn, maxn):
 def volumeUp():
     global volume
     volume = min(100, volume + 5)
-    os.system("amixer -c 0 sset -q 'PCM' " + str(volume) + "%")
+    os.system("amixer sset -q 'PCM' " + str(volume) + "%")
 
 
 def volumeDown():
     global volume
     volume = max(0, volume - 5)
-    os.system("amixer -c 0 sset -q 'PCM' " + str(volume) + "%")
+    os.system("amixer sset -q 'PCM' " + str(volume) + "%")
 
 
 def inputReading():

@@ -133,6 +133,9 @@ gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 if not SHUTDOWN == -1:
     gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
+if not QUICKSAVE == -1:
+    gpio.setup(QUICKSAVE, gpio.IN, pull_up_down=gpio.PUD_UP)
+
 # Global Variables
 global brightness
 global volt
@@ -263,6 +266,9 @@ def handle_shutdown(pin):
 if not SHUTDOWN == -1:
     gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)
 
+if not QUICKSAVE == -1:
+    gpio.add_event_detect(QUICKSAVE, gpio.BOTH, callback=handle_quicksave, bouncetime=1)
+
 # Initialise Buttons
 for button in BUTTONS:
     gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=1)
@@ -270,11 +276,6 @@ for button in BUTTONS:
 
 for key, pin in keysConfig.items('HOTKEYS'):
     HOTKEYS.append(int(pin))
-
-    if pin == QUICKSAVE:
-        logging.debug("Applying quicksave GPIO SETUP")
-        gpio.setup(int(pin), gpio.IN, pull_up_down=gpio.PUD_UP)
-        gpio.add_event_detect(int(pin), gpio.BOTH, callback=handle_quicksave, bouncetime=1)
 
     if not int(pin) in BUTTONS and pin != QUICKSAVE:
         if pin != -1:

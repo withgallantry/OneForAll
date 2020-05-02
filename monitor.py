@@ -181,6 +181,13 @@ def hotkeyAction(key):
     return False
 
 
+def handle_quicksave(pin):
+    if not gpio.input(SHOW_OSD_KEY):
+        device.emit(getattr(uinput, 'KEY_F4'), 1)
+    if gpio.input(SHOW_OSD_KEY):
+        device.emit(getattr(uinput, 'KEY_F2'), 1)
+
+
 def handle_button(pin):
     global showOverlay
     global info
@@ -256,7 +263,11 @@ for button in BUTTONS:
 for key, pin in keysConfig.items('HOTKEYS'):
     HOTKEYS.append(int(pin))
 
-    if not int(pin) in BUTTONS:
+    if key == 'QUICKSAVE':
+        gpio.setup(int(pin), gpio.IN, pull_up_down=gpio.PUD_UP)
+        gpio.add_event_detect(int(pin), gpio.BOTH, callback=handle_quicksave, bouncetime=1)
+
+    if not int(pin) in BUTTONS and key != 'QUICKSAVE':
         if pin != -1:
             gpio.setup(int(pin), gpio.IN, pull_up_down=gpio.PUD_UP)
             gpio.add_event_detect(int(pin), gpio.BOTH, callback=handle_button, bouncetime=1)

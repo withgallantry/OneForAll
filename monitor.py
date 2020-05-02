@@ -98,14 +98,6 @@ for key, pinSet in keysConfig.items('COMBOS'):
 gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
 
-for key, pin in keysConfig.items('HOTKEYS'):
-    HOTKEYS.append(int(pin))
-
-    if not int(pin) in BUTTONS:
-        if pin != -1:
-            gpio.setup(int(pin), gpio.IN, pull_up_down=gpio.PUD_UP)
-            gpio.add_event_detect(pin, gpio.BOTH, callback=handle_button, bouncetime=1)
-
 VOLUME_UP = int(hotkeys['VOLUME_UP'])
 VOLUME_DOWN = int(hotkeys['VOLUME_DOWN'])
 TOGGLE_WIFI = int(hotkeys['TOGGLE_WIFI'])
@@ -261,10 +253,13 @@ for button in BUTTONS:
     gpio.add_event_detect(button, gpio.BOTH, callback=handle_button, bouncetime=1)
     logging.debug("Button: {}".format(button))
 
-if not SHOW_OSD_KEY in BUTTONS:
-    if SHOW_OSD_KEY != -1:
-        gpio.setup(SHOW_OSD_KEY, gpio.IN, pull_up_down=gpio.PUD_UP)
-        gpio.add_event_detect(SHOW_OSD_KEY, gpio.BOTH, callback=handle_button, bouncetime=1)
+for key, pin in keysConfig.items('HOTKEYS'):
+    HOTKEYS.append(int(pin))
+
+    if not int(pin) in BUTTONS:
+        if pin != -1:
+            gpio.setup(int(pin), gpio.IN, pull_up_down=gpio.PUD_UP)
+            gpio.add_event_detect(pin, gpio.BOTH, callback=handle_button, bouncetime=1)
 
 # Send centering commands
 device.emit(uinput.ABS_X, VREF / 2, syn=False);

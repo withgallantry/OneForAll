@@ -277,7 +277,7 @@ for button in BUTTONS:
 for key, pin in keysConfig.items('HOTKEYS'):
     HOTKEYS.append(int(pin))
 
-    if not int(pin) in BUTTONS and pin != QUICKSAVE:
+    if not int(pin) in BUTTONS and int(pin) != QUICKSAVE:
         if pin != -1:
             gpio.setup(int(pin), gpio.IN, pull_up_down=gpio.PUD_UP)
             gpio.add_event_detect(int(pin), gpio.BOTH, callback=handle_button, bouncetime=1)

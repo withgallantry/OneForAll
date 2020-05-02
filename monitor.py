@@ -182,10 +182,11 @@ def hotkeyAction(key):
 
 
 def handle_quicksave(pin):
+    state = 0 if gpio.input(pin) else 1
     if not gpio.input(SHOW_OSD_KEY):
-        device.emit(getattr(uinput, 'KEY_F4'), 1)
+        device.emit(getattr(uinput, 'KEY_F4'), state)
     if gpio.input(SHOW_OSD_KEY):
-        device.emit(getattr(uinput, 'KEY_F2'), 1)
+        device.emit(getattr(uinput, 'KEY_F2'), state)
 
 
 def handle_button(pin):

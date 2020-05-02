@@ -197,6 +197,7 @@ def handle_quicksave(pin):
     if gpio.input(SHOW_OSD_KEY):
         logging.debug("Saving Game")
         device.emit(uinput.KEY_F2, state)
+    device.syn()
 
 
 def handle_button(pin):

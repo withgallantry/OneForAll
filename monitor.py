@@ -100,7 +100,7 @@ for key, pin in keysConfig.items('HOTKEYS'):
 
     if not int(pin) in BUTTONS:
         if pin != -1:
-            gpio.setup(pin, gpio.IN, pull_up_down=gpio.PUD_UP)
+            gpio.setup(int(pin), gpio.IN, pull_up_down=gpio.PUD_UP)
             gpio.add_event_detect(pin, gpio.BOTH, callback=handle_button, bouncetime=1)
 
 VOLUME_UP = int(hotkeys['VOLUME_UP'])

@@ -313,7 +313,7 @@ def getVoltagepercent(volt):
 
 
 def readVolumeLevel():
-    process = os.popen("amixer | awk -F'[][]' '/Left:|Mono:/ { print $2 }'")
+    process = os.popen("amixer | grep 'Left:' | awk -F'[][]' '{ print $2 }'")
     res = process.readline()
     process.close()
 

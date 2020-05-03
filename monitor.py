@@ -104,9 +104,13 @@ TOGGLE_WIFI = int(hotkeys['TOGGLE_WIFI'])
 TOGGLE_BLE = int(hotkeys['TOGGLE_BLE'])
 TOGGLE_JOYSTICK = int(hotkeys['TOGGLE_JOYSTICK'])
 SHOW_OSD_KEY = int(hotkeys['OSD_SHOW'])
-QUICKSAVE = int(hotkeys['QUICKSAVE'])
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 SHOW_OVERLAY_HOTKEY_ONLY = general['SHOW_OVERLAY_HOTKEY_ONLY']
+
+if keysConfig.has_option("HOTKEYS", "QUICKSAVE"):
+    QUICKSAVE = int(hotkeys['QUICKSAVE'])
+else:
+    QUICKSAVE = -1
 
 # Joystick Hardware settings
 joystickConfig = keysConfig['JOYSTICK']  # TODO: Make this go to keys
@@ -133,7 +137,7 @@ gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 if not SHUTDOWN == -1:
     gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
-if not QUICKSAVE == -1:
+if keysConfig.has_option("HOTKEYS", "QUICKSAVE"):
     gpio.setup(QUICKSAVE, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 # Global Variables
@@ -267,7 +271,7 @@ def handle_shutdown(pin):
 if not SHUTDOWN == -1:
     gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)
 
-if not QUICKSAVE == -1:
+if keysConfig.has_option("HOTKEYS", "QUICKSAVE"):
     gpio.add_event_detect(QUICKSAVE, gpio.BOTH, callback=handle_quicksave, bouncetime=1)
 
 # Initialise Buttons

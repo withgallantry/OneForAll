@@ -112,8 +112,8 @@ if keysConfig.has_option("HOTKEYS", "QUICKSAVE"):
 else:
     QUICKSAVE = -1
 
-KEYS.update({int(QUICKSAVE): uinput.KEY_M})
-KEYS.update({int(99): uinput.KEY_N})
+KEYS.update({int(QUICKSAVE): uinput.KEY_F2})
+KEYS.update({int(99): uinput.KEY_F4})
 
 # Joystick Hardware settings
 joystickConfig = keysConfig['JOYSTICK']  # TODO: Make this go to keys
@@ -198,12 +198,13 @@ def hotkeyAction(key):
 def handle_quicksave(pin):
     logging.debug("Handling QUICKSAVE press")
     state = 0 if gpio.input(pin) else 1
+    device.emit(uinput.KEY_SPACE, state)
     if not gpio.input(SHOW_OSD_KEY):
         logging.debug("Loading Game")
-        device.emit(uinput.KEY_N, state)
+        device.emit(uinput.KEY_F4, state)
     if gpio.input(SHOW_OSD_KEY):
         logging.debug("Saving Game")
-        device.emit(uinput.KEY_M, state)
+        device.emit(uinput.KEY_F2, state)
     time.sleep(BOUNCE_TIME)
     device.syn()
 

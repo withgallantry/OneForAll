@@ -112,6 +112,9 @@ if keysConfig.has_option("HOTKEYS", "QUICKSAVE"):
 else:
     QUICKSAVE = -1
 
+KEYS.update({int(QUICKSAVE): uinput.KEY_M})
+KEYS.update({int(99): uinput.KEY_N})
+
 # Joystick Hardware settings
 joystickConfig = keysConfig['JOYSTICK']  # TODO: Make this go to keys
 DZONE = int(joystickConfig['DEADZONE'])  # dead zone applied to joystick (mV)

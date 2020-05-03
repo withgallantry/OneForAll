@@ -112,8 +112,8 @@ if keysConfig.has_option("HOTKEYS", "QUICKSAVE"):
 else:
     QUICKSAVE = -1
 
-KEYS.update({int(QUICKSAVE): uinput.KEY_M})
-KEYS.update({int(99): uinput.KEY_N})
+KEYS.update({int(QUICKSAVE): uinput.KEY_F2})
+KEYS.update({int(99): uinput.KEY_F4})
 
 # Joystick Hardware settings
 joystickConfig = keysConfig['JOYSTICK']  # TODO: Make this go to keys

@@ -197,10 +197,11 @@ def handle_quicksave(pin):
     state = 0 if gpio.input(pin) else 1
     if not gpio.input(SHOW_OSD_KEY):
         logging.debug("Loading Game")
-        device.emit(uinput.KEY_F4, state)
+        device.emit(uinput.KEY_M, state)
     if gpio.input(SHOW_OSD_KEY):
         logging.debug("Saving Game")
-        device.emit(uinput.KEY_F2, state)
+        device.emit(uinput.KEY_N, state)
+    time.sleep(BOUNCE_TIME)
     device.syn()
 
 

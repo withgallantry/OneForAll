@@ -198,15 +198,17 @@ def hotkeyAction(key):
 def handle_quicksave(pin):
     logging.debug("Handling QUICKSAVE press")
     state = 0 if gpio.input(pin) else 1
-    device.emit(uinput.KEY_SPACE, state)
     if not gpio.input(SHOW_OSD_KEY):
         logging.debug("Loading Game")
+        device.emit(uinput.KEY_SPACE, state)
         device.emit(uinput.KEY_F4, state)
+        device.syn()
     if gpio.input(SHOW_OSD_KEY):
         logging.debug("Saving Game")
+        device.emit(uinput.KEY_SPACE, state)
         device.emit(uinput.KEY_F2, state)
-    time.sleep(BOUNCE_TIME)
-    device.syn()
+        device.syn()
+
 
 
 def handle_button(pin):

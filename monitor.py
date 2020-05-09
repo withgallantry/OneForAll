@@ -107,6 +107,11 @@ SHOW_OSD_KEY = int(hotkeys['OSD_SHOW'])
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 SHOW_OVERLAY_HOTKEY_ONLY = general['SHOW_OVERLAY_HOTKEY_ONLY']
 
+if keysConfig.has_option("HOTKEYS", "SAFE_SHUTDOWN"):
+    SAFE_SHUTDOWN = int(hotkeys['SAFE_SHUTDOWN'])
+else:
+    SAFE_SHUTDOWN = -1
+
 if keysConfig.has_option("HOTKEYS", "QUICKSAVE"):
     QUICKSAVE = int(hotkeys['QUICKSAVE'])
 else:
@@ -209,7 +214,6 @@ def handle_quicksave(pin):
         device.emit(uinput.KEY_SPACE, state)
         device.emit(uinput.KEY_F2, state)
         device.syn()
-
 
 
 def handle_button(pin):
@@ -545,6 +549,8 @@ def checkKeyInputPowerSaving():
         elif not gpio.input(TOGGLE_BLE):
             bluetooth = readModeBluetooth(True)
             time.sleep(0.6)
+        elif not gpio.input(SAFE_SHUTDOWN) and SAFE_SHUTDOWN != -1:
+            doShutdown()
 
 
 def checkJoystickInput():

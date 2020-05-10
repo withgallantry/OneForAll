@@ -256,7 +256,7 @@ def handle_button(pin):
             except Exception:
                 pass
 
-    if not hotkeyAction(pin) and pin != SHOW_OSD_KEY:
+    if not hotkeyAction(pin):
         key = KEYS[pin]
         if PREVIOUS_KEYSTATES[pin] == 1 and state == 1:
             device.emit(key, 2)

@@ -604,6 +604,7 @@ try:
                 bat = getVoltagepercent(volt)
             checkShdn(volt)
             updateOSD(volt, bat, 20, wifi, volume, lowbattery, info, charge, bluetooth)
+            print 'update OSD'
             overrideCounter.wait(10)
             if overrideCounter.is_set():
                 overrideCounter.clear()

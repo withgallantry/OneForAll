@@ -334,9 +334,9 @@ def checkShdn(volt):
 # Read voltage
 def readVoltage():
     global last_bat_read;
-    print 'trying to read volt'
     voltVal = adc.read_adc(0, gain=1)
     print voltVal
+    print 'read'
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
 
     if volt < 300 or (last_bat_read > 300 and last_bat_read - volt > 6 and not last_bat_read == 450):

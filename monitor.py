@@ -133,7 +133,7 @@ if JOYSTICK_ENABLED == 'True':
 
 # Battery config
 battery = generalConfig['BATTERY']
-monitoring_enabled = battery['ENABLED']
+monitoring_enabled = bool(battery['ENABLED'])
 batt_full = int(battery['FULL_BATT_VOLTAGE'])
 batt_low = int(battery['BATT_LOW_VOLTAGE'])
 batt_shdn = int(battery['BATT_SHUTDOWN_VOLT'])
@@ -180,8 +180,10 @@ if JOYSTICK_ENABLED == 'True':
     joystick = True
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
-if monitoring_enabled == 'True':
+if monitoring_enabled:
     adc = Adafruit_ADS1x15.ADS1015()
+    print 'attempting ADC'
+    print adc
 else:
     adc = False
 

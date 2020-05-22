@@ -486,7 +486,7 @@ int main(int argc, char *argv[])
             warning_loaded = 0;
         }
 
-        if (show) {
+        if (true) {
 
             float batval = battery/100.f;
             {

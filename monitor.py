@@ -335,7 +335,7 @@ def checkShdn(volt):
 def readVoltage():
     global last_bat_read;
     print 'trying to read volt'
-    voltVal = adc.read_adc(0, gain=1)
+    voltVal = adc.read_adc(1, gain=1)
     print voltVal
     volt = int((float(voltVal) * (4.09 / 2047.0)) * 100)
 

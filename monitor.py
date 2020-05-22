@@ -478,7 +478,7 @@ def doShutdown(channel=None):
 def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, lowbattery=0, info=False, charge=False, bluetooth=False):
     global showOverlay
     showState = showOverlay if SHOW_OVERLAY_HOTKEY_ONLY else True
-    commands = "s" + str(int(2)) + " v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(
+    commands = "s" + str(int(showOverlay)) + " v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(
         wifi) + " a" + str(
         audio) + " j" + ("1 " if joystick else "0 ") + " u" + ("1 " if bluetooth else "0 ") + " l" + (
                    "1 " if lowbattery else "0 ") + " " + ("on " if info else "off ") + (

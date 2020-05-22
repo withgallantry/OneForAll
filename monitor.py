@@ -549,8 +549,9 @@ def checkKeyInputPowerSaving():
         elif not gpio.input(TOGGLE_BLE):
             bluetooth = readModeBluetooth(True)
             time.sleep(0.6)
-        elif not gpio.input(SAFE_SHUTDOWN) and SAFE_SHUTDOWN != -1:
-            doShutdown()
+        elif SAFE_SHUTDOWN != -1:
+            if not gpio.input(SAFE_SHUTDOWN):
+                doShutdown()
 
 
 def checkJoystickInput():

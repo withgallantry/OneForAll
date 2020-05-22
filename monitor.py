@@ -182,8 +182,6 @@ if JOYSTICK_ENABLED == 'True':
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 if monitoring_enabled:
     adc = Adafruit_ADS1x15.ADS1015()
-    print 'attempting ADC'
-    print adc
 else:
     adc = False
 
@@ -600,7 +598,9 @@ if JOYSTICK_ENABLED == 'True':
 try:
     while 1:
         try:
+            print 'attempting Read'
             if not adc == False:
+                print 'reading adc'
                 volt = readVoltage()
                 bat = getVoltagepercent(volt)
             checkShdn(volt)

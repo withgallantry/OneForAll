@@ -181,7 +181,7 @@ if JOYSTICK_ENABLED == 'True':
 
 # TO DO REPLACE A LOT OF OLD CALLS WITH THE CHECK_OUTPUT
 if monitoring_enabled:
-    adc = Adafruit_ADS1x15.ADS1015()
+    adc = Adafruit_ADS1x15.ADS1015(address=0x48, bus=1)
 else:
     adc = False
 

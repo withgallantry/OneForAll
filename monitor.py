@@ -124,7 +124,7 @@ if generalConfig.has_option("GENERAL", "BACKLIGHT_PWM"):
         BRIGHTNESS_DOWN = int(hotkeys['BRIGHTNESS_DOWN'])
 
 if generalConfig.has_option("GENERAL", "BACKLIGHT_STANDBY_DETECT"):
-    BACKLIGHT_STANDBY_DETECT = int(hotkeys['BACKLIGHT_STANDBY_DETECT'])
+    BACKLIGHT_STANDBY_DETECT = int(general['BACKLIGHT_STANDBY_DETECT'])
 else:
     BACKLIGHT_STANDBY_DETECT = -1
 

@@ -62,6 +62,9 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
+def str2bool(v):
+    return v.lower() in ("yes", "true", "True", "1")
+
 bin_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 osd_path = bin_dir + '/osd/osd'
 rfkill_path = bin_dir + '/rfkill/rfkill'
@@ -108,10 +111,10 @@ TOGGLE_BLE = int(hotkeys['TOGGLE_BLE'])
 TOGGLE_JOYSTICK = int(hotkeys['TOGGLE_JOYSTICK'])
 SHOW_OSD_KEY = int(hotkeys['OSD_SHOW'])
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
-SHOW_OVERLAY_HOTKEY_ONLY = bool(general['SHOW_OVERLAY_HOTKEY_ONLY'])
+SHOW_OVERLAY_HOTKEY_ONLY = str2bool(general['SHOW_OVERLAY_HOTKEY_ONLY'])
 
 if generalConfig.has_option("GENERAL", "BACKLIGHT_PWM"):
-    if bool(general['BACKLIGHT_PWM']):
+    if str2bool(general['BACKLIGHT_PWM']):
         import wiringpi
 
         wiringpi.wiringPiSetupGpio()
@@ -154,7 +157,7 @@ if JOYSTICK_ENABLED == 'True':
 
 # Battery config
 battery = generalConfig['BATTERY']
-monitoring_enabled = bool(battery['ENABLED'])
+monitoring_enabled = str2bool(battery['ENABLED'])
 batt_full = int(battery['FULL_BATT_VOLTAGE'])
 batt_low = int(battery['BATT_LOW_VOLTAGE'])
 batt_shdn = int(battery['BATT_SHUTDOWN_VOLT'])

@@ -490,6 +490,11 @@ int main(int argc, char *argv[])
 
             float batval = battery/100.f;
             {
+                 if (loadPng(&(bimageLayer.image), BATTERY_IMAGE) == false)
+                    {
+                        fprintf(stderr, "unable to load %s\n", argv[optind]);
+                    }
+                changeSourceAndUpdateImageLayer(&bimageLayer);
                 updateBattery(batval, &batteryLayer);
             }
             if(charge > 0 && hud)

@@ -72,6 +72,9 @@ generalConfig.read(bin_dir + '/general.cfg')
 
 general = generalConfig['GENERAL']
 
+if generalConfig.has_option("GENERAL", "BACKLIGHT_PWM"):
+    import wiringpi
+
 # Keys Configuration
 keysConfig = configparser.ConfigParser(inline_comment_prefixes="#")
 keysConfig.read(bin_dir + '/' + general['KEYS_CONFIG'])

@@ -42,6 +42,8 @@ resdivval = 1000.0
 dacres = 20.47
 dacmax = 4096.0
 
+backlightSetting = 1024
+
 batt_threshold = 4
 
 temperature_max = 70.0
@@ -86,6 +88,10 @@ COMBO_CURRENT_KEYS = set()
 
 KEY_COMBOS = {}
 
+# GPIO Init
+gpio.setwarnings(False)
+gpio.setmode(gpio.BCM)
+
 for key, pin in keysConfig.items('KEYS'):
     BUTTONS.append(int(pin))
     KEYS.update({int(pin): getattr(uinput, key.upper())})
@@ -95,9 +101,6 @@ for key, pinSet in keysConfig.items('COMBOS'):
     pins = set(map(int, pinSet.split(',')))
     KEY_COMBOS.update({frozenset(pins): getattr(uinput, key.upper())})
 
-gpio.setwarnings(False)
-gpio.setmode(gpio.BCM)
-
 VOLUME_UP = int(hotkeys['VOLUME_UP'])
 VOLUME_DOWN = int(hotkeys['VOLUME_DOWN'])
 TOGGLE_WIFI = int(hotkeys['TOGGLE_WIFI'])
@@ -106,6 +109,24 @@ TOGGLE_JOYSTICK = int(hotkeys['TOGGLE_JOYSTICK'])
 SHOW_OSD_KEY = int(hotkeys['OSD_SHOW'])
 SHUTDOWN = int(general['SHUTDOWN_DETECT'])
 SHOW_OVERLAY_HOTKEY_ONLY = bool(general['SHOW_OVERLAY_HOTKEY_ONLY'])
+
+if generalConfig.has_option("GENERAL", "BACKLIGHT_PWM"):
+    if bool(general['BACKLIGHT_PWM']):
+        import wiringpi
+
+        wiringpi.wiringPiSetupGpio()
+
+        wiringpi.pinMode(13, wiringpi.OUTPUT)
+        wiringpi.pinMode(13, wiringpi.PWM_OUTPUT)
+        wiringpi.pwmWrite(13, backlightSetting)
+
+        BRIGHTNESS_UP = int(hotkeys['BRIGHTNESS_UP'])
+        BRIGHTNESS_DOWN = int(hotkeys['BRIGHTNESS_DOWN'])
+
+if generalConfig.has_option("GENERAL", "BACKLIGHT_STANDBY_DETECT"):
+    BACKLIGHT_STANDBY_DETECT = int(hotkeys['BACKLIGHT_STANDBY_DETECT'])
+else:
+    BACKLIGHT_STANDBY_DETECT = -1
 
 if keysConfig.has_option("HOTKEYS", "SAFE_SHUTDOWN"):
     SAFE_SHUTDOWN = int(hotkeys['SAFE_SHUTDOWN'])
@@ -145,6 +166,9 @@ gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 if not SHUTDOWN == -1:
     gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
+
+if not BACKLIGHT_STANDBY_DETECT == -1:
+    gpio.setup(BACKLIGHT_STANDBY_DETECT, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 if keysConfig.has_option("HOTKEYS", "QUICKSAVE"):
     gpio.setup(QUICKSAVE, gpio.IN, pull_up_down=gpio.PUD_UP)
@@ -199,6 +223,15 @@ def hotkeyAction(key):
             return True
 
     return False
+
+
+def handle_backlight(pin):
+    global backlightSetting
+    state = 0 if gpio.input(pin) else 1
+    if state == 1:
+        wiringpi.pwmWrite(13, 0)
+    if state == 0:
+        wiringpi.pwmWrite(13, backlightSetting)
 
 
 def handle_quicksave(pin):
@@ -282,6 +315,9 @@ def handle_shutdown(pin):
 # Initialise Safe shutdown
 if not SHUTDOWN == -1:
     gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)
+
+if not BACKLIGHT_STANDBY_DETECT == -1:
+    gpio.add_event_detect(BACKLIGHT_STANDBY_DETECT, gpio.BOTH, callback=handle_backlight, bouncetime=1)
 
 if keysConfig.has_option("HOTKEYS", "QUICKSAVE"):
     gpio.add_event_detect(QUICKSAVE, gpio.BOTH, callback=handle_quicksave, bouncetime=1)
@@ -551,6 +587,12 @@ def checkKeyInputPowerSaving():
         elif not gpio.input(TOGGLE_BLE):
             bluetooth = readModeBluetooth(True)
             time.sleep(0.6)
+        elif not gpio.input(BRIGHTNESS_UP):
+            brightnessUp()
+            time.sleep(0.6)
+        elif not gpio.input(BRIGHTNESS_DOWN):
+            brightnessDown()
+            time.sleep(0.6)
         elif SAFE_SHUTDOWN != -1:
             if not gpio.input(SAFE_SHUTDOWN):
                 doShutdown()
@@ -576,6 +618,22 @@ def checkJoystickInput():
     else:
         # Center the sticks if within deadzone
         device.emit(uinput.ABS_Y, VREF / 2)
+
+
+def constrain(val, min_val, max_val):
+    return min(max_val, max(min_val, val))
+
+
+def brightnessUp():
+    global backlightSetting
+    backlightSetting = constrain(backlightSetting + 128, 0, 1024)
+    wiringpi.pwmWrite(13, backlightSetting);
+
+
+def brightnessDown():
+    global backlightSetting
+    backlightSetting = constrain(backlightSetting - 128, 0, 1024)
+    wiringpi.pwmWrite(13, backlightSetting);
 
 
 def exit_gracefully(signum=None, frame=None):

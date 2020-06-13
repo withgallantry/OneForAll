@@ -65,7 +65,7 @@ static RGBA8_T backgroundColour = { 0, 0, 0, 100 };
 static RGBA8_T textColour = { 255, 255, 255, 255 };
 static RGBA8_T greenColour = { 0, 255, 0, 200 };
 static RGBA8_T redColour = { 255, 0, 0, 200 };
-static int battery = 0, infos = 0, hud = 1, charge = 0, low_battery = 0, audio = 0, wifi = 0, wifi_loaded = 0, voltage = 0, vol_image = 0, infos_loaded = 0, warning_loaded = 0, joystick = 0, bluetooth = 0;
+static int battery = 0, infos = 0, hud = 1, charge = 0, low_battery = 0, audio = 0, wifi = 0, wifi_loaded = 0, voltage = 0, backlight = 0, vol_image = 0, infos_loaded = 0, warning_loaded = 0, joystick = 0, bluetooth = 0;
 static float temp = 0.f;
 
 void updateInfo(IMAGE_LAYER_T*, char[]);
@@ -153,6 +153,11 @@ void getInput()
         {
             //wifi
             wifi= atoi(word+1);
+        }
+        else if(word[0] == 'p')
+        {
+            //backlight setting
+            backlight= atoi(word+1);
         }
         else if(word[0] == 'a')
                {
@@ -625,7 +630,9 @@ void updateInfoText(IMAGE_LAYER_T *infoLayer, bool no_joystick)
     char wifiText[20];
     char joystickText[20];
     char bluetoothText[20];
+    char backlightText[60];
     snprintf(volumeText, sizeof(volumeText),"Volume: %d%%", audio);
+    snprintf(backlightText, sizeof(backlightText),"Backlight: %d%%", backlight);
 
     if (wifi > 0) {
         snprintf(wifiText, sizeof(wifiText),"WiFi Enabled");
@@ -648,6 +655,7 @@ void updateInfoText(IMAGE_LAYER_T *infoLayer, bool no_joystick)
 
     if (no_joystick == false) {
         drawStringRGB(137, 29, volumeText, &textColour, &(infoLayer->image));
+//        drawStringRGB(137, 76, backlightText, &textColour, &(infoLayer->image));
         drawStringRGB(137, 76, volumeText, &textColour, &(infoLayer->image));
 
         drawStringRGB(137, 124, wifiText, &textColour, &(infoLayer->image));

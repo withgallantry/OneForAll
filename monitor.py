@@ -62,8 +62,10 @@ wifi_1bar = 3
 wifi_2bar = 4
 wifi_3bar = 5
 
+
 def str2bool(v):
     return v.lower() in ("yes", "true", "True", "1")
+
 
 bin_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 osd_path = bin_dir + '/osd/osd'
@@ -126,10 +128,10 @@ if generalConfig.has_option("GENERAL", "BACKLIGHT_PWM"):
         BRIGHTNESS_UP = int(hotkeys['BRIGHTNESS_UP'])
         BRIGHTNESS_DOWN = int(hotkeys['BRIGHTNESS_DOWN'])
 
-if generalConfig.has_option("GENERAL", "BACKLIGHT_STANDBY_DETECT"):
-    BACKLIGHT_STANDBY_DETECT = int(general['BACKLIGHT_STANDBY_DETECT'])
+if generalConfig.has_option("GENERAL", "SENSOR_DETECT"):
+    SENSOR_DETECT = int(general['SENSOR_DETECT'])
 else:
-    BACKLIGHT_STANDBY_DETECT = -1
+    SENSOR_DETECT = -1
 
 if keysConfig.has_option("HOTKEYS", "SAFE_SHUTDOWN"):
     SAFE_SHUTDOWN = int(hotkeys['SAFE_SHUTDOWN'])
@@ -170,11 +172,11 @@ gpio.setup(BUTTONS, gpio.IN, pull_up_down=gpio.PUD_UP)
 if not SHUTDOWN == -1:
     gpio.setup(SHUTDOWN, gpio.IN, pull_up_down=gpio.PUD_UP)
 
-if not BACKLIGHT_STANDBY_DETECT == -1:
-    gpio.setup(BACKLIGHT_STANDBY_DETECT, gpio.IN, pull_up_down=gpio.PUD_UP)
+if not SENSOR_DETECT == -1:
+    gpio.setup(SENSOR_DETECT, gpio.IN, pull_up_down=gpio.PUD_UP)
 
 if keysConfig.has_option("HOTKEYS", "QUICKSAVE"):
-    gpio.setup(QUICKSAVE, gpio.IN, pull_up_down=gpio.PUD_UP)
+    gpio.setup(int(QUICKSAVE), gpio.IN, pull_up_down=gpio.PUD_UP)
 
 # Global Variables
 global brightness
@@ -221,20 +223,30 @@ def hotkeyAction(key):
     if key == QUICKSAVE:
         return True
 
-    if not gpio.input(SHOW_OSD_KEY):
+    if not gpio.input(SHOW_OSD_KEY) or (key == SHOW_OSD_KEY):
         if key in HOTKEYS:
             return True
 
     return False
 
 
-def handle_backlight(pin):
-    global backlightSetting
-    state = 0 if gpio.input(pin) else 1
-    if state == 1:
-        wiringpi.pwmWrite(13, 0)
-    if state == 0:
-        wiringpi.pwmWrite(13, backlightSetting)
+def handle_sensor(pin):
+    command = "backlight"
+    if generalConfig.has_option("GENERAL", "SENSOR_COMMAND"):
+        command = general['SENSOR_COMMAND']
+
+    if command == "backlight":
+        global backlightSetting
+        state = 0 if gpio.input(pin) else 1
+        if state == 1:
+            wiringpi.pwmWrite(13, 0)
+        if state == 0:
+            wiringpi.pwmWrite(13, backlightSetting)
+
+    if command == "shutdown":
+        device.emit(uinput.KEY_SPACE, state)
+        device.emit(uinput.KEY_F2, state)
+        doShutdown()
 
 
 def handle_quicksave(pin):
@@ -319,8 +331,8 @@ def handle_shutdown(pin):
 if not SHUTDOWN == -1:
     gpio.add_event_detect(SHUTDOWN, gpio.BOTH, callback=handle_shutdown, bouncetime=1)
 
-if not BACKLIGHT_STANDBY_DETECT == -1:
-    gpio.add_event_detect(BACKLIGHT_STANDBY_DETECT, gpio.BOTH, callback=handle_backlight, bouncetime=1)
+if not SENSOR_DETECT == -1:
+    gpio.add_event_detect(SENSOR_DETECT, gpio.BOTH, callback=handle_sensor, bouncetime=1)
 
 if keysConfig.has_option("HOTKEYS", "QUICKSAVE"):
     gpio.add_event_detect(QUICKSAVE, gpio.BOTH, callback=handle_quicksave, bouncetime=1)
@@ -392,7 +404,7 @@ def getVoltagepercent(volt):
 
 
 def readVolumeLevel():
-    process = os.popen("amixer | grep 'Left:' | awk -F'[][]' '{ print $2 }'")
+    process = os.popen("amixer get Master | grep 'Left:' | awk -F'[][]' '{ print $2 }'")
     res = process.readline()
     process.close()
 
@@ -518,9 +530,9 @@ def doShutdown(channel=None):
 # Signals the OSD binary
 def updateOSD(volt=0, bat=0, temp=0, wifi=0, audio=0, lowbattery=0, info=False, charge=False, bluetooth=False):
     global showOverlay
-    global backlightSetting
     showState = showOverlay if SHOW_OVERLAY_HOTKEY_ONLY else True
-    commands = "s" + str(int(showState)) + " p" + str(backlightSetting) + " v" + str(volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(
+    commands = "s" + str(int(showState)) + " p" + str(int((backlightSetting / 1024) * 100)) + " v" + str(
+        volt) + " b" + str(bat) + " t" + str(temp) + " w" + str(
         wifi) + " a" + str(
         audio) + " j" + ("1 " if joystick else "0 ") + " u" + ("1 " if bluetooth else "0 ") + " l" + (
                    "1 " if lowbattery else "0 ") + " " + ("on " if info else "off ") + (
